@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "spec"
+  ], 
+  "type": "object", 
+  "description": "SubjectAccessReview checks whether or not a user or group can perform an action.", 
+  "properties": {
+    "status": {
+      "description": "Status is filled in by the server and indicates whether the request is allowed or not", 
+      "$ref": "_definitions.json#/definitions/v1beta1.SubjectAccessReviewStatus"
+    }, 
+    "spec": {
+      "description": "Spec holds information about the request being evaluated", 
+      "$ref": "_definitions.json#/definitions/v1beta1.SubjectAccessReviewSpec"
+    }, 
+    "metadata": {
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

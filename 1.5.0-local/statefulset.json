@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n - Network: A single stable DNS and hostname.\n - Storage: As many VolumeClaims as requested.\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.", 
+  "properties": {
+    "status": {
+      "description": "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.", 
+      "$ref": "_definitions.json#/definitions/v1beta1.StatefulSetStatus"
+    }, 
+    "spec": {
+      "description": "Spec defines the desired identities of pods in this set.", 
+      "$ref": "_definitions.json#/definitions/v1beta1.StatefulSetSpec"
+    }, 
+    "metadata": {
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

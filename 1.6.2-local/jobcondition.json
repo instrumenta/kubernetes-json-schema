@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "type", 
+    "status"
+  ], 
+  "type": "object", 
+  "description": "JobCondition describes current state of a job.", 
+  "properties": {
+    "status": {
+      "type": "string", 
+      "description": "Status of the condition, one of True, False, Unknown."
+    }, 
+    "lastTransitionTime": {
+      "description": "Last time the condition transit from one status to another.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "reason": {
+      "type": "string", 
+      "description": "(brief) reason for the condition's last transition."
+    }, 
+    "lastProbeTime": {
+      "description": "Last time the condition was checked.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "message": {
+      "type": "string", 
+      "description": "Human readable message indicating details about last transition."
+    }, 
+    "type": {
+      "type": "string", 
+      "description": "Type of job condition, Complete or Failed."
+    }
+  }
+}

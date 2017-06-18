@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods", 
+  "properties": {
+    "status": {
+      "description": "Most recently observed status of the PodDisruptionBudget.", 
+      "$ref": "_definitions.json#/definitions/v1beta1.PodDisruptionBudgetStatus"
+    }, 
+    "spec": {
+      "description": "Specification of the desired behavior of the PodDisruptionBudget.", 
+      "$ref": "_definitions.json#/definitions/v1beta1.PodDisruptionBudgetSpec"
+    }, 
+    "metadata": {
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "LimitRange sets resource usage limits for each kind of resource in a Namespace.", 
+  "properties": {
+    "spec": {
+      "description": "Spec defines the limits enforced. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
+      "$ref": "_definitions.json#/definitions/v1.LimitRangeSpec"
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "list of horizontal pod autoscaler objects.", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1.HorizontalPodAutoscaler"
+      }, 
+      "type": "array", 
+      "description": "list of horizontal pod autoscaler objects."
+    }, 
+    "metadata": {
+      "description": "Standard list metadata.", 
+      "$ref": "_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

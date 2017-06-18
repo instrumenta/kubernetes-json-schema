@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "port"
+  ], 
+  "type": "object", 
+  "description": "TCPSocketAction describes an action based on opening a socket", 
+  "properties": {
+    "port": {
+      "type": "string", 
+      "format": "int-or-string"
+    }
+  }
+}

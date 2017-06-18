@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "pdID"
+  ], 
+  "type": "object", 
+  "description": "Represents a Photon Controller persistent disk resource.", 
+  "properties": {
+    "pdID": {
+      "type": "string", 
+      "description": "ID that identifies Photon Controller persistent disk"
+    }, 
+    "fsType": {
+      "type": "string", 
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+    }
+  }
+}

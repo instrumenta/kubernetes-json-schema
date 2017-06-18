@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "DaemonSetList is a collection of daemon sets.", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1beta1.DaemonSet"
+      }, 
+      "type": "array", 
+      "description": "Items is a list of daemon sets."
+    }, 
+    "metadata": {
+      "description": "Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+      "$ref": "_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

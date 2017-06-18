@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "secretName", 
+    "shareName"
+  ], 
+  "type": "object", 
+  "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.", 
+  "properties": {
+    "shareName": {
+      "type": "string", 
+      "description": "Share Name"
+    }, 
+    "readOnly": {
+      "type": "boolean", 
+      "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+    }, 
+    "secretName": {
+      "type": "string", 
+      "description": "the name of secret that contains Azure Storage Account Name and Key"
+    }
+  }
+}

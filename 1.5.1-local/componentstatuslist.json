@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "Status of all the conditions for the component as a list of ComponentStatus objects.", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1.ComponentStatus"
+      }, 
+      "type": "array", 
+      "description": "List of ComponentStatus objects."
+    }, 
+    "metadata": {
+      "description": "Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds", 
+      "$ref": "_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

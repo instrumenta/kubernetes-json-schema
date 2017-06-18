@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "scaleTargetRef", 
+    "maxReplicas"
+  ], 
+  "type": "object", 
+  "description": "specification of a horizontal pod autoscaler.", 
+  "properties": {
+    "minReplicas": {
+      "type": "integer", 
+      "description": "lower limit for the number of pods that can be set by the autoscaler, default 1.", 
+      "format": "int32"
+    }, 
+    "scaleTargetRef": {
+      "description": "reference to scaled resource; horizontal pod autoscaler will learn the current resource consumption and will set the desired number of pods by using its Scale subresource.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.autoscaling.v1.CrossVersionObjectReference"
+    }, 
+    "targetCPUUtilizationPercentage": {
+      "type": "integer", 
+      "description": "target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used.", 
+      "format": "int32"
+    }, 
+    "maxReplicas": {
+      "type": "integer", 
+      "description": "upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.", 
+      "format": "int32"
+    }
+  }
+}

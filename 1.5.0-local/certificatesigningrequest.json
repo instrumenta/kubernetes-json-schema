@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Describes a certificate signing request", 
+  "properties": {
+    "status": {
+      "description": "Derived information about the request.", 
+      "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestStatus"
+    }, 
+    "spec": {
+      "description": "The certificate request itself and any additional information.", 
+      "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestSpec"
+    }, 
+    "metadata": {
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

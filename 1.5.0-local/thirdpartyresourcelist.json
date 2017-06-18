@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "ThirdPartyResourceList is a list of ThirdPartyResources.", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1beta1.ThirdPartyResource"
+      }, 
+      "type": "array", 
+      "description": "Items is the list of ThirdPartyResources."
+    }, 
+    "metadata": {
+      "description": "Standard list metadata.", 
+      "$ref": "_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "DeploymentList is a list of Deployments.", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1beta1.Deployment"
+      }, 
+      "type": "array", 
+      "description": "Items is the list of Deployments."
+    }, 
+    "metadata": {
+      "description": "Standard list metadata.", 
+      "$ref": "_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

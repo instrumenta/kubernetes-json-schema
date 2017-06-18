@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "target"
+  ], 
+  "type": "object", 
+  "description": "Binding ties one object to another. For example, a pod is bound to a node by a scheduler.", 
+  "properties": {
+    "target": {
+      "description": "The target object that you want to bind to the standard object.", 
+      "$ref": "_definitions.json#/definitions/v1.ObjectReference"
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

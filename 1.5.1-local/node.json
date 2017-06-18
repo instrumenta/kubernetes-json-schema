@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Node is a worker node in Kubernetes. Each node will have a unique identifier in the cache (i.e. in etcd).", 
+  "properties": {
+    "status": {
+      "description": "Most recently observed status of the node. Populated by the system. Read-only. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
+      "$ref": "_definitions.json#/definitions/v1.NodeStatus"
+    }, 
+    "spec": {
+      "description": "Spec defines the behavior of a node. http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
+      "$ref": "_definitions.json#/definitions/v1.NodeSpec"
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

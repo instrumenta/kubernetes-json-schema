@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Namespace provides a scope for Names. Use of multiple namespaces is optional.", 
+  "properties": {
+    "status": {
+      "description": "Status describes the current status of a Namespace. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
+      "$ref": "_definitions.json#/definitions/v1.NamespaceStatus"
+    }, 
+    "spec": {
+      "description": "Spec defines the behavior of the Namespace. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
+      "$ref": "_definitions.json#/definitions/v1.NamespaceSpec"
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}

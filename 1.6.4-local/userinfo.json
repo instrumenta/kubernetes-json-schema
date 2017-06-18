@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "UserInfo holds the information about the user needed to implement the user.Info interface.", 
+  "properties": {
+    "username": {
+      "type": "string", 
+      "description": "The name that uniquely identifies this user among all active users."
+    }, 
+    "uid": {
+      "type": "string", 
+      "description": "A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs."
+    }, 
+    "groups": {
+      "items": {
+        "type": "string"
+      }, 
+      "type": "array", 
+      "description": "The names of groups this user is a part of."
+    }, 
+    "extra": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        }, 
+        "type": "array"
+      }, 
+      "type": "object", 
+      "description": "Any additional information provided by the authenticator."
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "conditions": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestCondition"
+      }, 
+      "type": "array", 
+      "description": "Conditions applied to the request, such as approval or denial."
+    }, 
+    "certificate": {
+      "type": "string", 
+      "description": "If request was approved, the controller will place the issued certificate here.", 
+      "format": "byte"
+    }
+  }
+}

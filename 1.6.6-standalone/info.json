@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "major", 
+    "minor", 
+    "gitVersion", 
+    "gitCommit", 
+    "gitTreeState", 
+    "buildDate", 
+    "goVersion", 
+    "compiler", 
+    "platform"
+  ], 
+  "type": "object", 
+  "description": "Info contains versioning information. how we'll want to distribute that information.", 
+  "properties": {
+    "major": {
+      "type": "string"
+    }, 
+    "gitTreeState": {
+      "type": "string"
+    }, 
+    "buildDate": {
+      "type": "string"
+    }, 
+    "platform": {
+      "type": "string"
+    }, 
+    "gitVersion": {
+      "type": "string"
+    }, 
+    "gitCommit": {
+      "type": "string"
+    }, 
+    "goVersion": {
+      "type": "string"
+    }, 
+    "minor": {
+      "type": "string"
+    }, 
+    "compiler": {
+      "type": "string"
+    }
+  }
+}

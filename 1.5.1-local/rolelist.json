@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "RoleList is a collection of Roles", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1alpha1.Role"
+      }, 
+      "type": "array", 
+      "description": "Items is a list of Roles"
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata.", 
+      "$ref": "_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

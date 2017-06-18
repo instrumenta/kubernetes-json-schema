@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Scale represents a scaling request for a resource.", 
+  "properties": {
+    "status": {
+      "description": "current status of the scale. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status. Read-only.", 
+      "$ref": "_definitions.json#/definitions/v1.ScaleStatus"
+    }, 
+    "spec": {
+      "description": "defines the behavior of the scale. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status.", 
+      "$ref": "_definitions.json#/definitions/v1.ScaleSpec"
+    }, 
+    "metadata": {
+      "description": "Standard object metadata; More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata.", 
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }
+  }
+}
