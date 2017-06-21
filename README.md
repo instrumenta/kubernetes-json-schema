@@ -69,8 +69,8 @@ to the approach I ended up taking.
 
 ## Building the schemas yourself
 
-The tooling for generating these schemas will be available shortly. It's
-not Kubernetes specific and should work with other OpenAPI specificied
+The tooling for generating these schemas is [openapi2jsonschema](https://github.com/garethr/openapi2jsonschema). 
+It's not Kubernetes specific and should work with other OpenAPI specificied
 APIs too. This should be useful if you're using a pre-release or otherwise
 modified version of Kubernetes, or something like OpenShift which extends the
 standard APIs with additional types.

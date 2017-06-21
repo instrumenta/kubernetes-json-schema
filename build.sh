@@ -29,7 +29,7 @@ do
     schema=https://raw.githubusercontent.com/kubernetes/kubernetes/v${version}/api/openapi-spec/swagger.json
     prefix=https://raw.githubusercontent.com/${REPO}/master/v${version}/_definitions.json
 
-    python manage.py -o "${version}-standalone" -s "${schema}" --stand-alone
-    python manage.py -o "${version}-local" -s "${schema}"
-    python manage.py -o "${version}" -s "${schema}" --prefix "${prefix}"
+    openapi2jsonschema -o "${version}-standalone" --stand-alone "${schema}"
+    openapi2jsonschema -o "${version}-local" "${schema}"
+    openapi2jsonschema -o "${version}" --prefix "${prefix}" "${schema}"
 done
