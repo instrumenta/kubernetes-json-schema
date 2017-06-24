@@ -12,11 +12,11 @@
     }, 
     "claimRef": {
       "description": "ClaimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#binding", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1.ObjectReference"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1.ObjectReference"
     }, 
     "capacity": {
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/resource.Quantity"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/resource.Quantity"
       }, 
       "type": "object", 
       "description": "A description of the persistent volume's resources and capacity. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#capacity"

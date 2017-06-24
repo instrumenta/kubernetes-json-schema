@@ -8,7 +8,7 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v2alpha1.CronJob"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v2alpha1.CronJob"
       }, 
       "type": "array", 
       "description": "Items is the list of CronJob."
@@ -23,7 +23,7 @@
     }, 
     "metadata": {
       "description": "Standard list metadata More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/unversioned.ListMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/unversioned.ListMeta"
     }
   }
 }

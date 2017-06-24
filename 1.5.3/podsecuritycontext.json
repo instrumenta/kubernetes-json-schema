@@ -14,7 +14,7 @@
     }, 
     "seLinuxOptions": {
       "description": "The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.SELinuxOptions"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.SELinuxOptions"
     }, 
     "supplementalGroups": {
       "items": {

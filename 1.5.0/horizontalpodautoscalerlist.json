@@ -8,14 +8,14 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1.HorizontalPodAutoscaler"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/v1.HorizontalPodAutoscaler"
       }, 
       "type": "array", 
       "description": "list of horizontal pod autoscaler objects."
     }, 
     "metadata": {
       "description": "Standard list metadata.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.ListMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/unversioned.ListMeta"
     }
   }
 }

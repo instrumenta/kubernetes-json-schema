@@ -8,12 +8,12 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.PodDisruptionBudget"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1beta1.PodDisruptionBudget"
       }, 
       "type": "array"
     }, 
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.ListMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/unversioned.ListMeta"
     }
   }
 }

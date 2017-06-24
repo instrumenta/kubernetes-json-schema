@@ -8,14 +8,14 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1.PersistentVolume"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1.PersistentVolume"
       }, 
       "type": "array", 
       "description": "List of persistent volumes. More info: http://kubernetes.io/docs/user-guide/persistent-volumes"
     }, 
     "metadata": {
       "description": "Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.ListMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/unversioned.ListMeta"
     }
   }
 }

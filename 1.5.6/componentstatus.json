@@ -9,7 +9,7 @@
     }, 
     "conditions": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.ComponentCondition"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1.ComponentCondition"
       }, 
       "type": "array", 
       "description": "List of component conditions observed"
@@ -20,7 +20,7 @@
     }, 
     "metadata": {
       "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

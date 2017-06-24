@@ -36,7 +36,7 @@
     }, 
     "attributeRestrictions": {
       "description": "AttributeRestrictions will vary depending on what the Authorizer/AuthorizationAttributeBuilder pair supports. If the Authorizer does not recognize how to handle the AttributeRestrictions, the Authorizer should report an error.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/runtime.RawExtension"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/runtime.RawExtension"
     }, 
     "resources": {
       "items": {

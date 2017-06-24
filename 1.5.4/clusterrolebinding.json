@@ -9,7 +9,7 @@
   "properties": {
     "roleRef": {
       "description": "RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1alpha1.RoleRef"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v1alpha1.RoleRef"
     }, 
     "kind": {
       "type": "string", 
@@ -17,7 +17,7 @@
     }, 
     "subjects": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1alpha1.Subject"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v1alpha1.Subject"
       }, 
       "type": "array", 
       "description": "Subjects holds references to the objects the role applies to."
@@ -28,7 +28,7 @@
     }, 
     "metadata": {
       "description": "Standard object's metadata.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

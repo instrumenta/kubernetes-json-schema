@@ -5,7 +5,7 @@
   "properties": {
     "status": {
       "description": "Most recently observed status of the PodDisruptionBudget.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetStatus"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetStatus"
     }, 
     "kind": {
       "type": "string", 
@@ -13,14 +13,14 @@
     }, 
     "spec": {
       "description": "Specification of the desired behavior of the PodDisruptionBudget.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetSpec"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetSpec"
     }, 
     "apiVersion": {
       "type": "string", 
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
     }, 
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

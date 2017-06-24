@@ -5,15 +5,15 @@
   "properties": {
     "terminated": {
       "description": "Details about a terminated container", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ContainerStateTerminated"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ContainerStateTerminated"
     }, 
     "running": {
       "description": "Details about a running container", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ContainerStateRunning"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ContainerStateRunning"
     }, 
     "waiting": {
       "description": "Details about a waiting container", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ContainerStateWaiting"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ContainerStateWaiting"
     }
   }
 }

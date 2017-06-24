@@ -5,35 +5,35 @@
   "properties": {
     "env": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvVar"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvVar"
       }, 
       "type": "array", 
       "description": "Env defines the collection of EnvVar to inject into containers."
     }, 
     "volumeMounts": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.VolumeMount"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.VolumeMount"
       }, 
       "type": "array", 
       "description": "VolumeMounts defines the collection of VolumeMount to inject into containers."
     }, 
     "volumes": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Volume"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Volume"
       }, 
       "type": "array", 
       "description": "Volumes defines the collection of Volume to inject into the pod."
     }, 
     "envFrom": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvFromSource"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvFromSource"
       }, 
       "type": "array", 
       "description": "EnvFrom defines the collection of EnvFromSource to inject into containers."
     }, 
     "selector": {
       "description": "Selector is a label query over a set of resources, in this case pods. Required.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }
   }
 }

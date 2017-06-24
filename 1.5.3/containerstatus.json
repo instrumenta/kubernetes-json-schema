@@ -29,7 +29,7 @@
     }, 
     "state": {
       "description": "Details about the container's current condition.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ContainerState"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ContainerState"
     }, 
     "ready": {
       "type": "boolean", 
@@ -37,7 +37,7 @@
     }, 
     "lastState": {
       "description": "Details about the container's last termination condition.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ContainerState"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ContainerState"
     }, 
     "containerID": {
       "type": "string", 

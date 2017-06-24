@@ -16,7 +16,7 @@
     }, 
     "versions": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.APIVersion"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.APIVersion"
       }, 
       "type": "array", 
       "description": "Versions are versions for this third party object"
@@ -31,7 +31,7 @@
     }, 
     "metadata": {
       "description": "Standard object metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     }
   }
 }

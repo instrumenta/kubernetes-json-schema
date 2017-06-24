@@ -15,7 +15,7 @@
   "properties": {
     "rules": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.rbac.v1alpha1.PolicyRule"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.rbac.v1alpha1.PolicyRule"
       }, 
       "type": "array", 
       "description": "Rules holds all the PolicyRules for this ClusterRole"
@@ -30,7 +30,7 @@
     }, 
     "metadata": {
       "description": "Standard object's metadata.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     }
   }
 }

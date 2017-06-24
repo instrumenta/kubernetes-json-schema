@@ -16,7 +16,7 @@
     }, 
     "capacity": {
       "additionalProperties": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/resource.Quantity"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/resource.Quantity"
       }, 
       "type": "object", 
       "description": "Represents the actual resources of the underlying volume."

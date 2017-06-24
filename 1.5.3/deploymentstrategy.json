@@ -5,7 +5,7 @@
   "properties": {
     "rollingUpdate": {
       "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1beta1.RollingUpdateDeployment"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1beta1.RollingUpdateDeployment"
     }, 
     "type": {
       "type": "string", 

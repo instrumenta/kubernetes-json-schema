@@ -5,14 +5,14 @@
   "properties": {
     "status": {
       "description": "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.StatefulSetStatus"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1beta1.StatefulSetStatus"
     }, 
     "spec": {
       "description": "Spec defines the desired identities of pods in this set.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.StatefulSetSpec"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1beta1.StatefulSetSpec"
     }, 
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

@@ -18,11 +18,11 @@
     }, 
     "firstTimestamp": {
       "description": "The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/unversioned.Time"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/unversioned.Time"
     }, 
     "lastTimestamp": {
       "description": "The time at which the most recent occurrence of this event was recorded.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/unversioned.Time"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/unversioned.Time"
     }, 
     "apiVersion": {
       "type": "string", 
@@ -30,7 +30,7 @@
     }, 
     "source": {
       "description": "The component reporting this event. Should be a short machine understandable string.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1.EventSource"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v1.EventSource"
     }, 
     "reason": {
       "type": "string", 
@@ -38,7 +38,7 @@
     }, 
     "involvedObject": {
       "description": "The object that this event is about.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1.ObjectReference"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v1.ObjectReference"
     }, 
     "message": {
       "type": "string", 
@@ -50,7 +50,7 @@
     }, 
     "metadata": {
       "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

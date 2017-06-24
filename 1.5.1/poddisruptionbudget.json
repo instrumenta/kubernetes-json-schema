@@ -5,14 +5,14 @@
   "properties": {
     "status": {
       "description": "Most recently observed status of the PodDisruptionBudget.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetStatus"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetStatus"
     }, 
     "spec": {
       "description": "Specification of the desired behavior of the PodDisruptionBudget.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetSpec"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1beta1.PodDisruptionBudgetSpec"
     }, 
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

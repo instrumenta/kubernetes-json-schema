@@ -20,14 +20,14 @@
     }, 
     "httpHeaders": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.HTTPHeader"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.HTTPHeader"
       }, 
       "type": "array", 
       "description": "Custom headers to set in the request. HTTP allows repeated headers."
     }, 
     "port": {
       "description": "Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
     }
   }
 }

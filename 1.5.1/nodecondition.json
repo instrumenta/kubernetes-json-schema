@@ -13,7 +13,7 @@
     }, 
     "lastTransitionTime": {
       "description": "Last time the condition transit from one status to another.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.Time"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/unversioned.Time"
     }, 
     "reason": {
       "type": "string", 
@@ -21,7 +21,7 @@
     }, 
     "lastHeartbeatTime": {
       "description": "Last time we got an update on a given condition.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.Time"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/unversioned.Time"
     }, 
     "message": {
       "type": "string", 

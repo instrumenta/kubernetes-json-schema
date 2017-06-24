@@ -16,7 +16,7 @@
     }, 
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.PodSecurityContext"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1.PodSecurityContext"
     }, 
     "serviceAccountName": {
       "type": "string", 
@@ -53,14 +53,14 @@
     }, 
     "containers": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.Container"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1.Container"
       }, 
       "type": "array", 
       "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
     }, 
     "volumes": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.Volume"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1.Volume"
       }, 
       "type": "array", 
       "description": "List of volumes that can be mounted by containers belonging to the pod. More info: http://kubernetes.io/docs/user-guide/volumes"
@@ -75,7 +75,7 @@
     }, 
     "imagePullSecrets": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.LocalObjectReference"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1.LocalObjectReference"
       }, 
       "type": "array", 
       "description": "ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod"

@@ -5,15 +5,15 @@
   "properties": {
     "podAffinity": {
       "description": "Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodAffinity"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodAffinity"
     }, 
     "nodeAffinity": {
       "description": "Describes node affinity scheduling rules for the pod.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeAffinity"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeAffinity"
     }, 
     "podAntiAffinity": {
       "description": "Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodAntiAffinity"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodAntiAffinity"
     }
   }
 }

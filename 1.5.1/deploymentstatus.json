@@ -30,7 +30,7 @@
     }, 
     "conditions": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.DeploymentCondition"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/v1beta1.DeploymentCondition"
       }, 
       "type": "array", 
       "description": "Represents the latest available observations of a deployment's current state."

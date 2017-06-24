@@ -5,7 +5,7 @@
   "properties": {
     "status": {
       "description": "Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.ReplicationControllerStatus"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1.ReplicationControllerStatus"
     }, 
     "kind": {
       "type": "string", 
@@ -13,7 +13,7 @@
     }, 
     "spec": {
       "description": "Spec defines the specification of the desired behavior of the replication controller. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.ReplicationControllerSpec"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1.ReplicationControllerSpec"
     }, 
     "apiVersion": {
       "type": "string", 
@@ -21,7 +21,7 @@
     }, 
     "metadata": {
       "description": "If the Labels of a ReplicationController are empty, they are defaulted to be the same as the Pod(s) that the replication controller manages. Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

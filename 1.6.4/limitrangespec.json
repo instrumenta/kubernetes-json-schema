@@ -8,7 +8,7 @@
   "properties": {
     "limits": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.LimitRangeItem"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.LimitRangeItem"
       }, 
       "type": "array", 
       "description": "Limits is the list of LimitRangeItem objects that are enforced."

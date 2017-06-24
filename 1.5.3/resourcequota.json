@@ -5,7 +5,7 @@
   "properties": {
     "status": {
       "description": "Status defines the actual enforced quota and its current usage. http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ResourceQuotaStatus"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ResourceQuotaStatus"
     }, 
     "kind": {
       "type": "string", 
@@ -13,7 +13,7 @@
     }, 
     "spec": {
       "description": "Spec defines the desired quota. http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ResourceQuotaSpec"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ResourceQuotaSpec"
     }, 
     "apiVersion": {
       "type": "string", 
@@ -21,7 +21,7 @@
     }, 
     "metadata": {
       "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.3/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

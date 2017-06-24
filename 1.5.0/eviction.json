@@ -5,11 +5,11 @@
   "properties": {
     "deleteOptions": {
       "description": "DeleteOptions may be provided", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1.DeleteOptions"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/v1.DeleteOptions"
     }, 
     "metadata": {
       "description": "ObjectMeta describes the pod that is being evicted.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

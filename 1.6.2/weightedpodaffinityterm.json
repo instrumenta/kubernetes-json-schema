@@ -9,7 +9,7 @@
   "properties": {
     "podAffinityTerm": {
       "description": "Required. A pod affinity term, associated with the corresponding weight.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodAffinityTerm"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodAffinityTerm"
     }, 
     "weight": {
       "type": "integer", 

@@ -8,7 +8,7 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.ConfigMap"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1.ConfigMap"
       }, 
       "type": "array", 
       "description": "Items is the list of ConfigMaps."
@@ -23,7 +23,7 @@
     }, 
     "metadata": {
       "description": "More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/unversioned.ListMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/unversioned.ListMeta"
     }
   }
 }

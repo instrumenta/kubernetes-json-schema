@@ -8,14 +8,14 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1.ReplicationController"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/v1.ReplicationController"
       }, 
       "type": "array", 
       "description": "List of replication controllers. More info: http://kubernetes.io/docs/user-guide/replication-controller"
     }, 
     "metadata": {
       "description": "Standard list metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.ListMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/unversioned.ListMeta"
     }
   }
 }

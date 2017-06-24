@@ -5,14 +5,14 @@
   "properties": {
     "active": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.6/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ObjectReference"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.6/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ObjectReference"
       }, 
       "type": "array", 
       "description": "Active holds pointers to currently running jobs."
     }, 
     "lastScheduleTime": {
       "description": "LastScheduleTime keeps information of when was the last time the job was successfully scheduled.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
     }
   }
 }

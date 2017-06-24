@@ -13,7 +13,7 @@
     }, 
     "servicePort": {
       "description": "Specifies the port of the referenced service.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/intstr.IntOrString"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/intstr.IntOrString"
     }
   }
 }

@@ -8,7 +8,7 @@
   "properties": {
     "secretRef": {
       "description": "Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.LocalObjectReference"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.6/_definitions.json#/definitions/v1.LocalObjectReference"
     }, 
     "secretFile": {
       "type": "string", 

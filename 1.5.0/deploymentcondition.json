@@ -13,11 +13,11 @@
     }, 
     "lastUpdateTime": {
       "description": "The last time this condition was updated.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.Time"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/unversioned.Time"
     }, 
     "lastTransitionTime": {
       "description": "Last time the condition transitioned from one status to another.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.Time"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/unversioned.Time"
     }, 
     "reason": {
       "type": "string", 

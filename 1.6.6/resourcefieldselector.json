@@ -16,7 +16,7 @@
     }, 
     "divisor": {
       "description": "Specifies the output format of the exposed resources, defaults to \"1\"", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.6.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
     }
   }
 }

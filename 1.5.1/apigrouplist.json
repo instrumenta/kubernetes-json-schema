@@ -8,7 +8,7 @@
   "properties": {
     "groups": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.APIGroup"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.1/_definitions.json#/definitions/unversioned.APIGroup"
       }, 
       "type": "array", 
       "description": "groups is a list of APIGroup."

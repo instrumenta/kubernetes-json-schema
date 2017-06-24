@@ -9,7 +9,7 @@
     }, 
     "versions": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1beta1.APIVersion"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1beta1.APIVersion"
       }, 
       "type": "array", 
       "description": "Versions are versions for this third party object"
@@ -24,7 +24,7 @@
     }, 
     "metadata": {
       "description": "Standard object metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.ObjectMeta"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

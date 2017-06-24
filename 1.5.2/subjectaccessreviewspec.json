@@ -5,11 +5,11 @@
   "properties": {
     "resourceAttributes": {
       "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1beta1.ResourceAttributes"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1beta1.ResourceAttributes"
     }, 
     "nonResourceAttributes": {
       "description": "NonResourceAttributes describes information for a non-resource access request", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1beta1.NonResourceAttributes"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1beta1.NonResourceAttributes"
     }, 
     "group": {
       "items": {

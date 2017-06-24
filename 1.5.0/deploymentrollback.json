@@ -20,7 +20,7 @@
     }, 
     "rollbackTo": {
       "description": "The config of this deployment rollback.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1beta1.RollbackConfig"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.0/_definitions.json#/definitions/v1beta1.RollbackConfig"
     }
   }
 }

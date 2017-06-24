@@ -5,7 +5,7 @@
   "properties": {
     "loadBalancer": {
       "description": "LoadBalancer contains the current status of the load-balancer.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.LoadBalancerStatus"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.2/_definitions.json#/definitions/v1.LoadBalancerStatus"
     }
   }
 }

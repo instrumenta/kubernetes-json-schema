@@ -5,7 +5,7 @@
   "properties": {
     "kubeletEndpoint": {
       "description": "Endpoint on which Kubelet is listening.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1.DaemonEndpoint"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/1.5.4/_definitions.json#/definitions/v1.DaemonEndpoint"
     }
   }
 }
