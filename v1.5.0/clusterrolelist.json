@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "ClusterRoleList is a collection of ClusterRoles", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1alpha1.ClusterRole"
+      }, 
+      "type": "array", 
+      "description": "Items is a list of ClusterRoles"
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "groups"
+  ], 
+  "type": "object", 
+  "description": "APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.", 
+  "properties": {
+    "groups": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.APIGroup"
+      }, 
+      "type": "array", 
+      "description": "groups is a list of APIGroup."
+    }
+  }
+}

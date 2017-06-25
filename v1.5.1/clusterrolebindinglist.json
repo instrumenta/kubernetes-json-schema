@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "ClusterRoleBindingList is a collection of ClusterRoleBindings", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1alpha1.ClusterRoleBinding"
+      }, 
+      "type": "array", 
+      "description": "Items is a list of ClusterRoleBindings"
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}

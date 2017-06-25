@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "IngressList is a collection of Ingress.", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1beta1.Ingress"
+      }, 
+      "type": "array", 
+      "description": "Items is the list of Ingress."
+    }, 
+    "metadata": {
+      "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.ListMeta"
+    }
+  }
+}
