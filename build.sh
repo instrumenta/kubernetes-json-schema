@@ -9,24 +9,25 @@
 
 REPO="garethr/kubernetes-json-schema"
 
-declare -a arr=(1.6.6
-                1.6.5
-                1.6.4
-                1.6.3
-                1.6.2
-                1.6.1
-                1.6.0
-                1.5.6
-                1.5.4
-                1.5.3
-                1.5.2
-                1.5.1
-                1.5.0
+declare -a arr=(master
+                v1.6.6
+                v1.6.5
+                v1.6.4
+                v1.6.3
+                v1.6.2
+                v1.6.1
+                v1.6.0
+                v1.5.6
+                v1.5.4
+                v1.5.3
+                v1.5.2
+                v1.5.1
+                v1.5.0
                 )
 
 for version in "${arr[@]}"
 do
-    schema=https://raw.githubusercontent.com/kubernetes/kubernetes/v${version}/api/openapi-spec/swagger.json
+    schema=https://raw.githubusercontent.com/kubernetes/kubernetes/${version}/api/openapi-spec/swagger.json
     prefix=https://raw.githubusercontent.com/${REPO}/master/${version}/_definitions.json
 
     openapi2jsonschema -o "${version}-standalone" --stand-alone "${schema}"

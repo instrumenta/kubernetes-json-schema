@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "port"
+  ], 
+  "type": "object", 
+  "description": "TCPSocketAction describes an action based on opening a socket", 
+  "properties": {
+    "host": {
+      "type": "string", 
+      "description": "Optional: Host name to connect to, defaults to the pod IP."
+    }, 
+    "port": {
+      "type": "string", 
+      "format": "int-or-string"
+    }
+  }
+}

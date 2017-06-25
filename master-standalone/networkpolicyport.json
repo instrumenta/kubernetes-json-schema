@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "protocol": {
+      "type": "string", 
+      "description": "Optional.  The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
+    }, 
+    "port": {
+      "type": "string", 
+      "format": "int-or-string"
+    }
+  }
+}
