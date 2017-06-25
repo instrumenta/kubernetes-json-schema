@@ -13,18 +13,18 @@ This repository contains a set of schemas for most recent Kubernetes
 versions. For each specified Kubernetes versions you should find three
 different flavours:
 
-* X.Y.Z - URL referenced based on the specified GitHub repository
-* X.Y.Z-standalone - de-referenced schemas, more useful as standalone documents
-* X.Y.Z-local - relative references, useful to avoid the network dependency
+* vX.Y.Z - URL referenced based on the specified GitHub repository
+* vX.Y.Z-standalone - de-referenced schemas, more useful as standalone documents
+* vX.Y.Z-local - relative references, useful to avoid the network dependency
 
 
 ## Example
 
 Here are the links to the latest `deployment` schemas for Kubernetes 1.6.6:
 
-* [1.6.6/deployment.json](1.6.6/deployment.json)
-* [1.6.6-standalone/deployment.json](1.6.6-standalone/deployment.json)
-* [1.6.6-local/deployment.json](1.6.6-local/deployment.json)
+* [v1.6.6/deployment.json](v1.6.6/deployment.json)
+* [v1.6.6-standalone/deployment.json](v1.6.6-standalone/deployment.json)
+* [v1.6.6-local/deployment.json](v1.6.6-local/deployment.json)
 
 ## Usage
 
