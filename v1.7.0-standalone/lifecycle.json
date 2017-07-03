@@ -46,8 +46,14 @@
               "description": "Custom headers to set in the request. HTTP allows repeated headers."
             }, 
             "port": {
-              "type": "string", 
-              "format": "int-or-string"
+              "oneOf": [
+                {
+                  "type": "string"
+                }, 
+                {
+                  "type": "integer"
+                }
+              ]
             }
           }
         }, 
@@ -62,8 +68,14 @@
               "description": "Optional: Host name to connect to, defaults to the pod IP."
             }, 
             "port": {
-              "type": "string", 
-              "format": "int-or-string"
+              "oneOf": [
+                {
+                  "type": "string"
+                }, 
+                {
+                  "type": "integer"
+                }
+              ]
             }
           }
         }, 
@@ -124,8 +136,14 @@
               "description": "Custom headers to set in the request. HTTP allows repeated headers."
             }, 
             "port": {
-              "type": "string", 
-              "format": "int-or-string"
+              "oneOf": [
+                {
+                  "type": "string"
+                }, 
+                {
+                  "type": "integer"
+                }
+              ]
             }
           }
         }, 
@@ -140,8 +158,14 @@
               "description": "Optional: Host name to connect to, defaults to the pod IP."
             }, 
             "port": {
-              "type": "string", 
-              "format": "int-or-string"
+              "oneOf": [
+                {
+                  "type": "string"
+                }, 
+                {
+                  "type": "integer"
+                }
+              ]
             }
           }
         }, 

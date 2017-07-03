@@ -17,6 +17,13 @@
       "type": "array", 
       "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-addresses"
     }, 
+    "images": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ContainerImage"
+      }, 
+      "type": "array", 
+      "description": "List of container images on this node"
+    }, 
     "nodeInfo": {
       "description": "Set of ids/uuids to uniquely identify the node. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-info", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeSystemInfo"
@@ -49,13 +56,6 @@
     "phase": {
       "type": "string", 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-phase The field is never populated, and now is deprecated."
-    }, 
-    "images": {
-      "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ContainerImage"
-      }, 
-      "type": "array", 
-      "description": "List of container images on this node"
     }, 
     "conditions": {
       "items": {

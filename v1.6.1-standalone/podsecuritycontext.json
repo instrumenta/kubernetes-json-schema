@@ -15,13 +15,13 @@
     "seLinuxOptions": {
       "description": "SELinuxOptions are the labels to be applied to the container", 
       "properties": {
-        "role": {
-          "type": "string", 
-          "description": "Role is a SELinux role label that applies to the container."
-        }, 
         "type": {
           "type": "string", 
           "description": "Type is a SELinux type label that applies to the container."
+        }, 
+        "role": {
+          "type": "string", 
+          "description": "Role is a SELinux role label that applies to the container."
         }, 
         "user": {
           "type": "string", 
@@ -33,11 +33,6 @@
         }
       }
     }, 
-    "runAsUser": {
-      "type": "integer", 
-      "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
-      "format": "int64"
-    }, 
     "supplementalGroups": {
       "items": {
         "type": "integer", 
@@ -45,6 +40,11 @@
       }, 
       "type": "array", 
       "description": "A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container."
+    }, 
+    "runAsUser": {
+      "type": "integer", 
+      "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
+      "format": "int64"
     }
   }
 }

@@ -14,17 +14,17 @@
             "type": "string", 
             "description": "Status is the status of the condition. Can be True, False, Unknown."
           }, 
-          "lastTransitionTime": {
+          "type": {
             "type": "string", 
-            "format": "date-time"
+            "description": "Type is the type of the condition."
           }, 
           "message": {
             "type": "string", 
             "description": "Human-readable message indicating details about last transition."
           }, 
-          "type": {
+          "lastTransitionTime": {
             "type": "string", 
-            "description": "Type is the type of the condition."
+            "format": "date-time"
           }, 
           "reason": {
             "type": "string", 
@@ -32,10 +32,10 @@
           }
         }
       }, 
-      "x-kubernetes-patch-merge-key": "type", 
       "type": "array", 
       "description": "Current service state of apiService.", 
-      "x-kubernetes-patch-strategy": "merge"
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
     }
   }
 }

@@ -24,53 +24,6 @@
           "description": "observedGeneration is the most recent generation observed by this autoscaler.", 
           "format": "int64"
         }, 
-        "lastScaleTime": {
-          "type": "string", 
-          "format": "date-time"
-        }, 
-        "currentReplicas": {
-          "type": "integer", 
-          "description": "currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.", 
-          "format": "int32"
-        }, 
-        "desiredReplicas": {
-          "type": "integer", 
-          "description": "desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.", 
-          "format": "int32"
-        }, 
-        "conditions": {
-          "items": {
-            "required": [
-              "type", 
-              "status"
-            ], 
-            "description": "HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point.", 
-            "properties": {
-              "status": {
-                "type": "string", 
-                "description": "status is the status of the condition (True, False, Unknown)"
-              }, 
-              "lastTransitionTime": {
-                "type": "string", 
-                "format": "date-time"
-              }, 
-              "message": {
-                "type": "string", 
-                "description": "message is a human-readable explanation containing details about the transition"
-              }, 
-              "type": {
-                "type": "string", 
-                "description": "type describes the current condition"
-              }, 
-              "reason": {
-                "type": "string", 
-                "description": "reason is the reason for the condition's last transition."
-              }
-            }
-          }, 
-          "type": "array", 
-          "description": "conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met."
-        }, 
         "currentMetrics": {
           "items": {
             "required": [
@@ -78,19 +31,24 @@
             ], 
             "description": "MetricStatus describes the last-read state of a single metric.", 
             "properties": {
-              "pods": {
+              "resource": {
                 "required": [
-                  "metricName", 
+                  "name", 
                   "currentAverageValue"
                 ], 
-                "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).", 
+                "description": "ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.", 
                 "properties": {
                   "currentAverageValue": {
                     "type": "string"
                   }, 
-                  "metricName": {
+                  "currentAverageUtilization": {
+                    "type": "integer", 
+                    "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.", 
+                    "format": "int32"
+                  }, 
+                  "name": {
                     "type": "string", 
-                    "description": "metricName is the name of the metric in question"
+                    "description": "name is the name of the resource in question."
                   }
                 }
               }, 
@@ -132,24 +90,19 @@
                   }
                 }
               }, 
-              "resource": {
+              "pods": {
                 "required": [
-                  "name", 
+                  "metricName", 
                   "currentAverageValue"
                 ], 
-                "description": "ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.", 
+                "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).", 
                 "properties": {
                   "currentAverageValue": {
                     "type": "string"
                   }, 
-                  "currentAverageUtilization": {
-                    "type": "integer", 
-                    "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.", 
-                    "format": "int32"
-                  }, 
-                  "name": {
+                  "metricName": {
                     "type": "string", 
-                    "description": "name is the name of the resource in question."
+                    "description": "metricName is the name of the metric in question"
                   }
                 }
               }, 
@@ -161,6 +114,53 @@
           }, 
           "type": "array", 
           "description": "currentMetrics is the last read state of the metrics used by this autoscaler."
+        }, 
+        "currentReplicas": {
+          "type": "integer", 
+          "description": "currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.", 
+          "format": "int32"
+        }, 
+        "lastScaleTime": {
+          "type": "string", 
+          "format": "date-time"
+        }, 
+        "conditions": {
+          "items": {
+            "required": [
+              "type", 
+              "status"
+            ], 
+            "description": "HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point.", 
+            "properties": {
+              "status": {
+                "type": "string", 
+                "description": "status is the status of the condition (True, False, Unknown)"
+              }, 
+              "type": {
+                "type": "string", 
+                "description": "type describes the current condition"
+              }, 
+              "message": {
+                "type": "string", 
+                "description": "message is a human-readable explanation containing details about the transition"
+              }, 
+              "lastTransitionTime": {
+                "type": "string", 
+                "format": "date-time"
+              }, 
+              "reason": {
+                "type": "string", 
+                "description": "reason is the reason for the condition's last transition."
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met."
+        }, 
+        "desiredReplicas": {
+          "type": "integer", 
+          "description": "desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.", 
+          "format": "int32"
         }
       }
     }, 
@@ -182,19 +182,23 @@
             ], 
             "description": "MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).", 
             "properties": {
-              "pods": {
+              "resource": {
                 "required": [
-                  "metricName", 
-                  "targetAverageValue"
+                  "name"
                 ], 
-                "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.", 
+                "description": "ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.", 
                 "properties": {
+                  "targetAverageUtilization": {
+                    "type": "integer", 
+                    "description": "targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.", 
+                    "format": "int32"
+                  }, 
+                  "name": {
+                    "type": "string", 
+                    "description": "name is the name of the resource in question."
+                  }, 
                   "targetAverageValue": {
                     "type": "string"
-                  }, 
-                  "metricName": {
-                    "type": "string", 
-                    "description": "metricName is the name of the metric in question"
                   }
                 }
               }, 
@@ -236,23 +240,19 @@
                   }
                 }
               }, 
-              "resource": {
+              "pods": {
                 "required": [
-                  "name"
+                  "metricName", 
+                  "targetAverageValue"
                 ], 
-                "description": "ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.", 
+                "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.", 
                 "properties": {
-                  "targetAverageUtilization": {
-                    "type": "integer", 
-                    "description": "targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.", 
-                    "format": "int32"
-                  }, 
-                  "name": {
-                    "type": "string", 
-                    "description": "name is the name of the resource in question."
-                  }, 
                   "targetAverageValue": {
                     "type": "string"
+                  }, 
+                  "metricName": {
+                    "type": "string", 
+                    "description": "metricName is the name of the metric in question"
                   }
                 }
               }, 
@@ -305,47 +305,6 @@
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
       "properties": {
-        "ownerReferences": {
-          "items": {
-            "required": [
-              "apiVersion", 
-              "kind", 
-              "name", 
-              "uid"
-            ], 
-            "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
-            "properties": {
-              "kind": {
-                "type": "string", 
-                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-              }, 
-              "uid": {
-                "type": "string", 
-                "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
-              }, 
-              "apiVersion": {
-                "type": "string", 
-                "description": "API version of the referent."
-              }, 
-              "controller": {
-                "type": "boolean", 
-                "description": "If true, this reference points to the managing controller."
-              }, 
-              "blockOwnerDeletion": {
-                "type": "boolean", 
-                "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned."
-              }, 
-              "name": {
-                "type": "string", 
-                "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-              }
-            }
-          }, 
-          "x-kubernetes-patch-merge-key": "uid", 
-          "type": "array", 
-          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.", 
-          "x-kubernetes-patch-strategy": "merge"
-        }, 
         "uid": {
           "type": "string", 
           "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
@@ -374,6 +333,11 @@
           "type": "string", 
           "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
         }, 
+        "generation": {
+          "type": "integer", 
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
+          "format": "int64"
+        }, 
         "finalizers": {
           "items": {
             "type": "string"
@@ -382,10 +346,9 @@
           "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed.", 
           "x-kubernetes-patch-strategy": "merge"
         }, 
-        "generation": {
-          "type": "integer", 
-          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
-          "format": "int64"
+        "generateName": {
+          "type": "string", 
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency"
         }, 
         "initializers": {
           "required": [
@@ -428,9 +391,9 @@
                       "type": "string", 
                       "description": "The group attribute of the resource associated with the status StatusReason."
                     }, 
-                    "name": {
+                    "uid": {
                       "type": "string", 
-                      "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
+                      "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
                     }, 
                     "retryAfterSeconds": {
                       "type": "integer", 
@@ -458,9 +421,9 @@
                       "type": "array", 
                       "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
                     }, 
-                    "uid": {
+                    "name": {
                       "type": "string", 
-                      "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+                      "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
                     }
                   }
                 }, 
@@ -505,9 +468,46 @@
           "type": "string", 
           "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
         }, 
-        "generateName": {
-          "type": "string", 
-          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency"
+        "ownerReferences": {
+          "items": {
+            "required": [
+              "apiVersion", 
+              "kind", 
+              "name", 
+              "uid"
+            ], 
+            "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
+            "properties": {
+              "kind": {
+                "type": "string", 
+                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+              }, 
+              "uid": {
+                "type": "string", 
+                "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+              }, 
+              "apiVersion": {
+                "type": "string", 
+                "description": "API version of the referent."
+              }, 
+              "controller": {
+                "type": "boolean", 
+                "description": "If true, this reference points to the managing controller."
+              }, 
+              "blockOwnerDeletion": {
+                "type": "boolean", 
+                "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.", 
+          "x-kubernetes-patch-strategy": "merge", 
+          "x-kubernetes-patch-merge-key": "uid"
         }, 
         "creationTimestamp": {
           "type": "string", 

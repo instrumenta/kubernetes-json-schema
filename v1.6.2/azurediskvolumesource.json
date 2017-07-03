@@ -15,13 +15,13 @@
       "type": "string", 
       "description": "The Name of the data disk in the blob storage"
     }, 
-    "cachingMode": {
-      "type": "string", 
-      "description": "Host Caching mode: None, Read Only, Read Write."
-    }, 
     "readOnly": {
       "type": "boolean", 
       "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+    }, 
+    "cachingMode": {
+      "type": "string", 
+      "description": "Host Caching mode: None, Read Only, Read Write."
     }, 
     "fsType": {
       "type": "string", 

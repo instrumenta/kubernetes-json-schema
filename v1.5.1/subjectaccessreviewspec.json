@@ -3,9 +3,15 @@
   "type": "object", 
   "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
   "properties": {
-    "resourceAttributes": {
-      "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.ResourceAttributes"
+    "extra": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        }, 
+        "type": "array"
+      }, 
+      "type": "object", 
+      "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
     }, 
     "nonResourceAttributes": {
       "description": "NonResourceAttributes describes information for a non-resource access request", 
@@ -18,19 +24,13 @@
       "type": "array", 
       "description": "Groups is the groups you're testing for."
     }, 
+    "resourceAttributes": {
+      "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.ResourceAttributes"
+    }, 
     "user": {
       "type": "string", 
       "description": "User is the user you're testing for. If you specify \"User\" but not \"Group\", then is it interpreted as \"What if User were not a member of any groups"
-    }, 
-    "extra": {
-      "additionalProperties": {
-        "items": {
-          "type": "string"
-        }, 
-        "type": "array"
-      }, 
-      "type": "object", 
-      "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
     }
   }
 }

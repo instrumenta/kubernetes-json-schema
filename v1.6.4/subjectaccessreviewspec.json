@@ -3,25 +3,6 @@
   "type": "object", 
   "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
   "properties": {
-    "nonResourceAttributes": {
-      "description": "NonResourceAttributes describes information for a non-resource access request", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.authorization.v1.NonResourceAttributes"
-    }, 
-    "resourceAttributes": {
-      "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.authorization.v1.ResourceAttributes"
-    }, 
-    "user": {
-      "type": "string", 
-      "description": "User is the user you're testing for. If you specify \"User\" but not \"Groups\", then is it interpreted as \"What if User were not a member of any groups"
-    }, 
-    "groups": {
-      "items": {
-        "type": "string"
-      }, 
-      "type": "array", 
-      "description": "Groups is the groups you're testing for."
-    }, 
     "extra": {
       "additionalProperties": {
         "items": {
@@ -31,6 +12,25 @@
       }, 
       "type": "object", 
       "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
+    }, 
+    "nonResourceAttributes": {
+      "description": "NonResourceAttributes describes information for a non-resource access request", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.authorization.v1.NonResourceAttributes"
+    }, 
+    "resourceAttributes": {
+      "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.authorization.v1.ResourceAttributes"
+    }, 
+    "groups": {
+      "items": {
+        "type": "string"
+      }, 
+      "type": "array", 
+      "description": "Groups is the groups you're testing for."
+    }, 
+    "user": {
+      "type": "string", 
+      "description": "User is the user you're testing for. If you specify \"User\" but not \"Groups\", then is it interpreted as \"What if User were not a member of any groups"
     }
   }
 }

@@ -37,18 +37,6 @@
             }
           }
         }, 
-        "configMapKeyRef": {
-          "required": [
-            "key"
-          ], 
-          "description": "Selects a key from a ConfigMap.", 
-          "properties": {
-            "key": {
-              "type": "string", 
-              "description": "The key to select."
-            }
-          }
-        }, 
         "resourceFieldRef": {
           "required": [
             "resource"
@@ -65,6 +53,18 @@
             }, 
             "divisor": {
               "type": "string"
+            }
+          }
+        }, 
+        "configMapKeyRef": {
+          "required": [
+            "key"
+          ], 
+          "description": "Selects a key from a ConfigMap.", 
+          "properties": {
+            "key": {
+              "type": "string", 
+              "description": "The key to select."
             }
           }
         }

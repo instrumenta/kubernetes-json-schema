@@ -7,13 +7,6 @@
   "type": "object", 
   "description": "DeploymentRollback stores the information required to rollback a deployment.", 
   "properties": {
-    "updatedAnnotations": {
-      "additionalProperties": {
-        "type": "string"
-      }, 
-      "type": "object", 
-      "description": "The annotations to be updated to a deployment"
-    }, 
     "name": {
       "type": "string", 
       "description": "Required: This must match the Name of a deployment."
@@ -21,6 +14,13 @@
     "rollbackTo": {
       "description": "The config of this deployment rollback.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1beta1.RollbackConfig"
+    }, 
+    "updatedAnnotations": {
+      "additionalProperties": {
+        "type": "string"
+      }, 
+      "type": "object", 
+      "description": "The annotations to be updated to a deployment"
     }
   }
 }

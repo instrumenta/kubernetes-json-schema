@@ -11,17 +11,17 @@
       "type": "string", 
       "description": "Status of the condition, one of True, False, Unknown."
     }, 
-    "type": {
-      "type": "string", 
-      "description": "Type of replication controller condition."
+    "lastTransitionTime": {
+      "description": "The last time the condition transitioned from one status to another.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/unversioned.Time"
     }, 
     "message": {
       "type": "string", 
       "description": "A human readable message indicating details about the transition."
     }, 
-    "lastTransitionTime": {
-      "description": "The last time the condition transitioned from one status to another.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/unversioned.Time"
+    "type": {
+      "type": "string", 
+      "description": "Type of replication controller condition."
     }, 
     "reason": {
       "type": "string", 

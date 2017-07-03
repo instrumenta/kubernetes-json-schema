@@ -3,12 +3,9 @@
   "type": "object", 
   "description": "PodPresetSpec is a description of a pod injection policy.", 
   "properties": {
-    "env": {
-      "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvVar"
-      }, 
-      "type": "array", 
-      "description": "Env defines the collection of EnvVar to inject into containers."
+    "selector": {
+      "description": "Selector is a label query over a set of resources, in this case pods. Required.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }, 
     "volumeMounts": {
       "items": {
@@ -24,16 +21,19 @@
       "type": "array", 
       "description": "Volumes defines the collection of Volume to inject into the pod."
     }, 
+    "env": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvVar"
+      }, 
+      "type": "array", 
+      "description": "Env defines the collection of EnvVar to inject into containers."
+    }, 
     "envFrom": {
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvFromSource"
       }, 
       "type": "array", 
       "description": "EnvFrom defines the collection of EnvFromSource to inject into containers."
-    }, 
-    "selector": {
-      "description": "Selector is a label query over a set of resources, in this case pods. Required.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }
   }
 }

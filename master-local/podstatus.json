@@ -49,10 +49,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodCondition"
       }, 
+      "x-kubernetes-patch-merge-key": "type", 
       "type": "array", 
       "description": "Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      "x-kubernetes-patch-strategy": "merge"
     }
   }
 }

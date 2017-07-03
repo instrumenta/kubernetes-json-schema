@@ -7,9 +7,10 @@
   "type": "object", 
   "description": "A StatefulSetSpec is the specification of a StatefulSet.", 
   "properties": {
-    "selector": {
-      "description": "Selector is a label query over pods that should match the replica count. If empty, defaulted to labels on the pod template. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    "replicas": {
+      "type": "integer", 
+      "description": "Replicas is the desired number of replicas of the given Template. These are replicas in the sense that they are instantiations of the same Template, but individual replicas also have a consistent identity. If unspecified, defaults to 1.", 
+      "format": "int32"
     }, 
     "serviceName": {
       "type": "string", 
@@ -26,10 +27,9 @@
       "description": "Template is the object that describes the pod that will be created if insufficient replicas are detected. Each pod stamped out by the StatefulSet will fulfill this Template, but have a unique identity from the rest of the StatefulSet.", 
       "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodTemplateSpec"
     }, 
-    "replicas": {
-      "type": "integer", 
-      "description": "Replicas is the desired number of replicas of the given Template. These are replicas in the sense that they are instantiations of the same Template, but individual replicas also have a consistent identity. If unspecified, defaults to 1.", 
-      "format": "int32"
+    "selector": {
+      "description": "Selector is a label query over pods that should match the replica count. If empty, defaulted to labels on the pod template. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }
   }
 }

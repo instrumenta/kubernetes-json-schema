@@ -15,16 +15,16 @@
       "type": "string", 
       "description": "groupVersion is the group and version this APIResourceList is for."
     }, 
+    "apiVersion": {
+      "type": "string", 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }, 
     "resources": {
       "items": {
         "$ref": "_definitions.json#/definitions/unversioned.APIResource"
       }, 
       "type": "array", 
       "description": "resources contains the name of the resources and if they are namespaced."
-    }, 
-    "apiVersion": {
-      "type": "string", 
-      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
     }
   }
 }

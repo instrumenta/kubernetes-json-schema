@@ -21,14 +21,14 @@
       "description": "last time the HorizontalPodAutoscaler scaled the number of pods; used by the autoscaler to control how often the number of pods is changed.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/unversioned.Time"
     }, 
-    "desiredReplicas": {
-      "type": "integer", 
-      "description": "desired number of replicas of pods managed by this autoscaler.", 
-      "format": "int32"
-    }, 
     "currentCPUUtilizationPercentage": {
       "type": "integer", 
       "description": "current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.", 
+      "format": "int32"
+    }, 
+    "desiredReplicas": {
+      "type": "integer", 
+      "description": "desired number of replicas of pods managed by this autoscaler.", 
       "format": "int32"
     }
   }

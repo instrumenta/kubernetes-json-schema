@@ -11,8 +11,14 @@
       "description": "Optional: Host name to connect to, defaults to the pod IP."
     }, 
     "port": {
-      "type": "string", 
-      "format": "int-or-string"
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
     }
   }
 }

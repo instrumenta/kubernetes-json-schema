@@ -22,8 +22,14 @@
           "description": "Specifies the name of the referenced service."
         }, 
         "servicePort": {
-          "type": "string", 
-          "format": "int-or-string"
+          "oneOf": [
+            {
+              "type": "string"
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
         }
       }
     }

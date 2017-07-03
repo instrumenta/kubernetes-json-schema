@@ -11,17 +11,17 @@
       "type": "string", 
       "description": "Status of the condition, one of True, False, Unknown."
     }, 
-    "lastTransitionTime": {
+    "type": {
       "type": "string", 
-      "format": "date-time"
+      "description": "Type of replica set condition."
     }, 
     "message": {
       "type": "string", 
       "description": "A human readable message indicating details about the transition."
     }, 
-    "type": {
+    "lastTransitionTime": {
       "type": "string", 
-      "description": "Type of replica set condition."
+      "format": "date-time"
     }, 
     "reason": {
       "type": "string", 

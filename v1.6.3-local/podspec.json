@@ -60,9 +60,12 @@
       "type": "string", 
       "description": "If specified, the fully qualified Pod hostname will be \"<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>\". If not specified, the pod will not have a domainname at all."
     }, 
-    "hostPID": {
-      "type": "boolean", 
-      "description": "Use the host's pid namespace. Optional: Default to false."
+    "containers": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Container"
+      }, 
+      "type": "array", 
+      "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
     }, 
     "serviceAccountName": {
       "type": "string", 
@@ -86,12 +89,9 @@
       "description": "Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.", 
       "format": "int64"
     }, 
-    "containers": {
-      "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Container"
-      }, 
-      "type": "array", 
-      "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
+    "hostPID": {
+      "type": "boolean", 
+      "description": "Use the host's pid namespace. Optional: Default to false."
     }, 
     "volumes": {
       "items": {

@@ -6,9 +6,10 @@
   "type": "object", 
   "description": "ContainerPort represents a network port in a single container.", 
   "properties": {
-    "hostIP": {
-      "type": "string", 
-      "description": "What host IP to bind the external port to."
+    "hostPort": {
+      "type": "integer", 
+      "description": "Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.", 
+      "format": "int32"
     }, 
     "protocol": {
       "type": "string", 
@@ -23,10 +24,9 @@
       "type": "string", 
       "description": "If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services."
     }, 
-    "hostPort": {
-      "type": "integer", 
-      "description": "Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.", 
-      "format": "int32"
+    "hostIP": {
+      "type": "string", 
+      "description": "What host IP to bind the external port to."
     }
   }
 }

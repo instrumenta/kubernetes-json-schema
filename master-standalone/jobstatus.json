@@ -60,10 +60,10 @@
           }
         }
       }, 
-      "x-kubernetes-patch-merge-key": "type", 
       "type": "array", 
       "description": "The latest available observations of an object's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/", 
-      "x-kubernetes-patch-strategy": "merge"
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
     }
   }
 }

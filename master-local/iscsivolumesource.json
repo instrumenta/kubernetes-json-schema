@@ -39,13 +39,13 @@
       "type": "string", 
       "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
     }, 
-    "chapAuthDiscovery": {
-      "type": "boolean", 
-      "description": "whether support iSCSI Discovery CHAP authentication"
-    }, 
     "iqn": {
       "type": "string", 
       "description": "Target iSCSI Qualified Name."
+    }, 
+    "chapAuthDiscovery": {
+      "type": "boolean", 
+      "description": "whether support iSCSI Discovery CHAP authentication"
     }, 
     "lun": {
       "type": "integer", 

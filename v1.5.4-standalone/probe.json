@@ -43,8 +43,14 @@
           "description": "Custom headers to set in the request. HTTP allows repeated headers."
         }, 
         "port": {
-          "type": "string", 
-          "format": "int-or-string"
+          "oneOf": [
+            {
+              "type": "string"
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
         }
       }
     }, 
@@ -77,8 +83,14 @@
       "description": "TCPSocketAction describes an action based on opening a socket", 
       "properties": {
         "port": {
-          "type": "string", 
-          "format": "int-or-string"
+          "oneOf": [
+            {
+              "type": "string"
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
         }
       }
     }, 

@@ -16,13 +16,13 @@
       "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/v1.Preconditions"
     }, 
-    "orphanDependents": {
-      "type": "boolean", 
-      "description": "Should the dependent objects be orphaned. If true/false, the \"orphan\" finalizer will be added to/removed from the object's finalizers list."
-    }, 
     "apiVersion": {
       "type": "string", 
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }, 
+    "orphanDependents": {
+      "type": "boolean", 
+      "description": "Should the dependent objects be orphaned. If true/false, the \"orphan\" finalizer will be added to/removed from the object's finalizers list."
     }
   }
 }

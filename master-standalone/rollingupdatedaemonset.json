@@ -4,8 +4,14 @@
   "description": "Spec to control the desired behavior of daemon set rolling update.", 
   "properties": {
     "maxUnavailable": {
-      "type": "string", 
-      "format": "int-or-string"
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
     }
   }
 }

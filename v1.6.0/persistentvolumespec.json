@@ -30,9 +30,9 @@
       "description": "ClaimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#binding", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ObjectReference"
     }, 
-    "scaleIO": {
-      "description": "ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ScaleIOVolumeSource"
+    "flexVolume": {
+      "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.FlexVolumeSource"
     }, 
     "photonPersistentDisk": {
       "description": "PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine", 
@@ -57,17 +57,17 @@
       "description": "FC represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.FCVolumeSource"
     }, 
-    "flexVolume": {
-      "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.FlexVolumeSource"
+    "scaleIO": {
+      "description": "ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ScaleIOVolumeSource"
     }, 
     "storageClassName": {
       "type": "string", 
       "description": "Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass."
     }, 
-    "rbd": {
-      "description": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.RBDVolumeSource"
+    "cephfs": {
+      "description": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.CephFSVolumeSource"
     }, 
     "azureFile": {
       "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.", 
@@ -85,9 +85,9 @@
       "description": "NFS represents an NFS mount on the host. Provisioned by an admin. More info: http://kubernetes.io/docs/user-guide/volumes#nfs", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NFSVolumeSource"
     }, 
-    "vsphereVolume": {
-      "description": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.VsphereVirtualDiskVolumeSource"
+    "gcePersistentDisk": {
+      "description": "GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.GCEPersistentDiskVolumeSource"
     }, 
     "cinder": {
       "description": "Cinder represents a cinder volume attached and mounted on kubelets host machine More info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md", 
@@ -97,13 +97,13 @@
       "description": "AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.AWSElasticBlockStoreVolumeSource"
     }, 
-    "cephfs": {
-      "description": "CephFS represents a Ceph FS mount on the host that shares a pod's lifetime", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.CephFSVolumeSource"
+    "rbd": {
+      "description": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.RBDVolumeSource"
     }, 
-    "gcePersistentDisk": {
-      "description": "GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.GCEPersistentDiskVolumeSource"
+    "vsphereVolume": {
+      "description": "VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.VsphereVirtualDiskVolumeSource"
     }
   }
 }

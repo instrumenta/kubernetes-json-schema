@@ -182,13 +182,13 @@
                     "type": "string", 
                     "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
                   }, 
-                  "iqn": {
-                    "type": "string", 
-                    "description": "Target iSCSI Qualified Name."
-                  }, 
                   "chapAuthDiscovery": {
                     "type": "boolean", 
                     "description": "whether support iSCSI Discovery CHAP authentication"
+                  }, 
+                  "iqn": {
+                    "type": "string", 
+                    "description": "Target iSCSI Qualified Name."
                   }, 
                   "lun": {
                     "type": "integer", 
@@ -230,15 +230,17 @@
                   }
                 }
               }, 
-              "flexVolume": {
+              "scaleIO": {
                 "required": [
-                  "driver"
+                  "gateway", 
+                  "system", 
+                  "secretRef"
                 ], 
-                "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+                "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
                 "properties": {
-                  "readOnly": {
-                    "type": "boolean", 
-                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+                  "storageMode": {
+                    "type": "string", 
+                    "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
                   }, 
                   "secretRef": {
                     "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -249,20 +251,37 @@
                       }
                     }
                   }, 
-                  "driver": {
+                  "protectionDomain": {
                     "type": "string", 
-                    "description": "Driver is the name of the driver to use for this volume."
+                    "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
                   }, 
-                  "options": {
-                    "additionalProperties": {
-                      "type": "string"
-                    }, 
-                    "type": "object", 
-                    "description": "Optional: Extra command options if any."
+                  "volumeName": {
+                    "type": "string", 
+                    "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
+                  }, 
+                  "sslEnabled": {
+                    "type": "boolean", 
+                    "description": "Flag to enable/disable SSL communication with Gateway, default false"
+                  }, 
+                  "system": {
+                    "type": "string", 
+                    "description": "The name of the storage system as configured in ScaleIO."
                   }, 
                   "fsType": {
                     "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                  }, 
+                  "readOnly": {
+                    "type": "boolean", 
+                    "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+                  }, 
+                  "storagePool": {
+                    "type": "string", 
+                    "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
+                  }, 
+                  "gateway": {
+                    "type": "string", 
+                    "description": "The host address of the ScaleIO API Gateway."
                   }
                 }
               }, 
@@ -284,13 +303,13 @@
                 ], 
                 "description": "Represents a Photon Controller persistent disk resource.", 
                 "properties": {
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-                  }, 
                   "pdID": {
                     "type": "string", 
                     "description": "ID that identifies Photon Controller persistent disk"
+                  }, 
+                  "fsType": {
+                    "type": "string", 
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                   }
                 }
               }, 
@@ -367,17 +386,23 @@
                   }
                 }
               }, 
-              "scaleIO": {
+              "flexVolume": {
                 "required": [
-                  "gateway", 
-                  "system", 
-                  "secretRef"
+                  "driver"
                 ], 
-                "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
+                "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
                 "properties": {
-                  "storageMode": {
+                  "readOnly": {
+                    "type": "boolean", 
+                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+                  }, 
+                  "fsType": {
                     "type": "string", 
-                    "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+                  }, 
+                  "driver": {
+                    "type": "string", 
+                    "description": "Driver is the name of the driver to use for this volume."
                   }, 
                   "secretRef": {
                     "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -388,37 +413,12 @@
                       }
                     }
                   }, 
-                  "protectionDomain": {
-                    "type": "string", 
-                    "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
-                  }, 
-                  "volumeName": {
-                    "type": "string", 
-                    "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
-                  }, 
-                  "sslEnabled": {
-                    "type": "boolean", 
-                    "description": "Flag to enable/disable SSL communication with Gateway, default false"
-                  }, 
-                  "system": {
-                    "type": "string", 
-                    "description": "The name of the storage system as configured in ScaleIO."
-                  }, 
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-                  }, 
-                  "readOnly": {
-                    "type": "boolean", 
-                    "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-                  }, 
-                  "storagePool": {
-                    "type": "string", 
-                    "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
-                  }, 
-                  "gateway": {
-                    "type": "string", 
-                    "description": "The host address of the ScaleIO API Gateway."
+                  "options": {
+                    "additionalProperties": {
+                      "type": "string"
+                    }, 
+                    "type": "object", 
+                    "description": "Optional: Extra command options if any."
                   }
                 }
               }, 
@@ -426,12 +426,11 @@
                 "type": "string", 
                 "description": "Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass."
               }, 
-              "rbd": {
+              "cephfs": {
                 "required": [
-                  "monitors", 
-                  "image"
+                  "monitors"
                 ], 
-                "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
+                "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
                 "properties": {
                   "secretRef": {
                     "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -442,36 +441,28 @@
                       }
                     }
                   }, 
-                  "image": {
+                  "secretFile": {
                     "type": "string", 
-                    "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "keyring": {
-                    "type": "string", 
-                    "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
+                    "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }, 
                   "readOnly": {
                     "type": "boolean", 
-                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }, 
                   "user": {
                     "type": "string", 
-                    "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                  }, 
+                  "path": {
+                    "type": "string", 
+                    "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
                   }, 
                   "monitors": {
                     "items": {
                       "type": "string"
                     }, 
                     "type": "array", 
-                    "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "pool": {
-                    "type": "string", 
-                    "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }
                 }
               }, 
@@ -583,28 +574,27 @@
                   }
                 }
               }, 
-              "gcePersistentDisk": {
+              "vsphereVolume": {
                 "required": [
-                  "pdName"
+                  "volumePath"
                 ], 
-                "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
+                "description": "Represents a vSphere volume resource.", 
                 "properties": {
-                  "readOnly": {
-                    "type": "boolean", 
-                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
-                  }, 
-                  "partition": {
-                    "type": "integer", 
-                    "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk", 
-                    "format": "int32"
-                  }, 
-                  "pdName": {
+                  "storagePolicyName": {
                     "type": "string", 
-                    "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
+                    "description": "Storage Policy Based Management (SPBM) profile name."
+                  }, 
+                  "volumePath": {
+                    "type": "string", 
+                    "description": "Path that identifies vSphere volume vmdk"
+                  }, 
+                  "storagePolicyID": {
+                    "type": "string", 
+                    "description": "Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName."
                   }, 
                   "fsType": {
                     "type": "string", 
-                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                   }
                 }
               }, 
@@ -653,11 +643,12 @@
                   }
                 }
               }, 
-              "cephfs": {
+              "rbd": {
                 "required": [
-                  "monitors"
+                  "monitors", 
+                  "image"
                 ], 
-                "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
+                "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
                 "properties": {
                   "secretRef": {
                     "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -668,52 +659,61 @@
                       }
                     }
                   }, 
-                  "secretFile": {
+                  "image": {
                     "type": "string", 
-                    "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "keyring": {
+                    "type": "string", 
+                    "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "fsType": {
+                    "type": "string", 
+                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
                   }, 
                   "readOnly": {
                     "type": "boolean", 
-                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }, 
                   "user": {
                     "type": "string", 
-                    "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
-                  }, 
-                  "path": {
-                    "type": "string", 
-                    "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
+                    "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }, 
                   "monitors": {
                     "items": {
                       "type": "string"
                     }, 
                     "type": "array", 
-                    "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "pool": {
+                    "type": "string", 
+                    "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }
                 }
               }, 
-              "vsphereVolume": {
+              "gcePersistentDisk": {
                 "required": [
-                  "volumePath"
+                  "pdName"
                 ], 
-                "description": "Represents a vSphere volume resource.", 
+                "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
                 "properties": {
-                  "storagePolicyName": {
+                  "readOnly": {
+                    "type": "boolean", 
+                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
+                  }, 
+                  "partition": {
+                    "type": "integer", 
+                    "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk", 
+                    "format": "int32"
+                  }, 
+                  "pdName": {
                     "type": "string", 
-                    "description": "Storage Policy Based Management (SPBM) profile name."
+                    "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
                   }, 
                   "fsType": {
                     "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-                  }, 
-                  "storagePolicyID": {
-                    "type": "string", 
-                    "description": "Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName."
-                  }, 
-                  "volumePath": {
-                    "type": "string", 
-                    "description": "Path that identifies vSphere volume vmdk"
+                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
                   }
                 }
               }
@@ -726,47 +726,6 @@
           "metadata": {
             "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
             "properties": {
-              "ownerReferences": {
-                "items": {
-                  "required": [
-                    "apiVersion", 
-                    "kind", 
-                    "name", 
-                    "uid"
-                  ], 
-                  "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
-                  "properties": {
-                    "kind": {
-                      "type": "string", 
-                      "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-                    }, 
-                    "uid": {
-                      "type": "string", 
-                      "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
-                    }, 
-                    "apiVersion": {
-                      "type": "string", 
-                      "description": "API version of the referent."
-                    }, 
-                    "controller": {
-                      "type": "boolean", 
-                      "description": "If true, this reference points to the managing controller."
-                    }, 
-                    "blockOwnerDeletion": {
-                      "type": "boolean", 
-                      "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned."
-                    }, 
-                    "name": {
-                      "type": "string", 
-                      "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-                    }
-                  }
-                }, 
-                "x-kubernetes-patch-merge-key": "uid", 
-                "type": "array", 
-                "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.", 
-                "x-kubernetes-patch-strategy": "merge"
-              }, 
               "uid": {
                 "type": "string", 
                 "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
@@ -795,6 +754,11 @@
                 "type": "string", 
                 "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
               }, 
+              "generation": {
+                "type": "integer", 
+                "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
+                "format": "int64"
+              }, 
               "finalizers": {
                 "items": {
                   "type": "string"
@@ -803,10 +767,9 @@
                 "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed.", 
                 "x-kubernetes-patch-strategy": "merge"
               }, 
-              "generation": {
-                "type": "integer", 
-                "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
-                "format": "int64"
+              "generateName": {
+                "type": "string", 
+                "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency"
               }, 
               "initializers": {
                 "required": [
@@ -856,9 +819,9 @@
                             "type": "string", 
                             "description": "The group attribute of the resource associated with the status StatusReason."
                           }, 
-                          "name": {
+                          "uid": {
                             "type": "string", 
-                            "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
+                            "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
                           }, 
                           "retryAfterSeconds": {
                             "type": "integer", 
@@ -886,9 +849,9 @@
                             "type": "array", 
                             "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
                           }, 
-                          "uid": {
+                          "name": {
                             "type": "string", 
-                            "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+                            "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
                           }
                         }
                       }, 
@@ -933,9 +896,46 @@
                 "type": "string", 
                 "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
               }, 
-              "generateName": {
-                "type": "string", 
-                "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency"
+              "ownerReferences": {
+                "items": {
+                  "required": [
+                    "apiVersion", 
+                    "kind", 
+                    "name", 
+                    "uid"
+                  ], 
+                  "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
+                  "properties": {
+                    "kind": {
+                      "type": "string", 
+                      "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+                    }, 
+                    "uid": {
+                      "type": "string", 
+                      "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+                    }, 
+                    "apiVersion": {
+                      "type": "string", 
+                      "description": "API version of the referent."
+                    }, 
+                    "controller": {
+                      "type": "boolean", 
+                      "description": "If true, this reference points to the managing controller."
+                    }, 
+                    "blockOwnerDeletion": {
+                      "type": "boolean", 
+                      "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned."
+                    }, 
+                    "name": {
+                      "type": "string", 
+                      "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                    }
+                  }
+                }, 
+                "type": "array", 
+                "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.", 
+                "x-kubernetes-patch-strategy": "merge", 
+                "x-kubernetes-patch-merge-key": "uid"
               }, 
               "creationTimestamp": {
                 "type": "string", 

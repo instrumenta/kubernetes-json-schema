@@ -137,13 +137,13 @@
           "type": "string", 
           "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
         }, 
-        "iqn": {
-          "type": "string", 
-          "description": "Target iSCSI Qualified Name."
-        }, 
         "chapAuthDiscovery": {
           "type": "boolean", 
           "description": "whether support iSCSI Discovery CHAP authentication"
+        }, 
+        "iqn": {
+          "type": "string", 
+          "description": "Target iSCSI Qualified Name."
         }, 
         "lun": {
           "type": "integer", 
@@ -185,15 +185,17 @@
         }
       }
     }, 
-    "flexVolume": {
+    "scaleIO": {
       "required": [
-        "driver"
+        "gateway", 
+        "system", 
+        "secretRef"
       ], 
-      "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+      "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
       "properties": {
-        "readOnly": {
-          "type": "boolean", 
-          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+        "storageMode": {
+          "type": "string", 
+          "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
         }, 
         "secretRef": {
           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -204,20 +206,37 @@
             }
           }
         }, 
-        "driver": {
+        "protectionDomain": {
           "type": "string", 
-          "description": "Driver is the name of the driver to use for this volume."
+          "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
         }, 
-        "options": {
-          "additionalProperties": {
-            "type": "string"
-          }, 
-          "type": "object", 
-          "description": "Optional: Extra command options if any."
+        "volumeName": {
+          "type": "string", 
+          "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
+        }, 
+        "sslEnabled": {
+          "type": "boolean", 
+          "description": "Flag to enable/disable SSL communication with Gateway, default false"
+        }, 
+        "system": {
+          "type": "string", 
+          "description": "The name of the storage system as configured in ScaleIO."
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+        }, 
+        "storagePool": {
+          "type": "string", 
+          "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
+        }, 
+        "gateway": {
+          "type": "string", 
+          "description": "The host address of the ScaleIO API Gateway."
         }
       }
     }, 
@@ -239,13 +258,13 @@
       ], 
       "description": "Represents a Photon Controller persistent disk resource.", 
       "properties": {
-        "fsType": {
-          "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-        }, 
         "pdID": {
           "type": "string", 
           "description": "ID that identifies Photon Controller persistent disk"
+        }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 
@@ -322,17 +341,23 @@
         }
       }
     }, 
-    "scaleIO": {
+    "flexVolume": {
       "required": [
-        "gateway", 
-        "system", 
-        "secretRef"
+        "driver"
       ], 
-      "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
+      "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
       "properties": {
-        "storageMode": {
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+        }, 
+        "fsType": {
           "type": "string", 
-          "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+        }, 
+        "driver": {
+          "type": "string", 
+          "description": "Driver is the name of the driver to use for this volume."
         }, 
         "secretRef": {
           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -343,37 +368,12 @@
             }
           }
         }, 
-        "protectionDomain": {
-          "type": "string", 
-          "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
-        }, 
-        "volumeName": {
-          "type": "string", 
-          "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
-        }, 
-        "sslEnabled": {
-          "type": "boolean", 
-          "description": "Flag to enable/disable SSL communication with Gateway, default false"
-        }, 
-        "system": {
-          "type": "string", 
-          "description": "The name of the storage system as configured in ScaleIO."
-        }, 
-        "fsType": {
-          "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-        }, 
-        "readOnly": {
-          "type": "boolean", 
-          "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-        }, 
-        "storagePool": {
-          "type": "string", 
-          "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
-        }, 
-        "gateway": {
-          "type": "string", 
-          "description": "The host address of the ScaleIO API Gateway."
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          }, 
+          "type": "object", 
+          "description": "Optional: Extra command options if any."
         }
       }
     }, 
@@ -381,12 +381,11 @@
       "type": "string", 
       "description": "Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass."
     }, 
-    "rbd": {
+    "cephfs": {
       "required": [
-        "monitors", 
-        "image"
+        "monitors"
       ], 
-      "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
+      "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
       "properties": {
         "secretRef": {
           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -397,36 +396,28 @@
             }
           }
         }, 
-        "image": {
+        "secretFile": {
           "type": "string", 
-          "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-        }, 
-        "keyring": {
-          "type": "string", 
-          "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-        }, 
-        "fsType": {
-          "type": "string", 
-          "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
+          "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
         }, 
         "readOnly": {
           "type": "boolean", 
-          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
         }, 
         "user": {
           "type": "string", 
-          "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+          "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+        }, 
+        "path": {
+          "type": "string", 
+          "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
         }, 
         "monitors": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-        }, 
-        "pool": {
-          "type": "string", 
-          "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+          "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
         }
       }
     }, 
@@ -538,28 +529,27 @@
         }
       }
     }, 
-    "gcePersistentDisk": {
+    "vsphereVolume": {
       "required": [
-        "pdName"
+        "volumePath"
       ], 
-      "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
+      "description": "Represents a vSphere volume resource.", 
       "properties": {
-        "readOnly": {
-          "type": "boolean", 
-          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
-        }, 
-        "partition": {
-          "type": "integer", 
-          "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk", 
-          "format": "int32"
-        }, 
-        "pdName": {
+        "storagePolicyName": {
           "type": "string", 
-          "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
+          "description": "Storage Policy Based Management (SPBM) profile name."
+        }, 
+        "volumePath": {
+          "type": "string", 
+          "description": "Path that identifies vSphere volume vmdk"
+        }, 
+        "storagePolicyID": {
+          "type": "string", 
+          "description": "Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName."
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 
@@ -608,11 +598,12 @@
         }
       }
     }, 
-    "cephfs": {
+    "rbd": {
       "required": [
-        "monitors"
+        "monitors", 
+        "image"
       ], 
-      "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
+      "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
       "properties": {
         "secretRef": {
           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -623,52 +614,61 @@
             }
           }
         }, 
-        "secretFile": {
+        "image": {
           "type": "string", 
-          "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+          "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "keyring": {
+          "type": "string", 
+          "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
         }, 
         "readOnly": {
           "type": "boolean", 
-          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }, 
         "user": {
           "type": "string", 
-          "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
-        }, 
-        "path": {
-          "type": "string", 
-          "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
+          "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }, 
         "monitors": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+          "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "pool": {
+          "type": "string", 
+          "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }
       }
     }, 
-    "vsphereVolume": {
+    "gcePersistentDisk": {
       "required": [
-        "volumePath"
+        "pdName"
       ], 
-      "description": "Represents a vSphere volume resource.", 
+      "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
       "properties": {
-        "storagePolicyName": {
+        "readOnly": {
+          "type": "boolean", 
+          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
+        }, 
+        "partition": {
+          "type": "integer", 
+          "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk", 
+          "format": "int32"
+        }, 
+        "pdName": {
           "type": "string", 
-          "description": "Storage Policy Based Management (SPBM) profile name."
+          "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-        }, 
-        "storagePolicyID": {
-          "type": "string", 
-          "description": "Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName."
-        }, 
-        "volumePath": {
-          "type": "string", 
-          "description": "Path that identifies vSphere volume vmdk"
+          "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
         }
       }
     }

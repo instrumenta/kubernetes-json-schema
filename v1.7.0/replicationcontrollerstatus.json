@@ -30,10 +30,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ReplicationControllerCondition"
       }, 
+      "x-kubernetes-patch-merge-key": "type", 
       "type": "array", 
       "description": "Represents the latest available observations of a replication controller's current state.", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      "x-kubernetes-patch-strategy": "merge"
     }, 
     "fullyLabeledReplicas": {
       "type": "integer", 

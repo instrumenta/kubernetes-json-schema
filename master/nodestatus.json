@@ -14,10 +14,17 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.NodeAddress"
       }, 
+      "x-kubernetes-patch-merge-key": "type", 
       "type": "array", 
       "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      "x-kubernetes-patch-strategy": "merge"
+    }, 
+    "images": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerImage"
+      }, 
+      "type": "array", 
+      "description": "List of container images on this node"
     }, 
     "nodeInfo": {
       "description": "Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#info", 
@@ -52,21 +59,14 @@
       "type": "string", 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated."
     }, 
-    "images": {
-      "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerImage"
-      }, 
-      "type": "array", 
-      "description": "List of container images on this node"
-    }, 
     "conditions": {
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.NodeCondition"
       }, 
+      "x-kubernetes-patch-merge-key": "type", 
       "type": "array", 
       "description": "Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      "x-kubernetes-patch-strategy": "merge"
     }
   }
 }

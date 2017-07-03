@@ -145,6 +145,14 @@
           "type": "boolean", 
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
         }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+        }, 
+        "driver": {
+          "type": "string", 
+          "description": "Driver is the name of the driver to use for this volume."
+        }, 
         "secretRef": {
           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
           "properties": {
@@ -154,20 +162,12 @@
             }
           }
         }, 
-        "driver": {
-          "type": "string", 
-          "description": "Driver is the name of the driver to use for this volume."
-        }, 
         "options": {
           "additionalProperties": {
             "type": "string"
           }, 
           "type": "object", 
           "description": "Optional: Extra command options if any."
-        }, 
-        "fsType": {
-          "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
         }
       }
     }, 
@@ -177,13 +177,13 @@
       ], 
       "description": "Represents a Photon Controller persistent disk resource.", 
       "properties": {
-        "fsType": {
-          "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-        }, 
         "pdID": {
           "type": "string", 
           "description": "ID that identifies Photon Controller persistent disk"
+        }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 
@@ -202,6 +202,10 @@
           "type": "string", 
           "description": "The Name of the data disk in the blob storage"
         }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+        }, 
         "readOnly": {
           "type": "boolean", 
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
@@ -209,10 +213,6 @@
         "cachingMode": {
           "type": "string", 
           "description": "Host Caching mode: None, Read Only, Read Write."
-        }, 
-        "fsType": {
-          "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 
@@ -446,28 +446,19 @@
         }
       }
     }, 
-    "gcePersistentDisk": {
+    "vsphereVolume": {
       "required": [
-        "pdName"
+        "volumePath"
       ], 
-      "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
+      "description": "Represents a vSphere volume resource.", 
       "properties": {
-        "readOnly": {
-          "type": "boolean", 
-          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
-        }, 
-        "partition": {
-          "type": "integer", 
-          "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk", 
-          "format": "int32"
-        }, 
-        "pdName": {
+        "volumePath": {
           "type": "string", 
-          "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+          "description": "Path that identifies vSphere volume vmdk"
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 
@@ -622,19 +613,28 @@
         }
       }
     }, 
-    "vsphereVolume": {
+    "gcePersistentDisk": {
       "required": [
-        "volumePath"
+        "pdName"
       ], 
-      "description": "Represents a vSphere volume resource.", 
+      "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
       "properties": {
-        "volumePath": {
+        "readOnly": {
+          "type": "boolean", 
+          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+        }, 
+        "partition": {
+          "type": "integer", 
+          "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk", 
+          "format": "int32"
+        }, 
+        "pdName": {
           "type": "string", 
-          "description": "Path that identifies vSphere volume vmdk"
+          "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+          "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
         }
       }
     }

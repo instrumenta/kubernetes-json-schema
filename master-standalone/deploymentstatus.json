@@ -72,10 +72,10 @@
           }
         }
       }, 
-      "x-kubernetes-patch-merge-key": "type", 
       "type": "array", 
       "description": "Represents the latest available observations of a deployment's current state.", 
-      "x-kubernetes-patch-strategy": "merge"
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
     }
   }
 }

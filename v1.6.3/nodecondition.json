@@ -15,13 +15,13 @@
       "description": "Last time the condition transit from one status to another.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
     }, 
-    "reason": {
-      "type": "string", 
-      "description": "(brief) reason for the condition's last transition."
-    }, 
     "lastHeartbeatTime": {
       "description": "Last time we got an update on a given condition.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "reason": {
+      "type": "string", 
+      "description": "(brief) reason for the condition's last transition."
     }, 
     "message": {
       "type": "string", 

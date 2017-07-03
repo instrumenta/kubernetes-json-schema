@@ -35,22 +35,6 @@
         }
       }
     }, 
-    "configMapKeyRef": {
-      "required": [
-        "key"
-      ], 
-      "description": "Selects a key from a ConfigMap.", 
-      "properties": {
-        "name": {
-          "type": "string", 
-          "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-        }, 
-        "key": {
-          "type": "string", 
-          "description": "The key to select."
-        }
-      }
-    }, 
     "resourceFieldRef": {
       "required": [
         "resource"
@@ -67,6 +51,22 @@
         }, 
         "divisor": {
           "type": "string"
+        }
+      }
+    }, 
+    "configMapKeyRef": {
+      "required": [
+        "key"
+      ], 
+      "description": "Selects a key from a ConfigMap.", 
+      "properties": {
+        "name": {
+          "type": "string", 
+          "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+        }, 
+        "key": {
+          "type": "string", 
+          "description": "The key to select."
         }
       }
     }

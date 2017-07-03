@@ -3,9 +3,9 @@
   "type": "object", 
   "description": "ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface", 
   "properties": {
-    "group": {
+    "resource": {
       "type": "string", 
-      "description": "Group is the API Group of the Resource.  \"*\" means all."
+      "description": "Resource is one of the existing resource types.  \"*\" means all."
     }, 
     "name": {
       "type": "string", 
@@ -23,9 +23,9 @@
       "type": "string", 
       "description": "Version is the API Version of the Resource.  \"*\" means all."
     }, 
-    "resource": {
+    "group": {
       "type": "string", 
-      "description": "Resource is one of the existing resource types.  \"*\" means all."
+      "description": "Group is the API Group of the Resource.  \"*\" means all."
     }, 
     "subresource": {
       "type": "string", 
