@@ -5097,8 +5097,14 @@
       }
     }, 
     "io.k8s.apimachinery.pkg.util.intstr.IntOrString": {
-      "type": "string", 
-      "format": "int-or-string"
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
     }, 
     "io.k8s.kubernetes.pkg.apis.autoscaling.v1.HorizontalPodAutoscalerStatus": {
       "required": [

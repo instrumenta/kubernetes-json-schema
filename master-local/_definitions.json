@@ -5244,8 +5244,14 @@
       }
     }, 
     "io.k8s.apimachinery.pkg.util.intstr.IntOrString": {
-      "type": "string", 
-      "format": "int-or-string"
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
     }, 
     "io.k8s.api.authorization.v1.ResourceAttributes": {
       "description": "ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface", 

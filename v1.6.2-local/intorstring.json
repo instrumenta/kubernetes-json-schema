@@ -1,5 +1,12 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "oneOf": [
+    {
+      "type": "string"
+    }, 
+    {
+      "type": "integer"
+    }
+  ], 
   "type": "object", 
-  "format": "int-or-string"
+  "$schema": "http://json-schema.org/schema#"
 }

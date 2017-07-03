@@ -406,6 +406,9 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1beta1.StatefulSetList"
     }, 
     {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }, 
+    {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1.ContainerState"
     }, 
     {

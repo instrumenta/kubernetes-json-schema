@@ -580,6 +580,16 @@
         }
       }
     }, 
+    "io.k8s.apimachinery.pkg.util.intstr.IntOrString": {
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }, 
     "v1.ObjectMeta": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
       "properties": {
