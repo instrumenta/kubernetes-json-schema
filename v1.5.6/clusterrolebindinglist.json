@@ -10,7 +10,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1alpha1.ClusterRoleBinding"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Items is a list of ClusterRoleBindings"
     }, 
     "kind": {

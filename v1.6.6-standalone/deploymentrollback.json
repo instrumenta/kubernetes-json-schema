@@ -14,16 +14,18 @@
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
   "properties": {
+    "rollbackTo": {
+      "properties": {
+        "revision": {
+          "type": "integer", 
+          "description": "The revision to rollback to. If set to 0, rollbck to the last revision.", 
+          "format": "int64"
+        }
+      }
+    }, 
     "kind": {
       "type": "string", 
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
-    }, 
-    "updatedAnnotations": {
-      "additionalProperties": {
-        "type": "string"
-      }, 
-      "type": "object", 
-      "description": "The annotations to be updated to a deployment"
     }, 
     "name": {
       "type": "string", 
@@ -33,14 +35,12 @@
       "type": "string", 
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
     }, 
-    "rollbackTo": {
-      "properties": {
-        "revision": {
-          "type": "integer", 
-          "description": "The revision to rollback to. If set to 0, rollbck to the last revision.", 
-          "format": "int64"
-        }
-      }
+    "updatedAnnotations": {
+      "additionalProperties": {
+        "type": "string"
+      }, 
+      "type": "object", 
+      "description": "The annotations to be updated to a deployment"
     }
   }
 }

@@ -10,7 +10,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1.Pod"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of pods. More info: http://kubernetes.io/docs/user-guide/pods"
     }, 
     "kind": {

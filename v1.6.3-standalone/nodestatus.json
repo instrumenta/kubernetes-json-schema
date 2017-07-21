@@ -28,8 +28,41 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-addresses"
+    }, 
+    "images": {
+      "items": {
+        "required": [
+          "names"
+        ], 
+        "description": "Describe a container image", 
+        "properties": {
+          "sizeBytes": {
+            "type": "integer", 
+            "description": "The size of the image in bytes.", 
+            "format": "int64"
+          }, 
+          "names": {
+            "items": {
+              "type": "string"
+            }, 
+            "type": [
+              "array", 
+              "null"
+            ], 
+            "description": "Names by which this image is known. e.g. [\"gcr.io/google_containers/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of container images on this node"
     }, 
     "nodeInfo": {
       "required": [
@@ -106,7 +139,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of volumes that are attached to the node."
     }, 
     "allocatable": {
@@ -120,7 +156,10 @@
       "items": {
         "type": "string"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of attachable volumes in use (mounted) by the node."
     }, 
     "daemonEndpoints": {
@@ -145,30 +184,6 @@
       "type": "string", 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-phase The field is never populated, and now is deprecated."
     }, 
-    "images": {
-      "items": {
-        "required": [
-          "names"
-        ], 
-        "description": "Describe a container image", 
-        "properties": {
-          "sizeBytes": {
-            "type": "integer", 
-            "description": "The size of the image in bytes.", 
-            "format": "int64"
-          }, 
-          "names": {
-            "items": {
-              "type": "string"
-            }, 
-            "type": "array", 
-            "description": "Names by which this image is known. e.g. [\"gcr.io/google_containers/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]"
-          }
-        }
-      }, 
-      "type": "array", 
-      "description": "List of container images on this node"
-    }, 
     "conditions": {
       "items": {
         "required": [
@@ -185,13 +200,13 @@
             "type": "string", 
             "format": "date-time"
           }, 
-          "reason": {
-            "type": "string", 
-            "description": "(brief) reason for the condition's last transition."
-          }, 
           "lastHeartbeatTime": {
             "type": "string", 
             "format": "date-time"
+          }, 
+          "reason": {
+            "type": "string", 
+            "description": "(brief) reason for the condition's last transition."
           }, 
           "message": {
             "type": "string", 
@@ -203,7 +218,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Conditions is an array of current observed node conditions. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-condition"
     }
   }

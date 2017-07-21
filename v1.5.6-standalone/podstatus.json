@@ -171,7 +171,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: http://kubernetes.io/docs/user-guide/pod-states#container-statuses"
     }, 
     "reason": {
@@ -232,7 +235,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Current service state of pod. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-conditions"
     }
   }

@@ -16,7 +16,10 @@
       "items": {
         "type": "string"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "iSCSI target portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
     }, 
     "secretRef": {
@@ -39,13 +42,13 @@
       "type": "string", 
       "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
     }, 
-    "iqn": {
-      "type": "string", 
-      "description": "Target iSCSI Qualified Name."
-    }, 
     "chapAuthDiscovery": {
       "type": "boolean", 
       "description": "whether support iSCSI Discovery CHAP authentication"
+    }, 
+    "iqn": {
+      "type": "string", 
+      "description": "Target iSCSI Qualified Name."
     }, 
     "lun": {
       "type": "integer", 

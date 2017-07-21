@@ -23,7 +23,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Taint"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "If specified, the node's taints."
     }
   }

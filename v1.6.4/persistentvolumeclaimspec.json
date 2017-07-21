@@ -11,20 +11,23 @@
       "items": {
         "type": "string"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "AccessModes contains the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1"
     }, 
-    "selector": {
-      "description": "A label query over volumes to consider for binding.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    "volumeName": {
+      "type": "string", 
+      "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
     }, 
     "resources": {
       "description": "Resources represents the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ResourceRequirements"
     }, 
-    "volumeName": {
-      "type": "string", 
-      "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
+    "selector": {
+      "description": "A label query over volumes to consider for binding.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }
   }
 }

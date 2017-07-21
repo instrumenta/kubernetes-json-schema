@@ -13,21 +13,24 @@
       "description": "observedGeneration is the most recent generation observed by this autoscaler.", 
       "format": "int64"
     }, 
-    "currentMetrics": {
-      "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.autoscaling.v2alpha1.MetricStatus"
-      }, 
-      "type": "array", 
-      "description": "currentMetrics is the last read state of the metrics used by this autoscaler."
+    "lastScaleTime": {
+      "description": "lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
     }, 
     "currentReplicas": {
       "type": "integer", 
       "description": "currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.", 
       "format": "int32"
     }, 
-    "lastScaleTime": {
-      "description": "lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    "currentMetrics": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.autoscaling.v2alpha1.MetricStatus"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "currentMetrics is the last read state of the metrics used by this autoscaler."
     }, 
     "desiredReplicas": {
       "type": "integer", 

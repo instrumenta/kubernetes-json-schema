@@ -10,9 +10,12 @@
       "type": "boolean", 
       "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
     }, 
-    "fsType": {
-      "type": "string", 
-      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+    "options": {
+      "additionalProperties": {
+        "type": "string"
+      }, 
+      "type": "object", 
+      "description": "Optional: Extra command options if any."
     }, 
     "driver": {
       "type": "string", 
@@ -27,12 +30,9 @@
         }
       }
     }, 
-    "options": {
-      "additionalProperties": {
-        "type": "string"
-      }, 
-      "type": "object", 
-      "description": "Optional: Extra command options if any."
+    "fsType": {
+      "type": "string", 
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
     }
   }
 }

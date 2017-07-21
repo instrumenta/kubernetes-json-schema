@@ -10,7 +10,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1.PersistentVolume"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of persistent volumes. More info: http://kubernetes.io/docs/user-guide/persistent-volumes"
     }, 
     "kind": {

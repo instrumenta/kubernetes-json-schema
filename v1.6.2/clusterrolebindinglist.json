@@ -17,7 +17,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.2/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.rbac.v1alpha1.ClusterRoleBinding"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Items is a list of ClusterRoleBindings"
     }, 
     "kind": {

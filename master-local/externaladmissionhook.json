@@ -11,7 +11,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.RuleWithOperations"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule."
     }, 
     "failurePolicy": {

@@ -62,7 +62,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Represents the latest available observations of a deployment's current state."
     }
   }

@@ -11,20 +11,23 @@
       "items": {
         "type": "string"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1"
     }, 
-    "selector": {
-      "description": "A label query over volumes to consider for binding.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    "volumeName": {
+      "type": "string", 
+      "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
     }, 
     "resources": {
       "description": "Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources", 
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
     }, 
-    "volumeName": {
-      "type": "string", 
-      "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
+    "selector": {
+      "description": "A label query over volumes to consider for binding.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }
   }
 }

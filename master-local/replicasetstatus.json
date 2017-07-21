@@ -30,10 +30,13 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSetCondition"
       }, 
-      "x-kubernetes-patch-merge-key": "type", 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Represents the latest available observations of a replica set's current state.", 
-      "x-kubernetes-patch-strategy": "merge"
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
     }, 
     "fullyLabeledReplicas": {
       "type": "integer", 

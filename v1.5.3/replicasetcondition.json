@@ -11,17 +11,17 @@
       "type": "string", 
       "description": "Status of the condition, one of True, False, Unknown."
     }, 
-    "lastTransitionTime": {
-      "description": "The last time the condition transitioned from one status to another.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/unversioned.Time"
+    "type": {
+      "type": "string", 
+      "description": "Type of replica set condition."
     }, 
     "message": {
       "type": "string", 
       "description": "A human readable message indicating details about the transition."
     }, 
-    "type": {
-      "type": "string", 
-      "description": "Type of replica set condition."
+    "lastTransitionTime": {
+      "description": "The last time the condition transitioned from one status to another.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.3/_definitions.json#/definitions/unversioned.Time"
     }, 
     "reason": {
       "type": "string", 

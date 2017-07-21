@@ -17,7 +17,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ResourceQuota"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Items is a list of ResourceQuota objects. More info: http://releases.k8s.io/HEAD/docs/design/admission_control_resource_quota.md#admissioncontrol-plugin-resourcequota"
     }, 
     "kind": {

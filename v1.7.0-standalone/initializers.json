@@ -41,9 +41,9 @@
               "type": "string", 
               "description": "The group attribute of the resource associated with the status StatusReason."
             }, 
-            "uid": {
+            "name": {
               "type": "string", 
-              "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+              "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
             }, 
             "retryAfterSeconds": {
               "type": "integer", 
@@ -68,12 +68,15 @@
                   }
                 }
               }, 
-              "type": "array", 
+              "type": [
+                "array", 
+                "null"
+              ], 
               "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
             }, 
-            "name": {
+            "uid": {
               "type": "string", 
-              "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
+              "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
             }
           }
         }, 
@@ -109,7 +112,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
     }
   }

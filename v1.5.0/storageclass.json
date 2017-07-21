@@ -6,9 +6,9 @@
   "type": "object", 
   "description": "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.", 
   "properties": {
-    "metadata": {
-      "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1.ObjectMeta"
+    "provisioner": {
+      "type": "string", 
+      "description": "Provisioner indicates the type of the provisioner."
     }, 
     "parameters": {
       "additionalProperties": {
@@ -17,9 +17,9 @@
       "type": "object", 
       "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class."
     }, 
-    "provisioner": {
-      "type": "string", 
-      "description": "Provisioner indicates the type of the provisioner."
+    "metadata": {
+      "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1.ObjectMeta"
     }
   }
 }

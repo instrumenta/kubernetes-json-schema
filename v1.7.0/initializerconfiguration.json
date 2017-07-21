@@ -18,10 +18,13 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.Initializer"
       }, 
-      "x-kubernetes-patch-merge-key": "name", 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Initializers is a list of resources and their default initializers Order-sensitive. When merging multiple InitializerConfigurations, we sort the initializers from different InitializerConfigurations by the name of the InitializerConfigurations; the order of the initializers from the same InitializerConfiguration is preserved.", 
-      "x-kubernetes-patch-strategy": "merge"
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "name"
     }, 
     "apiVersion": {
       "type": "string", 

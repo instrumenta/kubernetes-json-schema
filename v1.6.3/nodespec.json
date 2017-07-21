@@ -23,7 +23,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.3/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Taint"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "If specified, the node's taints."
     }
   }

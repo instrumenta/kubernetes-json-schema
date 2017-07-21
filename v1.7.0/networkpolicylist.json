@@ -17,7 +17,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.NetworkPolicy"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Items is a list of schema objects."
     }, 
     "kind": {

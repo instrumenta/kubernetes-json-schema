@@ -11,7 +11,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1.ComponentCondition"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of component conditions observed"
     }, 
     "apiVersion": {

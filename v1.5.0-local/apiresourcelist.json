@@ -15,7 +15,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/unversioned.APIResource"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "resources contains the name of the resources and if they are namespaced."
     }
   }

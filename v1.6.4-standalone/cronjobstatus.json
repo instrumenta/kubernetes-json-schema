@@ -37,7 +37,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Active holds pointers to currently running jobs."
     }, 
     "lastScheduleTime": {

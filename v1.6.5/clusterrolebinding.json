@@ -26,7 +26,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.5/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.rbac.v1beta1.Subject"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Subjects holds references to the objects the role applies to."
     }, 
     "apiVersion": {

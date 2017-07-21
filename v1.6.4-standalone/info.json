@@ -26,19 +26,19 @@
     "platform": {
       "type": "string"
     }, 
-    "minor": {
+    "gitVersion": {
       "type": "string"
     }, 
     "gitCommit": {
       "type": "string"
     }, 
-    "compiler": {
-      "type": "string"
-    }, 
-    "gitVersion": {
-      "type": "string"
-    }, 
     "goVersion": {
+      "type": "string"
+    }, 
+    "minor": {
+      "type": "string"
+    }, 
+    "compiler": {
       "type": "string"
     }
   }

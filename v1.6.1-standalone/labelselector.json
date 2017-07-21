@@ -26,7 +26,10 @@
             "items": {
               "type": "string"
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
           }, 
           "key": {
@@ -35,7 +38,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
     }
   }

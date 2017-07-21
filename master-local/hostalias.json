@@ -11,7 +11,10 @@
       "items": {
         "type": "string"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Hostnames for the above IP address."
     }
   }

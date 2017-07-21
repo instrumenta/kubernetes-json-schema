@@ -14,7 +14,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.4/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
     }
   }

@@ -17,174 +17,6 @@
     "spec": {
       "description": "PodPresetSpec is a description of a pod injection policy.", 
       "properties": {
-        "envFrom": {
-          "items": {
-            "description": "EnvFromSource represents the source of a set of ConfigMaps", 
-            "properties": {
-              "prefix": {
-                "type": "string", 
-                "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
-              }, 
-              "configMapRef": {
-                "description": "ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.\n\nThe contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.", 
-                "properties": {
-                  "optional": {
-                    "type": "boolean", 
-                    "description": "Specify whether the ConfigMap must be defined"
-                  }, 
-                  "name": {
-                    "type": "string", 
-                    "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-                  }
-                }
-              }, 
-              "secretRef": {
-                "description": "SecretEnvSource selects a Secret to populate the environment variables with.\n\nThe contents of the target Secret's Data field will represent the key-value pairs as environment variables.", 
-                "properties": {
-                  "optional": {
-                    "type": "boolean", 
-                    "description": "Specify whether the Secret must be defined"
-                  }, 
-                  "name": {
-                    "type": "string", 
-                    "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-                  }
-                }
-              }
-            }
-          }, 
-          "type": "array", 
-          "description": "EnvFrom defines the collection of EnvFromSource to inject into containers."
-        }, 
-        "volumeMounts": {
-          "items": {
-            "required": [
-              "name", 
-              "mountPath"
-            ], 
-            "description": "VolumeMount describes a mounting of a Volume within a container.", 
-            "properties": {
-              "readOnly": {
-                "type": "boolean", 
-                "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
-              }, 
-              "mountPath": {
-                "type": "string", 
-                "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
-              }, 
-              "subPath": {
-                "type": "string", 
-                "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
-              }, 
-              "name": {
-                "type": "string", 
-                "description": "This must match the Name of a Volume."
-              }
-            }
-          }, 
-          "type": "array", 
-          "description": "VolumeMounts defines the collection of VolumeMount to inject into containers."
-        }, 
-        "env": {
-          "items": {
-            "required": [
-              "name"
-            ], 
-            "description": "EnvVar represents an environment variable present in a Container.", 
-            "properties": {
-              "valueFrom": {
-                "description": "EnvVarSource represents a source for the value of an EnvVar.", 
-                "properties": {
-                  "secretKeyRef": {
-                    "required": [
-                      "key"
-                    ], 
-                    "description": "SecretKeySelector selects a key of a Secret.", 
-                    "properties": {
-                      "optional": {
-                        "type": "boolean", 
-                        "description": "Specify whether the Secret or it's key must be defined"
-                      }, 
-                      "name": {
-                        "type": "string", 
-                        "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-                      }, 
-                      "key": {
-                        "type": "string", 
-                        "description": "The key of the secret to select from.  Must be a valid secret key."
-                      }
-                    }
-                  }, 
-                  "fieldRef": {
-                    "required": [
-                      "fieldPath"
-                    ], 
-                    "description": "ObjectFieldSelector selects an APIVersioned field of an object.", 
-                    "properties": {
-                      "fieldPath": {
-                        "type": "string", 
-                        "description": "Path of the field to select in the specified API version."
-                      }, 
-                      "apiVersion": {
-                        "type": "string", 
-                        "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
-                      }
-                    }
-                  }, 
-                  "resourceFieldRef": {
-                    "required": [
-                      "resource"
-                    ], 
-                    "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
-                    "properties": {
-                      "containerName": {
-                        "type": "string", 
-                        "description": "Container name: required for volumes, optional for env vars"
-                      }, 
-                      "resource": {
-                        "type": "string", 
-                        "description": "Required: resource to select"
-                      }, 
-                      "divisor": {
-                        "type": "string"
-                      }
-                    }
-                  }, 
-                  "configMapKeyRef": {
-                    "required": [
-                      "key"
-                    ], 
-                    "description": "Selects a key from a ConfigMap.", 
-                    "properties": {
-                      "optional": {
-                        "type": "boolean", 
-                        "description": "Specify whether the ConfigMap or it's key must be defined"
-                      }, 
-                      "name": {
-                        "type": "string", 
-                        "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-                      }, 
-                      "key": {
-                        "type": "string", 
-                        "description": "The key to select."
-                      }
-                    }
-                  }
-                }
-              }, 
-              "name": {
-                "type": "string", 
-                "description": "Name of the environment variable. Must be a C_IDENTIFIER."
-              }, 
-              "value": {
-                "type": "string", 
-                "description": "Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\"."
-              }
-            }
-          }, 
-          "type": "array", 
-          "description": "Env defines the collection of EnvVar to inject into containers."
-        }, 
         "volumes": {
           "items": {
             "required": [
@@ -282,7 +114,10 @@
                     "items": {
                       "type": "string"
                     }, 
-                    "type": "array", 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
                     "description": "iSCSI target portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
                   }, 
                   "fsType": {
@@ -344,7 +179,10 @@
                                   }
                                 }
                               }, 
-                              "type": "array", 
+                              "type": [
+                                "array", 
+                                "null"
+                              ], 
                               "description": "If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'."
                             }, 
                             "optional": {
@@ -383,7 +221,10 @@
                                   }
                                 }
                               }, 
-                              "type": "array", 
+                              "type": [
+                                "array", 
+                                "null"
+                              ], 
                               "description": "If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'."
                             }, 
                             "optional": {
@@ -452,14 +293,20 @@
                                   }
                                 }
                               }, 
-                              "type": "array", 
+                              "type": [
+                                "array", 
+                                "null"
+                              ], 
                               "description": "Items is a list of DownwardAPIVolume file"
                             }
                           }
                         }
                       }
                     }, 
-                    "type": "array", 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
                     "description": "list of volume projections"
                   }, 
                   "defaultMode": {
@@ -495,7 +342,10 @@
                         }
                       }
                     }, 
-                    "type": "array", 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
                     "description": "If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'."
                   }, 
                   "optional": {
@@ -510,6 +360,119 @@
                   "secretName": {
                     "type": "string", 
                     "description": "Name of the secret in the pod's namespace to use. More info: http://kubernetes.io/docs/user-guide/volumes#secrets"
+                  }
+                }
+              }, 
+              "flexVolume": {
+                "required": [
+                  "driver"
+                ], 
+                "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+                "properties": {
+                  "readOnly": {
+                    "type": "boolean", 
+                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+                  }, 
+                  "options": {
+                    "additionalProperties": {
+                      "type": "string"
+                    }, 
+                    "type": "object", 
+                    "description": "Optional: Extra command options if any."
+                  }, 
+                  "driver": {
+                    "type": "string", 
+                    "description": "Driver is the name of the driver to use for this volume."
+                  }, 
+                  "secretRef": {
+                    "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+                    "properties": {
+                      "name": {
+                        "type": "string", 
+                        "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                      }
+                    }
+                  }, 
+                  "fsType": {
+                    "type": "string", 
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+                  }
+                }
+              }, 
+              "photonPersistentDisk": {
+                "required": [
+                  "pdID"
+                ], 
+                "description": "Represents a Photon Controller persistent disk resource.", 
+                "properties": {
+                  "fsType": {
+                    "type": "string", 
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                  }, 
+                  "pdID": {
+                    "type": "string", 
+                    "description": "ID that identifies Photon Controller persistent disk"
+                  }
+                }
+              }, 
+              "azureDisk": {
+                "required": [
+                  "diskName", 
+                  "diskURI"
+                ], 
+                "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.", 
+                "properties": {
+                  "diskURI": {
+                    "type": "string", 
+                    "description": "The URI the data disk in the blob storage"
+                  }, 
+                  "diskName": {
+                    "type": "string", 
+                    "description": "The Name of the data disk in the blob storage"
+                  }, 
+                  "cachingMode": {
+                    "type": "string", 
+                    "description": "Host Caching mode: None, Read Only, Read Write."
+                  }, 
+                  "readOnly": {
+                    "type": "boolean", 
+                    "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+                  }, 
+                  "fsType": {
+                    "type": "string", 
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                  }
+                }
+              }, 
+              "fc": {
+                "required": [
+                  "targetWWNs", 
+                  "lun"
+                ], 
+                "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
+                "properties": {
+                  "readOnly": {
+                    "type": "boolean", 
+                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+                  }, 
+                  "targetWWNs": {
+                    "items": {
+                      "type": "string"
+                    }, 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
+                    "description": "Required: FC target worldwide names (WWNs)"
+                  }, 
+                  "lun": {
+                    "type": "integer", 
+                    "description": "Required: FC target lun number", 
+                    "format": "int32"
+                  }, 
+                  "fsType": {
+                    "type": "string", 
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                   }
                 }
               }, 
@@ -568,116 +531,6 @@
                   }
                 }
               }, 
-              "photonPersistentDisk": {
-                "required": [
-                  "pdID"
-                ], 
-                "description": "Represents a Photon Controller persistent disk resource.", 
-                "properties": {
-                  "pdID": {
-                    "type": "string", 
-                    "description": "ID that identifies Photon Controller persistent disk"
-                  }, 
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-                  }
-                }
-              }, 
-              "azureDisk": {
-                "required": [
-                  "diskName", 
-                  "diskURI"
-                ], 
-                "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.", 
-                "properties": {
-                  "diskURI": {
-                    "type": "string", 
-                    "description": "The URI the data disk in the blob storage"
-                  }, 
-                  "diskName": {
-                    "type": "string", 
-                    "description": "The Name of the data disk in the blob storage"
-                  }, 
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-                  }, 
-                  "readOnly": {
-                    "type": "boolean", 
-                    "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-                  }, 
-                  "cachingMode": {
-                    "type": "string", 
-                    "description": "Host Caching mode: None, Read Only, Read Write."
-                  }
-                }
-              }, 
-              "fc": {
-                "required": [
-                  "targetWWNs", 
-                  "lun"
-                ], 
-                "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
-                "properties": {
-                  "readOnly": {
-                    "type": "boolean", 
-                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-                  }, 
-                  "targetWWNs": {
-                    "items": {
-                      "type": "string"
-                    }, 
-                    "type": "array", 
-                    "description": "Required: FC target worldwide names (WWNs)"
-                  }, 
-                  "lun": {
-                    "type": "integer", 
-                    "description": "Required: FC target lun number", 
-                    "format": "int32"
-                  }, 
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-                  }
-                }
-              }, 
-              "flexVolume": {
-                "required": [
-                  "driver"
-                ], 
-                "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
-                "properties": {
-                  "readOnly": {
-                    "type": "boolean", 
-                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-                  }, 
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
-                  }, 
-                  "driver": {
-                    "type": "string", 
-                    "description": "Driver is the name of the driver to use for this volume."
-                  }, 
-                  "secretRef": {
-                    "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
-                    "properties": {
-                      "name": {
-                        "type": "string", 
-                        "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-                      }
-                    }
-                  }, 
-                  "options": {
-                    "additionalProperties": {
-                      "type": "string"
-                    }, 
-                    "type": "object", 
-                    "description": "Optional: Extra command options if any."
-                  }
-                }
-              }, 
               "emptyDir": {
                 "description": "Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.", 
                 "properties": {
@@ -729,7 +582,10 @@
                         }
                       }
                     }, 
-                    "type": "array", 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
                     "description": "If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'."
                   }, 
                   "optional": {
@@ -747,12 +603,11 @@
                   }
                 }
               }, 
-              "rbd": {
+              "cephfs": {
                 "required": [
-                  "monitors", 
-                  "image"
+                  "monitors"
                 ], 
-                "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
+                "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
                 "properties": {
                   "secretRef": {
                     "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -763,36 +618,31 @@
                       }
                     }
                   }, 
-                  "image": {
+                  "secretFile": {
                     "type": "string", 
-                    "description": "The rados image name. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "keyring": {
-                    "type": "string", 
-                    "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "fsType": {
-                    "type": "string", 
-                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#rbd"
+                    "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }, 
                   "readOnly": {
                     "type": "boolean", 
-                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }, 
                   "user": {
                     "type": "string", 
-                    "description": "The rados user name. Default is admin. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Optional: User is the rados user name, default is admin More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                  }, 
+                  "path": {
+                    "type": "string", 
+                    "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
                   }, 
                   "monitors": {
                     "items": {
                       "type": "string"
                     }, 
-                    "type": "array", 
-                    "description": "A collection of Ceph monitors. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "pool": {
-                    "type": "string", 
-                    "description": "The rados pool name. Default is rbd. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it."
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
+                    "description": "Required: Monitors is a collection of Ceph monitors More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }
                 }
               }, 
@@ -883,19 +733,28 @@
                   }
                 }
               }, 
-              "vsphereVolume": {
+              "gcePersistentDisk": {
                 "required": [
-                  "volumePath"
+                  "pdName"
                 ], 
-                "description": "Represents a vSphere volume resource.", 
+                "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
                 "properties": {
-                  "volumePath": {
+                  "readOnly": {
+                    "type": "boolean", 
+                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+                  }, 
+                  "partition": {
+                    "type": "integer", 
+                    "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk", 
+                    "format": "int32"
+                  }, 
+                  "pdName": {
                     "type": "string", 
-                    "description": "Path that identifies vSphere volume vmdk"
+                    "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
                   }, 
                   "fsType": {
                     "type": "string", 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
                   }
                 }
               }, 
@@ -944,11 +803,12 @@
                   }
                 }
               }, 
-              "cephfs": {
+              "rbd": {
                 "required": [
-                  "monitors"
+                  "monitors", 
+                  "image"
                 ], 
-                "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
+                "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
                 "properties": {
                   "secretRef": {
                     "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -959,28 +819,39 @@
                       }
                     }
                   }, 
-                  "secretFile": {
+                  "image": {
                     "type": "string", 
-                    "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "The rados image name. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "keyring": {
+                    "type": "string", 
+                    "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "fsType": {
+                    "type": "string", 
+                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#rbd"
                   }, 
                   "readOnly": {
                     "type": "boolean", 
-                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }, 
                   "user": {
                     "type": "string", 
-                    "description": "Optional: User is the rados user name, default is admin More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
-                  }, 
-                  "path": {
-                    "type": "string", 
-                    "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
+                    "description": "The rados user name. Default is admin. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }, 
                   "monitors": {
                     "items": {
                       "type": "string"
                     }, 
-                    "type": "array", 
-                    "description": "Required: Monitors is a collection of Ceph monitors More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
+                    "description": "A collection of Ceph monitors. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "pool": {
+                    "type": "string", 
+                    "description": "The rados pool name. Default is rbd. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it."
                   }
                 }
               }, 
@@ -1040,7 +911,10 @@
                         }
                       }
                     }, 
-                    "type": "array", 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
                     "description": "Items is a list of downward API volume file"
                   }, 
                   "defaultMode": {
@@ -1050,35 +924,206 @@
                   }
                 }
               }, 
-              "gcePersistentDisk": {
+              "vsphereVolume": {
                 "required": [
-                  "pdName"
+                  "volumePath"
                 ], 
-                "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
+                "description": "Represents a vSphere volume resource.", 
                 "properties": {
-                  "readOnly": {
-                    "type": "boolean", 
-                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
-                  }, 
-                  "partition": {
-                    "type": "integer", 
-                    "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk", 
-                    "format": "int32"
-                  }, 
-                  "pdName": {
+                  "volumePath": {
                     "type": "string", 
-                    "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+                    "description": "Path that identifies vSphere volume vmdk"
                   }, 
                   "fsType": {
                     "type": "string", 
-                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                   }
                 }
               }
             }
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "Volumes defines the collection of Volume to inject into the pod."
+        }, 
+        "volumeMounts": {
+          "items": {
+            "required": [
+              "name", 
+              "mountPath"
+            ], 
+            "description": "VolumeMount describes a mounting of a Volume within a container.", 
+            "properties": {
+              "readOnly": {
+                "type": "boolean", 
+                "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
+              }, 
+              "mountPath": {
+                "type": "string", 
+                "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
+              }, 
+              "subPath": {
+                "type": "string", 
+                "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "This must match the Name of a Volume."
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "VolumeMounts defines the collection of VolumeMount to inject into containers."
+        }, 
+        "env": {
+          "items": {
+            "required": [
+              "name"
+            ], 
+            "description": "EnvVar represents an environment variable present in a Container.", 
+            "properties": {
+              "valueFrom": {
+                "description": "EnvVarSource represents a source for the value of an EnvVar.", 
+                "properties": {
+                  "secretKeyRef": {
+                    "required": [
+                      "key"
+                    ], 
+                    "description": "SecretKeySelector selects a key of a Secret.", 
+                    "properties": {
+                      "optional": {
+                        "type": "boolean", 
+                        "description": "Specify whether the Secret or it's key must be defined"
+                      }, 
+                      "name": {
+                        "type": "string", 
+                        "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                      }, 
+                      "key": {
+                        "type": "string", 
+                        "description": "The key of the secret to select from.  Must be a valid secret key."
+                      }
+                    }
+                  }, 
+                  "fieldRef": {
+                    "required": [
+                      "fieldPath"
+                    ], 
+                    "description": "ObjectFieldSelector selects an APIVersioned field of an object.", 
+                    "properties": {
+                      "fieldPath": {
+                        "type": "string", 
+                        "description": "Path of the field to select in the specified API version."
+                      }, 
+                      "apiVersion": {
+                        "type": "string", 
+                        "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
+                      }
+                    }
+                  }, 
+                  "configMapKeyRef": {
+                    "required": [
+                      "key"
+                    ], 
+                    "description": "Selects a key from a ConfigMap.", 
+                    "properties": {
+                      "optional": {
+                        "type": "boolean", 
+                        "description": "Specify whether the ConfigMap or it's key must be defined"
+                      }, 
+                      "name": {
+                        "type": "string", 
+                        "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                      }, 
+                      "key": {
+                        "type": "string", 
+                        "description": "The key to select."
+                      }
+                    }
+                  }, 
+                  "resourceFieldRef": {
+                    "required": [
+                      "resource"
+                    ], 
+                    "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
+                    "properties": {
+                      "containerName": {
+                        "type": "string", 
+                        "description": "Container name: required for volumes, optional for env vars"
+                      }, 
+                      "resource": {
+                        "type": "string", 
+                        "description": "Required: resource to select"
+                      }, 
+                      "divisor": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "Name of the environment variable. Must be a C_IDENTIFIER."
+              }, 
+              "value": {
+                "type": "string", 
+                "description": "Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\"."
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Env defines the collection of EnvVar to inject into containers."
+        }, 
+        "envFrom": {
+          "items": {
+            "description": "EnvFromSource represents the source of a set of ConfigMaps", 
+            "properties": {
+              "prefix": {
+                "type": "string", 
+                "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+              }, 
+              "configMapRef": {
+                "description": "ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.\n\nThe contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.", 
+                "properties": {
+                  "optional": {
+                    "type": "boolean", 
+                    "description": "Specify whether the ConfigMap must be defined"
+                  }, 
+                  "name": {
+                    "type": "string", 
+                    "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                  }
+                }
+              }, 
+              "secretRef": {
+                "description": "SecretEnvSource selects a Secret to populate the environment variables with.\n\nThe contents of the target Secret's Data field will represent the key-value pairs as environment variables.", 
+                "properties": {
+                  "optional": {
+                    "type": "boolean", 
+                    "description": "Specify whether the Secret must be defined"
+                  }, 
+                  "name": {
+                    "type": "string", 
+                    "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                  }
+                }
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "EnvFrom defines the collection of EnvFromSource to inject into containers."
         }, 
         "selector": {
           "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
@@ -1106,7 +1151,10 @@
                     "items": {
                       "type": "string"
                     }, 
-                    "type": "array", 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
                     "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                   }, 
                   "key": {
@@ -1115,7 +1163,10 @@
                   }
                 }
               }, 
-              "type": "array", 
+              "type": [
+                "array", 
+                "null"
+              ], 
               "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
             }
           }
@@ -1129,6 +1180,57 @@
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
       "properties": {
+        "name": {
+          "type": "string", 
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+        }, 
+        "deletionTimestamp": {
+          "type": "string", 
+          "format": "date-time"
+        }, 
+        "clusterName": {
+          "type": "string", 
+          "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
+        }, 
+        "deletionGracePeriodSeconds": {
+          "type": "integer", 
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.", 
+          "format": "int64"
+        }, 
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          }, 
+          "type": "object", 
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
+        }, 
+        "namespace": {
+          "type": "string", 
+          "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
+        }, 
+        "finalizers": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed."
+        }, 
+        "generation": {
+          "type": "integer", 
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
+          "format": "int64"
+        }, 
+        "generateName": {
+          "type": "string", 
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#idempotency"
+        }, 
+        "resourceVersion": {
+          "type": "string", 
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+        }, 
         "ownerReferences": {
           "items": {
             "required": [
@@ -1165,56 +1267,11 @@
               }
             }
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
-        }, 
-        "name": {
-          "type": "string", 
-          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-        }, 
-        "deletionTimestamp": {
-          "type": "string", 
-          "format": "date-time"
-        }, 
-        "clusterName": {
-          "type": "string", 
-          "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
-        }, 
-        "deletionGracePeriodSeconds": {
-          "type": "integer", 
-          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.", 
-          "format": "int64"
-        }, 
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          }, 
-          "type": "object", 
-          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
-        }, 
-        "namespace": {
-          "type": "string", 
-          "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
-        }, 
-        "generation": {
-          "type": "integer", 
-          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
-          "format": "int64"
-        }, 
-        "finalizers": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed."
-        }, 
-        "resourceVersion": {
-          "type": "string", 
-          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
-        }, 
-        "generateName": {
-          "type": "string", 
-          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#idempotency"
         }, 
         "creationTimestamp": {
           "type": "string", 

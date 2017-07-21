@@ -201,40 +201,6 @@
         }
       }
     }, 
-    "io.k8s.api.extensions.v1beta1.ThirdPartyResourceList": {
-      "required": [
-        "items"
-      ], 
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "ThirdPartyResourceList", 
-          "version": "v1beta1", 
-          "group": "extensions"
-        }
-      ], 
-      "description": "ThirdPartyResourceList is a list of ThirdPartyResources.", 
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.ThirdPartyResource"
-          }, 
-          "type": "array", 
-          "description": "Items is the list of ThirdPartyResources."
-        }, 
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "metadata": {
-          "description": "Standard list metadata.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-        }
-      }
-    }, 
     "io.k8s.api.core.v1.PersistentVolumeList": {
       "required": [
         "items"
@@ -422,6 +388,11 @@
           "kind": "DeleteOptions", 
           "version": "v1beta1", 
           "group": "rbac.authorization.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1alpha1", 
+          "group": "scheduling.k8s.io"
         }, 
         {
           "kind": "DeleteOptions", 
@@ -2750,16 +2721,6 @@
         }
       }
     }, 
-    "io.k8s.api.extensions.v1beta1.ScaleSpec": {
-      "description": "describes the attributes of a scale subresource", 
-      "properties": {
-        "replicas": {
-          "type": "integer", 
-          "description": "desired number of instances for the scaled object.", 
-          "format": "int32"
-        }
-      }
-    }, 
     "io.k8s.api.apps.v1beta1.Scale": {
       "x-kubernetes-group-version-kind": [
         {
@@ -3286,41 +3247,6 @@
         }
       }
     }, 
-    "io.k8s.api.extensions.v1beta1.ThirdPartyResource": {
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "ThirdPartyResource", 
-          "version": "v1beta1", 
-          "group": "extensions"
-        }
-      ], 
-      "description": "A ThirdPartyResource is a generic representation of a resource, it is used by add-ons and plugins to add new resource types to the API.  It consists of one or more Versions of the api.", 
-      "properties": {
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "metadata": {
-          "description": "Standard object metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        }, 
-        "description": {
-          "type": "string", 
-          "description": "Description is the description of this object."
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "versions": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.APIVersion"
-          }, 
-          "type": "array", 
-          "description": "Versions are versions for this third party object"
-        }
-      }
-    }, 
     "io.k8s.api.core.v1.NFSVolumeSource": {
       "required": [
         "server", 
@@ -3699,12 +3625,13 @@
         }
       }
     }, 
-    "io.k8s.api.extensions.v1beta1.APIVersion": {
-      "description": "An APIVersion represents a single concrete version of an object model.", 
+    "io.k8s.api.extensions.v1beta1.ScaleSpec": {
+      "description": "describes the attributes of a scale subresource", 
       "properties": {
-        "name": {
-          "type": "string", 
-          "description": "Name of this version (e.g. 'v1')."
+        "replicas": {
+          "type": "integer", 
+          "description": "desired number of instances for the scaled object.", 
+          "format": "int32"
         }
       }
     }, 
@@ -4224,6 +4151,40 @@
         "metadata": {
           "description": "Standard object's metadata.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
+    "io.k8s.api.scheduling.v1alpha1.PriorityClassList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "PriorityClassList", 
+          "version": "v1alpha1", 
+          "group": "scheduling.k8s.io"
+        }
+      ], 
+      "description": "PriorityClassList is a collection of priority classes.", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.scheduling.v1alpha1.PriorityClass"
+          }, 
+          "type": "array", 
+          "description": "items is the list of PriorityClasses"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard list metadata More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -6225,6 +6186,46 @@
         }
       }
     }, 
+    "io.k8s.api.scheduling.v1alpha1.PriorityClass": {
+      "required": [
+        "value"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "PriorityClass", 
+          "version": "v1alpha1", 
+          "group": "scheduling.k8s.io"
+        }
+      ], 
+      "description": "PriorityClass defines mapping from a priority class name to the priority integer value. The value can be any valid integer.", 
+      "properties": {
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "description is an arbitrary string that usually provides guidelines on when this priority class should be used."
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "globalDefault": {
+          "type": "boolean", 
+          "description": "globalDefault specifies whether this PriorityClass should be considered as the default priority for pods that do not have any priority class."
+        }, 
+        "value": {
+          "type": "integer", 
+          "description": "The value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.", 
+          "format": "int32"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.api.admissionregistration.v1alpha1.InitializerConfigurationList": {
       "required": [
         "items"
@@ -7182,6 +7183,11 @@
           "kind": "WatchEvent", 
           "version": "v1beta1", 
           "group": "rbac.authorization.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1alpha1", 
+          "group": "scheduling.k8s.io"
         }, 
         {
           "kind": "WatchEvent", 

@@ -21,14 +21,14 @@
       "type": "string", 
       "format": "date-time"
     }, 
-    "desiredReplicas": {
-      "type": "integer", 
-      "description": "desired number of replicas of pods managed by this autoscaler.", 
-      "format": "int32"
-    }, 
     "currentCPUUtilizationPercentage": {
       "type": "integer", 
       "description": "current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.", 
+      "format": "int32"
+    }, 
+    "desiredReplicas": {
+      "type": "integer", 
+      "description": "desired number of replicas of pods managed by this autoscaler.", 
       "format": "int32"
     }
   }

@@ -9,7 +9,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequest"
       }, 
-      "type": "array"
+      "type": [
+        "array", 
+        "null"
+      ]
     }, 
     "kind": {
       "type": "string", 

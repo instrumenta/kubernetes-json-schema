@@ -22,9 +22,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPGetAction"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ThirdPartyResourceList"
-    }, 
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeList"
     }, 
     {
@@ -286,9 +283,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.ScaleStatus"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ScaleSpec"
-    }, 
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.Scale"
     }, 
     {
@@ -349,9 +343,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1alpha1.RoleBindingList"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ThirdPartyResource"
-    }, 
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NFSVolumeSource"
     }, 
     {
@@ -391,7 +382,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.RuleWithOperations"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.APIVersion"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ScaleSpec"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplate"
@@ -440,6 +431,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1alpha1.Role"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.scheduling.v1alpha1.PriorityClassList"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateList"
@@ -650,6 +644,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.Rule"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.scheduling.v1alpha1.PriorityClass"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.InitializerConfigurationList"

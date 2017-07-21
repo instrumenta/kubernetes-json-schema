@@ -9,7 +9,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1alpha1.CertificateSigningRequest"
       }, 
-      "type": "array"
+      "type": [
+        "array", 
+        "null"
+      ]
     }, 
     "metadata": {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.ListMeta"

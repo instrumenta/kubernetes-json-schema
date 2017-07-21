@@ -15,7 +15,10 @@
       "items": {
         "type": "string"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Required: FC target worldwide names (WWNs)"
     }, 
     "lun": {

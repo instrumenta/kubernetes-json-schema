@@ -17,7 +17,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.policy.v1beta1.PodDisruptionBudget"
       }, 
-      "type": "array"
+      "type": [
+        "array", 
+        "null"
+      ]
     }, 
     "kind": {
       "type": "string", 

@@ -14,7 +14,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.LabelSelectorRequirement"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
     }
   }

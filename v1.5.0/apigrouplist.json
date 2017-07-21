@@ -10,7 +10,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.APIGroup"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "groups is a list of APIGroup."
     }
   }

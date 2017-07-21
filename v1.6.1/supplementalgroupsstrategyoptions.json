@@ -7,7 +7,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.IDRange"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end."
     }, 
     "rule": {

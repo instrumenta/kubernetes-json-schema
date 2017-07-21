@@ -15,6 +15,10 @@
       "type": "string", 
       "description": "groupVersion is the group and version this APIResourceList is for."
     }, 
+    "apiVersion": {
+      "type": "string", 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }, 
     "resources": {
       "items": {
         "required": [
@@ -29,7 +33,10 @@
             "items": {
               "type": "string"
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "shortNames is a list of suggested short names of the resource."
           }, 
           "namespaced": {
@@ -44,7 +51,10 @@
             "items": {
               "type": "string"
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)"
           }, 
           "name": {
@@ -53,12 +63,11 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "resources contains the name of the resources and if they are namespaced."
-    }, 
-    "apiVersion": {
-      "type": "string", 
-      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
     }
   }
 }

@@ -15,7 +15,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.APIResource"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "resources contains the name of the resources and if they are namespaced."
     }
   }

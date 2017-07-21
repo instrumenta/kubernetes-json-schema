@@ -7,10 +7,9 @@
   "type": "object", 
   "description": "A StatefulSetSpec is the specification of a StatefulSet.", 
   "properties": {
-    "replicas": {
-      "type": "integer", 
-      "description": "Replicas is the desired number of replicas of the given Template. These are replicas in the sense that they are instantiations of the same Template, but individual replicas also have a consistent identity. If unspecified, defaults to 1.", 
-      "format": "int32"
+    "selector": {
+      "description": "Selector is a label query over pods that should match the replica count. If empty, defaulted to labels on the pod template. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/unversioned.LabelSelector"
     }, 
     "serviceName": {
       "type": "string", 
@@ -20,16 +19,20 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.PersistentVolumeClaim"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "VolumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet controller is responsible for mapping network identities to claims in a way that maintains the identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in one container in the template. A claim in this list takes precedence over any volumes in the template, with the same name."
     }, 
     "template": {
       "description": "Template is the object that describes the pod that will be created if insufficient replicas are detected. Each pod stamped out by the StatefulSet will fulfill this Template, but have a unique identity from the rest of the StatefulSet.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/v1.PodTemplateSpec"
     }, 
-    "selector": {
-      "description": "Selector is a label query over pods that should match the replica count. If empty, defaulted to labels on the pod template. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.2/_definitions.json#/definitions/unversioned.LabelSelector"
+    "replicas": {
+      "type": "integer", 
+      "description": "Replicas is the desired number of replicas of the given Template. These are replicas in the sense that they are instantiations of the same Template, but individual replicas also have a consistent identity. If unspecified, defaults to 1.", 
+      "format": "int32"
     }
   }
 }

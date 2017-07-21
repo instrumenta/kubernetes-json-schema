@@ -6,7 +6,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1alpha1.CertificateSigningRequestCondition"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Conditions applied to the request, such as approval or denial."
     }, 
     "certificate": {

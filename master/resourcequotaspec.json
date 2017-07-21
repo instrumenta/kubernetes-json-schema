@@ -7,7 +7,10 @@
       "items": {
         "type": "string"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects."
     }, 
     "hard": {

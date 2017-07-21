@@ -10,7 +10,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.IDRange"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Ranges are the allowed ranges of uids that may be used."
     }, 
     "rule": {

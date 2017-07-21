@@ -18,10 +18,13 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ComponentCondition"
       }, 
-      "x-kubernetes-patch-merge-key": "type", 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of component conditions observed", 
-      "x-kubernetes-patch-strategy": "merge"
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
     }, 
     "apiVersion": {
       "type": "string", 

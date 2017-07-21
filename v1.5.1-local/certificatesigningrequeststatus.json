@@ -6,7 +6,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestCondition"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Conditions applied to the request, such as approval or denial."
     }, 
     "certificate": {

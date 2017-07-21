@@ -22,6 +22,10 @@
       "type": "string", 
       "description": "groupVersion is the group and version this APIResourceList is for."
     }, 
+    "apiVersion": {
+      "type": "string", 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+    }, 
     "resources": {
       "items": {
         "required": [
@@ -37,7 +41,10 @@
             "items": {
               "type": "string"
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "shortNames is a list of suggested short names of the resource."
           }, 
           "namespaced": {
@@ -56,7 +63,10 @@
             "items": {
               "type": "string"
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)"
           }, 
           "singularName": {
@@ -67,17 +77,19 @@
             "items": {
               "type": "string"
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "categories is a list of the grouped resources this resource belongs to (e.g. 'all')"
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "resources contains the name of the resources and if they are namespaced."
-    }, 
-    "apiVersion": {
-      "type": "string", 
-      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
     }
   }
 }

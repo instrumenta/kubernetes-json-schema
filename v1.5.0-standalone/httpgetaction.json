@@ -36,7 +36,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Custom headers to set in the request. HTTP allows repeated headers."
     }, 
     "port": {

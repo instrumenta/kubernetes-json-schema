@@ -62,7 +62,10 @@
               }
             }
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
         }
       }

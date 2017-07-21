@@ -10,9 +10,9 @@
       "type": "string", 
       "description": "Set DNS policy for containers within the pod. One of 'ClusterFirst' or 'Default'. Defaults to \"ClusterFirst\"."
     }, 
-    "hostNetwork": {
-      "type": "boolean", 
-      "description": "Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Default to false."
+    "hostname": {
+      "type": "string", 
+      "description": "Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value."
     }, 
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.", 
@@ -22,9 +22,9 @@
       "type": "string", 
       "description": "ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md"
     }, 
-    "hostname": {
-      "type": "string", 
-      "description": "Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value."
+    "hostNetwork": {
+      "type": "boolean", 
+      "description": "Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Default to false."
     }, 
     "serviceAccount": {
       "type": "string", 
@@ -51,15 +51,24 @@
       "type": "string", 
       "description": "Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to Always. More info: http://kubernetes.io/docs/user-guide/pod-states#restartpolicy"
     }, 
-    "hostPID": {
-      "type": "boolean", 
-      "description": "Use the host's pid namespace. Optional: Default to false."
+    "containers": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.Container"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
     }, 
     "volumes": {
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.Volume"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of volumes that can be mounted by containers belonging to the pod. More info: http://kubernetes.io/docs/user-guide/volumes"
     }, 
     "hostIPC": {
@@ -74,15 +83,15 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.LocalObjectReference"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod"
     }, 
-    "containers": {
-      "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.6/_definitions.json#/definitions/v1.Container"
-      }, 
-      "type": "array", 
-      "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
+    "hostPID": {
+      "type": "boolean", 
+      "description": "Use the host's pid namespace. Optional: Default to false."
     }, 
     "nodeName": {
       "type": "string", 

@@ -10,7 +10,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v2alpha1.CronJob"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Items is the list of CronJob."
     }, 
     "kind": {

@@ -10,7 +10,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1beta1.StatefulSet"
       }, 
-      "type": "array"
+      "type": [
+        "array", 
+        "null"
+      ]
     }, 
     "kind": {
       "type": "string", 

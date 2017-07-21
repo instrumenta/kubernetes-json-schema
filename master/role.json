@@ -17,7 +17,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.rbac.v1beta1.PolicyRule"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Rules holds all the PolicyRules for this Role"
     }, 
     "kind": {

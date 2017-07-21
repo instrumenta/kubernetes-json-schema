@@ -22,7 +22,10 @@
           "items": {
             "type": "string"
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "The names of groups this user is a part of."
         }, 
         "extra": {
@@ -30,7 +33,10 @@
             "items": {
               "type": "string"
             }, 
-            "type": "array"
+            "type": [
+              "array", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "Any additional information provided by the authenticator."

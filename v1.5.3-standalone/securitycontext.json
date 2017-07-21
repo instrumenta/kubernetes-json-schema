@@ -19,14 +19,20 @@
           "items": {
             "type": "string"
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "Added capabilities"
         }, 
         "drop": {
           "items": {
             "type": "string"
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "Removed capabilities"
         }
       }
@@ -38,13 +44,13 @@
     "seLinuxOptions": {
       "description": "SELinuxOptions are the labels to be applied to the container", 
       "properties": {
-        "type": {
-          "type": "string", 
-          "description": "Type is a SELinux type label that applies to the container."
-        }, 
         "role": {
           "type": "string", 
           "description": "Role is a SELinux role label that applies to the container."
+        }, 
+        "type": {
+          "type": "string", 
+          "description": "Type is a SELinux type label that applies to the container."
         }, 
         "user": {
           "type": "string", 

@@ -14,7 +14,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/unversioned.LabelSelectorRequirement"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
     }
   }

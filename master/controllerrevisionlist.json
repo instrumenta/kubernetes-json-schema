@@ -17,7 +17,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta1.ControllerRevision"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Items is the list of ControllerRevisions"
     }, 
     "kind": {
