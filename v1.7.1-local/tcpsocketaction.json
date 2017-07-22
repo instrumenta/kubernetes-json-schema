@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "port"
+  ], 
+  "type": "object", 
+  "description": "TCPSocketAction describes an action based on opening a socket", 
+  "properties": {
+    "host": {
+      "type": "string", 
+      "description": "Optional: Host name to connect to, defaults to the pod IP."
+    }, 
+    "port": {
+      "description": "Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }
+  }
+}

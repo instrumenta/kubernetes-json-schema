@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "min", 
+    "max"
+  ], 
+  "type": "object", 
+  "description": "Host Port Range defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.", 
+  "properties": {
+    "max": {
+      "type": "integer", 
+      "description": "max is the end of the range, inclusive.", 
+      "format": "int32"
+    }, 
+    "min": {
+      "type": "integer", 
+      "description": "min is the start of the range, inclusive.", 
+      "format": "int32"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "nodeSelectorTerms"
+  ], 
+  "type": "object", 
+  "description": "A node selector represents the union of the results of one or more label queries over a set of nodes; that is, it represents the OR of the selectors represented by the node selector terms.", 
+  "properties": {
+    "nodeSelectorTerms": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeSelectorTerm"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Required. A list of node selector terms. The terms are ORed."
+    }
+  }
+}
