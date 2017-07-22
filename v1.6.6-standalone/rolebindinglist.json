@@ -80,10 +80,7 @@
                 }
               }
             }, 
-            "type": [
-              "array", 
-              "null"
-            ], 
+            "type": "array", 
             "description": "Subjects holds references to the objects the role applies to."
           }, 
           "apiVersion": {

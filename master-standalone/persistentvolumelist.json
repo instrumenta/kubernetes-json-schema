@@ -359,10 +359,7 @@
                     "items": {
                       "type": "string"
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
+                    "type": "array", 
                     "description": "Required: FC target worldwide names (WWNs)"
                   }, 
                   "lun": {
@@ -475,10 +472,7 @@
                     "items": {
                       "type": "string"
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
+                    "type": "array", 
                     "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }, 
                   "pool": {
@@ -700,10 +694,7 @@
                     "items": {
                       "type": "string"
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
+                    "type": "array", 
                     "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }
                 }
@@ -948,10 +939,7 @@
                         }
                       }
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
+                    "type": "array", 
                     "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
                   }
                 }

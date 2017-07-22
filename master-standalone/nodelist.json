@@ -76,10 +76,7 @@
                       "items": {
                         "type": "string"
                       }, 
-                      "type": [
-                        "array", 
-                        "null"
-                      ], 
+                      "type": "array", 
                       "description": "Names by which this image is known. e.g. [\"gcr.io/google_containers/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]"
                     }
                   }
@@ -527,10 +524,7 @@
                         }
                       }
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
+                    "type": "array", 
                     "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
                   }
                 }

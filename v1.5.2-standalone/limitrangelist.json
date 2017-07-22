@@ -65,10 +65,7 @@
                     }
                   }
                 }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
+                "type": "array", 
                 "description": "Limits is the list of LimitRangeItem objects that are enforced."
               }
             }

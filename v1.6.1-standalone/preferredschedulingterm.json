@@ -41,10 +41,7 @@
               }
             }
           }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
+          "type": "array", 
           "description": "Required. A list of node selector requirements. The requirements are ANDed."
         }
       }

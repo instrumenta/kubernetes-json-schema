@@ -63,10 +63,7 @@
             "items": {
               "type": "string"
             }, 
-            "type": [
-              "array", 
-              "null"
-            ], 
+            "type": "array", 
             "description": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)"
           }, 
           "singularName": {

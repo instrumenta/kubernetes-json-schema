@@ -144,10 +144,7 @@
                     }
                   }
                 }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
+                "type": "array", 
                 "description": "The list of ports that are exposed by this service. More info: http://kubernetes.io/docs/user-guide/services#virtual-ips-and-service-proxies"
               }
             }

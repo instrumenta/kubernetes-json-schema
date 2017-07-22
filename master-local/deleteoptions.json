@@ -24,6 +24,11 @@
     }, 
     {
       "kind": "DeleteOptions", 
+      "version": "v1beta2", 
+      "group": "apps"
+    }, 
+    {
+      "kind": "DeleteOptions", 
       "version": "v1", 
       "group": "authentication.k8s.io"
     }, 

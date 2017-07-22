@@ -772,10 +772,7 @@
                   }
                 }
               }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
+              "type": "array", 
               "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
             }, 
             "nodeName": {

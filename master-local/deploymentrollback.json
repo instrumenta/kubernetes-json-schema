@@ -1,5 +1,5 @@
 {
-  "description": "DeploymentRollback stores the information required to rollback a deployment.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentRollback stores the information required to rollback a deployment.", 
   "required": [
     "name", 
     "rollbackTo"
@@ -7,8 +7,8 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "DeploymentRollback", 
-      "version": "v1beta1", 
-      "group": "extensions"
+      "version": "v1beta2", 
+      "group": "apps"
     }
   ], 
   "$schema": "http://json-schema.org/schema#", 
@@ -35,7 +35,7 @@
     }, 
     "rollbackTo": {
       "description": "The config of this deployment rollback.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RollbackConfig"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.RollbackConfig"
     }
   }
 }

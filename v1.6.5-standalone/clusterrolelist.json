@@ -48,10 +48,7 @@
                   "items": {
                     "type": "string"
                   }, 
-                  "type": [
-                    "array", 
-                    "null"
-                  ], 
+                  "type": "array", 
                   "description": "Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds."
                 }, 
                 "nonResourceURLs": {
@@ -86,10 +83,7 @@
                 }
               }
             }, 
-            "type": [
-              "array", 
-              "null"
-            ], 
+            "type": "array", 
             "description": "Rules holds all the PolicyRules for this ClusterRole"
           }, 
           "kind": {

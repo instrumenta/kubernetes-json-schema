@@ -44,18 +44,12 @@
                     }
                   }
                 }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
+                "type": "array", 
                 "description": "Required. A list of node selector requirements. The requirements are ANDed."
               }
             }
           }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
+          "type": "array", 
           "description": "Required. A list of node selector terms. The terms are ORed."
         }
       }
@@ -102,10 +96,7 @@
                     }
                   }
                 }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
+                "type": "array", 
                 "description": "Required. A list of node selector requirements. The requirements are ANDed."
               }
             }

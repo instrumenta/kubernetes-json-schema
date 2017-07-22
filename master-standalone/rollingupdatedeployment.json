@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "Spec to control the desired behavior of rolling update.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Spec to control the desired behavior of rolling update.", 
   "properties": {
     "maxSurge": {
       "oneOf": [

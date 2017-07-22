@@ -1,7 +1,7 @@
 {
   "oneOf": [
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.SelfSubjectAccessReview"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetUpdateStrategy"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1alpha1.ExternalAdmissionHookConfigurationList"
@@ -46,6 +46,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.IngressBackend"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.RollbackConfig"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.DeploymentStatus"
     }, 
     {
@@ -67,16 +70,25 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentCondition"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceStatus"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LoadBalancerIngress"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetSpec"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.ScaleSpec"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2alpha1.ObjectMetricStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.Scale"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeStatus"
@@ -148,13 +160,19 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Capabilities"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSet"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.Eviction"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerList"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.certificates.v1beta1.CertificateSigningRequestList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentList"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.StatefulSetUpdateStrategy"
@@ -205,7 +223,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2alpha1.MetricSpec"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.certificates.v1beta1.CertificateSigningRequestList"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerStatus"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1beta1.ClusterRole"
@@ -301,7 +319,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.RollingUpdateDeployment"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Namespace"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.SelfSubjectAccessReview"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSetCondition"
@@ -326,6 +344,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CinderVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.Deployment"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceCondition"
@@ -467,6 +488,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ScaleStatus"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodDisruptionBudgetList"
@@ -667,6 +691,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.NetworkPolicyPort"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.RollingUpdateDeployment"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1alpha1.RoleList"
     }, 
     {
@@ -685,10 +712,13 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerCondition"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SELinuxOptions"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Namespace"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SubjectAccessReviewSpec"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1alpha1.RoleRef"
@@ -727,6 +757,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.DeploymentStrategy"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1alpha1.ClusterRoleBinding"
     }, 
     {
@@ -737,6 +770,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentStatus"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStateRunning"
@@ -784,7 +820,13 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.ScaleStatus"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ScaleSpec"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ExecAction"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector"
@@ -847,7 +889,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Service"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SubjectAccessReviewSpec"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SELinuxOptions"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2alpha1.CrossVersionObjectReference"
@@ -856,7 +898,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetList"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1.TokenReviewStatus"
@@ -889,6 +931,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.PodSecurityPolicyList"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec"
     }, 
     {
@@ -913,7 +958,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v2alpha1.CronJobList"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.PodSecurityPolicyList"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentStrategy"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.StatefulSetList"
@@ -1006,6 +1051,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.DaemonSetStatus"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentSpec"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSet"
     }, 
     {
@@ -1021,6 +1069,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapEnvSource"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.RollingUpdateStatefulSetStrategy"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v2alpha1.JobTemplateSpec"
     }, 
     {
@@ -1033,7 +1084,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ExecAction"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentRollback"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource"
@@ -1076,6 +1127,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.StatefulSet"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetStatus"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeList"

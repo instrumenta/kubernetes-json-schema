@@ -1,5 +1,5 @@
 {
-  "description": "DeploymentRollback stores the information required to rollback a deployment.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentRollback stores the information required to rollback a deployment.", 
   "required": [
     "name", 
     "rollbackTo"
@@ -7,14 +7,15 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "DeploymentRollback", 
-      "version": "v1beta1", 
-      "group": "extensions"
+      "version": "v1beta2", 
+      "group": "apps"
     }
   ], 
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
   "properties": {
     "rollbackTo": {
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it.", 
       "properties": {
         "revision": {
           "type": "integer", 

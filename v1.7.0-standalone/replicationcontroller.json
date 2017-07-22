@@ -437,18 +437,12 @@
                                         }
                                       }
                                     }, 
-                                    "type": [
-                                      "array", 
-                                      "null"
-                                    ], 
+                                    "type": "array", 
                                     "description": "Required. A list of node selector requirements. The requirements are ANDed."
                                   }
                                 }
                               }, 
-                              "type": [
-                                "array", 
-                                "null"
-                              ], 
+                              "type": "array", 
                               "description": "Required. A list of node selector terms. The terms are ORed."
                             }
                           }
@@ -497,10 +491,7 @@
                                         }
                                       }
                                     }, 
-                                    "type": [
-                                      "array", 
-                                      "null"
-                                    ], 
+                                    "type": "array", 
                                     "description": "Required. A list of node selector requirements. The requirements are ANDed."
                                   }
                                 }
@@ -1567,10 +1558,7 @@
                     }
                   }, 
                   "x-kubernetes-patch-merge-key": "name", 
-                  "type": [
-                    "array", 
-                    "null"
-                  ], 
+                  "type": "array", 
                   "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.", 
                   "x-kubernetes-patch-strategy": "merge"
                 }, 
@@ -1907,10 +1895,7 @@
                                 }
                               }
                             }, 
-                            "type": [
-                              "array", 
-                              "null"
-                            ], 
+                            "type": "array", 
                             "description": "list of volume projections"
                           }, 
                           "defaultMode": {
@@ -2067,10 +2052,7 @@
                             "items": {
                               "type": "string"
                             }, 
-                            "type": [
-                              "array", 
-                              "null"
-                            ], 
+                            "type": "array", 
                             "description": "Required: FC target worldwide names (WWNs)"
                           }, 
                           "lun": {
@@ -2249,10 +2231,7 @@
                             "items": {
                               "type": "string"
                             }, 
-                            "type": [
-                              "array", 
-                              "null"
-                            ], 
+                            "type": "array", 
                             "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                           }
                         }
@@ -2454,10 +2433,7 @@
                             "items": {
                               "type": "string"
                             }, 
-                            "type": [
-                              "array", 
-                              "null"
-                            ], 
+                            "type": "array", 
                             "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                           }, 
                           "pool": {
@@ -3612,10 +3588,7 @@
                           }
                         }
                       }, 
-                      "type": [
-                        "array", 
-                        "null"
-                      ], 
+                      "type": "array", 
                       "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
                     }
                   }
@@ -3867,10 +3840,7 @@
                   }
                 }
               }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
+              "type": "array", 
               "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
             }
           }

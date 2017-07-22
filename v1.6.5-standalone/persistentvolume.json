@@ -283,10 +283,7 @@
               "items": {
                 "type": "string"
               }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
+              "type": "array", 
               "description": "Required: FC target worldwide names (WWNs)"
             }, 
             "lun": {
@@ -394,10 +391,7 @@
               "items": {
                 "type": "string"
               }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
+              "type": "array", 
               "description": "Required: Monitors is a collection of Ceph monitors More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
             }
           }
@@ -595,10 +589,7 @@
               "items": {
                 "type": "string"
               }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
+              "type": "array", 
               "description": "A collection of Ceph monitors. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
             }, 
             "pool": {

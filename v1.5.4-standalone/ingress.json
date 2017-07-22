@@ -90,10 +90,7 @@
                         }
                       }
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
+                    "type": "array", 
                     "description": "A collection of paths that map requests to backends."
                   }
                 }
