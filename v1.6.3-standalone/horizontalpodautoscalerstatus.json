@@ -63,7 +63,10 @@
                     "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
                   }, 
                   "apiVersion": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "API version of the referent"
                   }
                 }
@@ -113,7 +116,10 @@
       "format": "int32"
     }, 
     "lastScaleTime": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "format": "date-time"
     }, 
     "desiredReplicas": {

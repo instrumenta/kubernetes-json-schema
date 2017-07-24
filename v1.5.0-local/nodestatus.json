@@ -43,7 +43,10 @@
     }, 
     "volumesInUse": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -56,7 +59,10 @@
       "$ref": "_definitions.json#/definitions/v1.NodeDaemonEndpoints"
     }, 
     "phase": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-phase The field is never populated, and now is deprecated."
     }, 
     "images": {

@@ -11,7 +11,10 @@
   "properties": {
     "allowedCapabilities": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -51,7 +54,10 @@
     }, 
     "volumes": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -65,7 +71,10 @@
     }, 
     "defaultAddCapabilities": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -75,7 +84,10 @@
     }, 
     "requiredDropCapabilities": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 

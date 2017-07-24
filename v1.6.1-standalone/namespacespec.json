@@ -5,7 +5,10 @@
   "properties": {
     "finalizers": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 

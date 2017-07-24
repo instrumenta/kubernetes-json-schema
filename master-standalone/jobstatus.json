@@ -14,11 +14,17 @@
       "format": "int32"
     }, 
     "completionTime": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "format": "date-time"
     }, 
     "startTime": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "format": "date-time"
     }, 
     "active": {
@@ -39,19 +45,31 @@
             "description": "Status of the condition, one of True, False, Unknown."
           }, 
           "lastTransitionTime": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }, 
           "reason": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "(brief) reason for the condition's last transition."
           }, 
           "lastProbeTime": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }, 
           "message": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "Human readable message indicating details about last transition."
           }, 
           "type": {

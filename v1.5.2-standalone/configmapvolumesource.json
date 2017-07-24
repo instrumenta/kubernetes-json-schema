@@ -38,7 +38,10 @@
       "format": "int32"
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
     }
   }

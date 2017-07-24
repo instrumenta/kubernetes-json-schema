@@ -5,7 +5,10 @@
   "properties": {
     "scopes": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 

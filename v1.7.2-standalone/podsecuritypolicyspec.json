@@ -11,7 +11,10 @@
   "properties": {
     "allowedCapabilities": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -75,7 +78,10 @@
           "description": "Ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end."
         }, 
         "rule": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Rule is the strategy that will dictate what supplemental groups is used in the SecurityContext."
         }
       }
@@ -110,7 +116,10 @@
           "description": "Ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end."
         }, 
         "rule": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Rule is the strategy that will dictate what FSGroup is used in the SecurityContext."
         }
       }
@@ -163,7 +172,10 @@
     }, 
     "volumes": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -181,19 +193,31 @@
           "description": "SELinuxOptions are the labels to be applied to the container", 
           "properties": {
             "role": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Role is a SELinux role label that applies to the container."
             }, 
             "type": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Type is a SELinux type label that applies to the container."
             }, 
             "user": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "User is a SELinux user label that applies to the container."
             }, 
             "level": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Level is SELinux level label that applies to the container."
             }
           }
@@ -206,7 +230,10 @@
     }, 
     "defaultAddCapabilities": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -216,7 +243,10 @@
     }, 
     "requiredDropCapabilities": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 

@@ -11,21 +11,33 @@
       "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
       "properties": {
         "name": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
         }
       }
     }, 
     "image": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
     }, 
     "keyring": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
     }, 
     "fsType": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
     }, 
     "readOnly": {
@@ -33,12 +45,18 @@
       "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
     }, 
     "user": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
     }, 
     "monitors": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -47,7 +65,10 @@
       "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
     }, 
     "pool": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
     }
   }

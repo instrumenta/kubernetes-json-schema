@@ -12,15 +12,24 @@
       "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
     }, 
     "mountPath": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
     }, 
     "subPath": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "This must match the Name of a Volume."
     }
   }

@@ -6,15 +6,24 @@
   "type": "object", 
   "properties": {
     "message": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "human readable message with details about the request state"
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "request approval state, currently Approved or Denied."
     }, 
     "reason": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "brief reason for the request state"
     }, 
     "lastUpdateTime": {

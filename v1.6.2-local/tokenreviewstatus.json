@@ -12,7 +12,10 @@
       "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.authentication.v1beta1.UserInfo"
     }, 
     "error": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Error indicates that the token couldn't be checked"
     }
   }

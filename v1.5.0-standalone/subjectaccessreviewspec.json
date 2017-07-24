@@ -6,7 +6,10 @@
     "extra": {
       "additionalProperties": {
         "items": {
-          "type": "string"
+          "type": [
+            "string", 
+            "null"
+          ]
         }, 
         "type": [
           "array", 
@@ -20,18 +23,27 @@
       "description": "NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface", 
       "properties": {
         "path": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Path is the URL path of the request"
         }, 
         "verb": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Verb is the standard HTTP verb"
         }
       }
     }, 
     "group": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -40,38 +52,62 @@
       "description": "Groups is the groups you're testing for."
     }, 
     "user": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "User is the user you're testing for. If you specify \"User\" but not \"Group\", then is it interpreted as \"What if User were not a member of any groups"
     }, 
     "resourceAttributes": {
       "description": "ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface", 
       "properties": {
         "resource": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Resource is one of the existing resource types.  \"*\" means all."
         }, 
         "name": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Name is the name of the resource being requested for a \"get\" or deleted for a \"delete\". \"\" (empty) means all."
         }, 
         "namespace": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces \"\" (empty) is defaulted for LocalSubjectAccessReviews \"\" (empty) is empty for cluster-scoped resources \"\" (empty) means \"all\" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview"
         }, 
         "verb": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  \"*\" means all."
         }, 
         "version": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Version is the API Version of the Resource.  \"*\" means all."
         }, 
         "group": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Group is the API Group of the Resource.  \"*\" means all."
         }, 
         "subresource": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Subresource is one of the existing resource types.  \"\" means none."
         }
       }

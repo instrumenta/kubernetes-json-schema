@@ -7,15 +7,24 @@
   "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
   "properties": {
     "path": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Path to access on the HTTP server."
     }, 
     "host": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
     }, 
     "scheme": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Scheme to use for connecting to the host. Defaults to HTTP."
     }, 
     "httpHeaders": {

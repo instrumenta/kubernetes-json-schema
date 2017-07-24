@@ -23,7 +23,10 @@
       "$ref": "_definitions.json#/definitions/v1.ObjectReference"
     }, 
     "persistentVolumeReclaimPolicy": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "What happens to a persistent volume when released from its claim. Valid options are Retain (default) and Recycle. Recycling must be supported by the volume plugin underlying this persistent volume. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#recycling-policy"
     }, 
     "azureFile": {
@@ -44,7 +47,10 @@
     }, 
     "accessModes": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 

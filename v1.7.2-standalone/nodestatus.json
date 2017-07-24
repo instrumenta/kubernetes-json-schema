@@ -5,7 +5,10 @@
   "properties": {
     "capacity": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": "object", 
       "description": "Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity"
@@ -50,7 +53,10 @@
           }, 
           "names": {
             "items": {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
             "type": "array", 
             "description": "Names by which this image is known. e.g. [\"gcr.io/google_containers/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]"
@@ -146,14 +152,20 @@
     }, 
     "allocatable": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": "object", 
       "description": "Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity."
     }, 
     "volumesInUse": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -180,7 +192,10 @@
       }
     }, 
     "phase": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated."
     }, 
     "conditions": {
@@ -196,19 +211,31 @@
             "description": "Status of the condition, one of True, False, Unknown."
           }, 
           "lastTransitionTime": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }, 
           "lastHeartbeatTime": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }, 
           "reason": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "(brief) reason for the condition's last transition."
           }, 
           "message": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "Human readable message indicating details about last transition."
           }, 
           "type": {

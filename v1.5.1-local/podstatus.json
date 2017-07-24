@@ -14,11 +14,17 @@
       "description": "The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: http://kubernetes.io/docs/user-guide/pod-states#container-statuses"
     }, 
     "reason": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'OutOfDisk'"
     }, 
     "podIP": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated."
     }, 
     "startTime": {
@@ -26,15 +32,24 @@
       "$ref": "_definitions.json#/definitions/unversioned.Time"
     }, 
     "hostIP": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "IP address of the host to which the pod is assigned. Empty if not yet scheduled."
     }, 
     "phase": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Current condition of the pod. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-phase"
     }, 
     "message": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "A human readable message indicating details about why the pod is in this condition."
     }, 
     "conditions": {

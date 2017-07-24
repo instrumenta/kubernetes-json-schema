@@ -8,15 +8,24 @@
   "description": "ReplicaSetCondition describes the state of a replica set at a certain point.", 
   "properties": {
     "status": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Status of the condition, one of True, False, Unknown."
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Type of replica set condition."
     }, 
     "message": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "A human readable message indicating details about the transition."
     }, 
     "lastTransitionTime": {
@@ -24,7 +33,10 @@
       "$ref": "_definitions.json#/definitions/unversioned.Time"
     }, 
     "reason": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The reason for the condition's last transition."
     }
   }

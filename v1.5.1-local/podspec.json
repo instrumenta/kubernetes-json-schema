@@ -7,11 +7,17 @@
   "description": "PodSpec is a description of a pod.", 
   "properties": {
     "dnsPolicy": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Set DNS policy for containers within the pod. One of 'ClusterFirst' or 'Default'. Defaults to \"ClusterFirst\"."
     }, 
     "hostname": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value."
     }, 
     "securityContext": {
@@ -19,7 +25,10 @@
       "$ref": "_definitions.json#/definitions/v1.PodSecurityContext"
     }, 
     "serviceAccountName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md"
     }, 
     "hostNetwork": {
@@ -27,12 +36,18 @@
       "description": "Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Default to false."
     }, 
     "serviceAccount": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "DeprecatedServiceAccount is a depreciated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead."
     }, 
     "nodeSelector": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": "object", 
       "description": "NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: http://kubernetes.io/docs/user-guide/node-selection/README"
@@ -48,7 +63,10 @@
       "format": "int64"
     }, 
     "restartPolicy": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to Always. More info: http://kubernetes.io/docs/user-guide/pod-states#restartpolicy"
     }, 
     "containers": {
@@ -76,7 +94,10 @@
       "description": "Use the host's ipc namespace. Optional: Default to false."
     }, 
     "subdomain": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "If specified, the fully qualified Pod hostname will be \"<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>\". If not specified, the pod will not have a domainname at all."
     }, 
     "imagePullSecrets": {
@@ -94,7 +115,10 @@
       "description": "Use the host's pid namespace. Optional: Default to false."
     }, 
     "nodeName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements."
     }
   }

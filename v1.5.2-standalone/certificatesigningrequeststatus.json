@@ -9,7 +9,10 @@
         ], 
         "properties": {
           "message": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "human readable message with details about the request state"
           }, 
           "type": {
@@ -17,11 +20,17 @@
             "description": "request approval state, currently Approved or Denied."
           }, 
           "reason": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "brief reason for the request state"
           }, 
           "lastUpdateTime": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }
         }
@@ -33,7 +42,10 @@
       "description": "Conditions applied to the request, such as approval or denial."
     }, 
     "certificate": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "If request was approved, the controller will place the issued certificate here.", 
       "format": "byte"
     }

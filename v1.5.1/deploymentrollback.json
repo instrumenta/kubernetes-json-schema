@@ -9,13 +9,19 @@
   "properties": {
     "updatedAnnotations": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": "object", 
       "description": "The annotations to be updated to a deployment"
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Required: This must match the Name of a deployment."
     }, 
     "rollbackTo": {

@@ -7,12 +7,18 @@
       "description": "PersistentVolumeClaimStatus is the current status of a persistent volume claim.", 
       "properties": {
         "phase": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Phase represents the current phase of PersistentVolumeClaim."
         }, 
         "accessModes": {
           "items": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": [
             "array", 
@@ -22,7 +28,10 @@
         }, 
         "capacity": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "Represents the actual resources of the underlying volume."
@@ -30,14 +39,20 @@
       }
     }, 
     "kind": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
     }, 
     "spec": {
       "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes", 
       "properties": {
         "volumeName": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
         }, 
         "selector": {
@@ -45,7 +60,10 @@
           "properties": {
             "matchLabels": {
               "additionalProperties": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": "object", 
               "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -64,7 +82,10 @@
                   }, 
                   "values": {
                     "items": {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     "type": [
                       "array", 
@@ -91,14 +112,20 @@
           "properties": {
             "requests": {
               "additionalProperties": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": "object", 
               "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/"
             }, 
             "limits": {
               "additionalProperties": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": "object", 
               "description": "Limits describes the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/"
@@ -107,7 +134,10 @@
         }, 
         "accessModes": {
           "items": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": [
             "array", 
@@ -118,22 +148,34 @@
       }
     }, 
     "apiVersion": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
     }, 
     "metadata": {
       "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
       "properties": {
         "name": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
         }, 
         "deletionTimestamp": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "format": "date-time"
         }, 
         "clusterName": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
         }, 
         "deletionGracePeriodSeconds": {
@@ -143,18 +185,27 @@
         }, 
         "labels": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
         }, 
         "namespace": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
         }, 
         "finalizers": {
           "items": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": [
             "array", 
@@ -168,11 +219,17 @@
           "format": "int64"
         }, 
         "generateName": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#idempotency"
         }, 
         "resourceVersion": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
         }, 
         "ownerReferences": {
@@ -214,22 +271,34 @@
           "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
         }, 
         "creationTimestamp": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "format": "date-time"
         }, 
         "annotations": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
         }, 
         "selfLink": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
         }, 
         "uid": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
         }
       }

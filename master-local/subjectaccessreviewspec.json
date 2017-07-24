@@ -4,7 +4,10 @@
   "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
   "properties": {
     "user": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "User is the user you're testing for. If you specify \"User\" but not \"Group\", then is it interpreted as \"What if User were not a member of any groups"
     }, 
     "nonResourceAttributes": {
@@ -13,7 +16,10 @@
     }, 
     "group": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -28,7 +34,10 @@
     "extra": {
       "additionalProperties": {
         "items": {
-          "type": "string"
+          "type": [
+            "string", 
+            "null"
+          ]
         }, 
         "type": [
           "array", 

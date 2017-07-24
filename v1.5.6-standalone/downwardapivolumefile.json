@@ -7,7 +7,10 @@
   "description": "DownwardAPIVolumeFile represents information to create the file containing the pod field", 
   "properties": {
     "path": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'"
     }, 
     "fieldRef": {
@@ -21,7 +24,10 @@
           "description": "Path of the field to select in the specified API version."
         }, 
         "apiVersion": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
         }
       }
@@ -38,7 +44,10 @@
       "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
       "properties": {
         "containerName": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Container name: required for volumes, optional for env vars"
         }, 
         "resource": {
@@ -46,7 +55,10 @@
           "description": "Required: resource to select"
         }, 
         "divisor": {
-          "type": "string"
+          "type": [
+            "string", 
+            "null"
+          ]
         }
       }
     }

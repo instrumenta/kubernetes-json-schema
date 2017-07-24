@@ -16,7 +16,10 @@
       "properties": {
         "matchLabels": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -35,7 +38,10 @@
               }, 
               "values": {
                 "items": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 "type": [
                   "array", 
@@ -69,7 +75,10 @@
           "description": "PodSpec is a description of a pod.", 
           "properties": {
             "dnsPolicy": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Set DNS policy for containers within the pod. One of 'ClusterFirstWithHostNet', 'ClusterFirst' or 'Default'. Defaults to \"ClusterFirst\". To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'."
             }, 
             "hostNetwork": {
@@ -77,7 +86,10 @@
               "description": "Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Default to false."
             }, 
             "restartPolicy": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to Always. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#restart-policy"
             }, 
             "automountServiceAccountToken": {
@@ -85,7 +97,10 @@
               "description": "AutomountServiceAccountToken indicates whether a service account token should be automatically mounted."
             }, 
             "priorityClassName": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "If specified, indicates the pod's priority. \"SYSTEM\" is a special keyword which indicates the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default."
             }, 
             "securityContext": {
@@ -104,19 +119,31 @@
                   "description": "SELinuxOptions are the labels to be applied to the container", 
                   "properties": {
                     "role": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "Role is a SELinux role label that applies to the container."
                     }, 
                     "type": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "Type is a SELinux type label that applies to the container."
                     }, 
                     "user": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "User is a SELinux user label that applies to the container."
                     }, 
                     "level": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "Level is SELinux level label that applies to the container."
                     }
                   }
@@ -140,7 +167,10 @@
               }
             }, 
             "nodeName": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements."
             }, 
             "hostAliases": {
@@ -148,12 +178,18 @@
                 "description": "HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file.", 
                 "properties": {
                   "ip": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "IP address of the host file entry."
                   }, 
                   "hostnames": {
                     "items": {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     "type": [
                       "array", 
@@ -172,16 +208,25 @@
               "x-kubernetes-patch-strategy": "merge"
             }, 
             "hostname": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value."
             }, 
             "serviceAccount": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "DeprecatedServiceAccount is a depreciated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead."
             }, 
             "nodeSelector": {
               "additionalProperties": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": "object", 
               "description": "NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/"
@@ -206,7 +251,10 @@
                             "properties": {
                               "matchLabels": {
                                 "additionalProperties": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": "object", 
                                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -225,7 +273,10 @@
                                     }, 
                                     "values": {
                                       "items": {
-                                        "type": "string"
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
                                       }, 
                                       "type": [
                                         "array", 
@@ -251,7 +302,10 @@
                           }, 
                           "namespaces": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -260,7 +314,10 @@
                             "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                           }, 
                           "topologyKey": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
                           }
                         }
@@ -287,7 +344,10 @@
                                 "properties": {
                                   "matchLabels": {
                                     "additionalProperties": {
-                                      "type": "string"
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
                                     }, 
                                     "type": "object", 
                                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -306,7 +366,10 @@
                                         }, 
                                         "values": {
                                           "items": {
-                                            "type": "string"
+                                            "type": [
+                                              "string", 
+                                              "null"
+                                            ]
                                           }, 
                                           "type": [
                                             "array", 
@@ -332,7 +395,10 @@
                               }, 
                               "namespaces": {
                                 "items": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": [
                                   "array", 
@@ -341,7 +407,10 @@
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                               }, 
                               "topologyKey": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
                               }
                             }
@@ -391,7 +460,10 @@
                                     }, 
                                     "values": {
                                       "items": {
-                                        "type": "string"
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
                                       }, 
                                       "type": [
                                         "array", 
@@ -445,7 +517,10 @@
                                     }, 
                                     "values": {
                                       "items": {
-                                        "type": "string"
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
                                       }, 
                                       "type": [
                                         "array", 
@@ -493,7 +568,10 @@
                             "properties": {
                               "matchLabels": {
                                 "additionalProperties": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": "object", 
                                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -512,7 +590,10 @@
                                     }, 
                                     "values": {
                                       "items": {
-                                        "type": "string"
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
                                       }, 
                                       "type": [
                                         "array", 
@@ -538,7 +619,10 @@
                           }, 
                           "namespaces": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -547,7 +631,10 @@
                             "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                           }, 
                           "topologyKey": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
                           }
                         }
@@ -574,7 +661,10 @@
                                 "properties": {
                                   "matchLabels": {
                                     "additionalProperties": {
-                                      "type": "string"
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
                                     }, 
                                     "type": "object", 
                                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -593,7 +683,10 @@
                                         }, 
                                         "values": {
                                           "items": {
-                                            "type": "string"
+                                            "type": [
+                                              "string", 
+                                              "null"
+                                            ]
                                           }, 
                                           "type": [
                                             "array", 
@@ -619,7 +712,10 @@
                               }, 
                               "namespaces": {
                                 "items": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": [
                                   "array", 
@@ -628,7 +724,10 @@
                                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                               }, 
                               "topologyKey": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
                               }
                             }
@@ -655,12 +754,18 @@
                 "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.", 
                 "properties": {
                   "operator": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category."
                   }, 
                   "key": {
                     "x-kubernetes-patch-merge-key": "key", 
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.", 
                     "x-kubernetes-patch-strategy": "merge"
                   }, 
@@ -670,11 +775,17 @@
                     "format": "int64"
                   }, 
                   "effect": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute."
                   }, 
                   "value": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string."
                   }
                 }
@@ -686,7 +797,10 @@
               "description": "If specified, the pod's tolerations."
             }, 
             "subdomain": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "If specified, the fully qualified Pod hostname will be \"<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>\". If not specified, the pod will not have a domainname at all."
             }, 
             "hostPID": {
@@ -694,11 +808,17 @@
               "description": "Use the host's pid namespace. Optional: Default to false."
             }, 
             "serviceAccountName": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/"
             }, 
             "schedulerName": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler."
             }, 
             "hostIPC": {
@@ -733,15 +853,24 @@
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                         "properties": {
                           "path": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Path to access on the HTTP server."
                           }, 
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                           }, 
                           "scheme": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                           }, 
                           "httpHeaders": {
@@ -771,7 +900,10 @@
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -790,7 +922,10 @@
                         "properties": {
                           "command": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -812,13 +947,19 @@
                         "description": "TCPSocketAction describes an action based on opening a socket", 
                         "properties": {
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Optional: Host name to connect to, defaults to the pod IP."
                           }, 
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -846,7 +987,10 @@
                   }, 
                   "args": {
                     "items": {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     "type": [
                       "array", 
@@ -855,7 +999,10 @@
                     "description": "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell"
                   }, 
                   "terminationMessagePath": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated."
                   }, 
                   "name": {
@@ -867,7 +1014,10 @@
                       "description": "EnvFromSource represents the source of a set of ConfigMaps", 
                       "properties": {
                         "prefix": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                         }, 
                         "configMapRef": {
@@ -878,7 +1028,10 @@
                               "description": "Specify whether the ConfigMap must be defined"
                             }, 
                             "name": {
-                              "type": "string", 
+                              "type": [
+                                "string", 
+                                "null"
+                              ], 
                               "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                             }
                           }
@@ -891,7 +1044,10 @@
                               "description": "Specify whether the Secret must be defined"
                             }, 
                             "name": {
-                              "type": "string", 
+                              "type": [
+                                "string", 
+                                "null"
+                              ], 
                               "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                             }
                           }
@@ -905,7 +1061,10 @@
                     "description": "List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated."
                   }, 
                   "workingDir": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated."
                   }, 
                   "image": {
@@ -933,7 +1092,10 @@
                           "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
                         }, 
                         "subPath": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
                         }, 
                         "name": {
@@ -955,7 +1117,10 @@
                     "description": "Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false."
                   }, 
                   "terminationMessagePolicy": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated."
                   }, 
                   "ports": {
@@ -966,11 +1131,17 @@
                       "description": "ContainerPort represents a network port in a single container.", 
                       "properties": {
                         "hostIP": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "What host IP to bind the external port to."
                         }, 
                         "protocol": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "Protocol for port. Must be UDP or TCP. Defaults to \"TCP\"."
                         }, 
                         "containerPort": {
@@ -979,7 +1150,10 @@
                           "format": "int32"
                         }, 
                         "name": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services."
                         }, 
                         "hostPort": {
@@ -999,7 +1173,10 @@
                   }, 
                   "command": {
                     "items": {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     "type": [
                       "array", 
@@ -1028,7 +1205,10 @@
                                   "description": "Specify whether the Secret or it's key must be defined"
                                 }, 
                                 "name": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                                 }, 
                                 "key": {
@@ -1048,7 +1228,10 @@
                                   "description": "Path of the field to select in the specified API version."
                                 }, 
                                 "apiVersion": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
                                 }
                               }
@@ -1064,7 +1247,10 @@
                                   "description": "Specify whether the ConfigMap or it's key must be defined"
                                 }, 
                                 "name": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                                 }, 
                                 "key": {
@@ -1080,7 +1266,10 @@
                               "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
                               "properties": {
                                 "containerName": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Container name: required for volumes, optional for env vars"
                                 }, 
                                 "resource": {
@@ -1088,7 +1277,10 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }
                               }
                             }
@@ -1099,7 +1291,10 @@
                           "description": "Name of the environment variable. Must be a C_IDENTIFIER."
                         }, 
                         "value": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\"."
                         }
                       }
@@ -1113,7 +1308,10 @@
                     "x-kubernetes-patch-strategy": "merge"
                   }, 
                   "imagePullPolicy": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images"
                   }, 
                   "readinessProbe": {
@@ -1126,15 +1324,24 @@
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                         "properties": {
                           "path": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Path to access on the HTTP server."
                           }, 
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                           }, 
                           "scheme": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                           }, 
                           "httpHeaders": {
@@ -1164,7 +1371,10 @@
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -1183,7 +1393,10 @@
                         "properties": {
                           "command": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -1205,13 +1418,19 @@
                         "description": "TCPSocketAction describes an action based on opening a socket", 
                         "properties": {
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Optional: Host name to connect to, defaults to the pod IP."
                           }, 
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -1254,7 +1473,10 @@
                         "properties": {
                           "add": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -1264,7 +1486,10 @@
                           }, 
                           "drop": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -1282,19 +1507,31 @@
                         "description": "SELinuxOptions are the labels to be applied to the container", 
                         "properties": {
                           "role": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Role is a SELinux role label that applies to the container."
                           }, 
                           "type": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Type is a SELinux type label that applies to the container."
                           }, 
                           "user": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "User is a SELinux user label that applies to the container."
                           }, 
                           "level": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Level is SELinux level label that applies to the container."
                           }
                         }
@@ -1318,15 +1555,24 @@
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                             "properties": {
                               "path": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Path to access on the HTTP server."
                               }, 
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                               }, 
                               "scheme": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                               }, 
                               "httpHeaders": {
@@ -1356,7 +1602,10 @@
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -1372,13 +1621,19 @@
                             "description": "TCPSocketAction describes an action based on opening a socket", 
                             "properties": {
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Optional: Host name to connect to, defaults to the pod IP."
                               }, 
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -1392,7 +1647,10 @@
                             "properties": {
                               "command": {
                                 "items": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": [
                                   "array", 
@@ -1414,15 +1672,24 @@
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                             "properties": {
                               "path": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Path to access on the HTTP server."
                               }, 
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                               }, 
                               "scheme": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                               }, 
                               "httpHeaders": {
@@ -1452,7 +1719,10 @@
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -1468,13 +1738,19 @@
                             "description": "TCPSocketAction describes an action based on opening a socket", 
                             "properties": {
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Optional: Host name to connect to, defaults to the pod IP."
                               }, 
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -1488,7 +1764,10 @@
                             "properties": {
                               "command": {
                                 "items": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": [
                                   "array", 
@@ -1507,14 +1786,20 @@
                     "properties": {
                       "requests": {
                         "additionalProperties": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "object", 
                         "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
                       }, 
                       "limits": {
                         "additionalProperties": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "object", 
                         "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
@@ -1554,7 +1839,10 @@
                         "description": "VolumeID uniquely identifies a Portworx volume"
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "FSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\". Implicitly inferred to be \"ext4\" if unspecified."
                       }
                     }
@@ -1587,7 +1875,10 @@
                     "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.", 
                     "properties": {
                       "directory": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name."
                       }, 
                       "repository": {
@@ -1595,7 +1886,10 @@
                         "description": "Repository URL"
                       }, 
                       "revision": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Commit hash for the specified revision."
                       }
                     }
@@ -1604,11 +1898,17 @@
                     "description": "Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.", 
                     "properties": {
                       "datasetName": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated"
                       }, 
                       "datasetUUID": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "UUID of the dataset. This is unique identifier of a Flocker dataset"
                       }
                     }
@@ -1617,7 +1917,10 @@
                     "description": "Represents a StorageOS persistent volume resource.", 
                     "properties": {
                       "volumeName": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace."
                       }, 
                       "readOnly": {
@@ -1625,20 +1928,29 @@
                         "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
                       }, 
                       "volumeNamespace": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to \"default\" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created."
                       }, 
                       "secretRef": {
                         "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
                         "properties": {
                           "name": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                           }
                         }
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                       }
                     }
@@ -1657,7 +1969,10 @@
                       }, 
                       "portals": {
                         "items": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": [
                           "array", 
@@ -1669,13 +1984,19 @@
                         "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
                         "properties": {
                           "name": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                           }
                         }
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi"
                       }, 
                       "readOnly": {
@@ -1687,7 +2008,10 @@
                         "description": "whether support iSCSI Session CHAP authentication"
                       }, 
                       "iscsiInterface": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
                       }, 
                       "iqn": {
@@ -1752,7 +2076,10 @@
                                   "description": "Specify whether the ConfigMap or it's keys must be defined"
                                 }, 
                                 "name": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                                 }
                               }
@@ -1794,7 +2121,10 @@
                                   "description": "Specify whether the Secret or its key must be defined"
                                 }, 
                                 "name": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                                 }
                               }
@@ -1824,7 +2154,10 @@
                                             "description": "Path of the field to select in the specified API version."
                                           }, 
                                           "apiVersion": {
-                                            "type": "string", 
+                                            "type": [
+                                              "string", 
+                                              "null"
+                                            ], 
                                             "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
                                           }
                                         }
@@ -1841,7 +2174,10 @@
                                         "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
                                         "properties": {
                                           "containerName": {
-                                            "type": "string", 
+                                            "type": [
+                                              "string", 
+                                              "null"
+                                            ], 
                                             "description": "Container name: required for volumes, optional for env vars"
                                           }, 
                                           "resource": {
@@ -1849,7 +2185,10 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": "string"
+                                            "type": [
+                                              "string", 
+                                              "null"
+                                            ]
                                           }
                                         }
                                       }
@@ -1917,7 +2256,10 @@
                         "format": "int32"
                       }, 
                       "secretName": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret"
                       }
                     }
@@ -1934,7 +2276,10 @@
                       }, 
                       "options": {
                         "additionalProperties": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "object", 
                         "description": "Optional: Extra command options if any."
@@ -1947,13 +2292,19 @@
                         "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
                         "properties": {
                           "name": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                           }
                         }
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
                       }
                     }
@@ -1965,7 +2316,10 @@
                     "description": "Represents a Photon Controller persistent disk resource.", 
                     "properties": {
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                       }, 
                       "pdID": {
@@ -1986,15 +2340,24 @@
                         "description": "The Name of the data disk in the blob storage"
                       }, 
                       "cachingMode": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Host Caching mode: None, Read Only, Read Write."
                       }, 
                       "kind": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Expected values Shared: mulitple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                       }, 
                       "diskURI": {
@@ -2020,7 +2383,10 @@
                       }, 
                       "targetWWNs": {
                         "items": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "array", 
                         "description": "Required: FC target worldwide names (WWNs)"
@@ -2031,7 +2397,10 @@
                         "format": "int32"
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                       }
                     }
@@ -2045,24 +2414,36 @@
                     "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
                     "properties": {
                       "storageMode": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
                       }, 
                       "secretRef": {
                         "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
                         "properties": {
                           "name": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                           }
                         }
                       }, 
                       "protectionDomain": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
                       }, 
                       "volumeName": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
                       }, 
                       "sslEnabled": {
@@ -2074,7 +2455,10 @@
                         "description": "The name of the storage system as configured in ScaleIO."
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                       }, 
                       "readOnly": {
@@ -2082,7 +2466,10 @@
                         "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
                       }, 
                       "storagePool": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
                       }, 
                       "gateway": {
@@ -2095,10 +2482,16 @@
                     "description": "Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.", 
                     "properties": {
                       "sizeLimit": {
-                        "type": "string"
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
                       }, 
                       "medium": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "What type of storage medium should back this directory. The default is \"\" which means to use the node's default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir"
                       }
                     }
@@ -2161,7 +2554,10 @@
                         "format": "int32"
                       }, 
                       "name": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                       }
                     }
@@ -2176,13 +2572,19 @@
                         "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
                         "properties": {
                           "name": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                           }
                         }
                       }, 
                       "secretFile": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                       }, 
                       "readOnly": {
@@ -2190,16 +2592,25 @@
                         "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                       }, 
                       "user": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                       }, 
                       "path": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
                       }, 
                       "monitors": {
                         "items": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "array", 
                         "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
@@ -2247,7 +2658,10 @@
                         "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false."
                       }, 
                       "group": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Group to map volume access to Default is no group"
                       }, 
                       "registry": {
@@ -2255,7 +2669,10 @@
                         "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes"
                       }, 
                       "user": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "User to map volume access to Defaults to serivceaccount user"
                       }
                     }
@@ -2313,7 +2730,10 @@
                         "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
                       }
                     }
@@ -2333,7 +2753,10 @@
                         "description": "volume id used to identify the volume in cinder More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
                       }
                     }
@@ -2358,7 +2781,10 @@
                         "description": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore"
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore"
                       }
                     }
@@ -2374,7 +2800,10 @@
                         "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
                         "properties": {
                           "name": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                           }
                         }
@@ -2384,11 +2813,17 @@
                         "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                       }, 
                       "keyring": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
                       }, 
                       "readOnly": {
@@ -2396,18 +2831,27 @@
                         "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                       }, 
                       "user": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                       }, 
                       "monitors": {
                         "items": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "array", 
                         "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                       }, 
                       "pool": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                       }
                     }
@@ -2437,7 +2881,10 @@
                                   "description": "Path of the field to select in the specified API version."
                                 }, 
                                 "apiVersion": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
                                 }
                               }
@@ -2454,7 +2901,10 @@
                               "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
                               "properties": {
                                 "containerName": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Container name: required for volumes, optional for env vars"
                                 }, 
                                 "resource": {
@@ -2462,7 +2912,10 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }
                               }
                             }
@@ -2488,15 +2941,24 @@
                     "description": "Represents a vSphere volume resource.", 
                     "properties": {
                       "storagePolicyName": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Storage Policy Based Management (SPBM) profile name."
                       }, 
                       "fsType": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
                       }, 
                       "storagePolicyID": {
-                        "type": "string", 
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
                         "description": "Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName."
                       }, 
                       "volumePath": {
@@ -2533,15 +2995,24 @@
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                         "properties": {
                           "path": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Path to access on the HTTP server."
                           }, 
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                           }, 
                           "scheme": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                           }, 
                           "httpHeaders": {
@@ -2571,7 +3042,10 @@
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -2590,7 +3064,10 @@
                         "properties": {
                           "command": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -2612,13 +3089,19 @@
                         "description": "TCPSocketAction describes an action based on opening a socket", 
                         "properties": {
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Optional: Host name to connect to, defaults to the pod IP."
                           }, 
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -2646,7 +3129,10 @@
                   }, 
                   "args": {
                     "items": {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     "type": [
                       "array", 
@@ -2655,7 +3141,10 @@
                     "description": "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell"
                   }, 
                   "terminationMessagePath": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated."
                   }, 
                   "name": {
@@ -2667,7 +3156,10 @@
                       "description": "EnvFromSource represents the source of a set of ConfigMaps", 
                       "properties": {
                         "prefix": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                         }, 
                         "configMapRef": {
@@ -2678,7 +3170,10 @@
                               "description": "Specify whether the ConfigMap must be defined"
                             }, 
                             "name": {
-                              "type": "string", 
+                              "type": [
+                                "string", 
+                                "null"
+                              ], 
                               "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                             }
                           }
@@ -2691,7 +3186,10 @@
                               "description": "Specify whether the Secret must be defined"
                             }, 
                             "name": {
-                              "type": "string", 
+                              "type": [
+                                "string", 
+                                "null"
+                              ], 
                               "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                             }
                           }
@@ -2705,7 +3203,10 @@
                     "description": "List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated."
                   }, 
                   "workingDir": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated."
                   }, 
                   "image": {
@@ -2733,7 +3234,10 @@
                           "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
                         }, 
                         "subPath": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
                         }, 
                         "name": {
@@ -2755,7 +3259,10 @@
                     "description": "Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false."
                   }, 
                   "terminationMessagePolicy": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated."
                   }, 
                   "ports": {
@@ -2766,11 +3273,17 @@
                       "description": "ContainerPort represents a network port in a single container.", 
                       "properties": {
                         "hostIP": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "What host IP to bind the external port to."
                         }, 
                         "protocol": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "Protocol for port. Must be UDP or TCP. Defaults to \"TCP\"."
                         }, 
                         "containerPort": {
@@ -2779,7 +3292,10 @@
                           "format": "int32"
                         }, 
                         "name": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services."
                         }, 
                         "hostPort": {
@@ -2799,7 +3315,10 @@
                   }, 
                   "command": {
                     "items": {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     "type": [
                       "array", 
@@ -2828,7 +3347,10 @@
                                   "description": "Specify whether the Secret or it's key must be defined"
                                 }, 
                                 "name": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                                 }, 
                                 "key": {
@@ -2848,7 +3370,10 @@
                                   "description": "Path of the field to select in the specified API version."
                                 }, 
                                 "apiVersion": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
                                 }
                               }
@@ -2864,7 +3389,10 @@
                                   "description": "Specify whether the ConfigMap or it's key must be defined"
                                 }, 
                                 "name": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                                 }, 
                                 "key": {
@@ -2880,7 +3408,10 @@
                               "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
                               "properties": {
                                 "containerName": {
-                                  "type": "string", 
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ], 
                                   "description": "Container name: required for volumes, optional for env vars"
                                 }, 
                                 "resource": {
@@ -2888,7 +3419,10 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }
                               }
                             }
@@ -2899,7 +3433,10 @@
                           "description": "Name of the environment variable. Must be a C_IDENTIFIER."
                         }, 
                         "value": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\"."
                         }
                       }
@@ -2913,7 +3450,10 @@
                     "x-kubernetes-patch-strategy": "merge"
                   }, 
                   "imagePullPolicy": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images"
                   }, 
                   "readinessProbe": {
@@ -2926,15 +3466,24 @@
                         "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                         "properties": {
                           "path": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Path to access on the HTTP server."
                           }, 
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                           }, 
                           "scheme": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                           }, 
                           "httpHeaders": {
@@ -2964,7 +3513,10 @@
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -2983,7 +3535,10 @@
                         "properties": {
                           "command": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -3005,13 +3560,19 @@
                         "description": "TCPSocketAction describes an action based on opening a socket", 
                         "properties": {
                           "host": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Optional: Host name to connect to, defaults to the pod IP."
                           }, 
                           "port": {
                             "oneOf": [
                               {
-                                "type": "string"
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ]
                               }, 
                               {
                                 "type": "integer"
@@ -3054,7 +3615,10 @@
                         "properties": {
                           "add": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -3064,7 +3628,10 @@
                           }, 
                           "drop": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
                             "type": [
                               "array", 
@@ -3082,19 +3649,31 @@
                         "description": "SELinuxOptions are the labels to be applied to the container", 
                         "properties": {
                           "role": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Role is a SELinux role label that applies to the container."
                           }, 
                           "type": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Type is a SELinux type label that applies to the container."
                           }, 
                           "user": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "User is a SELinux user label that applies to the container."
                           }, 
                           "level": {
-                            "type": "string", 
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
                             "description": "Level is SELinux level label that applies to the container."
                           }
                         }
@@ -3118,15 +3697,24 @@
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                             "properties": {
                               "path": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Path to access on the HTTP server."
                               }, 
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                               }, 
                               "scheme": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                               }, 
                               "httpHeaders": {
@@ -3156,7 +3744,10 @@
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -3172,13 +3763,19 @@
                             "description": "TCPSocketAction describes an action based on opening a socket", 
                             "properties": {
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Optional: Host name to connect to, defaults to the pod IP."
                               }, 
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -3192,7 +3789,10 @@
                             "properties": {
                               "command": {
                                 "items": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": [
                                   "array", 
@@ -3214,15 +3814,24 @@
                             "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
                             "properties": {
                               "path": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Path to access on the HTTP server."
                               }, 
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                               }, 
                               "scheme": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                               }, 
                               "httpHeaders": {
@@ -3252,7 +3861,10 @@
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -3268,13 +3880,19 @@
                             "description": "TCPSocketAction describes an action based on opening a socket", 
                             "properties": {
                               "host": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "Optional: Host name to connect to, defaults to the pod IP."
                               }, 
                               "port": {
                                 "oneOf": [
                                   {
-                                    "type": "string"
+                                    "type": [
+                                      "string", 
+                                      "null"
+                                    ]
                                   }, 
                                   {
                                     "type": "integer"
@@ -3288,7 +3906,10 @@
                             "properties": {
                               "command": {
                                 "items": {
-                                  "type": "string"
+                                  "type": [
+                                    "string", 
+                                    "null"
+                                  ]
                                 }, 
                                 "type": [
                                   "array", 
@@ -3307,14 +3928,20 @@
                     "properties": {
                       "requests": {
                         "additionalProperties": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "object", 
                         "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
                       }, 
                       "limits": {
                         "additionalProperties": {
-                          "type": "string"
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
                         }, 
                         "type": "object", 
                         "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
@@ -3340,7 +3967,10 @@
                 "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
                 "properties": {
                   "name": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
                   }
                 }
@@ -3403,15 +4033,24 @@
               "x-kubernetes-patch-strategy": "merge"
             }, 
             "uid": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
             }, 
             "deletionTimestamp": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "format": "date-time"
             }, 
             "clusterName": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
             }, 
             "deletionGracePeriodSeconds": {
@@ -3421,18 +4060,27 @@
             }, 
             "labels": {
               "additionalProperties": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": "object", 
               "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
             }, 
             "namespace": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
             }, 
             "finalizers": {
               "items": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": [
                 "array", 
@@ -3463,11 +4111,17 @@
                   "description": "Status is a return value for calls that don't return other objects.", 
                   "properties": {
                     "status": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "Status of the operation. One of: \"Success\" or \"Failure\". More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status"
                     }, 
                     "kind": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
                     }, 
                     "code": {
@@ -3476,26 +4130,41 @@
                       "format": "int32"
                     }, 
                     "apiVersion": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
                     }, 
                     "reason": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it."
                     }, 
                     "details": {
                       "description": "StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.", 
                       "properties": {
                         "kind": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
                         }, 
                         "group": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "The group attribute of the resource associated with the status StatusReason."
                         }, 
                         "name": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
                         }, 
                         "retryAfterSeconds": {
@@ -3508,15 +4177,24 @@
                             "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.", 
                             "properties": {
                               "field": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.\n\nExamples:\n  \"name\" - the field \"name\" on the current resource\n  \"items[0].name\" - the field \"name\" on the first array entry in \"items\""
                               }, 
                               "message": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "A human-readable description of the cause of the error.  This field may be presented as-is to a reader."
                               }, 
                               "reason": {
-                                "type": "string", 
+                                "type": [
+                                  "string", 
+                                  "null"
+                                ], 
                                 "description": "A machine-readable description of the cause of the error. If this value is empty there is no information available."
                               }
                             }
@@ -3528,24 +4206,36 @@
                           "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
                         }, 
                         "uid": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
                         }
                       }
                     }, 
                     "message": {
-                      "type": "string", 
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
                       "description": "A human-readable description of the status of this operation."
                     }, 
                     "metadata": {
                       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
                       "properties": {
                         "selfLink": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
                         }, 
                         "resourceVersion": {
-                          "type": "string", 
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
                           "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
                         }
                       }
@@ -3571,30 +4261,48 @@
               }
             }, 
             "resourceVersion": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
             }, 
             "generateName": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency"
             }, 
             "creationTimestamp": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "format": "date-time"
             }, 
             "annotations": {
               "additionalProperties": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": "object", 
               "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
             }, 
             "selfLink": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
             }, 
             "name": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
             }
           }
@@ -3614,7 +4322,10 @@
             "maxUnavailable": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -3624,7 +4335,10 @@
           }
         }, 
         "type": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is OnDelete."
         }
       }

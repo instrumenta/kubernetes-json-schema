@@ -4,11 +4,17 @@
   "description": "ContainerStateWaiting is a waiting state of a container.", 
   "properties": {
     "message": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Message regarding why the container is not yet running."
     }, 
     "reason": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "(brief) reason the container is not yet running."
     }
   }

@@ -11,7 +11,10 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
     }, 
     "protocol": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The IP protocol for this port. Supports \"TCP\" and \"UDP\". Default is TCP."
     }, 
     "port": {
@@ -20,7 +23,10 @@
       "format": "int32"
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The name of this port within the service. This must be a DNS_LABEL. All ports within a ServiceSpec must have unique names. This maps to the 'Name' field in EndpointPort objects. Optional if only one ServicePort is defined on this service."
     }, 
     "nodePort": {

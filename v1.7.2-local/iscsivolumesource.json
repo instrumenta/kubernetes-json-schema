@@ -9,12 +9,18 @@
   "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.", 
   "properties": {
     "targetPortal": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
     }, 
     "portals": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -27,7 +33,10 @@
       "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.LocalObjectReference"
     }, 
     "fsType": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi"
     }, 
     "readOnly": {
@@ -39,7 +48,10 @@
       "description": "whether support iSCSI Session CHAP authentication"
     }, 
     "iscsiInterface": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
     }, 
     "chapAuthDiscovery": {
@@ -47,7 +59,10 @@
       "description": "whether support iSCSI Discovery CHAP authentication"
     }, 
     "iqn": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Target iSCSI Qualified Name."
     }, 
     "lun": {

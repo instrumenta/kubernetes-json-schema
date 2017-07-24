@@ -4,12 +4,18 @@
   "description": "PersistentVolumeClaimStatus is the current status of a persistent volume claim.", 
   "properties": {
     "phase": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Phase represents the current phase of PersistentVolumeClaim."
     }, 
     "accessModes": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 

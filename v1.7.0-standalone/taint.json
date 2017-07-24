@@ -9,20 +9,32 @@
   "properties": {
     "key": {
       "x-kubernetes-patch-merge-key": "key", 
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Required. The taint key to be applied to a node.", 
       "x-kubernetes-patch-strategy": "merge"
     }, 
     "timeAdded": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "format": "date-time"
     }, 
     "effect": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute."
     }, 
     "value": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Required. The taint value corresponding to the taint key."
     }
   }

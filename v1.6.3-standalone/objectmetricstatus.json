@@ -9,7 +9,10 @@
   "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
   "properties": {
     "currentValue": {
-      "type": "string"
+      "type": [
+        "string", 
+        "null"
+      ]
     }, 
     "target": {
       "required": [
@@ -27,13 +30,19 @@
           "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
         }, 
         "apiVersion": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "API version of the referent"
         }
       }
     }, 
     "metricName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "metricName is the name of the metric in question."
     }
   }

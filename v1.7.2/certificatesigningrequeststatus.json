@@ -13,7 +13,10 @@
       "description": "Conditions applied to the request, such as approval or denial."
     }, 
     "certificate": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "If request was approved, the controller will place the issued certificate here.", 
       "format": "byte"
     }

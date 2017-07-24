@@ -50,7 +50,10 @@
       }
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "name is the name of the group."
     }, 
     "versions": {

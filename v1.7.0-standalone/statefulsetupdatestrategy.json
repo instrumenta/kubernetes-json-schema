@@ -14,7 +14,10 @@
       }
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Type indicates the type of the StatefulSetUpdateStrategy."
     }
   }

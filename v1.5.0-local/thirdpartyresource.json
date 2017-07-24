@@ -14,7 +14,10 @@
       "description": "Versions are versions for this third party object"
     }, 
     "description": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Description is the description of this object."
     }, 
     "metadata": {

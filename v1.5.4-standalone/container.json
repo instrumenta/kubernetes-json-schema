@@ -16,15 +16,24 @@
           "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
           "properties": {
             "path": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Path to access on the HTTP server."
             }, 
             "host": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
             }, 
             "scheme": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Scheme to use for connecting to the host. Defaults to HTTP."
             }, 
             "httpHeaders": {
@@ -54,7 +63,10 @@
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -73,7 +85,10 @@
           "properties": {
             "command": {
               "items": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": [
                 "array", 
@@ -97,7 +112,10 @@
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -125,7 +143,10 @@
     }, 
     "args": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -134,19 +155,31 @@
       "description": "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers#containers-and-commands"
     }, 
     "terminationMessagePath": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Defaults to /dev/termination-log. Cannot be updated."
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated."
     }, 
     "workingDir": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated."
     }, 
     "image": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Docker image name. More info: http://kubernetes.io/docs/user-guide/images"
     }, 
     "stdin": {
@@ -170,7 +203,10 @@
             "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
           }, 
           "subPath": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
           }, 
           "name": {
@@ -202,15 +238,24 @@
               "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
               "properties": {
                 "path": {
-                  "type": "string", 
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
                   "description": "Path to access on the HTTP server."
                 }, 
                 "host": {
-                  "type": "string", 
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
                   "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                 }, 
                 "scheme": {
-                  "type": "string", 
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
                   "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                 }, 
                 "httpHeaders": {
@@ -240,7 +285,10 @@
                 "port": {
                   "oneOf": [
                     {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     {
                       "type": "integer"
@@ -258,7 +306,10 @@
                 "port": {
                   "oneOf": [
                     {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     {
                       "type": "integer"
@@ -272,7 +323,10 @@
               "properties": {
                 "command": {
                   "items": {
-                    "type": "string"
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
                   }, 
                   "type": [
                     "array", 
@@ -294,15 +348,24 @@
               "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
               "properties": {
                 "path": {
-                  "type": "string", 
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
                   "description": "Path to access on the HTTP server."
                 }, 
                 "host": {
-                  "type": "string", 
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
                   "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
                 }, 
                 "scheme": {
-                  "type": "string", 
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
                   "description": "Scheme to use for connecting to the host. Defaults to HTTP."
                 }, 
                 "httpHeaders": {
@@ -332,7 +395,10 @@
                 "port": {
                   "oneOf": [
                     {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     {
                       "type": "integer"
@@ -350,7 +416,10 @@
                 "port": {
                   "oneOf": [
                     {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     {
                       "type": "integer"
@@ -364,7 +433,10 @@
               "properties": {
                 "command": {
                   "items": {
-                    "type": "string"
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
                   }, 
                   "type": [
                     "array", 
@@ -380,7 +452,10 @@
     }, 
     "command": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 
@@ -405,7 +480,10 @@
                 "description": "SecretKeySelector selects a key of a Secret.", 
                 "properties": {
                   "name": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
                   }, 
                   "key": {
@@ -425,7 +503,10 @@
                     "description": "Path of the field to select in the specified API version."
                   }, 
                   "apiVersion": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
                   }
                 }
@@ -437,7 +518,10 @@
                 "description": "Selects a key from a ConfigMap.", 
                 "properties": {
                   "name": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
                   }, 
                   "key": {
@@ -453,7 +537,10 @@
                 "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
                 "properties": {
                   "containerName": {
-                    "type": "string", 
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
                     "description": "Container name: required for volumes, optional for env vars"
                   }, 
                   "resource": {
@@ -461,7 +548,10 @@
                     "description": "Required: resource to select"
                   }, 
                   "divisor": {
-                    "type": "string"
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
                   }
                 }
               }
@@ -472,7 +562,10 @@
             "description": "Name of the environment variable. Must be a C_IDENTIFIER."
           }, 
           "value": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\"."
           }
         }
@@ -484,7 +577,10 @@
       "description": "List of environment variables to set in the container. Cannot be updated."
     }, 
     "imagePullPolicy": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/images#updating-images"
     }, 
     "readinessProbe": {
@@ -497,15 +593,24 @@
           "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
           "properties": {
             "path": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Path to access on the HTTP server."
             }, 
             "host": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
             }, 
             "scheme": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Scheme to use for connecting to the host. Defaults to HTTP."
             }, 
             "httpHeaders": {
@@ -535,7 +640,10 @@
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -554,7 +662,10 @@
           "properties": {
             "command": {
               "items": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": [
                 "array", 
@@ -578,7 +689,10 @@
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -621,7 +735,10 @@
           "properties": {
             "add": {
               "items": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": [
                 "array", 
@@ -631,7 +748,10 @@
             }, 
             "drop": {
               "items": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               "type": [
                 "array", 
@@ -649,19 +769,31 @@
           "description": "SELinuxOptions are the labels to be applied to the container", 
           "properties": {
             "role": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Role is a SELinux role label that applies to the container."
             }, 
             "type": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Type is a SELinux type label that applies to the container."
             }, 
             "user": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "User is a SELinux user label that applies to the container."
             }, 
             "level": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Level is SELinux level label that applies to the container."
             }
           }
@@ -680,11 +812,17 @@
         "description": "ContainerPort represents a network port in a single container.", 
         "properties": {
           "hostIP": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "What host IP to bind the external port to."
           }, 
           "protocol": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "Protocol for port. Must be UDP or TCP. Defaults to \"TCP\"."
           }, 
           "containerPort": {
@@ -693,7 +831,10 @@
             "format": "int32"
           }, 
           "name": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services."
           }, 
           "hostPort": {
@@ -714,14 +855,20 @@
       "properties": {
         "requests": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/"
         }, 
         "limits": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "Limits describes the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/"

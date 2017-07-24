@@ -5,7 +5,10 @@
   "properties": {
     "command": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": [
         "array", 

@@ -13,7 +13,10 @@
       "format": "int32"
     }, 
     "concurrencyPolicy": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Specifies how to treat concurrent executions of a Job. Defaults to Allow."
     }, 
     "suspend": {
@@ -21,7 +24,10 @@
       "description": "This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false."
     }, 
     "schedule": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron."
     }, 
     "startingDeadlineSeconds": {
