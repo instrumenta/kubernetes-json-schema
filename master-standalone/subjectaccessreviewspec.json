@@ -3,22 +3,6 @@
   "type": "object", 
   "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
   "properties": {
-    "extra": {
-      "additionalProperties": {
-        "items": {
-          "type": [
-            "string", 
-            "null"
-          ]
-        }, 
-        "type": [
-          "array", 
-          "null"
-        ]
-      }, 
-      "type": "object", 
-      "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
-    }, 
     "nonResourceAttributes": {
       "description": "NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface", 
       "properties": {
@@ -50,6 +34,29 @@
         "null"
       ], 
       "description": "Groups is the groups you're testing for."
+    }, 
+    "uid": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "UID information about the requesting user."
+    }, 
+    "extra": {
+      "additionalProperties": {
+        "items": {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "type": [
+          "array", 
+          "null"
+        ]
+      }, 
+      "type": "object", 
+      "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
     }, 
     "user": {
       "type": [

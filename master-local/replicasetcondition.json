@@ -5,7 +5,7 @@
     "status"
   ], 
   "type": "object", 
-  "description": "ReplicaSetCondition describes the state of a replica set at a certain point.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetCondition describes the state of a replica set at a certain point.", 
   "properties": {
     "status": {
       "type": [

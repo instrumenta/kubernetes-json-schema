@@ -4,7 +4,7 @@
     "template"
   ], 
   "type": "object", 
-  "description": "DaemonSetSpec is the specification of a daemon set.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetSpec is the specification of a daemon set.", 
   "properties": {
     "templateGeneration": {
       "type": "integer", 
@@ -26,7 +26,7 @@
     }, 
     "updateStrategy": {
       "description": "An update strategy to replace existing DaemonSet pods with new pods.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.DaemonSetUpdateStrategy"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DaemonSetUpdateStrategy"
     }, 
     "minReadySeconds": {
       "type": "integer", 

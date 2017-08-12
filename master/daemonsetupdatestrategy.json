@@ -1,17 +1,18 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it.", 
   "properties": {
     "rollingUpdate": {
       "description": "Rolling update config params. Present only if type = \"RollingUpdate\".", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RollingUpdateDaemonSet"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.RollingUpdateDaemonSet"
     }, 
     "type": {
       "type": [
         "string", 
         "null"
       ], 
-      "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is OnDelete."
+      "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate."
     }
   }
 }

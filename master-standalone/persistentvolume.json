@@ -421,16 +421,8 @@
           "description": "AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes"
         }, 
         "fc": {
-          "required": [
-            "targetWWNs", 
-            "lun"
-          ], 
           "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
           "properties": {
-            "readOnly": {
-              "type": "boolean", 
-              "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-            }, 
             "targetWWNs": {
               "items": {
                 "type": [
@@ -438,13 +430,11 @@
                   "null"
                 ]
               }, 
-              "type": "array", 
-              "description": "Required: FC target worldwide names (WWNs)"
-            }, 
-            "lun": {
-              "type": "integer", 
-              "description": "Required: FC target lun number", 
-              "format": "int32"
+              "type": [
+                "array", 
+                "null"
+              ], 
+              "description": "Optional: FC target worldwide names (WWNs)"
             }, 
             "fsType": {
               "type": [
@@ -452,6 +442,28 @@
                 "null"
               ], 
               "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+            }, 
+            "lun": {
+              "type": "integer", 
+              "description": "Optional: FC target lun number", 
+              "format": "int32"
+            }, 
+            "wwids": {
+              "items": {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              "type": [
+                "array", 
+                "null"
+              ], 
+              "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
             }
           }
         }, 
@@ -1100,7 +1112,7 @@
                     }, 
                     "retryAfterSeconds": {
                       "type": "integer", 
-                      "description": "If specified, the time in seconds before the operation should be retried.", 
+                      "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.", 
                       "format": "int32"
                     }, 
                     "causes": {

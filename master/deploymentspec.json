@@ -23,17 +23,13 @@
       "type": "boolean", 
       "description": "Indicates that the deployment is paused."
     }, 
-    "rollbackTo": {
-      "description": "The config this deployment is rolling back to. Will be cleared after rollback is done.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.RollbackConfig"
-    }, 
     "template": {
       "description": "Template describes the pods that will be created.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
     }, 
     "revisionHistoryLimit": {
       "type": "integer", 
-      "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 2.", 
+      "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
       "format": "int32"
     }, 
     "progressDeadlineSeconds": {

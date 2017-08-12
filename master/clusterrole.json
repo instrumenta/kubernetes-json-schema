@@ -6,7 +6,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "ClusterRole", 
-      "version": "v1alpha1", 
+      "version": "v1", 
       "group": "rbac.authorization.k8s.io"
     }
   ], 
@@ -15,7 +15,7 @@
   "properties": {
     "rules": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.rbac.v1alpha1.PolicyRule"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.rbac.v1.PolicyRule"
       }, 
       "type": [
         "array", 

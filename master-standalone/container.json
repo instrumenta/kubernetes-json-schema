@@ -638,6 +638,10 @@
           "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
           "format": "int64"
         }, 
+        "allowPrivilegeEscalation": {
+          "type": "boolean", 
+          "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than it's parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+        }, 
         "capabilities": {
           "description": "Adds and removes POSIX capabilities from running containers.", 
           "properties": {

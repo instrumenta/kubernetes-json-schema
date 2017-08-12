@@ -49,22 +49,6 @@
     "spec": {
       "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
       "properties": {
-        "extra": {
-          "additionalProperties": {
-            "items": {
-              "type": [
-                "string", 
-                "null"
-              ]
-            }, 
-            "type": [
-              "array", 
-              "null"
-            ]
-          }, 
-          "type": "object", 
-          "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
-        }, 
         "nonResourceAttributes": {
           "description": "NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface", 
           "properties": {
@@ -83,6 +67,29 @@
               "description": "Verb is the standard HTTP verb"
             }
           }
+        }, 
+        "uid": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "UID information about the requesting user."
+        }, 
+        "extra": {
+          "additionalProperties": {
+            "items": {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "type": [
+              "array", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
         }, 
         "user": {
           "type": [
@@ -351,7 +358,7 @@
                     }, 
                     "retryAfterSeconds": {
                       "type": "integer", 
-                      "description": "If specified, the time in seconds before the operation should be retried.", 
+                      "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.", 
                       "format": "int32"
                     }, 
                     "causes": {

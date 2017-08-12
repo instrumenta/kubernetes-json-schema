@@ -102,6 +102,11 @@
     }, 
     {
       "kind": "WatchEvent", 
+      "version": "v1", 
+      "group": "rbac.authorization.k8s.io"
+    }, 
+    {
+      "kind": "WatchEvent", 
       "version": "v1alpha1", 
       "group": "rbac.authorization.k8s.io"
     }, 

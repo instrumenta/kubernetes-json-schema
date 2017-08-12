@@ -4,7 +4,7 @@
     "replicas"
   ], 
   "type": "object", 
-  "description": "ReplicaSetStatus represents the current status of a ReplicaSet.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetStatus represents the current status of a ReplicaSet.", 
   "properties": {
     "replicas": {
       "type": "integer", 
@@ -28,7 +28,7 @@
     }, 
     "conditions": {
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSetCondition"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetCondition"
       }, 
       "type": [
         "array", 

@@ -465,7 +465,7 @@
         "string", 
         "null"
       ], 
-      "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'OutOfDisk'"
+      "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'Evicted'"
     }, 
     "podIP": {
       "type": [

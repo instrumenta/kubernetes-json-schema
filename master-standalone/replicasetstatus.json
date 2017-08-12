@@ -4,7 +4,7 @@
     "replicas"
   ], 
   "type": "object", 
-  "description": "ReplicaSetStatus represents the current status of a ReplicaSet.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetStatus represents the current status of a ReplicaSet.", 
   "properties": {
     "replicas": {
       "type": "integer", 
@@ -32,7 +32,7 @@
           "type", 
           "status"
         ], 
-        "description": "ReplicaSetCondition describes the state of a replica set at a certain point.", 
+        "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetCondition describes the state of a replica set at a certain point.", 
         "properties": {
           "status": {
             "type": "string", 

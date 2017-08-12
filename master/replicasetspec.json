@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "ReplicaSetSpec is the specification of a ReplicaSet.", 
+  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetSpec is the specification of a ReplicaSet.", 
   "properties": {
     "selector": {
       "description": "Selector is a label query over pods that should match the replica count. If the selector is empty, it is defaulted to the labels present on the pod template. Label keys and values that must match in order to be controlled by this replica set. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors", 

@@ -40,44 +40,47 @@
             ], 
             "description": "Pod Security Policy Spec defines the policy enforced.", 
             "properties": {
-              "allowedCapabilities": {
-                "items": {
-                  "type": [
-                    "string", 
-                    "null"
-                  ]
-                }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
-                "description": "AllowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both AllowedCapabilities and RequiredDropCapabilities."
+              "readOnlyRootFilesystem": {
+                "type": "boolean", 
+                "description": "ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
               }, 
-              "hostPorts": {
-                "items": {
-                  "required": [
-                    "min", 
-                    "max"
-                  ], 
-                  "description": "Host Port Range defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.", 
-                  "properties": {
-                    "max": {
-                      "type": "integer", 
-                      "description": "max is the end of the range, inclusive.", 
-                      "format": "int32"
-                    }, 
-                    "min": {
-                      "type": "integer", 
-                      "description": "min is the start of the range, inclusive.", 
-                      "format": "int32"
-                    }
-                  }
-                }, 
-                "type": [
-                  "array", 
-                  "null"
+              "runAsUser": {
+                "required": [
+                  "rule"
                 ], 
-                "description": "hostPorts determines which host port ranges are allowed to be exposed."
+                "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
+                "properties": {
+                  "ranges": {
+                    "items": {
+                      "required": [
+                        "min", 
+                        "max"
+                      ], 
+                      "description": "ID Range provides a min/max of an allowed range of IDs.", 
+                      "properties": {
+                        "max": {
+                          "type": "integer", 
+                          "description": "Max is the end of the range, inclusive.", 
+                          "format": "int64"
+                        }, 
+                        "min": {
+                          "type": "integer", 
+                          "description": "Min is the start of the range, inclusive.", 
+                          "format": "int64"
+                        }
+                      }
+                    }, 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
+                    "description": "Ranges are the allowed ranges of uids that may be used."
+                  }, 
+                  "rule": {
+                    "type": "string", 
+                    "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+                  }
+                }
               }, 
               "supplementalGroups": {
                 "description": "SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.", 
@@ -163,43 +166,48 @@
                 "type": "boolean", 
                 "description": "hostNetwork determines if the policy allows the use of HostNetwork in the pod spec."
               }, 
-              "runAsUser": {
-                "required": [
-                  "rule"
+              "allowPrivilegeEscalation": {
+                "type": "boolean", 
+                "description": "AllowPrivilegeEscalation determines if a pod can request to allow privilege escalation."
+              }, 
+              "allowedCapabilities": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
                 ], 
-                "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
-                "properties": {
-                  "ranges": {
-                    "items": {
-                      "required": [
-                        "min", 
-                        "max"
-                      ], 
-                      "description": "ID Range provides a min/max of an allowed range of IDs.", 
-                      "properties": {
-                        "max": {
-                          "type": "integer", 
-                          "description": "Max is the end of the range, inclusive.", 
-                          "format": "int64"
-                        }, 
-                        "min": {
-                          "type": "integer", 
-                          "description": "Min is the start of the range, inclusive.", 
-                          "format": "int64"
-                        }
-                      }
+                "description": "AllowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both AllowedCapabilities and RequiredDropCapabilities."
+              }, 
+              "hostPorts": {
+                "items": {
+                  "required": [
+                    "min", 
+                    "max"
+                  ], 
+                  "description": "Host Port Range defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.", 
+                  "properties": {
+                    "max": {
+                      "type": "integer", 
+                      "description": "max is the end of the range, inclusive.", 
+                      "format": "int32"
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
-                    "description": "Ranges are the allowed ranges of uids that may be used."
-                  }, 
-                  "rule": {
-                    "type": "string", 
-                    "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+                    "min": {
+                      "type": "integer", 
+                      "description": "min is the start of the range, inclusive.", 
+                      "format": "int32"
+                    }
                   }
-                }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "hostPorts determines which host port ranges are allowed to be exposed."
               }, 
               "volumes": {
                 "items": {
@@ -285,10 +293,6 @@
                 ], 
                 "description": "RequiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added."
               }, 
-              "readOnlyRootFilesystem": {
-                "type": "boolean", 
-                "description": "ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
-              }, 
               "privileged": {
                 "type": "boolean", 
                 "description": "privileged determines if a pod can request to be run as privileged."
@@ -296,6 +300,10 @@
               "hostPID": {
                 "type": "boolean", 
                 "description": "hostPID determines if the policy allows the use of HostPID in the pod spec."
+              }, 
+              "defaultAllowPrivilegeEscalation": {
+                "type": "boolean", 
+                "description": "DefaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than it's parent process."
               }
             }
           }, 
@@ -490,7 +498,7 @@
                           }, 
                           "retryAfterSeconds": {
                             "type": "integer", 
-                            "description": "If specified, the time in seconds before the operation should be retried.", 
+                            "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.", 
                             "format": "int32"
                           }, 
                           "causes": {

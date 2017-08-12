@@ -9,7 +9,7 @@
         }, 
         "type": {
           "type": "string", 
-          "description": "Type indicates the type of the StatefulSetUpdateStrategy."
+          "description": "Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate."
         }
       }
     }, 
@@ -99,7 +99,7 @@
         }, 
         "reason": {
           "type": "string", 
-          "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'OutOfDisk'"
+          "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'Evicted'"
         }, 
         "podIP": {
           "type": "string", 
@@ -177,6 +177,38 @@
         "port": {
           "description": "Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1beta2.DaemonSet": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "DaemonSet", 
+          "version": "v1beta2", 
+          "group": "apps"
+        }
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSet represents the configuration of a daemon set.", 
+      "properties": {
+        "status": {
+          "description": "The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DaemonSetStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DaemonSetSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -365,6 +397,11 @@
         }, 
         {
           "kind": "DeleteOptions", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
           "version": "v1alpha1", 
           "group": "rbac.authorization.k8s.io"
         }, 
@@ -523,13 +560,37 @@
         }
       }
     }, 
-    "io.k8s.api.apps.v1beta2.RollbackConfig": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it.", 
+    "io.k8s.api.authorization.v1beta1.SubjectAccessReview": {
+      "required": [
+        "spec"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "SubjectAccessReview", 
+          "version": "v1beta1", 
+          "group": "authorization.k8s.io"
+        }
+      ], 
+      "description": "SubjectAccessReview checks whether or not a user or group can perform an action.", 
       "properties": {
-        "revision": {
-          "type": "integer", 
-          "description": "The revision to rollback to. If set to 0, rollback to the last revision.", 
-          "format": "int64"
+        "status": {
+          "description": "Status is filled in by the server and indicates whether the request is allowed or not", 
+          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Spec holds information about the request being evaluated", 
+          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -1215,6 +1276,7 @@
       }
     }, 
     "io.k8s.api.extensions.v1beta1.RollbackConfig": {
+      "description": "DEPRECATED.", 
       "properties": {
         "revision": {
           "type": "integer", 
@@ -1318,6 +1380,40 @@
         }
       }
     }, 
+    "io.k8s.api.rbac.v1.ClusterRoleBindingList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ClusterRoleBindingList", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "ClusterRoleBindingList is a collection of ClusterRoleBindings", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.ClusterRoleBinding"
+          }, 
+          "type": "array", 
+          "description": "Items is a list of ClusterRoleBindings"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
     "io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
       "properties": {
@@ -1399,6 +1495,27 @@
         "type": {
           "type": "string", 
           "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate."
+        }
+      }
+    }, 
+    "io.k8s.api.autoscaling.v1.CrossVersionObjectReference": {
+      "required": [
+        "kind", 
+        "name"
+      ], 
+      "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.", 
+      "properties": {
+        "kind": {
+          "type": "string", 
+          "description": "Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds\""
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "API version of the referent"
         }
       }
     }, 
@@ -1770,25 +1887,25 @@
         }
       }
     }, 
-    "io.k8s.api.extensions.v1beta1.DaemonSetList": {
+    "io.k8s.api.rbac.v1beta1.ClusterRole": {
       "required": [
-        "items"
+        "rules"
       ], 
       "x-kubernetes-group-version-kind": [
         {
-          "kind": "DaemonSetList", 
+          "kind": "ClusterRole", 
           "version": "v1beta1", 
-          "group": "extensions"
+          "group": "rbac.authorization.k8s.io"
         }
       ], 
-      "description": "DaemonSetList is a collection of daemon sets.", 
+      "description": "ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.", 
       "properties": {
-        "items": {
+        "rules": {
           "items": {
-            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.DaemonSet"
+            "$ref": "#/definitions/io.k8s.api.rbac.v1beta1.PolicyRule"
           }, 
           "type": "array", 
-          "description": "A list of daemon sets."
+          "description": "Rules holds all the PolicyRules for this ClusterRole"
         }, 
         "kind": {
           "type": "string", 
@@ -1799,8 +1916,8 @@
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
         }, 
         "metadata": {
-          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -1991,6 +2108,40 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1beta2.DaemonSetList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "DaemonSetList", 
+          "version": "v1beta2", 
+          "group": "apps"
+        }
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetList is a collection of daemon sets.", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DaemonSet"
+          }, 
+          "type": "array", 
+          "description": "A list of daemon sets."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.QuobyteVolumeSource": {
       "required": [
         "registry", 
@@ -2033,6 +2184,39 @@
           "type": "string", 
           "description": "If request was approved, the controller will place the issued certificate here.", 
           "format": "byte"
+        }
+      }
+    }, 
+    "io.k8s.api.admissionregistration.v1alpha1.RuleWithOperations": {
+      "description": "RuleWithOperations is a tuple of Operations and Resources. It is recommended to make sure that all the tuple expansions are valid.", 
+      "properties": {
+        "operations": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Operations is the operations the admission hook cares about - CREATE, UPDATE, or * for all operations. If '*' is present, the length of the slice must be one. Required."
+        }, 
+        "apiGroups": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required."
+        }, 
+        "apiVersions": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "APIVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required."
+        }, 
+        "resources": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Resources is a list of resources this rule applies to.\n\nFor example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*/scale' means all scale subresources. '*/*' means all resources and their subresources.\n\nIf wildcard is present, the validation rule will ensure resources do not overlap with each other.\n\nDepending on the enclosing object, subresources might not be allowed. Required."
         }
       }
     }, 
@@ -2206,25 +2390,25 @@
         }
       }
     }, 
-    "io.k8s.api.rbac.v1beta1.ClusterRole": {
+    "io.k8s.api.extensions.v1beta1.DaemonSetList": {
       "required": [
-        "rules"
+        "items"
       ], 
       "x-kubernetes-group-version-kind": [
         {
-          "kind": "ClusterRole", 
+          "kind": "DaemonSetList", 
           "version": "v1beta1", 
-          "group": "rbac.authorization.k8s.io"
+          "group": "extensions"
         }
       ], 
-      "description": "ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.", 
+      "description": "DaemonSetList is a collection of daemon sets.", 
       "properties": {
-        "rules": {
+        "items": {
           "items": {
-            "$ref": "#/definitions/io.k8s.api.rbac.v1beta1.PolicyRule"
+            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.DaemonSet"
           }, 
           "type": "array", 
-          "description": "Rules holds all the PolicyRules for this ClusterRole"
+          "description": "A list of daemon sets."
         }, 
         "kind": {
           "type": "string", 
@@ -2235,8 +2419,8 @@
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
         }, 
         "metadata": {
-          "description": "Standard object's metadata.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -2833,6 +3017,31 @@
         }
       }
     }, 
+    "io.k8s.api.rbac.v1.Subject": {
+      "required": [
+        "kind", 
+        "name"
+      ], 
+      "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.", 
+      "properties": {
+        "apiGroup": {
+          "type": "string", 
+          "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error."
+        }, 
+        "namespace": {
+          "type": "string", 
+          "description": "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error."
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "Name of the object being referenced."
+        }
+      }
+    }, 
     "io.k8s.api.authorization.v1beta1.LocalSubjectAccessReview": {
       "required": [
         "spec"
@@ -2924,26 +3133,29 @@
       }
     }, 
     "io.k8s.api.core.v1.FCVolumeSource": {
-      "required": [
-        "targetWWNs", 
-        "lun"
-      ], 
       "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
       "properties": {
-        "readOnly": {
-          "type": "boolean", 
-          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-        }, 
         "targetWWNs": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "Required: FC target worldwide names (WWNs)"
+          "description": "Optional: FC target worldwide names (WWNs)"
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+        }, 
+        "wwids": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
         }, 
         "lun": {
           "type": "integer", 
-          "description": "Required: FC target lun number", 
+          "description": "Optional: FC target lun number", 
           "format": "int32"
         }, 
         "fsType": {
@@ -3125,6 +3337,40 @@
         }
       }
     }, 
+    "io.k8s.api.rbac.v1.ClusterRoleList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ClusterRoleList", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "ClusterRoleList is a collection of ClusterRoles", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.ClusterRole"
+          }, 
+          "type": "array", 
+          "description": "Items is a list of ClusterRoles"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.PodSecurityContext": {
       "description": "PodSecurityContext holds pod-level security attributes and common container settings. Some fields are also present in container.securityContext.  Field values of container.securityContext take precedence over field values of PodSecurityContext.", 
       "properties": {
@@ -3279,35 +3525,46 @@
         }
       }
     }, 
-    "io.k8s.api.apps.v1beta2.Deployment": {
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "Deployment", 
-          "version": "v1beta2", 
-          "group": "apps"
-        }
+    "io.k8s.api.rbac.v1.PolicyRule": {
+      "required": [
+        "verbs"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Deployment enables declarative updates for Pods and ReplicaSets.", 
+      "description": "PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.", 
       "properties": {
-        "status": {
-          "description": "Most recently observed status of the Deployment.", 
-          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DeploymentStatus"
+        "apiGroups": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed."
         }, 
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        "verbs": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds."
         }, 
-        "spec": {
-          "description": "Specification of the desired behavior of the Deployment.", 
-          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DeploymentSpec"
+        "nonResourceURLs": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as \"pods\" or \"secrets\") or non-resource URL paths (such as \"/api\"),  but not both."
         }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        "resources": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Resources is a list of resources this rule applies to.  ResourceAll represents all resources."
         }, 
-        "metadata": {
-          "description": "Standard object metadata.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        "resourceNames": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed."
         }
       }
     }, 
@@ -3417,37 +3674,40 @@
         }
       }
     }, 
-    "io.k8s.api.rbac.v1alpha1.RoleBindingList": {
-      "required": [
-        "items"
-      ], 
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "RoleBindingList", 
-          "version": "v1alpha1", 
-          "group": "rbac.authorization.k8s.io"
-        }
-      ], 
-      "description": "RoleBindingList is a collection of RoleBindings", 
+    "io.k8s.api.batch.v1.JobStatus": {
+      "description": "JobStatus represents the current state of a Job.", 
       "properties": {
-        "items": {
+        "failed": {
+          "type": "integer", 
+          "description": "The number of pods which reached phase Failed.", 
+          "format": "int32"
+        }, 
+        "completionTime": {
+          "description": "Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        }, 
+        "startTime": {
+          "description": "Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        }, 
+        "succeeded": {
+          "type": "integer", 
+          "description": "The number of pods which reached phase Succeeded.", 
+          "format": "int32"
+        }, 
+        "active": {
+          "type": "integer", 
+          "description": "The number of actively running pods.", 
+          "format": "int32"
+        }, 
+        "conditions": {
           "items": {
-            "$ref": "#/definitions/io.k8s.api.rbac.v1alpha1.RoleBinding"
+            "$ref": "#/definitions/io.k8s.api.batch.v1.JobCondition"
           }, 
+          "x-kubernetes-patch-merge-key": "type", 
           "type": "array", 
-          "description": "Items is a list of RoleBindings"
-        }, 
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "metadata": {
-          "description": "Standard object's metadata.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+          "description": "The latest available observations of an object's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/", 
+          "x-kubernetes-patch-strategy": "merge"
         }
       }
     }, 
@@ -3724,7 +3984,7 @@
             "$ref": "#/definitions/io.k8s.api.core.v1.PodAffinityTerm"
           }, 
           "type": "array", 
-          "description": "NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system will try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm  `json:\"requiredDuringSchedulingRequiredDuringExecution,omitempty\"` If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied."
+          "description": "If the anti-affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the anti-affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied."
         }, 
         "preferredDuringSchedulingIgnoredDuringExecution": {
           "items": {
@@ -3732,6 +3992,40 @@
           }, 
           "type": "array", 
           "description": "The scheduler will prefer to schedule pods to nodes that satisfy the anti-affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling anti-affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding \"weight\" to the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred."
+        }
+      }
+    }, 
+    "io.k8s.api.rbac.v1.RoleBindingList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "RoleBindingList", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "RoleBindingList is a collection of RoleBindings", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.RoleBinding"
+          }, 
+          "type": "array", 
+          "description": "Items is a list of RoleBindings"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -3771,13 +4065,13 @@
     "io.k8s.api.core.v1.NodeSpec": {
       "description": "NodeSpec describes the attributes that a node is created with.", 
       "properties": {
-        "podCIDR": {
-          "type": "string", 
-          "description": "PodCIDR represents the pod IP range assigned to the node."
-        }, 
         "unschedulable": {
           "type": "boolean", 
           "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration"
+        }, 
+        "podCIDR": {
+          "type": "string", 
+          "description": "PodCIDR represents the pod IP range assigned to the node."
         }, 
         "providerID": {
           "type": "string", 
@@ -3786,6 +4080,10 @@
         "externalID": {
           "type": "string", 
           "description": "External ID of the node assigned by some machine database (e.g. a cloud provider). Deprecated."
+        }, 
+        "configSource": {
+          "description": "If specified, the source to get node configuration from The DynamicKubeletConfig feature gate must be enabled for the Kubelet to use this field", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.NodeConfigSource"
         }, 
         "taints": {
           "items": {
@@ -3796,36 +4094,37 @@
         }
       }
     }, 
-    "io.k8s.api.admissionregistration.v1alpha1.RuleWithOperations": {
-      "description": "RuleWithOperations is a tuple of Operations and Resources. It is recommended to make sure that all the tuple expansions are valid.", 
+    "io.k8s.api.rbac.v1.Role": {
+      "required": [
+        "rules"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "Role", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.", 
       "properties": {
-        "operations": {
+        "rules": {
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.PolicyRule"
           }, 
           "type": "array", 
-          "description": "Operations is the operations the admission hook cares about - CREATE, UPDATE, or * for all operations. If '*' is present, the length of the slice must be one. Required."
+          "description": "Rules holds all the PolicyRules for this Role"
         }, 
-        "apiGroups": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required."
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
-        "apiVersions": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "APIVersions is the API versions the resources belong to. '*' is all versions. If '*' is present, the length of the slice must be one. Required."
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
         }, 
-        "resources": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "Resources is a list of resources this rule applies to.\n\nFor example: 'pods' means pods. 'pods/log' means the log subresource of pods. '*' means all resources, but not subresources. 'pods/*' means all subresources of pods. '*/scale' means all scale subresources. '*/*' means all resources and their subresources.\n\nIf wildcard is present, the validation rule will ensure resources do not overlap with each other.\n\nDepending on the enclosing object, subresources might not be allowed. Required."
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -4190,7 +4489,7 @@
         }, 
         "retryAfterSeconds": {
           "type": "integer", 
-          "description": "If specified, the time in seconds before the operation should be retried.", 
+          "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.", 
           "format": "int32"
         }, 
         "causes": {
@@ -4267,43 +4566,44 @@
           "type": "array", 
           "description": "The list of ports that are exposed by this service. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies", 
           "x-kubernetes-patch-strategy": "merge"
+        }, 
+        "publishNotReadyAddresses": {
+          "type": "boolean", 
+          "description": "publishNotReadyAddresses, when set to true, indicates that DNS implementations must publish the notReadyAddresses of subsets for the Endpoints associated with the Service. The default value is false. The primary use case for setting this field is to use a StatefulSet's Headless Service to propagate SRV records for its Pods without respect to their readiness for purpose of peer discovery. This field will replace the service.alpha.kubernetes.io/tolerate-unready-endpoints when that annotation is deprecated and all clients have been converted to use this field."
         }
       }
     }, 
-    "io.k8s.api.batch.v1.JobStatus": {
-      "description": "JobStatus represents the current state of a Job.", 
+    "io.k8s.api.rbac.v1alpha1.RoleBindingList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "RoleBindingList", 
+          "version": "v1alpha1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "RoleBindingList is a collection of RoleBindings", 
       "properties": {
-        "failed": {
-          "type": "integer", 
-          "description": "The number of pods which reached phase Failed.", 
-          "format": "int32"
-        }, 
-        "completionTime": {
-          "description": "Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        }, 
-        "startTime": {
-          "description": "Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        }, 
-        "succeeded": {
-          "type": "integer", 
-          "description": "The number of pods which reached phase Succeeded.", 
-          "format": "int32"
-        }, 
-        "active": {
-          "type": "integer", 
-          "description": "The number of actively running pods.", 
-          "format": "int32"
-        }, 
-        "conditions": {
+        "items": {
           "items": {
-            "$ref": "#/definitions/io.k8s.api.batch.v1.JobCondition"
+            "$ref": "#/definitions/io.k8s.api.rbac.v1alpha1.RoleBinding"
           }, 
-          "x-kubernetes-patch-merge-key": "type", 
           "type": "array", 
-          "description": "The latest available observations of an object's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/", 
-          "x-kubernetes-patch-strategy": "merge"
+          "description": "Items is a list of RoleBindings"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -4485,6 +4785,26 @@
       ], 
       "description": "Pod Security Policy Spec defines the policy enforced.", 
       "properties": {
+        "readOnlyRootFilesystem": {
+          "type": "boolean", 
+          "description": "ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
+        }, 
+        "allowPrivilegeEscalation": {
+          "type": "boolean", 
+          "description": "AllowPrivilegeEscalation determines if a pod can request to allow privilege escalation."
+        }, 
+        "hostNetwork": {
+          "type": "boolean", 
+          "description": "hostNetwork determines if the policy allows the use of HostNetwork in the pod spec."
+        }, 
+        "hostIPC": {
+          "type": "boolean", 
+          "description": "hostIPC determines if the policy allows the use of HostIPC in the pod spec."
+        }, 
+        "defaultAllowPrivilegeEscalation": {
+          "type": "boolean", 
+          "description": "DefaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than it's parent process."
+        }, 
         "allowedCapabilities": {
           "items": {
             "type": "string"
@@ -4492,12 +4812,9 @@
           "type": "array", 
           "description": "AllowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both AllowedCapabilities and RequiredDropCapabilities."
         }, 
-        "hostPorts": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.HostPortRange"
-          }, 
-          "type": "array", 
-          "description": "hostPorts determines which host port ranges are allowed to be exposed."
+        "runAsUser": {
+          "description": "runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.", 
+          "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions"
         }, 
         "supplementalGroups": {
           "description": "SupplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.", 
@@ -4507,17 +4824,12 @@
           "description": "FSGroup is the strategy that will dictate what fs group is used by the SecurityContext.", 
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.FSGroupStrategyOptions"
         }, 
-        "hostIPC": {
-          "type": "boolean", 
-          "description": "hostIPC determines if the policy allows the use of HostIPC in the pod spec."
-        }, 
-        "hostNetwork": {
-          "type": "boolean", 
-          "description": "hostNetwork determines if the policy allows the use of HostNetwork in the pod spec."
-        }, 
-        "runAsUser": {
-          "description": "runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.", 
-          "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions"
+        "hostPorts": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.HostPortRange"
+          }, 
+          "type": "array", 
+          "description": "hostPorts determines which host port ranges are allowed to be exposed."
         }, 
         "volumes": {
           "items": {
@@ -4543,10 +4855,6 @@
           }, 
           "type": "array", 
           "description": "RequiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added."
-        }, 
-        "readOnlyRootFilesystem": {
-          "type": "boolean", 
-          "description": "ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
         }, 
         "privileged": {
           "type": "boolean", 
@@ -5025,7 +5333,7 @@
           "description": "Indicates that the deployment is paused and will not be processed by the deployment controller."
         }, 
         "rollbackTo": {
-          "description": "The config this deployment is rolling back to. Will be cleared after rollback is done.", 
+          "description": "DEPRECATED. The config this deployment is rolling back to. Will be cleared after rollback is done.", 
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RollbackConfig"
         }, 
         "template": {
@@ -5265,36 +5573,70 @@
         }
       }
     }, 
-    "io.k8s.api.authorization.v1beta1.SubjectAccessReview": {
+    "io.k8s.api.apps.v1beta2.ReplicaSetList": {
       "required": [
-        "spec"
+        "items"
       ], 
       "x-kubernetes-group-version-kind": [
         {
-          "kind": "SubjectAccessReview", 
-          "version": "v1beta1", 
-          "group": "authorization.k8s.io"
+          "kind": "ReplicaSetList", 
+          "version": "v1beta2", 
+          "group": "apps"
         }
       ], 
-      "description": "SubjectAccessReview checks whether or not a user or group can perform an action.", 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetList is a collection of ReplicaSets.", 
       "properties": {
-        "status": {
-          "description": "Status is filled in by the server and indicates whether the request is allowed or not", 
-          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewStatus"
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.apps.v1beta2.ReplicaSet"
+          }, 
+          "type": "array", 
+          "description": "List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller"
         }, 
         "kind": {
           "type": "string", 
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "spec": {
-          "description": "Spec holds information about the request being evaluated", 
-          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewSpec"
         }, 
         "apiVersion": {
           "type": "string", 
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
         }, 
         "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
+    "io.k8s.api.rbac.v1.ClusterRole": {
+      "required": [
+        "rules"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ClusterRole", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.", 
+      "properties": {
+        "rules": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.PolicyRule"
+          }, 
+          "type": "array", 
+          "description": "Rules holds all the PolicyRules for this ClusterRole"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
@@ -5545,6 +5887,35 @@
           "type": "integer", 
           "description": "The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.", 
           "format": "int32"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1beta2.ReplicaSetCondition": {
+      "required": [
+        "type", 
+        "status"
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetCondition describes the state of a replica set at a certain point.", 
+      "properties": {
+        "status": {
+          "type": "string", 
+          "description": "Status of the condition, one of True, False, Unknown."
+        }, 
+        "lastTransitionTime": {
+          "description": "The last time the condition transitioned from one status to another.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        }, 
+        "message": {
+          "type": "string", 
+          "description": "A human readable message indicating details about the transition."
+        }, 
+        "type": {
+          "type": "string", 
+          "description": "Type of replica set condition."
+        }, 
+        "reason": {
+          "type": "string", 
+          "description": "The reason for the condition's last transition."
         }
       }
     }, 
@@ -5854,16 +6225,12 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.EventSource": {
-      "description": "EventSource contains information for an event.", 
+    "io.k8s.api.apps.v1beta2.RollingUpdateDaemonSet": {
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Spec to control the desired behavior of daemon set rolling update.", 
       "properties": {
-        "host": {
-          "type": "string", 
-          "description": "Node name on which the event is generated."
-        }, 
-        "component": {
-          "type": "string", 
-          "description": "Component from which the event is generated."
+        "maxUnavailable": {
+          "description": "The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }
       }
     }, 
@@ -6105,6 +6472,62 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1beta2.DaemonSetStatus": {
+      "required": [
+        "currentNumberScheduled", 
+        "numberMisscheduled", 
+        "desiredNumberScheduled", 
+        "numberReady"
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetStatus represents the current status of a daemon set.", 
+      "properties": {
+        "collisionCount": {
+          "type": "integer", 
+          "description": "Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
+          "format": "int64"
+        }, 
+        "observedGeneration": {
+          "type": "integer", 
+          "description": "The most recent generation observed by the daemon set controller.", 
+          "format": "int64"
+        }, 
+        "numberAvailable": {
+          "type": "integer", 
+          "description": "The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and available (ready for at least spec.minReadySeconds)", 
+          "format": "int32"
+        }, 
+        "desiredNumberScheduled": {
+          "type": "integer", 
+          "description": "The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/", 
+          "format": "int32"
+        }, 
+        "numberUnavailable": {
+          "type": "integer", 
+          "description": "The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)", 
+          "format": "int32"
+        }, 
+        "currentNumberScheduled": {
+          "type": "integer", 
+          "description": "The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/", 
+          "format": "int32"
+        }, 
+        "numberReady": {
+          "type": "integer", 
+          "description": "The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready.", 
+          "format": "int32"
+        }, 
+        "numberMisscheduled": {
+          "type": "integer", 
+          "description": "The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/", 
+          "format": "int32"
+        }, 
+        "updatedNumberScheduled": {
+          "type": "integer", 
+          "description": "The total number of nodes that are running updated daemon pod", 
+          "format": "int32"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.PodAffinity": {
       "description": "Pod affinity is a group of inter pod affinity scheduling rules.", 
       "properties": {
@@ -6113,7 +6536,7 @@
             "$ref": "#/definitions/io.k8s.api.core.v1.PodAffinityTerm"
           }, 
           "type": "array", 
-          "description": "NOT YET IMPLEMENTED. TODO: Uncomment field once it is implemented. If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system will try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied. RequiredDuringSchedulingRequiredDuringExecution []PodAffinityTerm  `json:\"requiredDuringSchedulingRequiredDuringExecution,omitempty\"` If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied."
+          "description": "If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied."
         }, 
         "preferredDuringSchedulingIgnoredDuringExecution": {
           "items": {
@@ -6260,6 +6683,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta1.RollbackConfig": {
+      "description": "DEPRECATED.", 
       "properties": {
         "revision": {
           "type": "integer", 
@@ -6512,6 +6936,45 @@
         }
       }
     }, 
+    "io.k8s.api.rbac.v1.ClusterRoleBinding": {
+      "required": [
+        "subjects", 
+        "roleRef"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ClusterRoleBinding", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.", 
+      "properties": {
+        "roleRef": {
+          "description": "RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.", 
+          "$ref": "#/definitions/io.k8s.api.rbac.v1.RoleRef"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "subjects": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.Subject"
+          }, 
+          "type": "array", 
+          "description": "Subjects holds references to the objects the role applies to."
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.ObjectFieldSelector": {
       "required": [
         "fieldPath"
@@ -6574,7 +7037,7 @@
           "group": "apps"
         }
       ], 
-      "description": "DeploymentRollback stores the information required to rollback a deployment.", 
+      "description": "DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.", 
       "properties": {
         "rollbackTo": {
           "description": "The config of this deployment rollback.", 
@@ -6627,37 +7090,22 @@
         }
       }
     }, 
-    "io.k8s.api.rbac.v1alpha1.RoleList": {
+    "io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions": {
       "required": [
-        "items"
+        "rule"
       ], 
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "RoleList", 
-          "version": "v1alpha1", 
-          "group": "rbac.authorization.k8s.io"
-        }
-      ], 
-      "description": "RoleList is a collection of Roles", 
+      "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
       "properties": {
-        "items": {
+        "ranges": {
           "items": {
-            "$ref": "#/definitions/io.k8s.api.rbac.v1alpha1.Role"
+            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.IDRange"
           }, 
           "type": "array", 
-          "description": "Items is a list of Roles"
+          "description": "Ranges are the allowed ranges of uids that may be used."
         }, 
-        "kind": {
+        "rule": {
           "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "metadata": {
-          "description": "Standard object's metadata.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+          "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
         }
       }
     }, 
@@ -6811,75 +7259,30 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.Namespace": {
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "Namespace", 
-          "version": "v1", 
-          "group": ""
-        }
-      ], 
-      "description": "Namespace provides a scope for Names. Use of multiple namespaces is optional.", 
+    "io.k8s.api.core.v1.SELinuxOptions": {
+      "description": "SELinuxOptions are the labels to be applied to the container", 
       "properties": {
-        "status": {
-          "description": "Status describes the current status of a Namespace. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.NamespaceStatus"
-        }, 
-        "kind": {
+        "role": {
           "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+          "description": "Role is a SELinux role label that applies to the container."
         }, 
-        "spec": {
-          "description": "Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.NamespaceSpec"
-        }, 
-        "apiVersion": {
+        "type": {
           "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+          "description": "Type is a SELinux type label that applies to the container."
         }, 
-        "metadata": {
-          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        "user": {
+          "type": "string", 
+          "description": "User is a SELinux user label that applies to the container."
+        }, 
+        "level": {
+          "type": "string", 
+          "description": "Level is SELinux level label that applies to the container."
         }
       }
     }, 
     "io.k8s.apimachinery.pkg.apis.meta.v1.Time": {
       "type": "string", 
       "format": "date-time"
-    }, 
-    "io.k8s.api.authorization.v1.SubjectAccessReviewSpec": {
-      "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
-      "properties": {
-        "extra": {
-          "additionalProperties": {
-            "items": {
-              "type": "string"
-            }, 
-            "type": "array"
-          }, 
-          "type": "object", 
-          "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
-        }, 
-        "nonResourceAttributes": {
-          "description": "NonResourceAttributes describes information for a non-resource access request", 
-          "$ref": "#/definitions/io.k8s.api.authorization.v1.NonResourceAttributes"
-        }, 
-        "user": {
-          "type": "string", 
-          "description": "User is the user you're testing for. If you specify \"User\" but not \"Groups\", then is it interpreted as \"What if User were not a member of any groups"
-        }, 
-        "groups": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "Groups is the groups you're testing for."
-        }, 
-        "resourceAttributes": {
-          "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
-          "$ref": "#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
-        }
-      }
     }, 
     "io.k8s.api.rbac.v1alpha1.RoleRef": {
       "required": [
@@ -6987,6 +7390,40 @@
         }, 
         "compiler": {
           "type": "string"
+        }
+      }
+    }, 
+    "io.k8s.api.core.v1.EndpointsList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "EndpointsList", 
+          "version": "v1", 
+          "group": ""
+        }
+      ], 
+      "description": "EndpointsList is a list of endpoints.", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.Endpoints"
+          }, 
+          "type": "array", 
+          "description": "List of endpoints."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -7279,6 +7716,29 @@
         }
       }
     }, 
+    "io.k8s.api.core.v1.NodeConfigSource": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "NodeConfigSource", 
+          "version": "v1", 
+          "group": ""
+        }
+      ], 
+      "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
+      "properties": {
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "configMapRef": {
+          "$ref": "#/definitions/io.k8s.api.core.v1.ObjectReference"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }
+      }
+    }, 
     "io.k8s.api.autoscaling.v2alpha1.ResourceMetricStatus": {
       "required": [
         "name", 
@@ -7387,24 +7847,25 @@
         }
       }
     }, 
-    "io.k8s.api.autoscaling.v1.CrossVersionObjectReference": {
+    "io.k8s.api.rbac.v1.RoleRef": {
       "required": [
+        "apiGroup", 
         "kind", 
         "name"
       ], 
-      "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.", 
+      "description": "RoleRef contains information that points to the role being used", 
       "properties": {
+        "apiGroup": {
+          "type": "string", 
+          "description": "APIGroup is the group for the resource being referenced"
+        }, 
         "kind": {
           "type": "string", 
-          "description": "Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds\""
+          "description": "Kind is the type of resource being referenced"
         }, 
         "name": {
           "type": "string", 
-          "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "API version of the referent"
+          "description": "Name is the name of resource being referenced"
         }
       }
     }, 
@@ -7549,6 +8010,11 @@
         }, 
         {
           "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
           "version": "v1alpha1", 
           "group": "rbac.authorization.k8s.io"
         }, 
@@ -7679,6 +8145,40 @@
         }
       }
     }, 
+    "io.k8s.api.rbac.v1.RoleList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "RoleList", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "RoleList is a collection of Roles", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.Role"
+          }, 
+          "type": "array", 
+          "description": "Items is a list of Roles"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
     "io.k8s.api.rbac.v1beta1.ClusterRoleList": {
       "required": [
         "items"
@@ -7744,6 +8244,71 @@
         "targetAverageValue": {
           "description": "targetAverageValue is the target value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the \"pods\" metric source type.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1beta2.ReplicaSetStatus": {
+      "required": [
+        "replicas"
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetStatus represents the current status of a ReplicaSet.", 
+      "properties": {
+        "availableReplicas": {
+          "type": "integer", 
+          "description": "The number of available replicas (ready for at least minReadySeconds) for this replica set.", 
+          "format": "int32"
+        }, 
+        "replicas": {
+          "type": "integer", 
+          "description": "Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller", 
+          "format": "int32"
+        }, 
+        "observedGeneration": {
+          "type": "integer", 
+          "description": "ObservedGeneration reflects the generation of the most recently observed ReplicaSet.", 
+          "format": "int64"
+        }, 
+        "readyReplicas": {
+          "type": "integer", 
+          "description": "The number of ready replicas for this replica set.", 
+          "format": "int32"
+        }, 
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetCondition"
+          }, 
+          "x-kubernetes-patch-merge-key": "type", 
+          "type": "array", 
+          "description": "Represents the latest available observations of a replica set's current state.", 
+          "x-kubernetes-patch-strategy": "merge"
+        }, 
+        "fullyLabeledReplicas": {
+          "type": "integer", 
+          "description": "The number of pods that have labels matching the labels of the pod template of the replicaset.", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1beta2.ReplicaSetSpec": {
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetSpec is the specification of a ReplicaSet.", 
+      "properties": {
+        "replicas": {
+          "type": "integer", 
+          "description": "Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller", 
+          "format": "int32"
+        }, 
+        "minReadySeconds": {
+          "type": "integer", 
+          "description": "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)", 
+          "format": "int32"
+        }, 
+        "template": {
+          "description": "Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
+        }, 
+        "selector": {
+          "description": "Selector is a label query over pods that should match the replica count. If the selector is empty, it is defaulted to the labels present on the pod template. Label keys and values that must match in order to be controlled by this replica set. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
         }
       }
     }, 
@@ -7833,7 +8398,7 @@
           "group": "extensions"
         }
       ], 
-      "description": "DeploymentRollback stores the information required to rollback a deployment.", 
+      "description": "DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.", 
       "properties": {
         "rollbackTo": {
           "description": "The config of this deployment rollback.", 
@@ -7917,18 +8482,6 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.ExecAction": {
-      "description": "ExecAction describes a \"run in container\" action.", 
-      "properties": {
-        "command": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy."
-        }
-      }
-    }, 
     "io.k8s.api.core.v1.NodeSelector": {
       "required": [
         "nodeSelectorTerms"
@@ -7969,7 +8522,7 @@
           "description": "Indicates that the deployment is paused."
         }, 
         "rollbackTo": {
-          "description": "The config this deployment is rolling back to. Will be cleared after rollback is done.", 
+          "description": "DEPRECATED. The config this deployment is rolling back to. Will be cleared after rollback is done.", 
           "$ref": "#/definitions/io.k8s.api.apps.v1beta1.RollbackConfig"
         }, 
         "template": {
@@ -8242,6 +8795,19 @@
         }
       }
     }, 
+    "io.k8s.api.core.v1.EventSource": {
+      "description": "EventSource contains information for an event.", 
+      "properties": {
+        "host": {
+          "type": "string", 
+          "description": "Node name on which the event is generated."
+        }, 
+        "component": {
+          "type": "string", 
+          "description": "Component from which the event is generated."
+        }
+      }
+    }, 
     "io.k8s.api.admissionregistration.v1alpha1.AdmissionHookClientConfig": {
       "required": [
         "service", 
@@ -8362,22 +8928,37 @@
         }
       }
     }, 
-    "io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions": {
+    "io.k8s.api.rbac.v1alpha1.RoleList": {
       "required": [
-        "rule"
+        "items"
       ], 
-      "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "RoleList", 
+          "version": "v1alpha1", 
+          "group": "rbac.authorization.k8s.io"
+        }
+      ], 
+      "description": "RoleList is a collection of Roles", 
       "properties": {
-        "ranges": {
+        "items": {
           "items": {
-            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.IDRange"
+            "$ref": "#/definitions/io.k8s.api.rbac.v1alpha1.Role"
           }, 
           "type": "array", 
-          "description": "Ranges are the allowed ranges of uids that may be used."
+          "description": "Items is a list of Roles"
         }, 
-        "rule": {
+        "kind": {
           "type": "string", 
-          "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -8413,24 +8994,41 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.SELinuxOptions": {
-      "description": "SELinuxOptions are the labels to be applied to the container", 
+    "io.k8s.api.authorization.v1.SubjectAccessReviewSpec": {
+      "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
       "properties": {
-        "role": {
-          "type": "string", 
-          "description": "Role is a SELinux role label that applies to the container."
+        "nonResourceAttributes": {
+          "description": "NonResourceAttributes describes information for a non-resource access request", 
+          "$ref": "#/definitions/io.k8s.api.authorization.v1.NonResourceAttributes"
         }, 
-        "type": {
+        "resourceAttributes": {
+          "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
+          "$ref": "#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
+        }, 
+        "uid": {
           "type": "string", 
-          "description": "Type is a SELinux type label that applies to the container."
+          "description": "UID information about the requesting user."
+        }, 
+        "groups": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Groups is the groups you're testing for."
+        }, 
+        "extra": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            }, 
+            "type": "array"
+          }, 
+          "type": "object", 
+          "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
         }, 
         "user": {
           "type": "string", 
-          "description": "User is a SELinux user label that applies to the container."
-        }, 
-        "level": {
-          "type": "string", 
-          "description": "Level is SELinux level label that applies to the container."
+          "description": "User is the user you're testing for. If you specify \"User\" but not \"Groups\", then is it interpreted as \"What if User were not a member of any groups"
         }
       }
     }, 
@@ -9030,6 +9628,38 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1beta2.Deployment": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "Deployment", 
+          "version": "v1beta2", 
+          "group": "apps"
+        }
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Deployment enables declarative updates for Pods and ReplicaSets.", 
+      "properties": {
+        "status": {
+          "description": "Most recently observed status of the Deployment.", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DeploymentStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Specification of the desired behavior of the Deployment.", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DeploymentSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.ObjectReference": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
       "properties": {
@@ -9148,11 +9778,6 @@
       "x-kubernetes-group-version-kind": [
         {
           "kind": "CronJobList", 
-          "version": "v2alpha1", 
-          "group": "batch"
-        }, 
-        {
-          "kind": "ScheduledJobList", 
           "version": "v2alpha1", 
           "group": "batch"
         }
@@ -9291,6 +9916,41 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1beta2.DaemonSetSpec": {
+      "required": [
+        "template"
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetSpec is the specification of a daemon set.", 
+      "properties": {
+        "updateStrategy": {
+          "description": "An update strategy to replace existing DaemonSet pods with new pods.", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DaemonSetUpdateStrategy"
+        }, 
+        "template": {
+          "description": "An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
+        }, 
+        "revisionHistoryLimit": {
+          "type": "integer", 
+          "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
+          "format": "int32"
+        }, 
+        "minReadySeconds": {
+          "type": "integer", 
+          "description": "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).", 
+          "format": "int32"
+        }, 
+        "templateGeneration": {
+          "type": "integer", 
+          "description": "DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.", 
+          "format": "int64"
+        }, 
+        "selector": {
+          "description": "A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+        }
+      }
+    }, 
     "io.k8s.api.autoscaling.v1.Scale": {
       "x-kubernetes-group-version-kind": [
         {
@@ -9381,6 +10041,38 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1beta2.ReplicaSet": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ReplicaSet", 
+          "version": "v1beta2", 
+          "group": "apps"
+        }
+      ], 
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSet represents the configuration of a ReplicaSet.", 
+      "properties": {
+        "status": {
+          "description": "Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.NodeAffinity": {
       "description": "Node affinity is a group of node affinity scheduling rules.", 
       "properties": {
@@ -9406,19 +10098,14 @@
       ], 
       "description": "StatefulSetStatus represents the current state of a StatefulSet.", 
       "properties": {
-        "updatedReplicas": {
-          "type": "integer", 
-          "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.", 
-          "format": "int32"
-        }, 
         "updateRevision": {
           "type": "string", 
           "description": "updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)"
         }, 
-        "readyReplicas": {
+        "collisionCount": {
           "type": "integer", 
-          "description": "readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.", 
-          "format": "int32"
+          "description": "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
+          "format": "int64"
         }, 
         "replicas": {
           "type": "integer", 
@@ -9430,13 +10117,23 @@
           "description": "observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.", 
           "format": "int64"
         }, 
+        "currentReplicas": {
+          "type": "integer", 
+          "description": "currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.", 
+          "format": "int32"
+        }, 
+        "updatedReplicas": {
+          "type": "integer", 
+          "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.", 
+          "format": "int32"
+        }, 
         "currentRevision": {
           "type": "string", 
           "description": "currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas)."
         }, 
-        "currentReplicas": {
+        "readyReplicas": {
           "type": "integer", 
-          "description": "currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.", 
+          "description": "readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.", 
           "format": "int32"
         }
       }
@@ -9942,11 +10639,6 @@
           "kind": "CronJob", 
           "version": "v2alpha1", 
           "group": "batch"
-        }, 
-        {
-          "kind": "ScheduledJob", 
-          "version": "v2alpha1", 
-          "group": "batch"
         }
       ], 
       "description": "CronJob represents the configuration of a single cron job.", 
@@ -10078,17 +10770,13 @@
           "type": "boolean", 
           "description": "Indicates that the deployment is paused."
         }, 
-        "rollbackTo": {
-          "description": "The config this deployment is rolling back to. Will be cleared after rollback is done.", 
-          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.RollbackConfig"
-        }, 
         "template": {
           "description": "Template describes the pods that will be created.", 
           "$ref": "#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
         }, 
         "revisionHistoryLimit": {
           "type": "integer", 
-          "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 2.", 
+          "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
           "format": "int32"
         }, 
         "strategy": {
@@ -10099,6 +10787,19 @@
           "type": "integer", 
           "description": "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)", 
           "format": "int32"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1beta2.DaemonSetUpdateStrategy": {
+      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it.", 
+      "properties": {
+        "rollingUpdate": {
+          "description": "Rolling update config params. Present only if type = \"RollingUpdate\".", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.RollingUpdateDaemonSet"
+        }, 
+        "type": {
+          "type": "string", 
+          "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate."
         }
       }
     }, 
@@ -10130,6 +10831,38 @@
         }, 
         "metadata": {
           "description": "If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
+    "io.k8s.api.core.v1.Namespace": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "Namespace", 
+          "version": "v1", 
+          "group": ""
+        }
+      ], 
+      "description": "Namespace provides a scope for Names. Use of multiple namespaces is optional.", 
+      "properties": {
+        "status": {
+          "description": "Status describes the current status of a Namespace. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.NamespaceStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.NamespaceSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
@@ -10191,37 +10924,42 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.EndpointsList": {
+    "io.k8s.api.rbac.v1.RoleBinding": {
       "required": [
-        "items"
+        "subjects", 
+        "roleRef"
       ], 
       "x-kubernetes-group-version-kind": [
         {
-          "kind": "EndpointsList", 
+          "kind": "RoleBinding", 
           "version": "v1", 
-          "group": ""
+          "group": "rbac.authorization.k8s.io"
         }
       ], 
-      "description": "EndpointsList is a list of endpoints.", 
+      "description": "RoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.", 
       "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.core.v1.Endpoints"
-          }, 
-          "type": "array", 
-          "description": "List of endpoints."
+        "roleRef": {
+          "description": "RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.", 
+          "$ref": "#/definitions/io.k8s.api.rbac.v1.RoleRef"
         }, 
         "kind": {
           "type": "string", 
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "subjects": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.rbac.v1.Subject"
+          }, 
+          "type": "array", 
+          "description": "Subjects holds references to the objects the role applies to."
         }, 
         "apiVersion": {
           "type": "string", 
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
         }, 
         "metadata": {
-          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+          "description": "Standard object's metadata.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -10243,7 +10981,7 @@
       "properties": {
         "partition": {
           "type": "integer", 
-          "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned.", 
+          "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.", 
           "format": "int32"
         }
       }
@@ -10264,15 +11002,9 @@
     "io.k8s.api.authorization.v1beta1.SubjectAccessReviewSpec": {
       "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
       "properties": {
-        "extra": {
-          "additionalProperties": {
-            "items": {
-              "type": "string"
-            }, 
-            "type": "array"
-          }, 
-          "type": "object", 
-          "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
+        "resourceAttributes": {
+          "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
+          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.ResourceAttributes"
         }, 
         "nonResourceAttributes": {
           "description": "NonResourceAttributes describes information for a non-resource access request", 
@@ -10285,13 +11017,23 @@
           "type": "array", 
           "description": "Groups is the groups you're testing for."
         }, 
+        "uid": {
+          "type": "string", 
+          "description": "UID information about the requesting user."
+        }, 
+        "extra": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            }, 
+            "type": "array"
+          }, 
+          "type": "object", 
+          "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here."
+        }, 
         "user": {
           "type": "string", 
           "description": "User is the user you're testing for. If you specify \"User\" but not \"Group\", then is it interpreted as \"What if User were not a member of any groups"
-        }, 
-        "resourceAttributes": {
-          "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
-          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.ResourceAttributes"
         }
       }
     }, 
@@ -10327,6 +11069,10 @@
           "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
           "format": "int64"
         }, 
+        "allowPrivilegeEscalation": {
+          "type": "boolean", 
+          "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than it's parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+        }, 
         "privileged": {
           "type": "boolean", 
           "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false."
@@ -10337,42 +11083,15 @@
         }
       }
     }, 
-    "io.k8s.api.apps.v1beta2.DeploymentRollback": {
-      "required": [
-        "name", 
-        "rollbackTo"
-      ], 
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "DeploymentRollback", 
-          "version": "v1beta2", 
-          "group": "apps"
-        }
-      ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentRollback stores the information required to rollback a deployment.", 
+    "io.k8s.api.core.v1.ExecAction": {
+      "description": "ExecAction describes a \"run in container\" action.", 
       "properties": {
-        "rollbackTo": {
-          "description": "The config of this deployment rollback.", 
-          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.RollbackConfig"
-        }, 
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "name": {
-          "type": "string", 
-          "description": "Required: This must match the Name of a deployment."
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "updatedAnnotations": {
-          "additionalProperties": {
+        "command": {
+          "items": {
             "type": "string"
           }, 
-          "type": "object", 
-          "description": "The annotations to be updated to a deployment"
+          "type": "array", 
+          "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy."
         }
       }
     }, 
@@ -10782,19 +11501,14 @@
       ], 
       "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. StatefulSetStatus represents the current state of a StatefulSet.", 
       "properties": {
-        "updatedReplicas": {
-          "type": "integer", 
-          "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.", 
-          "format": "int32"
-        }, 
         "updateRevision": {
           "type": "string", 
           "description": "updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)"
         }, 
-        "readyReplicas": {
+        "collisionCount": {
           "type": "integer", 
-          "description": "readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.", 
-          "format": "int32"
+          "description": "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
+          "format": "int64"
         }, 
         "replicas": {
           "type": "integer", 
@@ -10806,13 +11520,23 @@
           "description": "observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.", 
           "format": "int64"
         }, 
+        "currentReplicas": {
+          "type": "integer", 
+          "description": "currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.", 
+          "format": "int32"
+        }, 
+        "updatedReplicas": {
+          "type": "integer", 
+          "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.", 
+          "format": "int32"
+        }, 
         "currentRevision": {
           "type": "string", 
           "description": "currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas)."
         }, 
-        "currentReplicas": {
+        "readyReplicas": {
           "type": "integer", 
-          "description": "currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.", 
+          "description": "readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.", 
           "format": "int32"
         }
       }
