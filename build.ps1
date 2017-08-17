@@ -9,9 +9,12 @@
 $repo="garethr/kubernetes-json-schema"
 
 $arr = @("master",
+         "v1.7.3",
          "v1.7.2",
          "v1.7.1",
          "v1.7.0",
+         "v1.6.8",
+         "v1.6.7",
          "v1.6.6",
          "v1.6.5",
          "v1.6.4",
