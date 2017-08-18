@@ -14,7 +14,17 @@
       "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.", 
       "properties": {
         "targetAverageValue": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
         }, 
         "metricName": {
           "type": "string", 
@@ -31,7 +41,17 @@
       "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
       "properties": {
         "targetValue": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
         }, 
         "target": {
           "required": [
@@ -79,9 +99,16 @@
           "description": "name is the name of the resource in question."
         }, 
         "targetAverageValue": {
-          "type": [
-            "string", 
-            "null"
+          "oneOf": [
+            {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            {
+              "type": "integer"
+            }
           ]
         }
       }

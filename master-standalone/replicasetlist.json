@@ -1,5 +1,5 @@
 {
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetList is a collection of ReplicaSets.", 
+  "description": "ReplicaSetList is a collection of ReplicaSets.", 
   "required": [
     "items"
   ], 
@@ -22,13 +22,13 @@
             "group": "apps"
           }
         ], 
-        "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSet represents the configuration of a ReplicaSet.", 
+        "description": "ReplicaSet represents the configuration of a ReplicaSet.", 
         "properties": {
           "status": {
             "required": [
               "replicas"
             ], 
-            "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetStatus represents the current status of a ReplicaSet.", 
+            "description": "ReplicaSetStatus represents the current status of a ReplicaSet.", 
             "properties": {
               "replicas": {
                 "type": "integer", 
@@ -56,7 +56,7 @@
                     "type", 
                     "status"
                   ], 
-                  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetCondition describes the state of a replica set at a certain point.", 
+                  "description": "ReplicaSetCondition describes the state of a replica set at a certain point.", 
                   "properties": {
                     "status": {
                       "type": "string", 
@@ -112,7 +112,7 @@
             "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
           }, 
           "spec": {
-            "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetSpec is the specification of a ReplicaSet.", 
+            "description": "ReplicaSetSpec is the specification of a ReplicaSet.", 
             "properties": {
               "replicas": {
                 "type": "integer", 
@@ -1336,9 +1336,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -1849,9 +1856,16 @@
                               "properties": {
                                 "requests": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 
@@ -1859,9 +1873,16 @@
                                 }, 
                                 "limits": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 
@@ -2248,9 +2269,16 @@
                                                       "description": "Required: resource to select"
                                                     }, 
                                                     "divisor": {
-                                                      "type": [
-                                                        "string", 
-                                                        "null"
+                                                      "oneOf": [
+                                                        {
+                                                          "type": [
+                                                            "string", 
+                                                            "null"
+                                                          ]
+                                                        }, 
+                                                        {
+                                                          "type": "integer"
+                                                        }
                                                       ]
                                                     }
                                                   }
@@ -2557,9 +2585,16 @@
                               "description": "Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.", 
                               "properties": {
                                 "sizeLimit": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }, 
                                 "medium": {
@@ -2987,9 +3022,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -3494,9 +3536,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -4007,9 +4056,16 @@
                               "properties": {
                                 "requests": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 
@@ -4017,9 +4073,16 @@
                                 }, 
                                 "limits": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 

@@ -4,7 +4,7 @@
     "replicas"
   ], 
   "type": "object", 
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. StatefulSetStatus represents the current state of a StatefulSet.", 
+  "description": "StatefulSetStatus represents the current state of a StatefulSet.", 
   "properties": {
     "updateRevision": {
       "type": [
@@ -16,7 +16,7 @@
     "collisionCount": {
       "type": "integer", 
       "description": "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
-      "format": "int64"
+      "format": "int32"
     }, 
     "replicas": {
       "type": "integer", 

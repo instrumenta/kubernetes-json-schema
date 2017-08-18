@@ -5588,6 +5588,16 @@
         }
       }
     }, 
+    "io.k8s.apimachinery.pkg.api.resource.Quantity": {
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }, 
     "v1beta1.JobSpec": {
       "required": [
         "template"

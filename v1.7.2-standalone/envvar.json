@@ -92,9 +92,16 @@
               "description": "Required: resource to select"
             }, 
             "divisor": {
-              "type": [
-                "string", 
-                "null"
+              "oneOf": [
+                {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                {
+                  "type": "integer"
+                }
               ]
             }
           }

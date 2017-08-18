@@ -4,7 +4,7 @@
     "template"
   ], 
   "type": "object", 
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentSpec is the specification of the desired behavior of the Deployment.", 
+  "description": "DeploymentSpec is the specification of the desired behavior of the Deployment.", 
   "properties": {
     "progressDeadlineSeconds": {
       "type": "integer", 
@@ -17,10 +17,10 @@
       "format": "int32"
     }, 
     "strategy": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentStrategy describes how to replace existing pods with new ones.", 
+      "description": "DeploymentStrategy describes how to replace existing pods with new ones.", 
       "properties": {
         "rollingUpdate": {
-          "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Spec to control the desired behavior of rolling update.", 
+          "description": "Spec to control the desired behavior of rolling update.", 
           "properties": {
             "maxSurge": {
               "oneOf": [
@@ -1275,9 +1275,16 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }
                               }
@@ -1788,9 +1795,16 @@
                     "properties": {
                       "requests": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 
@@ -1798,9 +1812,16 @@
                       }, 
                       "limits": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 
@@ -2187,9 +2208,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -2496,9 +2524,16 @@
                     "description": "Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.", 
                     "properties": {
                       "sizeLimit": {
-                        "type": [
-                          "string", 
-                          "null"
+                        "oneOf": [
+                          {
+                            "type": [
+                              "string", 
+                              "null"
+                            ]
+                          }, 
+                          {
+                            "type": "integer"
+                          }
                         ]
                       }, 
                       "medium": {
@@ -2926,9 +2961,16 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }
                               }
@@ -3433,9 +3475,16 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }
                               }
@@ -3946,9 +3995,16 @@
                     "properties": {
                       "requests": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 
@@ -3956,9 +4012,16 @@
                       }, 
                       "limits": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 

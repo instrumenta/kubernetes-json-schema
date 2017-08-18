@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Status is a return value for calls that don't return other objects.", 
+  "properties": {
+    "status": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Status of the operation. One of: \"Success\" or \"Failure\". More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#spec-and-status"
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+    }, 
+    "code": {
+      "type": "integer", 
+      "description": "Suggested HTTP return code for this status, 0 if not set.", 
+      "format": "int32"
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it."
+    }, 
+    "details": {
+      "description": "StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined.", 
+      "properties": {
+        "kind": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+        }, 
+        "group": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "The group attribute of the resource associated with the status StatusReason."
+        }, 
+        "name": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described)."
+        }, 
+        "retryAfterSeconds": {
+          "type": "integer", 
+          "description": "If specified, the time in seconds before the operation should be retried.", 
+          "format": "int32"
+        }, 
+        "causes": {
+          "items": {
+            "description": "StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.", 
+            "properties": {
+              "field": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.\n\nExamples:\n  \"name\" - the field \"name\" on the current resource\n  \"items[0].name\" - the field \"name\" on the first array entry in \"items\""
+              }, 
+              "message": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "A human-readable description of the cause of the error.  This field may be presented as-is to a reader."
+              }, 
+              "reason": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "A machine-readable description of the cause of the error. If this value is empty there is no information available."
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes."
+        }
+      }
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A human-readable description of the status of this operation."
+    }, 
+    "metadata": {
+      "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
+      "properties": {
+        "selfLink": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+        }, 
+        "resourceVersion": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+        }
+      }
+    }
+  }
+}

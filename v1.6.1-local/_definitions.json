@@ -7940,7 +7940,14 @@
       }
     }, 
     "io.k8s.apimachinery.pkg.api.resource.Quantity": {
-      "type": "string"
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
     }, 
     "io.k8s.kubernetes.pkg.apis.extensions.v1beta1.IDRange": {
       "required": [

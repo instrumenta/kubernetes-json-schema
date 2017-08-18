@@ -4,7 +4,7 @@
     "replicas"
   ], 
   "type": "object", 
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetStatus represents the current status of a ReplicaSet.", 
+  "description": "ReplicaSetStatus represents the current status of a ReplicaSet.", 
   "properties": {
     "replicas": {
       "type": "integer", 

@@ -1231,9 +1231,16 @@
                                           "description": "Required: resource to select"
                                         }, 
                                         "divisor": {
-                                          "type": [
-                                            "string", 
-                                            "null"
+                                          "oneOf": [
+                                            {
+                                              "type": [
+                                                "string", 
+                                                "null"
+                                              ]
+                                            }, 
+                                            {
+                                              "type": "integer"
+                                            }
                                           ]
                                         }
                                       }
@@ -1717,9 +1724,16 @@
                             "properties": {
                               "requests": {
                                 "additionalProperties": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }, 
                                 "type": "object", 
@@ -1727,9 +1741,16 @@
                               }, 
                               "limits": {
                                 "additionalProperties": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }, 
                                 "type": "object", 
@@ -2084,9 +2105,16 @@
                                                     "description": "Required: resource to select"
                                                   }, 
                                                   "divisor": {
-                                                    "type": [
-                                                      "string", 
-                                                      "null"
+                                                    "oneOf": [
+                                                      {
+                                                        "type": [
+                                                          "string", 
+                                                          "null"
+                                                        ]
+                                                      }, 
+                                                      {
+                                                        "type": "integer"
+                                                      }
                                                     ]
                                                   }
                                                 }
@@ -2798,9 +2826,16 @@
                                           "description": "Required: resource to select"
                                         }, 
                                         "divisor": {
-                                          "type": [
-                                            "string", 
-                                            "null"
+                                          "oneOf": [
+                                            {
+                                              "type": [
+                                                "string", 
+                                                "null"
+                                              ]
+                                            }, 
+                                            {
+                                              "type": "integer"
+                                            }
                                           ]
                                         }
                                       }
@@ -3280,9 +3315,16 @@
                                           "description": "Required: resource to select"
                                         }, 
                                         "divisor": {
-                                          "type": [
-                                            "string", 
-                                            "null"
+                                          "oneOf": [
+                                            {
+                                              "type": [
+                                                "string", 
+                                                "null"
+                                              ]
+                                            }, 
+                                            {
+                                              "type": "integer"
+                                            }
                                           ]
                                         }
                                       }
@@ -3766,9 +3808,16 @@
                             "properties": {
                               "requests": {
                                 "additionalProperties": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }, 
                                 "type": "object", 
@@ -3776,9 +3825,16 @@
                               }, 
                               "limits": {
                                 "additionalProperties": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }, 
                                 "type": "object", 

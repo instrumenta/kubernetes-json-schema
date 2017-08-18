@@ -1,0 +1,160 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "containers"
+  ], 
+  "type": "object", 
+  "description": "PodSpec is a description of a pod.", 
+  "properties": {
+    "dnsPolicy": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Set DNS policy for containers within the pod. One of 'ClusterFirstWithHostNet', 'ClusterFirst' or 'Default'. Defaults to \"ClusterFirst\". To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'."
+    }, 
+    "hostNetwork": {
+      "type": "boolean", 
+      "description": "Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Default to false."
+    }, 
+    "restartPolicy": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Restart policy for all containers within the pod. One of Always, OnFailure, Never. Default to Always. More info: http://kubernetes.io/docs/user-guide/pod-states#restartpolicy"
+    }, 
+    "automountServiceAccountToken": {
+      "type": "boolean", 
+      "description": "AutomountServiceAccountToken indicates whether a service account token should be automatically mounted."
+    }, 
+    "securityContext": {
+      "description": "SecurityContext holds pod-level security attributes and common container settings. Optional: Defaults to empty.  See type description for default values of each field.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodSecurityContext"
+    }, 
+    "nodeName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements."
+    }, 
+    "hostname": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value."
+    }, 
+    "serviceAccount": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "DeprecatedServiceAccount is a depreciated alias for ServiceAccountName. Deprecated: Use serviceAccountName instead."
+    }, 
+    "nodeSelector": {
+      "additionalProperties": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": "object", 
+      "description": "NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: http://kubernetes.io/docs/user-guide/node-selection/README"
+    }, 
+    "affinity": {
+      "description": "If specified, the pod's scheduling constraints", 
+      "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Affinity"
+    }, 
+    "tolerations": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Toleration"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "If specified, the pod's tolerations."
+    }, 
+    "subdomain": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "If specified, the fully qualified Pod hostname will be \"<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>\". If not specified, the pod will not have a domainname at all."
+    }, 
+    "hostPID": {
+      "type": "boolean", 
+      "description": "Use the host's pid namespace. Optional: Default to false."
+    }, 
+    "serviceAccountName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "ServiceAccountName is the name of the ServiceAccount to use to run this pod. More info: http://releases.k8s.io/HEAD/docs/design/service_accounts.md"
+    }, 
+    "schedulerName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "If specified, the pod will be dispatched by specified scheduler. If not specified, the pod will be dispatched by default scheduler."
+    }, 
+    "hostIPC": {
+      "type": "boolean", 
+      "description": "Use the host's ipc namespace. Optional: Default to false."
+    }, 
+    "activeDeadlineSeconds": {
+      "type": "integer", 
+      "description": "Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.", 
+      "format": "int64"
+    }, 
+    "terminationGracePeriodSeconds": {
+      "type": "integer", 
+      "description": "Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.", 
+      "format": "int64"
+    }, 
+    "containers": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Container"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
+    }, 
+    "volumes": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Volume"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of volumes that can be mounted by containers belonging to the pod. More info: http://kubernetes.io/docs/user-guide/volumes"
+    }, 
+    "initContainers": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Container"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, or Liveness probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/containers"
+    }, 
+    "imagePullSecrets": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.LocalObjectReference"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "ImagePullSecrets is an optional list of references to secrets in the same namespace to use for pulling any of the images used by this PodSpec. If specified, these secrets will be passed to individual puller implementations for them to use. For example, in the case of docker, only DockerConfig type secrets are honored. More info: http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod"
+    }
+  }
+}

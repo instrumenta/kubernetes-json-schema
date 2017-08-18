@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.", 
+  "description": "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.", 
   "properties": {
     "partition": {
       "type": "integer", 

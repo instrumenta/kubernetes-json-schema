@@ -67,6 +67,11 @@
     }, 
     {
       "kind": "WatchEvent", 
+      "version": "v1beta1", 
+      "group": "batch"
+    }, 
+    {
+      "kind": "WatchEvent", 
       "version": "v2alpha1", 
       "group": "batch"
     }, 

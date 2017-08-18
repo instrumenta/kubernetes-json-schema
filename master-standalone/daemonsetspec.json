@@ -4,66 +4,17 @@
     "template"
   ], 
   "type": "object", 
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetSpec is the specification of a daemon set.", 
+  "description": "DaemonSetSpec is the specification of a daemon set.", 
   "properties": {
-    "templateGeneration": {
+    "revisionHistoryLimit": {
       "type": "integer", 
-      "description": "DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.", 
-      "format": "int64"
+      "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
+      "format": "int32"
     }, 
-    "selector": {
-      "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
-      "properties": {
-        "matchLabels": {
-          "additionalProperties": {
-            "type": [
-              "string", 
-              "null"
-            ]
-          }, 
-          "type": "object", 
-          "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
-        }, 
-        "matchExpressions": {
-          "items": {
-            "required": [
-              "key", 
-              "operator"
-            ], 
-            "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
-            "properties": {
-              "operator": {
-                "type": "string", 
-                "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
-              }, 
-              "values": {
-                "items": {
-                  "type": [
-                    "string", 
-                    "null"
-                  ]
-                }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
-                "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
-              }, 
-              "key": {
-                "x-kubernetes-patch-merge-key": "key", 
-                "type": "string", 
-                "description": "key is the label key that the selector applies to.", 
-                "x-kubernetes-patch-strategy": "merge"
-              }
-            }
-          }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
-          "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
-        }
-      }
+    "minReadySeconds": {
+      "type": "integer", 
+      "description": "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).", 
+      "format": "int32"
     }, 
     "template": {
       "description": "PodTemplateSpec describes the data a pod should have when created from a template", 
@@ -1277,9 +1228,16 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }
                               }
@@ -1790,9 +1748,16 @@
                     "properties": {
                       "requests": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 
@@ -1800,9 +1765,16 @@
                       }, 
                       "limits": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 
@@ -2189,9 +2161,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -2498,9 +2477,16 @@
                     "description": "Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.", 
                     "properties": {
                       "sizeLimit": {
-                        "type": [
-                          "string", 
-                          "null"
+                        "oneOf": [
+                          {
+                            "type": [
+                              "string", 
+                              "null"
+                            ]
+                          }, 
+                          {
+                            "type": "integer"
+                          }
                         ]
                       }, 
                       "medium": {
@@ -2928,9 +2914,16 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }
                               }
@@ -3435,9 +3428,16 @@
                                   "description": "Required: resource to select"
                                 }, 
                                 "divisor": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }
                               }
@@ -3948,9 +3948,16 @@
                     "properties": {
                       "requests": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 
@@ -3958,9 +3965,16 @@
                       }, 
                       "limits": {
                         "additionalProperties": {
-                          "type": [
-                            "string", 
-                            "null"
+                          "oneOf": [
+                            {
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
+                            }, 
+                            {
+                              "type": "integer"
+                            }
                           ]
                         }, 
                         "type": "object", 
@@ -4329,16 +4343,11 @@
         }
       }
     }, 
-    "revisionHistoryLimit": {
-      "type": "integer", 
-      "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
-      "format": "int32"
-    }, 
     "updateStrategy": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it.", 
+      "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.", 
       "properties": {
         "rollingUpdate": {
-          "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Spec to control the desired behavior of daemon set rolling update.", 
+          "description": "Spec to control the desired behavior of daemon set rolling update.", 
           "properties": {
             "maxUnavailable": {
               "oneOf": [
@@ -4364,10 +4373,59 @@
         }
       }
     }, 
-    "minReadySeconds": {
-      "type": "integer", 
-      "description": "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).", 
-      "format": "int32"
+    "selector": {
+      "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
+      "properties": {
+        "matchLabels": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
+        }, 
+        "matchExpressions": {
+          "items": {
+            "required": [
+              "key", 
+              "operator"
+            ], 
+            "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+            "properties": {
+              "operator": {
+                "type": "string", 
+                "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+              }, 
+              "values": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+              }, 
+              "key": {
+                "x-kubernetes-patch-merge-key": "key", 
+                "type": "string", 
+                "description": "key is the label key that the selector applies to.", 
+                "x-kubernetes-patch-strategy": "merge"
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+        }
+      }
     }
   }
 }

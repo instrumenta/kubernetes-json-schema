@@ -64,6 +64,11 @@
     }, 
     {
       "kind": "DeleteOptions", 
+      "version": "v1beta1", 
+      "group": "batch"
+    }, 
+    {
+      "kind": "DeleteOptions", 
       "version": "v2alpha1", 
       "group": "batch"
     }, 

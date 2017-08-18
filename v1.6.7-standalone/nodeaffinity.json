@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Node affinity is a group of node affinity scheduling rules.", 
+  "properties": {
+    "requiredDuringSchedulingIgnoredDuringExecution": {
+      "required": [
+        "nodeSelectorTerms"
+      ], 
+      "description": "A node selector represents the union of the results of one or more label queries over a set of nodes; that is, it represents the OR of the selectors represented by the node selector terms.", 
+      "properties": {
+        "nodeSelectorTerms": {
+          "items": {
+            "required": [
+              "matchExpressions"
+            ], 
+            "description": "A null or empty node selector term matches no objects.", 
+            "properties": {
+              "matchExpressions": {
+                "items": {
+                  "required": [
+                    "key", 
+                    "operator"
+                  ], 
+                  "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                  "properties": {
+                    "operator": {
+                      "type": "string", 
+                      "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt."
+                    }, 
+                    "values": {
+                      "items": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
+                      }, 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
+                      "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
+                    }, 
+                    "key": {
+                      "type": "string", 
+                      "description": "The label key that the selector applies to."
+                    }
+                  }
+                }, 
+                "type": "array", 
+                "description": "Required. A list of node selector requirements. The requirements are ANDed."
+              }
+            }
+          }, 
+          "type": "array", 
+          "description": "Required. A list of node selector terms. The terms are ORed."
+        }
+      }
+    }, 
+    "preferredDuringSchedulingIgnoredDuringExecution": {
+      "items": {
+        "required": [
+          "weight", 
+          "preference"
+        ], 
+        "description": "An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).", 
+        "properties": {
+          "preference": {
+            "required": [
+              "matchExpressions"
+            ], 
+            "description": "A null or empty node selector term matches no objects.", 
+            "properties": {
+              "matchExpressions": {
+                "items": {
+                  "required": [
+                    "key", 
+                    "operator"
+                  ], 
+                  "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                  "properties": {
+                    "operator": {
+                      "type": "string", 
+                      "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt."
+                    }, 
+                    "values": {
+                      "items": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
+                      }, 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
+                      "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
+                    }, 
+                    "key": {
+                      "type": "string", 
+                      "description": "The label key that the selector applies to."
+                    }
+                  }
+                }, 
+                "type": "array", 
+                "description": "Required. A list of node selector requirements. The requirements are ANDed."
+              }
+            }
+          }, 
+          "weight": {
+            "type": "integer", 
+            "description": "Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.", 
+            "format": "int32"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding \"weight\" to the sum if the node matches the corresponding matchExpressions; the node(s) with the highest sum are the most preferred."
+    }
+  }
+}

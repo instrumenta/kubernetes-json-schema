@@ -1,0 +1,558 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system.", 
+  "properties": {
+    "initContainerStatuses": {
+      "items": {
+        "required": [
+          "name", 
+          "ready", 
+          "restartCount", 
+          "image", 
+          "imageID"
+        ], 
+        "description": "ContainerStatus contains details for the current status of this container.", 
+        "properties": {
+          "restartCount": {
+            "type": "integer", 
+            "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.", 
+            "format": "int32"
+          }, 
+          "name": {
+            "type": "string", 
+            "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated."
+          }, 
+          "image": {
+            "type": "string", 
+            "description": "The image the container is running. More info: http://kubernetes.io/docs/user-guide/images"
+          }, 
+          "imageID": {
+            "type": "string", 
+            "description": "ImageID of the container's image."
+          }, 
+          "state": {
+            "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.", 
+            "properties": {
+              "terminated": {
+                "required": [
+                  "exitCode"
+                ], 
+                "description": "ContainerStateTerminated is a terminated state of a container.", 
+                "properties": {
+                  "containerID": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Container's ID in the format 'docker://<container_id>'"
+                  }, 
+                  "signal": {
+                    "type": "integer", 
+                    "description": "Signal from the last termination of the container", 
+                    "format": "int32"
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason from the last termination of the container"
+                  }, 
+                  "finishedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding the last termination of the container"
+                  }, 
+                  "exitCode": {
+                    "type": "integer", 
+                    "description": "Exit status from the last termination of the container", 
+                    "format": "int32"
+                  }
+                }
+              }, 
+              "running": {
+                "description": "ContainerStateRunning is a running state of a container.", 
+                "properties": {
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }
+                }
+              }, 
+              "waiting": {
+                "description": "ContainerStateWaiting is a waiting state of a container.", 
+                "properties": {
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding why the container is not yet running."
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason the container is not yet running."
+                  }
+                }
+              }
+            }
+          }, 
+          "ready": {
+            "type": "boolean", 
+            "description": "Specifies whether the container has passed its readiness probe."
+          }, 
+          "lastState": {
+            "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.", 
+            "properties": {
+              "terminated": {
+                "required": [
+                  "exitCode"
+                ], 
+                "description": "ContainerStateTerminated is a terminated state of a container.", 
+                "properties": {
+                  "containerID": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Container's ID in the format 'docker://<container_id>'"
+                  }, 
+                  "signal": {
+                    "type": "integer", 
+                    "description": "Signal from the last termination of the container", 
+                    "format": "int32"
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason from the last termination of the container"
+                  }, 
+                  "finishedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding the last termination of the container"
+                  }, 
+                  "exitCode": {
+                    "type": "integer", 
+                    "description": "Exit status from the last termination of the container", 
+                    "format": "int32"
+                  }
+                }
+              }, 
+              "running": {
+                "description": "ContainerStateRunning is a running state of a container.", 
+                "properties": {
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }
+                }
+              }, 
+              "waiting": {
+                "description": "ContainerStateWaiting is a waiting state of a container.", 
+                "properties": {
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding why the container is not yet running."
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason the container is not yet running."
+                  }
+                }
+              }
+            }
+          }, 
+          "containerID": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Container's ID in the format 'docker://<container_id>'. More info: http://kubernetes.io/docs/user-guide/container-environment#container-information"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "The list has one entry per init container in the manifest. The most recent successful init container will have ready = true, the most recently started container will have startTime set. More info: http://kubernetes.io/docs/user-guide/pod-states#container-statuses"
+    }, 
+    "qosClass": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md"
+    }, 
+    "containerStatuses": {
+      "items": {
+        "required": [
+          "name", 
+          "ready", 
+          "restartCount", 
+          "image", 
+          "imageID"
+        ], 
+        "description": "ContainerStatus contains details for the current status of this container.", 
+        "properties": {
+          "restartCount": {
+            "type": "integer", 
+            "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.", 
+            "format": "int32"
+          }, 
+          "name": {
+            "type": "string", 
+            "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated."
+          }, 
+          "image": {
+            "type": "string", 
+            "description": "The image the container is running. More info: http://kubernetes.io/docs/user-guide/images"
+          }, 
+          "imageID": {
+            "type": "string", 
+            "description": "ImageID of the container's image."
+          }, 
+          "state": {
+            "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.", 
+            "properties": {
+              "terminated": {
+                "required": [
+                  "exitCode"
+                ], 
+                "description": "ContainerStateTerminated is a terminated state of a container.", 
+                "properties": {
+                  "containerID": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Container's ID in the format 'docker://<container_id>'"
+                  }, 
+                  "signal": {
+                    "type": "integer", 
+                    "description": "Signal from the last termination of the container", 
+                    "format": "int32"
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason from the last termination of the container"
+                  }, 
+                  "finishedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding the last termination of the container"
+                  }, 
+                  "exitCode": {
+                    "type": "integer", 
+                    "description": "Exit status from the last termination of the container", 
+                    "format": "int32"
+                  }
+                }
+              }, 
+              "running": {
+                "description": "ContainerStateRunning is a running state of a container.", 
+                "properties": {
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }
+                }
+              }, 
+              "waiting": {
+                "description": "ContainerStateWaiting is a waiting state of a container.", 
+                "properties": {
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding why the container is not yet running."
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason the container is not yet running."
+                  }
+                }
+              }
+            }
+          }, 
+          "ready": {
+            "type": "boolean", 
+            "description": "Specifies whether the container has passed its readiness probe."
+          }, 
+          "lastState": {
+            "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.", 
+            "properties": {
+              "terminated": {
+                "required": [
+                  "exitCode"
+                ], 
+                "description": "ContainerStateTerminated is a terminated state of a container.", 
+                "properties": {
+                  "containerID": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Container's ID in the format 'docker://<container_id>'"
+                  }, 
+                  "signal": {
+                    "type": "integer", 
+                    "description": "Signal from the last termination of the container", 
+                    "format": "int32"
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason from the last termination of the container"
+                  }, 
+                  "finishedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }, 
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding the last termination of the container"
+                  }, 
+                  "exitCode": {
+                    "type": "integer", 
+                    "description": "Exit status from the last termination of the container", 
+                    "format": "int32"
+                  }
+                }
+              }, 
+              "running": {
+                "description": "ContainerStateRunning is a running state of a container.", 
+                "properties": {
+                  "startedAt": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "format": "date-time"
+                  }
+                }
+              }, 
+              "waiting": {
+                "description": "ContainerStateWaiting is a waiting state of a container.", 
+                "properties": {
+                  "message": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Message regarding why the container is not yet running."
+                  }, 
+                  "reason": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "(brief) reason the container is not yet running."
+                  }
+                }
+              }
+            }
+          }, 
+          "containerID": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Container's ID in the format 'docker://<container_id>'. More info: http://kubernetes.io/docs/user-guide/container-environment#container-information"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: http://kubernetes.io/docs/user-guide/pod-states#container-statuses"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'OutOfDisk'"
+    }, 
+    "podIP": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated."
+    }, 
+    "startTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "format": "date-time"
+    }, 
+    "hostIP": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "IP address of the host to which the pod is assigned. Empty if not yet scheduled."
+    }, 
+    "phase": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Current condition of the pod. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-phase"
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A human readable message indicating details about why the pod is in this condition."
+    }, 
+    "conditions": {
+      "items": {
+        "required": [
+          "type", 
+          "status"
+        ], 
+        "description": "PodCondition contains details for the current condition of this pod.", 
+        "properties": {
+          "status": {
+            "type": "string", 
+            "description": "Status is the status of the condition. Can be True, False, Unknown. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-conditions"
+          }, 
+          "lastTransitionTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "format": "date-time"
+          }, 
+          "reason": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Unique, one-word, CamelCase reason for the condition's last transition."
+          }, 
+          "lastProbeTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "format": "date-time"
+          }, 
+          "message": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Human-readable message indicating details about last transition."
+          }, 
+          "type": {
+            "type": "string", 
+            "description": "Type is the type of the condition. Currently only Ready. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-conditions"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Current service state of pod. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-conditions"
+    }
+  }
+}

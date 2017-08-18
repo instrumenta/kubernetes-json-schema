@@ -5,9 +5,16 @@
   "properties": {
     "min": {
       "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
+        "oneOf": [
+          {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          {
+            "type": "integer"
+          }
         ]
       }, 
       "type": "object", 
@@ -15,9 +22,16 @@
     }, 
     "default": {
       "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
+        "oneOf": [
+          {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          {
+            "type": "integer"
+          }
         ]
       }, 
       "type": "object", 
@@ -25,9 +39,16 @@
     }, 
     "max": {
       "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
+        "oneOf": [
+          {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          {
+            "type": "integer"
+          }
         ]
       }, 
       "type": "object", 
@@ -35,9 +56,16 @@
     }, 
     "defaultRequest": {
       "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
+        "oneOf": [
+          {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          {
+            "type": "integer"
+          }
         ]
       }, 
       "type": "object", 
@@ -45,9 +73,16 @@
     }, 
     "maxLimitRequestRatio": {
       "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
+        "oneOf": [
+          {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          {
+            "type": "integer"
+          }
         ]
       }, 
       "type": "object", 

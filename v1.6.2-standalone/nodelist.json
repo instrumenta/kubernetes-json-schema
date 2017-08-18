@@ -29,9 +29,16 @@
             "properties": {
               "capacity": {
                 "additionalProperties": {
-                  "type": [
-                    "string", 
-                    "null"
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
+                    }, 
+                    {
+                      "type": "integer"
+                    }
                   ]
                 }, 
                 "type": "object", 
@@ -174,9 +181,16 @@
               }, 
               "allocatable": {
                 "additionalProperties": {
-                  "type": [
-                    "string", 
-                    "null"
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
+                    }, 
+                    {
+                      "type": "integer"
+                    }
                   ]
                 }, 
                 "type": "object", 

@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PersistentVolumeClaimStatus is the current status of a persistent volume claim.", 
+  "properties": {
+    "phase": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Phase represents the current phase of PersistentVolumeClaim."
+    }, 
+    "accessModes": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "AccessModes contains the actual access modes the volume backing the PVC has. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1"
+    }, 
+    "capacity": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "Represents the actual resources of the underlying volume."
+    }
+  }
+}

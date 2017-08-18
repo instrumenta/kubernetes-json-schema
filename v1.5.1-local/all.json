@@ -466,6 +466,9 @@
       "$ref": "_definitions.json#/definitions/v1.JobSpec"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/v2alpha1.CronJobList"
     }, 
     {

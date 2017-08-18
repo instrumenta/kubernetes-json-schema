@@ -643,6 +643,9 @@
       "$ref": "_definitions.json#/definitions/v1alpha1.ClusterRole"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/v1beta1.JobSpec"
     }, 
     {

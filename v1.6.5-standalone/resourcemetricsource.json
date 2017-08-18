@@ -19,9 +19,16 @@
       "description": "name is the name of the resource in question."
     }, 
     "targetAverageValue": {
-      "type": [
-        "string", 
-        "null"
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
       ]
     }
   }

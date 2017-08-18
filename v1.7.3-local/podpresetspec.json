@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PodPresetSpec is a description of a pod preset.", 
+  "properties": {
+    "envFrom": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvFromSource"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "EnvFrom defines the collection of EnvFromSource to inject into containers."
+    }, 
+    "volumeMounts": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.VolumeMount"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "VolumeMounts defines the collection of VolumeMount to inject into containers."
+    }, 
+    "env": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.EnvVar"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Env defines the collection of EnvVar to inject into containers."
+    }, 
+    "volumes": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.Volume"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Volumes defines the collection of Volume to inject into the pod."
+    }, 
+    "selector": {
+      "description": "Selector is a label query over a set of resources, in this case pods. Required.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    }
+  }
+}

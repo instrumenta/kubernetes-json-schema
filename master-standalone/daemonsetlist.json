@@ -36,7 +36,7 @@
               "collisionCount": {
                 "type": "integer", 
                 "description": "Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
-                "format": "int64"
+                "format": "int32"
               }, 
               "observedGeneration": {
                 "type": "integer", 
@@ -1364,9 +1364,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -1877,9 +1884,16 @@
                               "properties": {
                                 "requests": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 
@@ -1887,9 +1901,16 @@
                                 }, 
                                 "limits": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 
@@ -2276,9 +2297,16 @@
                                                       "description": "Required: resource to select"
                                                     }, 
                                                     "divisor": {
-                                                      "type": [
-                                                        "string", 
-                                                        "null"
+                                                      "oneOf": [
+                                                        {
+                                                          "type": [
+                                                            "string", 
+                                                            "null"
+                                                          ]
+                                                        }, 
+                                                        {
+                                                          "type": "integer"
+                                                        }
                                                       ]
                                                     }
                                                   }
@@ -2585,9 +2613,16 @@
                               "description": "Represents an empty directory for a pod. Empty directory volumes support ownership management and SELinux relabeling.", 
                               "properties": {
                                 "sizeLimit": {
-                                  "type": [
-                                    "string", 
-                                    "null"
+                                  "oneOf": [
+                                    {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ]
+                                    }, 
+                                    {
+                                      "type": "integer"
+                                    }
                                   ]
                                 }, 
                                 "medium": {
@@ -3015,9 +3050,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -3522,9 +3564,16 @@
                                             "description": "Required: resource to select"
                                           }, 
                                           "divisor": {
-                                            "type": [
-                                              "string", 
-                                              "null"
+                                            "oneOf": [
+                                              {
+                                                "type": [
+                                                  "string", 
+                                                  "null"
+                                                ]
+                                              }, 
+                                              {
+                                                "type": "integer"
+                                              }
                                             ]
                                           }
                                         }
@@ -4035,9 +4084,16 @@
                               "properties": {
                                 "requests": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 
@@ -4045,9 +4101,16 @@
                                 }, 
                                 "limits": {
                                   "additionalProperties": {
-                                    "type": [
-                                      "string", 
-                                      "null"
+                                    "oneOf": [
+                                      {
+                                        "type": [
+                                          "string", 
+                                          "null"
+                                        ]
+                                      }, 
+                                      {
+                                        "type": "integer"
+                                      }
                                     ]
                                   }, 
                                   "type": "object", 

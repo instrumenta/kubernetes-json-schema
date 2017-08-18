@@ -6,7 +6,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "ControllerRevisionList", 
-      "version": "v1beta1", 
+      "version": "v1beta2", 
       "group": "apps"
     }
   ], 
@@ -15,7 +15,7 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.ControllerRevision"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ControllerRevision"
       }, 
       "type": [
         "array", 

@@ -88,7 +88,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.ScaleSpec"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2alpha1.ObjectMetricStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSystemInfo"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.Scale"
@@ -197,6 +197,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RollingUpdateDeployment"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2alpha1.ObjectMetricStatus"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Event"
@@ -391,6 +394,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.NetworkPolicyPeer"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJob"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSetSpec"
     }, 
     {
@@ -490,10 +496,10 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretProjection"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.PodSecurityPolicySpec"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.ControllerRevision"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.ControllerRevision"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.PodSecurityPolicySpec"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapVolumeSource"
@@ -574,9 +580,6 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.RollingUpdateStatefulSetStrategy"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSystemInfo"
-    }, 
-    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetList"
     }, 
     {
@@ -653,6 +656,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ControllerRevision"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1alpha1.PolicyRule"
@@ -766,7 +772,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.version.Info"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointsList"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJobStatus"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1beta1.UserInfo"
@@ -874,7 +880,13 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ExecAction"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJobSpec"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.DeploymentSpec"
@@ -1039,6 +1051,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1.JobCondition"
     }, 
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.JobTemplateSpec"
+    }, 
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ReplicaSet"
     }, 
     {
@@ -1055,6 +1070,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ComponentStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointsList"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceSpec"
@@ -1147,7 +1165,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext"
     }, 
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ExecAction"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.batch.v1beta1.CronJobList"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource"
@@ -1181,6 +1199,9 @@
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScaleIOVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ControllerRevisionList"
     }, 
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.ScaleSpec"

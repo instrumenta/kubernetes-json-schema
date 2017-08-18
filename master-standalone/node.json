@@ -15,9 +15,16 @@
       "properties": {
         "capacity": {
           "additionalProperties": {
-            "type": [
-              "string", 
-              "null"
+            "oneOf": [
+              {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              {
+                "type": "integer"
+              }
             ]
           }, 
           "type": "object", 
@@ -162,9 +169,16 @@
         }, 
         "allocatable": {
           "additionalProperties": {
-            "type": [
-              "string", 
-              "null"
+            "oneOf": [
+              {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              {
+                "type": "integer"
+              }
             ]
           }, 
           "type": "object", 
@@ -364,7 +378,7 @@
               "key", 
               "effect"
             ], 
-            "description": "The node this Taint is attached to has the effect \"effect\" on any pod that that does not tolerate the Taint.", 
+            "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.", 
             "properties": {
               "key": {
                 "x-kubernetes-patch-merge-key": "key", 

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "currentReplicas", 
+    "desiredReplicas", 
+    "currentMetrics"
+  ], 
+  "type": "object", 
+  "description": "HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.", 
+  "properties": {
+    "observedGeneration": {
+      "type": "integer", 
+      "description": "observedGeneration is the most recent generation observed by this autoscaler.", 
+      "format": "int64"
+    }, 
+    "lastScaleTime": {
+      "description": "lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "currentReplicas": {
+      "type": "integer", 
+      "description": "currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.", 
+      "format": "int32"
+    }, 
+    "currentMetrics": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.autoscaling.v2alpha1.MetricStatus"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "currentMetrics is the last read state of the metrics used by this autoscaler."
+    }, 
+    "desiredReplicas": {
+      "type": "integer", 
+      "description": "desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.", 
+      "format": "int32"
+    }
+  }
+}

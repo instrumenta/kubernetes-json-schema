@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "name", 
+    "value"
+  ], 
+  "type": "object", 
+  "description": "HTTPHeader describes a custom header to be used in HTTP probes", 
+  "properties": {
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The header field name"
+    }, 
+    "value": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The header field value"
+    }
+  }
+}

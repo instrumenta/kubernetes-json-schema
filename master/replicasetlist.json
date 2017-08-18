@@ -1,5 +1,5 @@
 {
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetList is a collection of ReplicaSets.", 
+  "description": "ReplicaSetList is a collection of ReplicaSets.", 
   "required": [
     "items"
   ], 

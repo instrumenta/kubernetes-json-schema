@@ -1,10 +1,10 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "WIP: This is not ready to be used and we plan to make breaking changes to it.", 
+  "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.", 
   "properties": {
     "rollingUpdate": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Spec to control the desired behavior of daemon set rolling update.", 
+      "description": "Spec to control the desired behavior of daemon set rolling update.", 
       "properties": {
         "maxUnavailable": {
           "oneOf": [

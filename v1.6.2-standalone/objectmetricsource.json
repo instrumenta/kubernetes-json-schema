@@ -9,9 +9,16 @@
   "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
   "properties": {
     "targetValue": {
-      "type": [
-        "string", 
-        "null"
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
       ]
     }, 
     "target": {

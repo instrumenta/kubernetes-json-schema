@@ -1,7 +1,7 @@
 {
   "definitions": {
     "io.k8s.api.apps.v1beta2.StatefulSetUpdateStrategy": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.", 
+      "description": "StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.", 
       "properties": {
         "rollingUpdate": {
           "description": "RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.", 
@@ -188,7 +188,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSet represents the configuration of a daemon set.", 
+      "description": "DaemonSet represents the configuration of a daemon set.", 
       "properties": {
         "status": {
           "description": "The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
@@ -358,6 +358,11 @@
         {
           "kind": "DeleteOptions", 
           "version": "v1", 
+          "group": "batch"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1beta1", 
           "group": "batch"
         }, 
         {
@@ -600,7 +605,7 @@
         "collisionCount": {
           "type": "integer", 
           "description": "Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.", 
-          "format": "int64"
+          "format": "int32"
         }, 
         "replicas": {
           "type": "integer", 
@@ -827,7 +832,7 @@
         "type", 
         "status"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentCondition describes the state of a deployment at a certain point.", 
+      "description": "DeploymentCondition describes the state of a deployment at a certain point.", 
       "properties": {
         "status": {
           "type": "string", 
@@ -887,7 +892,7 @@
         "template", 
         "serviceName"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. A StatefulSetSpec is the specification of a StatefulSet.", 
+      "description": "A StatefulSetSpec is the specification of a StatefulSet.", 
       "properties": {
         "replicas": {
           "type": "integer", 
@@ -938,25 +943,60 @@
         }
       }
     }, 
-    "io.k8s.api.autoscaling.v2alpha1.ObjectMetricStatus": {
+    "io.k8s.api.core.v1.NodeSystemInfo": {
       "required": [
-        "target", 
-        "metricName", 
-        "currentValue"
+        "machineID", 
+        "systemUUID", 
+        "bootID", 
+        "kernelVersion", 
+        "osImage", 
+        "containerRuntimeVersion", 
+        "kubeletVersion", 
+        "kubeProxyVersion", 
+        "operatingSystem", 
+        "architecture"
       ], 
-      "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
+      "description": "NodeSystemInfo is a set of ids/uuids to uniquely identify the node.", 
       "properties": {
-        "currentValue": {
-          "description": "currentValue is the current value of the metric (as a quantity).", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
-        }, 
-        "target": {
-          "description": "target is the described Kubernetes object.", 
-          "$ref": "#/definitions/io.k8s.api.autoscaling.v2alpha1.CrossVersionObjectReference"
-        }, 
-        "metricName": {
+        "kernelVersion": {
           "type": "string", 
-          "description": "metricName is the name of the metric in question."
+          "description": "Kernel Version reported by the node from 'uname -r' (e.g. 3.16.0-0.bpo.4-amd64)."
+        }, 
+        "kubeletVersion": {
+          "type": "string", 
+          "description": "Kubelet Version reported by the node."
+        }, 
+        "containerRuntimeVersion": {
+          "type": "string", 
+          "description": "ContainerRuntime Version reported by the node through runtime remote API (e.g. docker://1.5.0)."
+        }, 
+        "machineID": {
+          "type": "string", 
+          "description": "MachineID reported by the node. For unique machine identification in the cluster this field is preferred. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.html"
+        }, 
+        "kubeProxyVersion": {
+          "type": "string", 
+          "description": "KubeProxy Version reported by the node."
+        }, 
+        "bootID": {
+          "type": "string", 
+          "description": "Boot ID reported by the node."
+        }, 
+        "osImage": {
+          "type": "string", 
+          "description": "OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy))."
+        }, 
+        "architecture": {
+          "type": "string", 
+          "description": "The Architecture reported by the node"
+        }, 
+        "systemUUID": {
+          "type": "string", 
+          "description": "SystemUUID reported by the node. For unique machine identification MachineID is preferred. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-US/Red_Hat_Subscription_Management/1/html/RHSM/getting-system-uuid.html"
+        }, 
+        "operatingSystem": {
+          "type": "string", 
+          "description": "The Operating System reported by the node"
         }
       }
     }, 
@@ -968,7 +1008,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Scale represents a scaling request for a resource.", 
+      "description": "Scale represents a scaling request for a resource.", 
       "properties": {
         "status": {
           "description": "current status of the scale. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status. Read-only.", 
@@ -1724,7 +1764,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n - Network: A single stable DNS and hostname.\n - Storage: As many VolumeClaims as requested.\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.", 
+      "description": "StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n - Network: A single stable DNS and hostname.\n - Storage: As many VolumeClaims as requested.\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.", 
       "properties": {
         "status": {
           "description": "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.", 
@@ -1851,7 +1891,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentList is a list of Deployments.", 
+      "description": "DeploymentList is a list of Deployments.", 
       "properties": {
         "items": {
           "items": {
@@ -1998,6 +2038,28 @@
         }
       }
     }, 
+    "io.k8s.api.autoscaling.v2alpha1.ObjectMetricStatus": {
+      "required": [
+        "target", 
+        "metricName", 
+        "currentValue"
+      ], 
+      "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
+      "properties": {
+        "currentValue": {
+          "description": "currentValue is the current value of the metric (as a quantity).", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        }, 
+        "target": {
+          "description": "target is the described Kubernetes object.", 
+          "$ref": "#/definitions/io.k8s.api.autoscaling.v2alpha1.CrossVersionObjectReference"
+        }, 
+        "metricName": {
+          "type": "string", 
+          "description": "metricName is the name of the metric in question."
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.Event": {
       "required": [
         "metadata", 
@@ -2119,7 +2181,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetList is a collection of daemon sets.", 
+      "description": "DaemonSetList is a collection of daemon sets.", 
       "properties": {
         "items": {
           "items": {
@@ -3744,6 +3806,38 @@
         }
       }
     }, 
+    "io.k8s.api.batch.v1beta1.CronJob": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "CronJob", 
+          "version": "v1beta1", 
+          "group": "batch"
+        }
+      ], 
+      "description": "CronJob represents the configuration of a single cron job.", 
+      "properties": {
+        "status": {
+          "description": "Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.batch.v1beta1.CronJobStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.batch.v1beta1.CronJobSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.api.extensions.v1beta1.ReplicaSetSpec": {
       "description": "ReplicaSetSpec is the specification of a ReplicaSet.", 
       "properties": {
@@ -4776,6 +4870,42 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1beta1.ControllerRevision": {
+      "required": [
+        "revision"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ControllerRevision", 
+          "version": "v1beta1", 
+          "group": "apps"
+        }
+      ], 
+      "description": "ControllerRevision implements an immutable snapshot of state data. Clients are responsible for serializing and deserializing the objects that contain their internal state. Once a ControllerRevision has been successfully created, it can not be updated. The API Server will fail validation of all requests that attempt to mutate the Data field. ControllerRevisions may, however, be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for update and rollback, this object is beta. However, it may be subject to name and representation changes in future releases, and clients should not depend on its stability. It is primarily for internal use by controllers.", 
+      "properties": {
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }, 
+        "data": {
+          "description": "Data is the serialized representation of the state.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "description": "Revision indicates the revision of the state represented by Data.", 
+          "format": "int64"
+        }
+      }
+    }, 
     "io.k8s.api.extensions.v1beta1.PodSecurityPolicySpec": {
       "required": [
         "seLinux", 
@@ -4863,42 +4993,6 @@
         "hostPID": {
           "type": "boolean", 
           "description": "hostPID determines if the policy allows the use of HostPID in the pod spec."
-        }
-      }
-    }, 
-    "io.k8s.api.apps.v1beta1.ControllerRevision": {
-      "required": [
-        "revision"
-      ], 
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "ControllerRevision", 
-          "version": "v1beta1", 
-          "group": "apps"
-        }
-      ], 
-      "description": "ControllerRevision implements an immutable snapshot of state data. Clients are responsible for serializing and deserializing the objects that contain their internal state. Once a ControllerRevision has been successfully created, it can not be updated. The API Server will fail validation of all requests that attempt to mutate the Data field. ControllerRevisions may, however, be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for update and rollback, this object is beta. However, it may be subject to name and representation changes in future releases, and clients should not depend on its stability. It is primarily for internal use by controllers.", 
-      "properties": {
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "metadata": {
-          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        }, 
-        "data": {
-          "description": "Data is the serialized representation of the state.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "revision": {
-          "type": "integer", 
-          "description": "Revision indicates the revision of the state represented by Data.", 
-          "format": "int64"
         }
       }
     }, 
@@ -5064,7 +5158,7 @@
       "required": [
         "replicas"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ScaleStatus represents the current status of a scale subresource.", 
+      "description": "ScaleStatus represents the current status of a scale subresource.", 
       "properties": {
         "replicas": {
           "type": "integer", 
@@ -5516,63 +5610,6 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.NodeSystemInfo": {
-      "required": [
-        "machineID", 
-        "systemUUID", 
-        "bootID", 
-        "kernelVersion", 
-        "osImage", 
-        "containerRuntimeVersion", 
-        "kubeletVersion", 
-        "kubeProxyVersion", 
-        "operatingSystem", 
-        "architecture"
-      ], 
-      "description": "NodeSystemInfo is a set of ids/uuids to uniquely identify the node.", 
-      "properties": {
-        "kernelVersion": {
-          "type": "string", 
-          "description": "Kernel Version reported by the node from 'uname -r' (e.g. 3.16.0-0.bpo.4-amd64)."
-        }, 
-        "kubeletVersion": {
-          "type": "string", 
-          "description": "Kubelet Version reported by the node."
-        }, 
-        "containerRuntimeVersion": {
-          "type": "string", 
-          "description": "ContainerRuntime Version reported by the node through runtime remote API (e.g. docker://1.5.0)."
-        }, 
-        "machineID": {
-          "type": "string", 
-          "description": "MachineID reported by the node. For unique machine identification in the cluster this field is preferred. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.html"
-        }, 
-        "kubeProxyVersion": {
-          "type": "string", 
-          "description": "KubeProxy Version reported by the node."
-        }, 
-        "bootID": {
-          "type": "string", 
-          "description": "Boot ID reported by the node."
-        }, 
-        "osImage": {
-          "type": "string", 
-          "description": "OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy))."
-        }, 
-        "architecture": {
-          "type": "string", 
-          "description": "The Architecture reported by the node"
-        }, 
-        "systemUUID": {
-          "type": "string", 
-          "description": "SystemUUID reported by the node. For unique machine identification MachineID is preferred. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-US/Red_Hat_Subscription_Management/1/html/RHSM/getting-system-uuid.html"
-        }, 
-        "operatingSystem": {
-          "type": "string", 
-          "description": "The Operating System reported by the node"
-        }
-      }
-    }, 
     "io.k8s.api.apps.v1beta2.ReplicaSetList": {
       "required": [
         "items"
@@ -5584,7 +5621,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetList is a collection of ReplicaSets.", 
+      "description": "ReplicaSetList is a collection of ReplicaSets.", 
       "properties": {
         "items": {
           "items": {
@@ -5895,7 +5932,7 @@
         "type", 
         "status"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetCondition describes the state of a replica set at a certain point.", 
+      "description": "ReplicaSetCondition describes the state of a replica set at a certain point.", 
       "properties": {
         "status": {
           "type": "string", 
@@ -6226,7 +6263,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.RollingUpdateDaemonSet": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Spec to control the desired behavior of daemon set rolling update.", 
+      "description": "Spec to control the desired behavior of daemon set rolling update.", 
       "properties": {
         "maxUnavailable": {
           "description": "The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.", 
@@ -6304,6 +6341,42 @@
         "postStart": {
           "description": "PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks", 
           "$ref": "#/definitions/io.k8s.api.core.v1.Handler"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1beta2.ControllerRevision": {
+      "required": [
+        "revision"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ControllerRevision", 
+          "version": "v1beta2", 
+          "group": "apps"
+        }
+      ], 
+      "description": "ControllerRevision implements an immutable snapshot of state data. Clients are responsible for serializing and deserializing the objects that contain their internal state. Once a ControllerRevision has been successfully created, it can not be updated. The API Server will fail validation of all requests that attempt to mutate the Data field. ControllerRevisions may, however, be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for update and rollback, this object is beta. However, it may be subject to name and representation changes in future releases, and clients should not depend on its stability. It is primarily for internal use by controllers.", 
+      "properties": {
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }, 
+        "data": {
+          "description": "Data is the serialized representation of the state.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "revision": {
+          "type": "integer", 
+          "description": "Revision indicates the revision of the state represented by Data.", 
+          "format": "int64"
         }
       }
     }, 
@@ -6413,14 +6486,6 @@
           "type": "string", 
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
-        "metadata": {
-          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
         "parameters": {
           "additionalProperties": {
             "type": "string"
@@ -6431,6 +6496,18 @@
         "provisioner": {
           "type": "string", 
           "description": "Provisioner indicates the type of the provisioner."
+        }, 
+        "reclaimPolicy": {
+          "type": "string", 
+          "description": "Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete."
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -6479,12 +6556,12 @@
         "desiredNumberScheduled", 
         "numberReady"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetStatus represents the current status of a daemon set.", 
+      "description": "DaemonSetStatus represents the current status of a daemon set.", 
       "properties": {
         "collisionCount": {
           "type": "integer", 
           "description": "Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
-          "format": "int64"
+          "format": "int32"
         }, 
         "observedGeneration": {
           "type": "integer", 
@@ -6633,14 +6710,6 @@
           "type": "string", 
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
-        "metadata": {
-          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
         "parameters": {
           "additionalProperties": {
             "type": "string"
@@ -6651,6 +6720,18 @@
         "provisioner": {
           "type": "string", 
           "description": "Provisioner indicates the type of the provisioner."
+        }, 
+        "reclaimPolicy": {
+          "type": "string", 
+          "description": "Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete."
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -7078,7 +7159,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.RollingUpdateDeployment": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Spec to control the desired behavior of rolling update.", 
+      "description": "Spec to control the desired behavior of rolling update.", 
       "properties": {
         "maxSurge": {
           "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is atmost 130% of desired pods.", 
@@ -7393,37 +7474,19 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.EndpointsList": {
-      "required": [
-        "items"
-      ], 
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "EndpointsList", 
-          "version": "v1", 
-          "group": ""
-        }
-      ], 
-      "description": "EndpointsList is a list of endpoints.", 
+    "io.k8s.api.batch.v1beta1.CronJobStatus": {
+      "description": "CronJobStatus represents the current state of a cron job.", 
       "properties": {
-        "items": {
+        "active": {
           "items": {
-            "$ref": "#/definitions/io.k8s.api.core.v1.Endpoints"
+            "$ref": "#/definitions/io.k8s.api.core.v1.ObjectReference"
           }, 
           "type": "array", 
-          "description": "List of endpoints."
+          "description": "A list of pointers to currently running jobs."
         }, 
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "metadata": {
-          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        "lastScheduleTime": {
+          "description": "Information when was the last time the job was successfully scheduled.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         }
       }
     }, 
@@ -7790,12 +7853,12 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.DeploymentStatus": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentStatus is the most recently observed status of the Deployment.", 
+      "description": "DeploymentStatus is the most recently observed status of the Deployment.", 
       "properties": {
         "collisionCount": {
           "type": "integer", 
           "description": "Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.", 
-          "format": "int64"
+          "format": "int32"
         }, 
         "replicas": {
           "type": "integer", 
@@ -7971,6 +8034,11 @@
         {
           "kind": "WatchEvent", 
           "version": "v1", 
+          "group": "batch"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
           "group": "batch"
         }, 
         {
@@ -8251,7 +8319,7 @@
       "required": [
         "replicas"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetStatus represents the current status of a ReplicaSet.", 
+      "description": "ReplicaSetStatus represents the current status of a ReplicaSet.", 
       "properties": {
         "availableReplicas": {
           "type": "integer", 
@@ -8290,7 +8358,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.ReplicaSetSpec": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSetSpec is the specification of a ReplicaSet.", 
+      "description": "ReplicaSetSpec is the specification of a ReplicaSet.", 
       "properties": {
         "replicas": {
           "type": "integer", 
@@ -8443,7 +8511,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.ScaleSpec": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ScaleSpec describes the attributes of a scale subresource", 
+      "description": "ScaleSpec describes the attributes of a scale subresource", 
       "properties": {
         "replicas": {
           "type": "integer", 
@@ -8482,6 +8550,18 @@
         }
       }
     }, 
+    "io.k8s.api.core.v1.ExecAction": {
+      "description": "ExecAction describes a \"run in container\" action.", 
+      "properties": {
+        "command": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy."
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.NodeSelector": {
       "required": [
         "nodeSelectorTerms"
@@ -8494,6 +8574,46 @@
           }, 
           "type": "array", 
           "description": "Required. A list of node selector terms. The terms are ORed."
+        }
+      }
+    }, 
+    "io.k8s.api.batch.v1beta1.CronJobSpec": {
+      "required": [
+        "schedule", 
+        "jobTemplate"
+      ], 
+      "description": "CronJobSpec describes how the job execution will look like and when it will actually run.", 
+      "properties": {
+        "failedJobsHistoryLimit": {
+          "type": "integer", 
+          "description": "The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.", 
+          "format": "int32"
+        }, 
+        "jobTemplate": {
+          "description": "Specifies the job that will be created when executing a CronJob.", 
+          "$ref": "#/definitions/io.k8s.api.batch.v1beta1.JobTemplateSpec"
+        }, 
+        "concurrencyPolicy": {
+          "type": "string", 
+          "description": "Specifies how to treat concurrent executions of a Job. Defaults to Allow."
+        }, 
+        "suspend": {
+          "type": "boolean", 
+          "description": "This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false."
+        }, 
+        "schedule": {
+          "type": "string", 
+          "description": "The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron."
+        }, 
+        "startingDeadlineSeconds": {
+          "type": "integer", 
+          "description": "Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.", 
+          "format": "int64"
+        }, 
+        "successfulJobsHistoryLimit": {
+          "type": "integer", 
+          "description": "The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.", 
+          "format": "int32"
         }
       }
     }, 
@@ -9150,7 +9270,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. StatefulSetList is a collection of StatefulSets.", 
+      "description": "StatefulSetList is a collection of StatefulSets.", 
       "properties": {
         "items": {
           "items": {
@@ -9636,7 +9756,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. Deployment enables declarative updates for Pods and ReplicaSets.", 
+      "description": "Deployment enables declarative updates for Pods and ReplicaSets.", 
       "properties": {
         "status": {
           "description": "Most recently observed status of the Deployment.", 
@@ -9749,7 +9869,7 @@
         "key", 
         "effect"
       ], 
-      "description": "The node this Taint is attached to has the effect \"effect\" on any pod that that does not tolerate the Taint.", 
+      "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.", 
       "properties": {
         "key": {
           "x-kubernetes-patch-merge-key": "key", 
@@ -9806,7 +9926,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.DeploymentStrategy": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentStrategy describes how to replace existing pods with new ones.", 
+      "description": "DeploymentStrategy describes how to replace existing pods with new ones.", 
       "properties": {
         "rollingUpdate": {
           "description": "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.", 
@@ -9920,16 +10040,8 @@
       "required": [
         "template"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DaemonSetSpec is the specification of a daemon set.", 
+      "description": "DaemonSetSpec is the specification of a daemon set.", 
       "properties": {
-        "updateStrategy": {
-          "description": "An update strategy to replace existing DaemonSet pods with new pods.", 
-          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DaemonSetUpdateStrategy"
-        }, 
-        "template": {
-          "description": "An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
-        }, 
         "revisionHistoryLimit": {
           "type": "integer", 
           "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
@@ -9940,10 +10052,13 @@
           "description": "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).", 
           "format": "int32"
         }, 
-        "templateGeneration": {
-          "type": "integer", 
-          "description": "DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.", 
-          "format": "int64"
+        "template": {
+          "description": "An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
+        }, 
+        "updateStrategy": {
+          "description": "An update strategy to replace existing DaemonSet pods with new pods.", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta2.DaemonSetUpdateStrategy"
         }, 
         "selector": {
           "description": "A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors", 
@@ -10041,6 +10156,19 @@
         }
       }
     }, 
+    "io.k8s.api.batch.v1beta1.JobTemplateSpec": {
+      "description": "JobTemplateSpec describes the data a Job should have when created from a template", 
+      "properties": {
+        "spec": {
+          "description": "Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.batch.v1.JobSpec"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.api.apps.v1beta2.ReplicaSet": {
       "x-kubernetes-group-version-kind": [
         {
@@ -10049,7 +10177,7 @@
           "group": "apps"
         }
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. ReplicaSet represents the configuration of a ReplicaSet.", 
+      "description": "ReplicaSet represents the configuration of a ReplicaSet.", 
       "properties": {
         "status": {
           "description": "Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
@@ -10090,7 +10218,14 @@
       }
     }, 
     "io.k8s.apimachinery.pkg.api.resource.Quantity": {
-      "type": "string"
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
     }, 
     "io.k8s.api.apps.v1beta1.StatefulSetStatus": {
       "required": [
@@ -10105,7 +10240,7 @@
         "collisionCount": {
           "type": "integer", 
           "description": "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
-          "format": "int64"
+          "format": "int32"
         }, 
         "replicas": {
           "type": "integer", 
@@ -10205,6 +10340,40 @@
         }
       }
     }, 
+    "io.k8s.api.core.v1.EndpointsList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "EndpointsList", 
+          "version": "v1", 
+          "group": ""
+        }
+      ], 
+      "description": "EndpointsList is a list of endpoints.", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.Endpoints"
+          }, 
+          "type": "array", 
+          "description": "List of endpoints."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.NamespaceSpec": {
       "description": "NamespaceSpec describes the attributes on a Namespace.", 
       "properties": {
@@ -10223,7 +10392,7 @@
         "collisionCount": {
           "type": "integer", 
           "description": "Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.", 
-          "format": "int64"
+          "format": "int32"
         }, 
         "replicas": {
           "type": "integer", 
@@ -10702,7 +10871,7 @@
         "collisionCount": {
           "type": "integer", 
           "description": "Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
-          "format": "int64"
+          "format": "int32"
         }, 
         "observedGeneration": {
           "type": "integer", 
@@ -10750,7 +10919,7 @@
       "required": [
         "template"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. DeploymentSpec is the specification of the desired behavior of the Deployment.", 
+      "description": "DeploymentSpec is the specification of the desired behavior of the Deployment.", 
       "properties": {
         "progressDeadlineSeconds": {
           "type": "integer", 
@@ -10791,7 +10960,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.DaemonSetUpdateStrategy": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it.", 
+      "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.", 
       "properties": {
         "rollingUpdate": {
           "description": "Rolling update config params. Present only if type = \"RollingUpdate\".", 
@@ -10977,7 +11146,7 @@
       }
     }, 
     "io.k8s.api.apps.v1beta2.RollingUpdateStatefulSetStrategy": {
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.", 
+      "description": "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.", 
       "properties": {
         "partition": {
           "type": "integer", 
@@ -11083,15 +11252,37 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.ExecAction": {
-      "description": "ExecAction describes a \"run in container\" action.", 
+    "io.k8s.api.batch.v1beta1.CronJobList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "CronJobList", 
+          "version": "v1beta1", 
+          "group": "batch"
+        }
+      ], 
+      "description": "CronJobList is a collection of cron jobs.", 
       "properties": {
-        "command": {
+        "items": {
           "items": {
-            "type": "string"
+            "$ref": "#/definitions/io.k8s.api.batch.v1beta1.CronJob"
           }, 
           "type": "array", 
-          "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy."
+          "description": "items is the list of CronJobs."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -11412,6 +11603,40 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1beta2.ControllerRevisionList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ControllerRevisionList", 
+          "version": "v1beta2", 
+          "group": "apps"
+        }
+      ], 
+      "description": "ControllerRevisionList is a resource containing a list of ControllerRevision objects.", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.apps.v1beta2.ControllerRevision"
+          }, 
+          "type": "array", 
+          "description": "Items is the list of ControllerRevisions"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
     "io.k8s.api.apps.v1beta1.ScaleSpec": {
       "description": "ScaleSpec describes the attributes of a scale subresource", 
       "properties": {
@@ -11499,7 +11724,7 @@
       "required": [
         "replicas"
       ], 
-      "description": "WIP: This is not ready to be used and we plan to make breaking changes to it. StatefulSetStatus represents the current state of a StatefulSet.", 
+      "description": "StatefulSetStatus represents the current state of a StatefulSet.", 
       "properties": {
         "updateRevision": {
           "type": "string", 
@@ -11508,7 +11733,7 @@
         "collisionCount": {
           "type": "integer", 
           "description": "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
-          "format": "int64"
+          "format": "int32"
         }, 
         "replicas": {
           "type": "integer", 
