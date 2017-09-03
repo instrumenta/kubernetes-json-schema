@@ -1,0 +1,511 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "NodeList is the whole list of all Nodes which have been registered with master.", 
+  "properties": {
+    "items": {
+      "items": {
+        "additionalProperties": false, 
+        "description": "Node is a worker node in Kubernetes. Each node will have a unique identifier in the cache (i.e. in etcd).", 
+        "properties": {
+          "status": {
+            "additionalProperties": false, 
+            "description": "NodeStatus is information about the current status of a node.", 
+            "properties": {
+              "capacity": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "Capacity represents the total resources of a node. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#capacity for more details."
+              }, 
+              "addresses": {
+                "items": {
+                  "additionalProperties": false, 
+                  "required": [
+                    "type", 
+                    "address"
+                  ], 
+                  "description": "NodeAddress contains information for the node's address.", 
+                  "properties": {
+                    "type": {
+                      "type": "string", 
+                      "description": "Node address type, one of Hostname, ExternalIP or InternalIP."
+                    }, 
+                    "address": {
+                      "type": "string", 
+                      "description": "The node address."
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-addresses"
+              }, 
+              "nodeInfo": {
+                "additionalProperties": false, 
+                "required": [
+                  "machineID", 
+                  "systemUUID", 
+                  "bootID", 
+                  "kernelVersion", 
+                  "osImage", 
+                  "containerRuntimeVersion", 
+                  "kubeletVersion", 
+                  "kubeProxyVersion", 
+                  "operatingSystem", 
+                  "architecture"
+                ], 
+                "description": "NodeSystemInfo is a set of ids/uuids to uniquely identify the node.", 
+                "properties": {
+                  "kernelVersion": {
+                    "type": "string", 
+                    "description": "Kernel Version reported by the node from 'uname -r' (e.g. 3.16.0-0.bpo.4-amd64)."
+                  }, 
+                  "kubeletVersion": {
+                    "type": "string", 
+                    "description": "Kubelet Version reported by the node."
+                  }, 
+                  "containerRuntimeVersion": {
+                    "type": "string", 
+                    "description": "ContainerRuntime Version reported by the node through runtime remote API (e.g. docker://1.5.0)."
+                  }, 
+                  "machineID": {
+                    "type": "string", 
+                    "description": "MachineID reported by the node. For unique machine identification in the cluster this field is prefered. Learn more from man(5) machine-id: http://man7.org/linux/man-pages/man5/machine-id.5.html"
+                  }, 
+                  "kubeProxyVersion": {
+                    "type": "string", 
+                    "description": "KubeProxy Version reported by the node."
+                  }, 
+                  "bootID": {
+                    "type": "string", 
+                    "description": "Boot ID reported by the node."
+                  }, 
+                  "osImage": {
+                    "type": "string", 
+                    "description": "OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy))."
+                  }, 
+                  "architecture": {
+                    "type": "string", 
+                    "description": "The Architecture reported by the node"
+                  }, 
+                  "systemUUID": {
+                    "type": "string", 
+                    "description": "SystemUUID reported by the node. For unique machine identification MachineID is prefered. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-US/Red_Hat_Subscription_Management/1/html/RHSM/getting-system-uuid.html"
+                  }, 
+                  "operatingSystem": {
+                    "type": "string", 
+                    "description": "The Operating System reported by the node"
+                  }
+                }
+              }, 
+              "volumesAttached": {
+                "items": {
+                  "additionalProperties": false, 
+                  "required": [
+                    "name", 
+                    "devicePath"
+                  ], 
+                  "description": "AttachedVolume describes a volume attached to a node", 
+                  "properties": {
+                    "devicePath": {
+                      "type": "string", 
+                      "description": "DevicePath represents the device path where the volume should be available"
+                    }, 
+                    "name": {
+                      "type": "string", 
+                      "description": "Name of the attached volume"
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "List of volumes that are attached to the node."
+              }, 
+              "allocatable": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity."
+              }, 
+              "volumesInUse": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "List of attachable volumes in use (mounted) by the node."
+              }, 
+              "daemonEndpoints": {
+                "additionalProperties": false, 
+                "description": "NodeDaemonEndpoints lists ports opened by daemons running on the Node.", 
+                "properties": {
+                  "kubeletEndpoint": {
+                    "additionalProperties": false, 
+                    "required": [
+                      "Port"
+                    ], 
+                    "description": "DaemonEndpoint contains information about a single Daemon endpoint.", 
+                    "properties": {
+                      "Port": {
+                        "type": "integer", 
+                        "description": "Port number of the given endpoint.", 
+                        "format": "int32"
+                      }
+                    }
+                  }
+                }
+              }, 
+              "phase": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "NodePhase is the recently observed lifecycle phase of the node. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-phase The field is never populated, and now is deprecated."
+              }, 
+              "images": {
+                "items": {
+                  "additionalProperties": false, 
+                  "required": [
+                    "names"
+                  ], 
+                  "description": "Describe a container image", 
+                  "properties": {
+                    "sizeBytes": {
+                      "type": "integer", 
+                      "description": "The size of the image in bytes.", 
+                      "format": "int64"
+                    }, 
+                    "names": {
+                      "items": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
+                      }, 
+                      "type": "array", 
+                      "description": "Names by which this image is known. e.g. [\"gcr.io/google_containers/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]"
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "List of container images on this node"
+              }, 
+              "conditions": {
+                "items": {
+                  "additionalProperties": false, 
+                  "required": [
+                    "type", 
+                    "status"
+                  ], 
+                  "description": "NodeCondition contains condition information for a node.", 
+                  "properties": {
+                    "status": {
+                      "type": "string", 
+                      "description": "Status of the condition, one of True, False, Unknown."
+                    }, 
+                    "lastTransitionTime": {
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
+                      "format": "date-time"
+                    }, 
+                    "reason": {
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
+                      "description": "(brief) reason for the condition's last transition."
+                    }, 
+                    "lastHeartbeatTime": {
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
+                      "format": "date-time"
+                    }, 
+                    "message": {
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
+                      "description": "Human readable message indicating details about last transition."
+                    }, 
+                    "type": {
+                      "type": "string", 
+                      "description": "Type of node condition."
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "Conditions is an array of current observed node conditions. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-condition"
+              }
+            }
+          }, 
+          "kind": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+          }, 
+          "spec": {
+            "additionalProperties": false, 
+            "description": "NodeSpec describes the attributes that a node is created with.", 
+            "properties": {
+              "podCIDR": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "PodCIDR represents the pod IP range assigned to the node."
+              }, 
+              "unschedulable": {
+                "type": "boolean", 
+                "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#manual-node-administration\""
+              }, 
+              "providerID": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>"
+              }, 
+              "externalID": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "External ID of the node assigned by some machine database (e.g. a cloud provider). Deprecated."
+              }
+            }
+          }, 
+          "apiVersion": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+          }, 
+          "metadata": {
+            "additionalProperties": false, 
+            "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
+            "properties": {
+              "ownerReferences": {
+                "items": {
+                  "additionalProperties": false, 
+                  "required": [
+                    "apiVersion", 
+                    "kind", 
+                    "name", 
+                    "uid"
+                  ], 
+                  "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
+                  "properties": {
+                    "name": {
+                      "type": "string", 
+                      "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                    }, 
+                    "kind": {
+                      "type": "string", 
+                      "description": "Kind of the referent. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+                    }, 
+                    "controller": {
+                      "type": "boolean", 
+                      "description": "If true, this reference points to the managing controller."
+                    }, 
+                    "apiVersion": {
+                      "type": "string", 
+                      "description": "API version of the referent."
+                    }, 
+                    "uid": {
+                      "type": "string", 
+                      "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
+              }, 
+              "name": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+              }, 
+              "deletionTimestamp": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "format": "date-time"
+              }, 
+              "clusterName": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
+              }, 
+              "deletionGracePeriodSeconds": {
+                "type": "integer", 
+                "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.", 
+                "format": "int64"
+              }, 
+              "labels": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
+              }, 
+              "namespace": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
+              }, 
+              "generation": {
+                "type": "integer", 
+                "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
+                "format": "int64"
+              }, 
+              "finalizers": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed."
+              }, 
+              "resourceVersion": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+              }, 
+              "generateName": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#idempotency"
+              }, 
+              "creationTimestamp": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "format": "date-time"
+              }, 
+              "annotations": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+              }, 
+              "selfLink": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+              }, 
+              "uid": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+              }
+            }
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of nodes"
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }, 
+    "metadata": {
+      "additionalProperties": false, 
+      "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
+      "properties": {
+        "selfLink": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+        }, 
+        "resourceVersion": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+        }
+      }
+    }
+  }
+}

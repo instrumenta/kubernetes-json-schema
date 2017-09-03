@@ -1,0 +1,834 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: http://kubernetes.io/docs/user-guide/persistent-volumes", 
+  "properties": {
+    "status": {
+      "additionalProperties": false, 
+      "description": "PersistentVolumeStatus is the current status of a persistent volume.", 
+      "properties": {
+        "phase": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Phase indicates if a volume is available, bound to a claim, or released by a claim. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#phase"
+        }, 
+        "message": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "A human-readable message indicating details about why the volume is in this state."
+        }, 
+        "reason": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI."
+        }
+      }
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+    }, 
+    "spec": {
+      "additionalProperties": false, 
+      "description": "PersistentVolumeSpec is the specification of a persistent volume.", 
+      "properties": {
+        "photonPersistentDisk": {
+          "additionalProperties": false, 
+          "required": [
+            "pdID"
+          ], 
+          "description": "Represents a Photon Controller persistent disk resource.", 
+          "properties": {
+            "pdID": {
+              "type": "string", 
+              "description": "ID that identifies Photon Controller persistent disk"
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+            }
+          }
+        }, 
+        "rbd": {
+          "additionalProperties": false, 
+          "required": [
+            "monitors", 
+            "image"
+          ], 
+          "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
+          "properties": {
+            "secretRef": {
+              "additionalProperties": false, 
+              "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+              "properties": {
+                "name": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                }
+              }
+            }, 
+            "image": {
+              "type": "string", 
+              "description": "The rados image name. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+            }, 
+            "keyring": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#rbd"
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+            }, 
+            "user": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "The rados user name. Default is admin. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+            }, 
+            "monitors": {
+              "items": {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              "type": "array", 
+              "description": "A collection of Ceph monitors. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+            }, 
+            "pool": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "The rados pool name. Default is rbd. More info: http://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it."
+            }
+          }
+        }, 
+        "capacity": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "A description of the persistent volume's resources and capacity. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#capacity"
+        }, 
+        "claimRef": {
+          "additionalProperties": false, 
+          "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
+          "properties": {
+            "kind": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Kind of the referent. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+            }, 
+            "name": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+            }, 
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace of the referent. More info: http://kubernetes.io/docs/user-guide/namespaces"
+            }, 
+            "apiVersion": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "API version of the referent."
+            }, 
+            "fieldPath": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object."
+            }, 
+            "resourceVersion": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Specific resourceVersion to which this reference is made, if any. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+            }, 
+            "uid": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+            }
+          }
+        }, 
+        "persistentVolumeReclaimPolicy": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "What happens to a persistent volume when released from its claim. Valid options are Retain (default) and Recycle. Recycling must be supported by the volume plugin underlying this persistent volume. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#recycling-policy"
+        }, 
+        "azureFile": {
+          "additionalProperties": false, 
+          "required": [
+            "secretName", 
+            "shareName"
+          ], 
+          "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.", 
+          "properties": {
+            "shareName": {
+              "type": "string", 
+              "description": "Share Name"
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+            }, 
+            "secretName": {
+              "type": "string", 
+              "description": "the name of secret that contains Azure Storage Account Name and Key"
+            }
+          }
+        }, 
+        "azureDisk": {
+          "additionalProperties": false, 
+          "required": [
+            "diskName", 
+            "diskURI"
+          ], 
+          "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.", 
+          "properties": {
+            "diskURI": {
+              "type": "string", 
+              "description": "The URI the data disk in the blob storage"
+            }, 
+            "diskName": {
+              "type": "string", 
+              "description": "The Name of the data disk in the blob storage"
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+            }, 
+            "cachingMode": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Host Caching mode: None, Read Only, Read Write."
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+            }
+          }
+        }, 
+        "cinder": {
+          "additionalProperties": false, 
+          "required": [
+            "volumeID"
+          ], 
+          "description": "Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling.", 
+          "properties": {
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+            }, 
+            "volumeID": {
+              "type": "string", 
+              "description": "volume id used to identify the volume in cinder More info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+            }
+          }
+        }, 
+        "quobyte": {
+          "additionalProperties": false, 
+          "required": [
+            "registry", 
+            "volume"
+          ], 
+          "description": "Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.", 
+          "properties": {
+            "volume": {
+              "type": "string", 
+              "description": "Volume is a string that references an already created Quobyte volume by name."
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false."
+            }, 
+            "group": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Group to map volume access to Default is no group"
+            }, 
+            "registry": {
+              "type": "string", 
+              "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes"
+            }, 
+            "user": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "User to map volume access to Defaults to serivceaccount user"
+            }
+          }
+        }, 
+        "accessModes": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "AccessModes contains all ways the volume can be mounted. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes"
+        }, 
+        "glusterfs": {
+          "additionalProperties": false, 
+          "required": [
+            "endpoints", 
+            "path"
+          ], 
+          "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.", 
+          "properties": {
+            "path": {
+              "type": "string", 
+              "description": "Path is the Glusterfs volume path. More info: http://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod"
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: http://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod"
+            }, 
+            "endpoints": {
+              "type": "string", 
+              "description": "EndpointsName is the endpoint name that details Glusterfs topology. More info: http://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod"
+            }
+          }
+        }, 
+        "fc": {
+          "additionalProperties": false, 
+          "required": [
+            "targetWWNs", 
+            "lun"
+          ], 
+          "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
+          "properties": {
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+            }, 
+            "targetWWNs": {
+              "items": {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              "type": "array", 
+              "description": "Required: FC target worldwide names (WWNs)"
+            }, 
+            "lun": {
+              "type": "integer", 
+              "description": "Required: FC target lun number", 
+              "format": "int32"
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+            }
+          }
+        }, 
+        "nfs": {
+          "additionalProperties": false, 
+          "required": [
+            "server", 
+            "path"
+          ], 
+          "description": "Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.", 
+          "properties": {
+            "path": {
+              "type": "string", 
+              "description": "Path that is exported by the NFS server. More info: http://kubernetes.io/docs/user-guide/volumes#nfs"
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: http://kubernetes.io/docs/user-guide/volumes#nfs"
+            }, 
+            "server": {
+              "type": "string", 
+              "description": "Server is the hostname or IP address of the NFS server. More info: http://kubernetes.io/docs/user-guide/volumes#nfs"
+            }
+          }
+        }, 
+        "vsphereVolume": {
+          "additionalProperties": false, 
+          "required": [
+            "volumePath"
+          ], 
+          "description": "Represents a vSphere volume resource.", 
+          "properties": {
+            "volumePath": {
+              "type": "string", 
+              "description": "Path that identifies vSphere volume vmdk"
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+            }
+          }
+        }, 
+        "hostPath": {
+          "additionalProperties": false, 
+          "required": [
+            "path"
+          ], 
+          "description": "Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.", 
+          "properties": {
+            "path": {
+              "type": "string", 
+              "description": "Path of the directory on the host. More info: http://kubernetes.io/docs/user-guide/volumes#hostpath"
+            }
+          }
+        }, 
+        "flexVolume": {
+          "additionalProperties": false, 
+          "required": [
+            "driver"
+          ], 
+          "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+          "properties": {
+            "secretRef": {
+              "additionalProperties": false, 
+              "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+              "properties": {
+                "name": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                }
+              }
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+            }, 
+            "driver": {
+              "type": "string", 
+              "description": "Driver is the name of the driver to use for this volume."
+            }, 
+            "options": {
+              "additionalProperties": {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              "type": "object", 
+              "description": "Optional: Extra command options if any."
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+            }
+          }
+        }, 
+        "awsElasticBlockStore": {
+          "additionalProperties": false, 
+          "required": [
+            "volumeID"
+          ], 
+          "description": "Represents a Persistent Disk resource in AWS.\n\nAn AWS EBS disk must exist before mounting to a container. The disk must also be in the same AWS zone as the kubelet. An AWS EBS disk can only be mounted as read/write once. AWS EBS volumes support ownership management and SELinux relabeling.", 
+          "properties": {
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\". If omitted, the default is \"false\". More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore"
+            }, 
+            "partition": {
+              "type": "integer", 
+              "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).", 
+              "format": "int32"
+            }, 
+            "volumeID": {
+              "type": "string", 
+              "description": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore"
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#awselasticblockstore"
+            }
+          }
+        }, 
+        "cephfs": {
+          "additionalProperties": false, 
+          "required": [
+            "monitors"
+          ], 
+          "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
+          "properties": {
+            "secretRef": {
+              "additionalProperties": false, 
+              "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+              "properties": {
+                "name": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                }
+              }
+            }, 
+            "secretFile": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+            }, 
+            "user": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Optional: User is the rados user name, default is admin More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+            }, 
+            "path": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
+            }, 
+            "monitors": {
+              "items": {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              "type": "array", 
+              "description": "Required: Monitors is a collection of Ceph monitors More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+            }
+          }
+        }, 
+        "flocker": {
+          "additionalProperties": false, 
+          "description": "Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.", 
+          "properties": {
+            "datasetName": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated"
+            }, 
+            "datasetUUID": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "UUID of the dataset. This is unique identifier of a Flocker dataset"
+            }
+          }
+        }, 
+        "gcePersistentDisk": {
+          "additionalProperties": false, 
+          "required": [
+            "pdName"
+          ], 
+          "description": "Represents a Persistent Disk resource in Google Compute Engine.\n\nA GCE PD must exist before mounting to a container. The disk must also be in the same GCE project and zone as the kubelet. A GCE PD can only be mounted as read/write once or read-only many times. GCE PDs support ownership management and SELinux relabeling.", 
+          "properties": {
+            "readOnly": {
+              "type": "boolean", 
+              "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+            }, 
+            "partition": {
+              "type": "integer", 
+              "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk", 
+              "format": "int32"
+            }, 
+            "pdName": {
+              "type": "string", 
+              "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#gcepersistentdisk"
+            }
+          }
+        }, 
+        "iscsi": {
+          "additionalProperties": false, 
+          "required": [
+            "targetPortal", 
+            "iqn", 
+            "lun"
+          ], 
+          "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.", 
+          "properties": {
+            "targetPortal": {
+              "type": "string", 
+              "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
+            }, 
+            "fsType": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: http://kubernetes.io/docs/user-guide/volumes#iscsi"
+            }, 
+            "readOnly": {
+              "type": "boolean", 
+              "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false."
+            }, 
+            "iqn": {
+              "type": "string", 
+              "description": "Target iSCSI Qualified Name."
+            }, 
+            "iscsiInterface": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
+            }, 
+            "lun": {
+              "type": "integer", 
+              "description": "iSCSI target lun number.", 
+              "format": "int32"
+            }
+          }
+        }
+      }
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }, 
+    "metadata": {
+      "additionalProperties": false, 
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
+      "properties": {
+        "ownerReferences": {
+          "items": {
+            "additionalProperties": false, 
+            "required": [
+              "apiVersion", 
+              "kind", 
+              "name", 
+              "uid"
+            ], 
+            "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
+            "properties": {
+              "name": {
+                "type": "string", 
+                "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+              }, 
+              "kind": {
+                "type": "string", 
+                "description": "Kind of the referent. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+              }, 
+              "controller": {
+                "type": "boolean", 
+                "description": "If true, this reference points to the managing controller."
+              }, 
+              "apiVersion": {
+                "type": "string", 
+                "description": "API version of the referent."
+              }, 
+              "uid": {
+                "type": "string", 
+                "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
+        }, 
+        "name": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+        }, 
+        "deletionTimestamp": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "format": "date-time"
+        }, 
+        "clusterName": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
+        }, 
+        "deletionGracePeriodSeconds": {
+          "type": "integer", 
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.", 
+          "format": "int64"
+        }, 
+        "labels": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
+        }, 
+        "namespace": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
+        }, 
+        "generation": {
+          "type": "integer", 
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
+          "format": "int64"
+        }, 
+        "finalizers": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed."
+        }, 
+        "resourceVersion": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+        }, 
+        "generateName": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#idempotency"
+        }, 
+        "creationTimestamp": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "format": "date-time"
+        }, 
+        "annotations": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+        }, 
+        "selfLink": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+        }, 
+        "uid": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+        }
+      }
+    }
+  }
+}

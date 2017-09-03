@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "scaleRef", 
+    "maxReplicas"
+  ], 
+  "type": "object", 
+  "description": "specification of a horizontal pod autoscaler.", 
+  "properties": {
+    "minReplicas": {
+      "type": "integer", 
+      "description": "lower limit for the number of pods that can be set by the autoscaler, default 1.", 
+      "format": "int32"
+    }, 
+    "scaleRef": {
+      "additionalProperties": false, 
+      "description": "SubresourceReference contains enough information to let you inspect or modify the referred subresource.", 
+      "properties": {
+        "kind": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Kind of the referent; More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+        }, 
+        "name": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+        }, 
+        "apiVersion": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "API version of the referent"
+        }, 
+        "subresource": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Subresource name of the referent"
+        }
+      }
+    }, 
+    "cpuUtilization": {
+      "additionalProperties": false, 
+      "required": [
+        "targetPercentage"
+      ], 
+      "properties": {
+        "targetPercentage": {
+          "type": "integer", 
+          "description": "fraction of the requested CPU that should be utilized/used, e.g. 70 means that 70% of the requested CPU should be in use.", 
+          "format": "int32"
+        }
+      }
+    }, 
+    "maxReplicas": {
+      "type": "integer", 
+      "description": "upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.", 
+      "format": "int32"
+    }
+  }
+}

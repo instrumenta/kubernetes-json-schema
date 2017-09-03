@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "targetPercentage"
+  ], 
+  "type": "object", 
+  "properties": {
+    "targetPercentage": {
+      "type": "integer", 
+      "description": "fraction of the requested CPU that should be utilized/used, e.g. 70 means that 70% of the requested CPU should be in use.", 
+      "format": "int32"
+    }
+  }
+}

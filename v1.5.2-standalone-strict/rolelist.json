@@ -1,0 +1,314 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "items"
+  ], 
+  "type": "object", 
+  "description": "RoleList is a collection of Roles", 
+  "properties": {
+    "items": {
+      "items": {
+        "additionalProperties": false, 
+        "required": [
+          "rules"
+        ], 
+        "description": "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.", 
+        "properties": {
+          "rules": {
+            "items": {
+              "additionalProperties": false, 
+              "required": [
+                "verbs"
+              ], 
+              "description": "PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.", 
+              "properties": {
+                "resourceNames": {
+                  "items": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  "type": [
+                    "array", 
+                    "null"
+                  ], 
+                  "description": "ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed."
+                }, 
+                "nonResourceURLs": {
+                  "items": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  "type": [
+                    "array", 
+                    "null"
+                  ], 
+                  "description": "NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path This name is intentionally different than the internal type so that the DefaultConvert works nicely and because the ordering may be different. Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as \"pods\" or \"secrets\") or non-resource URL paths (such as \"/api\"),  but not both."
+                }, 
+                "apiGroups": {
+                  "items": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  "type": [
+                    "array", 
+                    "null"
+                  ], 
+                  "description": "APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed."
+                }, 
+                "verbs": {
+                  "items": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  "type": "array", 
+                  "description": "Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds."
+                }, 
+                "attributeRestrictions": {
+                  "additionalProperties": false, 
+                  "required": [
+                    "Raw"
+                  ], 
+                  "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package: type MyAPIObject struct {\n\truntime.TypeMeta `json:\",inline\"`\n\tMyPlugin runtime.Object `json:\"myPlugin\"`\n} type PluginA struct {\n\tAOption string `json:\"aOption\"`\n}\n\n// External package: type MyAPIObject struct {\n\truntime.TypeMeta `json:\",inline\"`\n\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n} type PluginA struct {\n\tAOption string `json:\"aOption\"`\n}\n\n// On the wire, the JSON will look something like this: {\n\t\"kind\":\"MyAPIObject\",\n\t\"apiVersion\":\"v1\",\n\t\"myPlugin\": {\n\t\t\"kind\":\"PluginA\",\n\t\t\"aOption\":\"foo\",\n\t},\n}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)", 
+                  "properties": {
+                    "Raw": {
+                      "type": "string", 
+                      "description": "Raw is the underlying serialization of this object.", 
+                      "format": "byte"
+                    }
+                  }
+                }, 
+                "resources": {
+                  "items": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  "type": [
+                    "array", 
+                    "null"
+                  ], 
+                  "description": "Resources is a list of resources this rule applies to.  ResourceAll represents all resources."
+                }
+              }
+            }, 
+            "type": "array", 
+            "description": "Rules holds all the PolicyRules for this Role"
+          }, 
+          "kind": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+          }, 
+          "apiVersion": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+          }, 
+          "metadata": {
+            "additionalProperties": false, 
+            "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
+            "properties": {
+              "ownerReferences": {
+                "items": {
+                  "additionalProperties": false, 
+                  "required": [
+                    "apiVersion", 
+                    "kind", 
+                    "name", 
+                    "uid"
+                  ], 
+                  "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
+                  "properties": {
+                    "name": {
+                      "type": "string", 
+                      "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                    }, 
+                    "kind": {
+                      "type": "string", 
+                      "description": "Kind of the referent. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+                    }, 
+                    "controller": {
+                      "type": "boolean", 
+                      "description": "If true, this reference points to the managing controller."
+                    }, 
+                    "apiVersion": {
+                      "type": "string", 
+                      "description": "API version of the referent."
+                    }, 
+                    "uid": {
+                      "type": "string", 
+                      "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller."
+              }, 
+              "name": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+              }, 
+              "deletionTimestamp": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "format": "date-time"
+              }, 
+              "clusterName": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
+              }, 
+              "deletionGracePeriodSeconds": {
+                "type": "integer", 
+                "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.", 
+                "format": "int64"
+              }, 
+              "labels": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
+              }, 
+              "namespace": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
+              }, 
+              "generation": {
+                "type": "integer", 
+                "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
+                "format": "int64"
+              }, 
+              "finalizers": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed."
+              }, 
+              "resourceVersion": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+              }, 
+              "generateName": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#idempotency"
+              }, 
+              "creationTimestamp": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "format": "date-time"
+              }, 
+              "annotations": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+              }, 
+              "selfLink": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+              }, 
+              "uid": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+              }
+            }
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Items is a list of Roles"
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }, 
+    "metadata": {
+      "additionalProperties": false, 
+      "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
+      "properties": {
+        "selfLink": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+        }, 
+        "resourceVersion": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#concurrency-control-and-consistency"
+        }
+      }
+    }
+  }
+}

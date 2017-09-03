@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "replicas"
+  ], 
+  "type": "object", 
+  "description": "StatefulSetStatus represents the current state of a StatefulSet.", 
+  "properties": {
+    "observedGeneration": {
+      "type": "integer", 
+      "description": "most recent generation observed by this autoscaler.", 
+      "format": "int64"
+    }, 
+    "replicas": {
+      "type": "integer", 
+      "description": "Replicas is the number of actual replicas.", 
+      "format": "int32"
+    }
+  }
+}

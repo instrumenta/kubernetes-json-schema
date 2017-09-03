@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "path"
+  ], 
+  "type": "object", 
+  "description": "DownwardAPIVolumeFile represents information to create the file containing the pod field", 
+  "properties": {
+    "path": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Required: Path is  the relative path name of the file to be created. Must not be absolute or contain the '..' path. Must be utf-8 encoded. The first item of the relative path must not start with '..'"
+    }, 
+    "fieldRef": {
+      "additionalProperties": false, 
+      "required": [
+        "fieldPath"
+      ], 
+      "description": "ObjectFieldSelector selects an APIVersioned field of an object.", 
+      "properties": {
+        "fieldPath": {
+          "type": "string", 
+          "description": "Path of the field to select in the specified API version."
+        }, 
+        "apiVersion": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
+        }
+      }
+    }, 
+    "mode": {
+      "type": "integer", 
+      "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.", 
+      "format": "int32"
+    }, 
+    "resourceFieldRef": {
+      "additionalProperties": false, 
+      "required": [
+        "resource"
+      ], 
+      "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
+      "properties": {
+        "containerName": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Container name: required for volumes, optional for env vars"
+        }, 
+        "resource": {
+          "type": "string", 
+          "description": "Required: resource to select"
+        }, 
+        "divisor": {
+          "oneOf": [
+            {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

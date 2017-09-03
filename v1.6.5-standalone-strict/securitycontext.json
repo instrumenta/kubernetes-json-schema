@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.", 
+  "properties": {
+    "readOnlyRootFilesystem": {
+      "type": "boolean", 
+      "description": "Whether this container has a read-only root filesystem. Default is false."
+    }, 
+    "runAsUser": {
+      "type": "integer", 
+      "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+      "format": "int64"
+    }, 
+    "capabilities": {
+      "additionalProperties": false, 
+      "description": "Adds and removes POSIX capabilities from running containers.", 
+      "properties": {
+        "add": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Added capabilities"
+        }, 
+        "drop": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Removed capabilities"
+        }
+      }
+    }, 
+    "runAsNonRoot": {
+      "type": "boolean", 
+      "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
+    }, 
+    "seLinuxOptions": {
+      "additionalProperties": false, 
+      "description": "SELinuxOptions are the labels to be applied to the container", 
+      "properties": {
+        "type": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Type is a SELinux type label that applies to the container."
+        }, 
+        "role": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Role is a SELinux role label that applies to the container."
+        }, 
+        "user": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "User is a SELinux user label that applies to the container."
+        }, 
+        "level": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Level is SELinux level label that applies to the container."
+        }
+      }
+    }, 
+    "privileged": {
+      "type": "boolean", 
+      "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false."
+    }
+  }
+}

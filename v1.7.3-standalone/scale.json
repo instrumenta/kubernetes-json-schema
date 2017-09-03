@@ -1,4 +1,6 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "Scale", 
@@ -6,8 +8,6 @@
       "group": "apps"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "Scale represents a scaling request for a resource.", 
   "properties": {
     "status": {

@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes", 
+  "properties": {
+    "volumeName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
+    }, 
+    "accessModes": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "AccessModes contains the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1"
+    }, 
+    "resources": {
+      "additionalProperties": false, 
+      "description": "ResourceRequirements describes the compute resource requirements.", 
+      "properties": {
+        "requests": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: http://kubernetes.io/docs/user-guide/compute-resources/"
+        }, 
+        "limits": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "Limits describes the maximum amount of compute resources allowed. More info: http://kubernetes.io/docs/user-guide/compute-resources/"
+        }
+      }
+    }, 
+    "selector": {
+      "additionalProperties": false, 
+      "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
+      "properties": {
+        "matchLabels": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
+        }, 
+        "matchExpressions": {
+          "items": {
+            "additionalProperties": false, 
+            "required": [
+              "key", 
+              "operator"
+            ], 
+            "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+            "properties": {
+              "operator": {
+                "type": "string", 
+                "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+              }, 
+              "values": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+              }, 
+              "key": {
+                "type": "string", 
+                "description": "key is the label key that the selector applies to."
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+        }
+      }
+    }
+  }
+}
