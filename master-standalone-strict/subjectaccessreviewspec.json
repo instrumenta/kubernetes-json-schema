@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "SubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set", 
   "properties": {
     "nonResourceAttributes": {
@@ -22,6 +20,19 @@
           "description": "Verb is the standard HTTP verb"
         }
       }
+    }, 
+    "group": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Groups is the groups you're testing for."
     }, 
     "resourceAttributes": {
       "additionalProperties": false, 
@@ -99,20 +110,7 @@
         "string", 
         "null"
       ], 
-      "description": "User is the user you're testing for. If you specify \"User\" but not \"Groups\", then is it interpreted as \"What if User were not a member of any groups"
-    }, 
-    "groups": {
-      "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Groups is the groups you're testing for."
+      "description": "User is the user you're testing for. If you specify \"User\" but not \"Group\", then is it interpreted as \"What if User were not a member of any groups"
     }, 
     "uid": {
       "type": [

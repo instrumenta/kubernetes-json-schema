@@ -220,7 +220,7 @@
                                   "properties": {
                                     "operator": {
                                       "type": "string", 
-                                      "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                                      "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                                     }, 
                                     "values": {
                                       "items": {
@@ -313,7 +313,7 @@
                                       "properties": {
                                         "operator": {
                                           "type": "string", 
-                                          "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                                          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                                         }, 
                                         "values": {
                                           "items": {
@@ -423,10 +423,8 @@
                                       "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
                                     }, 
                                     "key": {
-                                      "x-kubernetes-patch-merge-key": "key", 
                                       "type": "string", 
-                                      "description": "The label key that the selector applies to.", 
-                                      "x-kubernetes-patch-strategy": "merge"
+                                      "description": "The label key that the selector applies to."
                                     }
                                   }
                                 }, 
@@ -480,10 +478,8 @@
                                       "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
                                     }, 
                                     "key": {
-                                      "x-kubernetes-patch-merge-key": "key", 
                                       "type": "string", 
-                                      "description": "The label key that the selector applies to.", 
-                                      "x-kubernetes-patch-strategy": "merge"
+                                      "description": "The label key that the selector applies to."
                                     }
                                   }
                                 }, 
@@ -537,7 +533,7 @@
                                   "properties": {
                                     "operator": {
                                       "type": "string", 
-                                      "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                                      "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                                     }, 
                                     "values": {
                                       "items": {
@@ -630,7 +626,7 @@
                                       "properties": {
                                         "operator": {
                                           "type": "string", 
-                                          "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                                          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                                         }, 
                                         "values": {
                                           "items": {
@@ -712,13 +708,11 @@
                     "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category."
                   }, 
                   "key": {
-                    "x-kubernetes-patch-merge-key": "key", 
                     "type": [
                       "string", 
                       "null"
                     ], 
-                    "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.", 
-                    "x-kubernetes-patch-strategy": "merge"
+                    "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys."
                   }, 
                   "tolerationSeconds": {
                     "type": "integer", 
@@ -1038,9 +1032,12 @@
                           "type": "boolean", 
                           "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
                         }, 
-                        "mountPath": {
-                          "type": "string", 
-                          "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
+                        "mountPropagation": {
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
+                          "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
                         }, 
                         "subPath": {
                           "type": [
@@ -1052,6 +1049,10 @@
                         "name": {
                           "type": "string", 
                           "description": "This must match the Name of a Volume."
+                        }, 
+                        "mountPath": {
+                          "type": "string", 
+                          "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
                         }
                       }
                     }, 
@@ -1428,7 +1429,7 @@
                       }, 
                       "allowPrivilegeEscalation": {
                         "type": "boolean", 
-                        "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than it's parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+                        "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
                       }, 
                       "capabilities": {
                         "description": "Adds and removes POSIX capabilities from running containers.", 
@@ -1982,6 +1983,13 @@
                       "chapAuthSession": {
                         "type": "boolean", 
                         "description": "whether support iSCSI Session CHAP authentication"
+                      }, 
+                      "initiatorName": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
+                        "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
                       }, 
                       "iscsiInterface": {
                         "type": [
@@ -2687,7 +2695,14 @@
                     "properties": {
                       "path": {
                         "type": "string", 
-                        "description": "Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+                        "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+                      }, 
+                      "type": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
+                        "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
                       }
                     }
                   }, 
@@ -2984,7 +2999,7 @@
                 "null"
               ], 
               "description": "List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes", 
-              "x-kubernetes-patch-strategy": "merge"
+              "x-kubernetes-patch-strategy": "merge,retainKeys"
             }, 
             "initContainers": {
               "items": {
@@ -3238,9 +3253,12 @@
                           "type": "boolean", 
                           "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
                         }, 
-                        "mountPath": {
-                          "type": "string", 
-                          "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
+                        "mountPropagation": {
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
+                          "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
                         }, 
                         "subPath": {
                           "type": [
@@ -3252,6 +3270,10 @@
                         "name": {
                           "type": "string", 
                           "description": "This must match the Name of a Volume."
+                        }, 
+                        "mountPath": {
+                          "type": "string", 
+                          "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
                         }
                       }
                     }, 
@@ -3628,7 +3650,7 @@
                       }, 
                       "allowPrivilegeEscalation": {
                         "type": "boolean", 
-                        "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than it's parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+                        "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
                       }, 
                       "capabilities": {
                         "description": "Adds and removes POSIX capabilities from running containers.", 
@@ -4258,12 +4280,19 @@
                     "metadata": {
                       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
                       "properties": {
+                        "continue": {
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
+                          "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+                        }, 
                         "selfLink": {
                           "type": [
                             "string", 
                             "null"
                           ], 
-                          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+                          "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
                         }, 
                         "resourceVersion": {
                           "type": [
@@ -4289,8 +4318,10 @@
                       }
                     }
                   }, 
+                  "x-kubernetes-patch-merge-key": "name", 
                   "type": "array", 
-                  "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
+                  "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.", 
+                  "x-kubernetes-patch-strategy": "merge"
                 }
               }
             }, 
@@ -4396,7 +4427,7 @@
             "properties": {
               "operator": {
                 "type": "string", 
-                "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
               }, 
               "values": {
                 "items": {

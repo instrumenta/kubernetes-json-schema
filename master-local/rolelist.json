@@ -6,7 +6,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "RoleList", 
-      "version": "v1beta1", 
+      "version": "v1", 
       "group": "rbac.authorization.k8s.io"
     }
   ], 
@@ -15,7 +15,7 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1beta1.Role"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.Role"
       }, 
       "type": [
         "array", 

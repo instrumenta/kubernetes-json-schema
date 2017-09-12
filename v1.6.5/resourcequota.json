@@ -1,6 +1,4 @@
 {
-  "type": "object", 
-  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "Kind": "ResourceQuota", 
@@ -8,6 +6,8 @@
       "Group": ""
     }
   ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "description": "ResourceQuota sets aggregate quota restrictions enforced per namespace", 
   "properties": {
     "status": {

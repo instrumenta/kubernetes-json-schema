@@ -1,17 +1,15 @@
 {
-  "description": "RoleBindingList is a collection of RoleBindings", 
   "required": [
     "items"
   ], 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "RoleBindingList", 
-      "version": "v1beta1", 
+      "version": "v1alpha1", 
       "group": "rbac.authorization.k8s.io"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "RoleBindingList is a collection of RoleBindings", 
   "properties": {
     "items": {
       "items": {
@@ -22,7 +20,7 @@
         "x-kubernetes-group-version-kind": [
           {
             "kind": "RoleBinding", 
-            "version": "v1beta1", 
+            "version": "v1alpha1", 
             "group": "rbac.authorization.k8s.io"
           }
         ], 
@@ -65,13 +63,6 @@
               ], 
               "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.", 
               "properties": {
-                "apiGroup": {
-                  "type": [
-                    "string", 
-                    "null"
-                  ], 
-                  "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects."
-                }, 
                 "kind": {
                   "type": "string", 
                   "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error."
@@ -86,6 +77,13 @@
                 "name": {
                   "type": "string", 
                   "description": "Name of the object being referenced."
+                }, 
+                "apiVersion": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "APIVersion holds the API group and version of the referenced subject. Defaults to \"v1\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io/v1alpha1\" for User and Group subjects."
                 }
               }
             }, 
@@ -338,12 +336,19 @@
                       "metadata": {
                         "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
                         "properties": {
+                          "continue": {
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
+                            "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+                          }, 
                           "selfLink": {
                             "type": [
                               "string", 
                               "null"
                             ], 
-                            "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+                            "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
                           }, 
                           "resourceVersion": {
                             "type": [
@@ -369,8 +374,10 @@
                         }
                       }
                     }, 
+                    "x-kubernetes-patch-merge-key": "name", 
                     "type": "array", 
-                    "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
+                    "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.", 
+                    "x-kubernetes-patch-strategy": "merge"
                   }
                 }
               }, 
@@ -446,12 +453,19 @@
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
       "properties": {
+        "continue": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+        }, 
         "selfLink": {
           "type": [
             "string", 
             "null"
           ], 
-          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+          "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
         }, 
         "resourceVersion": {
           "type": [

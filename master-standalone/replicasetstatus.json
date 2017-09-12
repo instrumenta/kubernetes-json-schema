@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "replicas"
   ], 
-  "type": "object", 
   "description": "ReplicaSetStatus represents the current status of a ReplicaSet.", 
   "properties": {
     "replicas": {

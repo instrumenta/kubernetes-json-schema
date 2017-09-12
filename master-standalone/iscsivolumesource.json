@@ -1,11 +1,9 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "targetPortal", 
     "iqn", 
     "lun"
   ], 
-  "type": "object", 
   "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.", 
   "properties": {
     "targetPortal": {
@@ -54,6 +52,13 @@
     "chapAuthSession": {
       "type": "boolean", 
       "description": "whether support iSCSI Session CHAP authentication"
+    }, 
+    "initiatorName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
     }, 
     "iscsiInterface": {
       "type": [

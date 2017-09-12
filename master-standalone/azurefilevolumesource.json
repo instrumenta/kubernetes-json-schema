@@ -1,10 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "secretName", 
     "shareName"
   ], 
-  "type": "object", 
   "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.", 
   "properties": {
     "shareName": {

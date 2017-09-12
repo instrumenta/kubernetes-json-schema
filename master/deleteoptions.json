@@ -1,6 +1,4 @@
 {
-  "type": "object", 
-  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "DeleteOptions", 
@@ -54,7 +52,7 @@
     }, 
     {
       "kind": "DeleteOptions", 
-      "version": "v2alpha1", 
+      "version": "v2beta1", 
       "group": "autoscaling"
     }, 
     {
@@ -138,6 +136,8 @@
       "group": "storage.k8s.io"
     }
   ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "description": "DeleteOptions may be provided when deleting an API object.", 
   "properties": {
     "kind": {

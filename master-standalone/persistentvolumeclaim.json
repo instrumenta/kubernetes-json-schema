@@ -1,4 +1,6 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "PersistentVolumeClaim", 
@@ -6,8 +8,6 @@
       "group": ""
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "PersistentVolumeClaim is a user's request for and claim to a persistent volume", 
   "properties": {
     "status": {
@@ -49,6 +49,58 @@
           }, 
           "type": "object", 
           "description": "Represents the actual resources of the underlying volume."
+        }, 
+        "conditions": {
+          "items": {
+            "required": [
+              "type", 
+              "status"
+            ], 
+            "description": "PersistentVolumeClaimCondition contails details about state of pvc", 
+            "properties": {
+              "status": {
+                "type": "string"
+              }, 
+              "lastTransitionTime": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "format": "date-time"
+              }, 
+              "reason": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized."
+              }, 
+              "lastProbeTime": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "format": "date-time"
+              }, 
+              "message": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Human-readable message indicating details about last transition."
+              }, 
+              "type": {
+                "type": "string"
+              }
+            }
+          }, 
+          "x-kubernetes-patch-merge-key": "type", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'ResizeStarted'.", 
+          "x-kubernetes-patch-strategy": "merge"
         }
       }
     }, 
@@ -105,7 +157,7 @@
                 "properties": {
                   "operator": {
                     "type": "string", 
-                    "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                    "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                   }, 
                   "values": {
                     "items": {
@@ -430,12 +482,19 @@
                 "metadata": {
                   "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
                   "properties": {
+                    "continue": {
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
+                      "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+                    }, 
                     "selfLink": {
                       "type": [
                         "string", 
                         "null"
                       ], 
-                      "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+                      "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
                     }, 
                     "resourceVersion": {
                       "type": [
@@ -461,8 +520,10 @@
                   }
                 }
               }, 
+              "x-kubernetes-patch-merge-key": "name", 
               "type": "array", 
-              "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
+              "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.", 
+              "x-kubernetes-patch-strategy": "merge"
             }
           }
         }, 

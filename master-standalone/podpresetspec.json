@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "PodPresetSpec is a description of a pod preset.", 
   "properties": {
     "volumes": {
@@ -192,6 +190,13 @@
               "chapAuthSession": {
                 "type": "boolean", 
                 "description": "whether support iSCSI Session CHAP authentication"
+              }, 
+              "initiatorName": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
               }, 
               "iscsiInterface": {
                 "type": [
@@ -897,7 +902,14 @@
             "properties": {
               "path": {
                 "type": "string", 
-                "description": "Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+                "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+              }, 
+              "type": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
               }
             }
           }, 
@@ -1206,9 +1218,12 @@
             "type": "boolean", 
             "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
           }, 
-          "mountPath": {
-            "type": "string", 
-            "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
+          "mountPropagation": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
           }, 
           "subPath": {
             "type": [
@@ -1220,6 +1235,10 @@
           "name": {
             "type": "string", 
             "description": "This must match the Name of a Volume."
+          }, 
+          "mountPath": {
+            "type": "string", 
+            "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
           }
         }
       }, 
@@ -1431,7 +1450,7 @@
             "properties": {
               "operator": {
                 "type": "string", 
-                "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
               }, 
               "values": {
                 "items": {

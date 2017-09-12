@@ -5,25 +5,30 @@
     "maxReplicas"
   ], 
   "type": "object", 
-  "description": "specification of a horizontal pod autoscaler.", 
+  "description": "HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler.", 
   "properties": {
+    "metrics": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.MetricSpec"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond."
+    }, 
     "minReplicas": {
       "type": "integer", 
-      "description": "lower limit for the number of pods that can be set by the autoscaler, default 1.", 
+      "description": "minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It defaults to 1 pod.", 
       "format": "int32"
     }, 
     "scaleTargetRef": {
-      "description": "reference to scaled resource; horizontal pod autoscaler will learn the current resource consumption and will set the desired number of pods by using its Scale subresource.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v1.CrossVersionObjectReference"
-    }, 
-    "targetCPUUtilizationPercentage": {
-      "type": "integer", 
-      "description": "target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used.", 
-      "format": "int32"
+      "description": "scaleTargetRef points to the target resource to scale, and is used to the pods for which metrics should be collected, as well as to actually change the replica count.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference"
     }, 
     "maxReplicas": {
       "type": "integer", 
-      "description": "upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.", 
+      "description": "maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.", 
       "format": "int32"
     }
   }

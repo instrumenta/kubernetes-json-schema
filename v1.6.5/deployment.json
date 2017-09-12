@@ -1,6 +1,4 @@
 {
-  "type": "object", 
-  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "Kind": "Deployment", 
@@ -8,6 +6,8 @@
       "Group": "apps"
     }
   ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "description": "Deployment enables declarative updates for Pods and ReplicaSets.", 
   "properties": {
     "status": {

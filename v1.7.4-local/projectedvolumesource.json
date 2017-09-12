@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "sources"
+  ], 
+  "type": "object", 
+  "description": "Represents a projected volume source", 
+  "properties": {
+    "sources": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.VolumeProjection"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "list of volume projections"
+    }, 
+    "defaultMode": {
+      "type": "integer", 
+      "description": "Mode bits to use on created files by default. Must be a value between 0 and 0777. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.", 
+      "format": "int32"
+    }
+  }
+}

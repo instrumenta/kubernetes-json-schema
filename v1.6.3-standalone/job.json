@@ -1,4 +1,6 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "Kind": "Job", 
@@ -6,8 +8,6 @@
       "Group": "batch"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "Job represents the configuration of a single job.", 
   "properties": {
     "status": {

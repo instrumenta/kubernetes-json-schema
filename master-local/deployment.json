@@ -1,18 +1,18 @@
 {
-  "type": "object", 
-  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "Deployment", 
-      "version": "v1beta1", 
+      "version": "v1beta2", 
       "group": "apps"
     }
   ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "description": "Deployment enables declarative updates for Pods and ReplicaSets.", 
   "properties": {
     "status": {
       "description": "Most recently observed status of the Deployment.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.DeploymentStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentStatus"
     }, 
     "kind": {
       "type": [
@@ -23,7 +23,7 @@
     }, 
     "spec": {
       "description": "Specification of the desired behavior of the Deployment.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta1.DeploymentSpec"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DeploymentSpec"
     }, 
     "apiVersion": {
       "type": [

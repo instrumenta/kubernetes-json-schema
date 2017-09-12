@@ -1,10 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "weight", 
     "preference"
   ], 
-  "type": "object", 
   "description": "An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it's a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).", 
   "properties": {
     "preference": {
@@ -39,10 +37,8 @@
                 "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
               }, 
               "key": {
-                "x-kubernetes-patch-merge-key": "key", 
                 "type": "string", 
-                "description": "The label key that the selector applies to.", 
-                "x-kubernetes-patch-strategy": "merge"
+                "description": "The label key that the selector applies to."
               }
             }
           }, 

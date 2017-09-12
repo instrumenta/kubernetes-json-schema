@@ -1,4 +1,6 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "Kind": "NetworkPolicy", 
@@ -6,8 +8,6 @@
       "Group": "extensions"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "properties": {
     "kind": {
       "type": [

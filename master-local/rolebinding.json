@@ -7,7 +7,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "RoleBinding", 
-      "version": "v1", 
+      "version": "v1beta1", 
       "group": "rbac.authorization.k8s.io"
     }
   ], 
@@ -16,7 +16,7 @@
   "properties": {
     "roleRef": {
       "description": "RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.RoleRef"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1beta1.RoleRef"
     }, 
     "kind": {
       "type": [
@@ -27,7 +27,7 @@
     }, 
     "subjects": {
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.Subject"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1beta1.Subject"
       }, 
       "type": [
         "array", 

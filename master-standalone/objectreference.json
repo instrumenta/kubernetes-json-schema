@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
   "properties": {
     "kind": {

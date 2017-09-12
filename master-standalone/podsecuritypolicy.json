@@ -1,4 +1,6 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "PodSecurityPolicy", 
@@ -6,8 +8,6 @@
       "group": "extensions"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "Pod Security Policy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.", 
   "properties": {
     "kind": {
@@ -30,43 +30,37 @@
           "type": "boolean", 
           "description": "ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
         }, 
-        "runAsUser": {
-          "required": [
-            "rule"
-          ], 
-          "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
-          "properties": {
-            "ranges": {
-              "items": {
-                "required": [
-                  "min", 
-                  "max"
+        "allowedHostPaths": {
+          "items": {
+            "description": "defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined.", 
+            "properties": {
+              "pathPrefix": {
+                "type": [
+                  "string", 
+                  "null"
                 ], 
-                "description": "ID Range provides a min/max of an allowed range of IDs.", 
-                "properties": {
-                  "max": {
-                    "type": "integer", 
-                    "description": "Max is the end of the range, inclusive.", 
-                    "format": "int64"
-                  }, 
-                  "min": {
-                    "type": "integer", 
-                    "description": "Min is the start of the range, inclusive.", 
-                    "format": "int64"
-                  }
-                }
-              }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
-              "description": "Ranges are the allowed ranges of uids that may be used."
-            }, 
-            "rule": {
-              "type": "string", 
-              "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+                "description": "is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`"
+              }
             }
-          }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "is a white list of allowed host paths. Empty indicates that all host paths may be used."
+        }, 
+        "allowedCapabilities": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "AllowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both AllowedCapabilities and RequiredDropCapabilities."
         }, 
         "supplementalGroups": {
           "description": "SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.", 
@@ -156,18 +150,43 @@
           "type": "boolean", 
           "description": "AllowPrivilegeEscalation determines if a pod can request to allow privilege escalation."
         }, 
-        "allowedCapabilities": {
-          "items": {
-            "type": [
-              "string", 
-              "null"
-            ]
-          }, 
-          "type": [
-            "array", 
-            "null"
+        "runAsUser": {
+          "required": [
+            "rule"
           ], 
-          "description": "AllowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both AllowedCapabilities and RequiredDropCapabilities."
+          "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
+          "properties": {
+            "ranges": {
+              "items": {
+                "required": [
+                  "min", 
+                  "max"
+                ], 
+                "description": "ID Range provides a min/max of an allowed range of IDs.", 
+                "properties": {
+                  "max": {
+                    "type": "integer", 
+                    "description": "Max is the end of the range, inclusive.", 
+                    "format": "int64"
+                  }, 
+                  "min": {
+                    "type": "integer", 
+                    "description": "Min is the start of the range, inclusive.", 
+                    "format": "int64"
+                  }
+                }
+              }, 
+              "type": [
+                "array", 
+                "null"
+              ], 
+              "description": "Ranges are the allowed ranges of uids that may be used."
+            }, 
+            "rule": {
+              "type": "string", 
+              "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+            }
+          }
         }, 
         "hostPorts": {
           "items": {
@@ -289,7 +308,7 @@
         }, 
         "defaultAllowPrivilegeEscalation": {
           "type": "boolean", 
-          "description": "DefaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than it's parent process."
+          "description": "DefaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process."
         }
       }
     }, 
@@ -539,12 +558,19 @@
                 "metadata": {
                   "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
                   "properties": {
+                    "continue": {
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
+                      "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+                    }, 
                     "selfLink": {
                       "type": [
                         "string", 
                         "null"
                       ], 
-                      "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+                      "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
                     }, 
                     "resourceVersion": {
                       "type": [
@@ -570,8 +596,10 @@
                   }
                 }
               }, 
+              "x-kubernetes-patch-merge-key": "name", 
               "type": "array", 
-              "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
+              "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.", 
+              "x-kubernetes-patch-strategy": "merge"
             }
           }
         }, 

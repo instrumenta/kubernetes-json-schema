@@ -1,10 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "namespace", 
     "name"
   ], 
-  "type": "object", 
   "description": "ServiceReference holds a reference to Service.legacy.k8s.io", 
   "properties": {
     "namespace": {

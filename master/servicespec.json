@@ -23,12 +23,9 @@
       ], 
       "description": "externalIPs is a list of IP addresses for which nodes in the cluster will also accept traffic for this service.  These IPs are not managed by Kubernetes.  The user is responsible for ensuring that traffic arrives at a node with this IP.  A common example is external load-balancers that are not part of the Kubernetes system."
     }, 
-    "externalTrafficPolicy": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "externalTrafficPolicy denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints. \"Local\" preserves the client source IP and avoids a second hop for LoadBalancer and Nodeport type services, but risks potentially imbalanced traffic spreading. \"Cluster\" obscures the client source IP and may cause a second hop to another node, but should have good overall load-spreading."
+    "sessionAffinityConfig": {
+      "description": "sessionAffinityConfig contains the configurations of session affinity.", 
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig"
     }, 
     "type": {
       "type": [
@@ -53,6 +50,13 @@
         "null"
       ], 
       "description": "externalName is the external reference that kubedns or equivalent will return as a CNAME record for this service. No proxying will be involved. Must be a valid DNS name and requires Type to be ExternalName."
+    }, 
+    "externalTrafficPolicy": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "externalTrafficPolicy denotes if this Service desires to route external traffic to node-local or cluster-wide endpoints. \"Local\" preserves the client source IP and avoids a second hop for LoadBalancer and Nodeport type services, but risks potentially imbalanced traffic spreading. \"Cluster\" obscures the client source IP and may cause a second hop to another node, but should have good overall load-spreading."
     }, 
     "sessionAffinity": {
       "type": [

@@ -1,39 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "type", 
-    "status"
-  ], 
   "type": "object", 
-  "description": "Information about the condition of a component.", 
-  "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition for a component. Valid values for \"Healthy\": \"True\", \"False\", or \"Unknown\"."
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Message about the condition for a component. For example, information about a health check."
-    }, 
-    "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type of condition for a component. Valid value: \"Healthy\""
-    }, 
-    "error": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Condition error code for a component. For example, a health check error code."
-    }
-  }
+  "description": "Deprecated. Please use io.k8s.api.core.v1.ComponentCondition instead.", 
+  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ComponentCondition"
 }

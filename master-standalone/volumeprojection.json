@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "Projection that may be projected along with other supported volume types", 
   "properties": {
     "configMap": {

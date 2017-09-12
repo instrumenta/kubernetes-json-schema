@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "replicas"
   ], 
-  "type": "object", 
   "description": "StatefulSetStatus represents the current state of a StatefulSet.", 
   "properties": {
     "updateRevision": {

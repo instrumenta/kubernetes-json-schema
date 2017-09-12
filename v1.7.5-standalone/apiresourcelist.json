@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "groupVersion", 
+    "resources"
+  ], 
+  "type": "object", 
+  "description": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced.", 
+  "properties": {
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+    }, 
+    "groupVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "groupVersion is the group and version this APIResourceList is for."
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+    }, 
+    "resources": {
+      "items": {
+        "required": [
+          "name", 
+          "singularName", 
+          "namespaced", 
+          "kind", 
+          "verbs"
+        ], 
+        "description": "APIResource specifies the name of a resource and whether it is namespaced.", 
+        "properties": {
+          "shortNames": {
+            "items": {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "type": [
+              "array", 
+              "null"
+            ], 
+            "description": "shortNames is a list of suggested short names of the resource."
+          }, 
+          "namespaced": {
+            "type": "boolean", 
+            "description": "namespaced indicates if a resource is namespaced or not."
+          }, 
+          "kind": {
+            "type": "string", 
+            "description": "kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')"
+          }, 
+          "name": {
+            "type": "string", 
+            "description": "name is the plural name of the resource."
+          }, 
+          "verbs": {
+            "items": {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "type": "array", 
+            "description": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)"
+          }, 
+          "singularName": {
+            "type": "string", 
+            "description": "singularName is the singular name of the resource.  This allows clients to handle plural and singular opaquely. The singularName is more correct for reporting status on a single item and both singular and plural are allowed from the kubectl CLI interface."
+          }, 
+          "categories": {
+            "items": {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "type": [
+              "array", 
+              "null"
+            ], 
+            "description": "categories is a list of the grouped resources this resource belongs to (e.g. 'all')"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "resources contains the name of the resources and if they are namespaced."
+    }
+  }
+}

@@ -96,10 +96,8 @@
         "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.", 
         "properties": {
           "key": {
-            "x-kubernetes-patch-merge-key": "key", 
             "type": "string", 
-            "description": "Required. The taint key to be applied to a node.", 
-            "x-kubernetes-patch-strategy": "merge"
+            "description": "Required. The taint key to be applied to a node."
           }, 
           "timeAdded": {
             "type": [

@@ -1,20 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "limits"
-  ], 
   "type": "object", 
-  "description": "LimitRangeSpec defines a min/max usage limit for resources that match on kind.", 
-  "properties": {
-    "limits": {
-      "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeItem"
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Limits is the list of LimitRangeItem objects that are enforced."
-    }
-  }
+  "description": "Deprecated. Please use io.k8s.api.core.v1.LimitRangeSpec instead.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeSpec"
 }

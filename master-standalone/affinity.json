@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "Affinity is a group of affinity scheduling rules.", 
   "properties": {
     "podAffinity": {
@@ -33,7 +31,7 @@
                       "properties": {
                         "operator": {
                           "type": "string", 
-                          "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                         }, 
                         "values": {
                           "items": {
@@ -126,7 +124,7 @@
                           "properties": {
                             "operator": {
                               "type": "string", 
-                              "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                              "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                             }, 
                             "values": {
                               "items": {
@@ -236,10 +234,8 @@
                           "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
                         }, 
                         "key": {
-                          "x-kubernetes-patch-merge-key": "key", 
                           "type": "string", 
-                          "description": "The label key that the selector applies to.", 
-                          "x-kubernetes-patch-strategy": "merge"
+                          "description": "The label key that the selector applies to."
                         }
                       }
                     }, 
@@ -293,10 +289,8 @@
                           "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
                         }, 
                         "key": {
-                          "x-kubernetes-patch-merge-key": "key", 
                           "type": "string", 
-                          "description": "The label key that the selector applies to.", 
-                          "x-kubernetes-patch-strategy": "merge"
+                          "description": "The label key that the selector applies to."
                         }
                       }
                     }, 
@@ -350,7 +344,7 @@
                       "properties": {
                         "operator": {
                           "type": "string", 
-                          "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                         }, 
                         "values": {
                           "items": {
@@ -443,7 +437,7 @@
                           "properties": {
                             "operator": {
                               "type": "string", 
-                              "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                              "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                             }, 
                             "values": {
                               "items": {

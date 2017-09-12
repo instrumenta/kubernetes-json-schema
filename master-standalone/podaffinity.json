@@ -30,7 +30,7 @@
                   "properties": {
                     "operator": {
                       "type": "string", 
-                      "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                      "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                     }, 
                     "values": {
                       "items": {
@@ -123,7 +123,7 @@
                       "properties": {
                         "operator": {
                           "type": "string", 
-                          "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                         }, 
                         "values": {
                           "items": {

@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "Handler defines a specific action that should be taken", 
   "properties": {
     "httpGet": {

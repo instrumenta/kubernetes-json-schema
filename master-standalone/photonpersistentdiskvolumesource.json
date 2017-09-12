@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "pdID"
   ], 
-  "type": "object", 
   "description": "Represents a Photon Controller persistent disk resource.", 
   "properties": {
     "fsType": {

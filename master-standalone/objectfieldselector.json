@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "fieldPath"
   ], 
-  "type": "object", 
   "description": "ObjectFieldSelector selects an APIVersioned field of an object.", 
   "properties": {
     "fieldPath": {

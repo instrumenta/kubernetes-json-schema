@@ -21,7 +21,7 @@
             "group": "apps"
           }
         ], 
-        "description": "Deployment enables declarative updates for Pods and ReplicaSets.", 
+        "description": "DEPRECATED - This group version of Deployment is deprecated by apps/v1beta2/Deployment. See the release notes for more information. Deployment enables declarative updates for Pods and ReplicaSets.", 
         "properties": {
           "status": {
             "additionalProperties": false, 

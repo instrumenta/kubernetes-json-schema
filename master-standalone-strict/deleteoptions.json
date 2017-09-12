@@ -54,7 +54,7 @@
     }, 
     {
       "kind": "DeleteOptions", 
-      "version": "v2alpha1", 
+      "version": "v2beta1", 
       "group": "autoscaling"
     }, 
     {

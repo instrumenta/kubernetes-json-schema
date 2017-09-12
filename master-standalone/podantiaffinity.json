@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "Pod anti affinity is a group of inter pod anti affinity scheduling rules.", 
   "properties": {
     "requiredDuringSchedulingIgnoredDuringExecution": {
@@ -30,7 +28,7 @@
                   "properties": {
                     "operator": {
                       "type": "string", 
-                      "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                      "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                     }, 
                     "values": {
                       "items": {
@@ -123,7 +121,7 @@
                       "properties": {
                         "operator": {
                           "type": "string", 
-                          "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                         }, 
                         "values": {
                           "items": {

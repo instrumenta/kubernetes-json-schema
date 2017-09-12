@@ -76,6 +76,10 @@
             "type": "string", 
             "description": "Provisioner indicates the type of the provisioner."
           }, 
+          "allowVolumeExpansion": {
+            "type": "boolean", 
+            "description": "AllowVolumeExpansion shows whether the storage class allow volume expand"
+          }, 
           "metadata": {
             "additionalProperties": false, 
             "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 

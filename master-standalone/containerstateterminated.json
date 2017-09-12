@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "exitCode"
   ], 
-  "type": "object", 
   "description": "ContainerStateTerminated is a terminated state of a container.", 
   "properties": {
     "containerID": {

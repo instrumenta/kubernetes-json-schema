@@ -1,13 +1,13 @@
 {
-  "description": "Network Policy List is a list of NetworkPolicy objects.", 
+  "description": "NetworkPolicyList is a list of NetworkPolicy objects.", 
   "required": [
     "items"
   ], 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "NetworkPolicyList", 
-      "version": "v1beta1", 
-      "group": "extensions"
+      "version": "v1", 
+      "group": "networking.k8s.io"
     }
   ], 
   "$schema": "http://json-schema.org/schema#", 
@@ -15,7 +15,7 @@
   "properties": {
     "items": {
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.NetworkPolicy"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.networking.v1.NetworkPolicy"
       }, 
       "type": [
         "array", 

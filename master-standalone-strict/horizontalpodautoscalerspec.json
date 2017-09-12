@@ -1,8 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "scaleTargetRef", 
     "maxReplicas"
   ], 
+  "type": "object", 
   "description": "HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler.", 
   "properties": {
     "metrics": {

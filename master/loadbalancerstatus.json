@@ -1,17 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "LoadBalancerStatus represents the status of a load-balancer.", 
-  "properties": {
-    "ingress": {
-      "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.LoadBalancerIngress"
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points."
-    }
-  }
+  "description": "Deprecated. Please use io.k8s.api.core.v1.LoadBalancerStatus instead.", 
+  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.LoadBalancerStatus"
 }

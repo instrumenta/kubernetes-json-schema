@@ -1,4 +1,6 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "InitializerConfiguration", 
@@ -6,8 +8,6 @@
       "group": "admissionregistration.k8s.io"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "InitializerConfiguration describes the configuration of initializers.", 
   "properties": {
     "kind": {

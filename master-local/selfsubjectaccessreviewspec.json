@@ -5,11 +5,11 @@
   "properties": {
     "nonResourceAttributes": {
       "description": "NonResourceAttributes describes information for a non-resource access request", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.NonResourceAttributes"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.NonResourceAttributes"
     }, 
     "resourceAttributes": {
       "description": "ResourceAuthorizationAttributes describes information for a resource access request", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.ResourceAttributes"
     }
   }
 }

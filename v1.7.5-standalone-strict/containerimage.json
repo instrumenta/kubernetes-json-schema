@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "names"
+  ], 
+  "type": "object", 
+  "description": "Describe a container image", 
+  "properties": {
+    "sizeBytes": {
+      "type": "integer", 
+      "description": "The size of the image in bytes.", 
+      "format": "int64"
+    }, 
+    "names": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Names by which this image is known. e.g. [\"gcr.io/google_containers/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]"
+    }
+  }
+}

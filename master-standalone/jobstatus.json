@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "JobStatus represents the current state of a Job.", 
   "properties": {
     "succeeded": {

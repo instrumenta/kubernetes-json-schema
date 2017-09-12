@@ -1,5 +1,4 @@
 {
-  "description": "PersistentVolumeList is a list of PersistentVolume items.", 
   "required": [
     "items"
   ], 
@@ -10,8 +9,7 @@
       "group": ""
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "PersistentVolumeList is a list of PersistentVolume items.", 
   "properties": {
     "items": {
       "items": {
@@ -103,6 +101,19 @@
                     "description": "EndpointsName is the endpoint name that details Glusterfs topology. More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod"
                   }
                 }
+              }, 
+              "mountOptions": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "A list of mount options, e.g. [\"ro\", \"soft\"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options"
               }, 
               "flocker": {
                 "description": "Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.", 
@@ -227,6 +238,13 @@
                     "type": "boolean", 
                     "description": "whether support iSCSI Session CHAP authentication"
                   }, 
+                  "initiatorName": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
+                  }, 
                   "iscsiInterface": {
                     "type": [
                       "string", 
@@ -246,60 +264,6 @@
                     "type": "integer", 
                     "description": "iSCSI target lun number.", 
                     "format": "int32"
-                  }
-                }
-              }, 
-              "claimRef": {
-                "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
-                "properties": {
-                  "kind": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-                  }, 
-                  "name": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
-                  }, 
-                  "namespace": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
-                  }, 
-                  "apiVersion": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "API version of the referent."
-                  }, 
-                  "fieldPath": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object."
-                  }, 
-                  "resourceVersion": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
-                  }, 
-                  "uid": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids"
                   }
                 }
               }, 
@@ -428,19 +392,6 @@
                   }
                 }
               }, 
-              "accessModes": {
-                "items": {
-                  "type": [
-                    "string", 
-                    "null"
-                  ]
-                }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
-                "description": "AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes"
-              }, 
               "fc": {
                 "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
                 "properties": {
@@ -485,6 +436,73 @@
                       "null"
                     ], 
                     "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
+                  }
+                }
+              }, 
+              "accessModes": {
+                "items": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes"
+              }, 
+              "claimRef": {
+                "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
+                "properties": {
+                  "kind": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+                  }, 
+                  "name": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+                  }, 
+                  "namespace": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
+                  }, 
+                  "apiVersion": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "API version of the referent."
+                  }, 
+                  "fieldPath": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object."
+                  }, 
+                  "resourceVersion": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
+                  }, 
+                  "uid": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids"
                   }
                 }
               }, 
@@ -568,53 +586,55 @@
                 ], 
                 "description": "Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass."
               }, 
-              "rbd": {
+              "cephfs": {
                 "required": [
-                  "monitors", 
-                  "image"
+                  "monitors"
                 ], 
-                "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
+                "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
                 "properties": {
                   "secretRef": {
-                    "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+                    "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
                     "properties": {
+                      "namespace": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
+                        "description": "Namespace defines the space within which the secret name must be unique."
+                      }, 
                       "name": {
                         "type": [
                           "string", 
                           "null"
                         ], 
-                        "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+                        "description": "Name is unique within a namespace to reference a secret resource."
                       }
                     }
                   }, 
-                  "image": {
-                    "type": "string", 
-                    "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "keyring": {
+                  "secretFile": {
                     "type": [
                       "string", 
                       "null"
                     ], 
-                    "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "fsType": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
+                    "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }, 
                   "readOnly": {
                     "type": "boolean", 
-                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }, 
                   "user": {
                     "type": [
                       "string", 
                       "null"
                     ], 
-                    "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                  }, 
+                  "path": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
                   }, 
                   "monitors": {
                     "items": {
@@ -624,14 +644,7 @@
                       ]
                     }, 
                     "type": "array", 
-                    "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
-                  }, 
-                  "pool": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                    "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
                   }
                 }
               }, 
@@ -649,6 +662,13 @@
                   "readOnly": {
                     "type": "boolean", 
                     "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+                  }, 
+                  "secretNamespace": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod"
                   }, 
                   "secretName": {
                     "type": "string", 
@@ -748,7 +768,14 @@
                 "properties": {
                   "path": {
                     "type": "string", 
-                    "description": "Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+                    "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+                  }, 
+                  "type": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
                   }
                 }
               }, 
@@ -852,11 +879,12 @@
                   }
                 }
               }, 
-              "cephfs": {
+              "rbd": {
                 "required": [
-                  "monitors"
+                  "monitors", 
+                  "image"
                 ], 
-                "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.", 
+                "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
                 "properties": {
                   "secretRef": {
                     "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -870,30 +898,34 @@
                       }
                     }
                   }, 
-                  "secretFile": {
+                  "image": {
+                    "type": "string", 
+                    "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "keyring": {
                     "type": [
                       "string", 
                       "null"
                     ], 
-                    "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "fsType": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
                   }, 
                   "readOnly": {
                     "type": "boolean", 
-                    "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }, 
                   "user": {
                     "type": [
                       "string", 
                       "null"
                     ], 
-                    "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
-                  }, 
-                  "path": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
+                    "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }, 
                   "monitors": {
                     "items": {
@@ -903,7 +935,14 @@
                       ]
                     }, 
                     "type": "array", 
-                    "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
+                    "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+                  }, 
+                  "pool": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
                   }
                 }
               }, 
@@ -1188,12 +1227,19 @@
                       "metadata": {
                         "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
                         "properties": {
+                          "continue": {
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
+                            "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+                          }, 
                           "selfLink": {
                             "type": [
                               "string", 
                               "null"
                             ], 
-                            "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+                            "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
                           }, 
                           "resourceVersion": {
                             "type": [
@@ -1219,8 +1265,10 @@
                         }
                       }
                     }, 
+                    "x-kubernetes-patch-merge-key": "name", 
                     "type": "array", 
-                    "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
+                    "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.", 
+                    "x-kubernetes-patch-strategy": "merge"
                   }
                 }
               }, 
@@ -1296,12 +1344,19 @@
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
       "properties": {
+        "continue": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+        }, 
         "selfLink": {
           "type": [
             "string", 
             "null"
           ], 
-          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+          "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
         }, 
         "resourceVersion": {
           "type": [

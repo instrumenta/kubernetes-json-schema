@@ -1,33 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "Adds and removes POSIX capabilities from running containers.", 
-  "properties": {
-    "add": {
-      "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Added capabilities"
-    }, 
-    "drop": {
-      "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Removed capabilities"
-    }
-  }
+  "description": "Deprecated. Please use io.k8s.api.core.v1.Capabilities instead.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Capabilities"
 }

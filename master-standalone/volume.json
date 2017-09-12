@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "name"
   ], 
-  "type": "object", 
   "description": "Volume represents a named volume in a pod that may be accessed by any container in the pod.", 
   "properties": {
     "portworxVolume": {
@@ -188,6 +186,13 @@
         "chapAuthSession": {
           "type": "boolean", 
           "description": "whether support iSCSI Session CHAP authentication"
+        }, 
+        "initiatorName": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
         }, 
         "iscsiInterface": {
           "type": [
@@ -896,7 +901,14 @@
       "properties": {
         "path": {
           "type": "string", 
-          "description": "Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+          "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+        }, 
+        "type": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
         }
       }
     }, 

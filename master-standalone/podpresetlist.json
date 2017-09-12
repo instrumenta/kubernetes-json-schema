@@ -224,6 +224,13 @@
                           "type": "boolean", 
                           "description": "whether support iSCSI Session CHAP authentication"
                         }, 
+                        "initiatorName": {
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
+                          "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
+                        }, 
                         "iscsiInterface": {
                           "type": [
                             "string", 
@@ -928,7 +935,14 @@
                       "properties": {
                         "path": {
                           "type": "string", 
-                          "description": "Path of the directory on the host. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+                          "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+                        }, 
+                        "type": {
+                          "type": [
+                            "string", 
+                            "null"
+                          ], 
+                          "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
                         }
                       }
                     }, 
@@ -1237,9 +1251,12 @@
                       "type": "boolean", 
                       "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
                     }, 
-                    "mountPath": {
-                      "type": "string", 
-                      "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
+                    "mountPropagation": {
+                      "type": [
+                        "string", 
+                        "null"
+                      ], 
+                      "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
                     }, 
                     "subPath": {
                       "type": [
@@ -1251,6 +1268,10 @@
                     "name": {
                       "type": "string", 
                       "description": "This must match the Name of a Volume."
+                    }, 
+                    "mountPath": {
+                      "type": "string", 
+                      "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
                     }
                   }
                 }, 
@@ -1462,7 +1483,7 @@
                       "properties": {
                         "operator": {
                           "type": "string", 
-                          "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
                         }, 
                         "values": {
                           "items": {
@@ -1741,12 +1762,19 @@
                       "metadata": {
                         "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
                         "properties": {
+                          "continue": {
+                            "type": [
+                              "string", 
+                              "null"
+                            ], 
+                            "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+                          }, 
                           "selfLink": {
                             "type": [
                               "string", 
                               "null"
                             ], 
-                            "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+                            "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
                           }, 
                           "resourceVersion": {
                             "type": [
@@ -1772,8 +1800,10 @@
                         }
                       }
                     }, 
+                    "x-kubernetes-patch-merge-key": "name", 
                     "type": "array", 
-                    "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients."
+                    "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.", 
+                    "x-kubernetes-patch-strategy": "merge"
                   }
                 }
               }, 
@@ -1849,12 +1879,19 @@
     "metadata": {
       "description": "ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}.", 
       "properties": {
+        "continue": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response."
+        }, 
         "selfLink": {
           "type": [
             "string", 
             "null"
           ], 
-          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+          "description": "selfLink is a URL representing this object. Populated by the system. Read-only."
         }, 
         "resourceVersion": {
           "type": [

@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "IngressStatus describe the current state of the Ingress.", 
   "properties": {
     "loadBalancer": {

@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system.", 
   "properties": {
     "initContainerStatuses": {

@@ -1,4 +1,6 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "Kind": "ComponentStatus", 
@@ -6,8 +8,6 @@
       "Group": ""
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "ComponentStatus (and ComponentStatusList) holds the cluster validation info.", 
   "properties": {
     "kind": {

@@ -1,10 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "name", 
     "image"
   ], 
-  "type": "object", 
   "description": "A single application container that you want to run within a pod.", 
   "properties": {
     "livenessProbe": {
@@ -257,9 +255,12 @@
             "type": "boolean", 
             "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
           }, 
-          "mountPath": {
-            "type": "string", 
-            "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
+          "mountPropagation": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
           }, 
           "subPath": {
             "type": [
@@ -271,6 +272,10 @@
           "name": {
             "type": "string", 
             "description": "This must match the Name of a Volume."
+          }, 
+          "mountPath": {
+            "type": "string", 
+            "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
           }
         }
       }, 
@@ -647,7 +652,7 @@
         }, 
         "allowPrivilegeEscalation": {
           "type": "boolean", 
-          "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than it's parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+          "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
         }, 
         "capabilities": {
           "description": "Adds and removes POSIX capabilities from running containers.", 

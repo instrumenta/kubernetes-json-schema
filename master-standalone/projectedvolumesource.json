@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "sources"
   ], 
-  "type": "object", 
   "description": "Represents a projected volume source", 
   "properties": {
     "sources": {

@@ -30,13 +30,11 @@
       "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute."
     }, 
     "key": {
-      "x-kubernetes-patch-merge-key": "key", 
       "type": [
         "string", 
         "null"
       ], 
-      "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.", 
-      "x-kubernetes-patch-strategy": "merge"
+      "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys."
     }
   }
 }

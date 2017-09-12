@@ -1,33 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "apiGroup", 
-    "kind", 
-    "name"
-  ], 
   "type": "object", 
-  "description": "RoleRef contains information that points to the role being used", 
-  "properties": {
-    "apiGroup": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "APIGroup is the group for the resource being referenced"
-    }, 
-    "kind": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Kind is the type of resource being referenced"
-    }, 
-    "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Name is the name of resource being referenced"
-    }
-  }
+  "description": "Deprecated. Please use io.k8s.api.rbac.v1beta1.RoleRef instead.", 
+  "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1beta1.RoleRef"
 }

@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "port"
   ], 
-  "type": "object", 
   "description": "EndpointPort is a tuple that describes a single port.", 
   "properties": {
     "protocol": {
