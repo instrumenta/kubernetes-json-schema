@@ -1,0 +1,6 @@
+pytest
+jsonschema
+pytest-flake8
+flake8
+tox
+pytest-xdist

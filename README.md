@@ -1,5 +1,7 @@
 # Kubernetes JSON Schemas
 
+[![Build Status](https://travis-ci.org/garethr/kubernetes-json-schema.svg?branch=master)](https://travis-ci.org/garethr/kubernetes-json-schema)
+
 While exploring tooling for Kubernetes I had need for schemas to
 describe the definition files, and went looking for something that
 didn't require either `kubectl` or similar installed or even a working
