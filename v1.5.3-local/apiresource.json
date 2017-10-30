@@ -13,17 +13,11 @@
       "description": "namespaced indicates if a resource is namespaced or not."
     }, 
     "kind": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')"
     }, 
     "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "name is the name of the resource."
     }
   }

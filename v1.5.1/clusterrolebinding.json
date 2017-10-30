@@ -15,10 +15,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1alpha1.Subject"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Subjects holds references to the objects the role applies to."
     }, 
     "metadata": {

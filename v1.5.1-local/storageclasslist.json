@@ -10,10 +10,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1beta1.StorageClass"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Items is the list of StorageClasses"
     }, 
     "metadata": {

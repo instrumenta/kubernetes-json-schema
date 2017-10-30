@@ -10,10 +10,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1beta1.PodDisruptionBudget"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ]
+      "type": "array"
     }, 
     "metadata": {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/unversioned.ListMeta"

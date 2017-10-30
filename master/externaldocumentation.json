@@ -4,16 +4,10 @@
   "description": "ExternalDocumentation allows referencing an external resource for extended documentation.", 
   "properties": {
     "url": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "description": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }
   }
 }

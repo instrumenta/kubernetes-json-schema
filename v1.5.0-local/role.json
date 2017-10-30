@@ -10,10 +10,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1alpha1.PolicyRule"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Rules holds all the PolicyRules for this Role"
     }, 
     "metadata": {

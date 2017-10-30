@@ -8,10 +8,7 @@
         "maxUnavailable": {
           "oneOf": [
             {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
             {
               "type": "integer"
@@ -21,10 +18,7 @@
       }
     }, 
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is OnDelete."
     }
   }

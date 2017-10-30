@@ -16,24 +16,15 @@
       "format": "int32"
     }, 
     "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated."
     }, 
     "image": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images"
     }, 
     "imageID": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "ImageID of the container's image."
     }, 
     "state": {
@@ -46,10 +37,7 @@
           "description": "ContainerStateTerminated is a terminated state of a container.", 
           "properties": {
             "containerID": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Container's ID in the format 'docker://<container_id>'"
             }, 
             "signal": {
@@ -58,31 +46,19 @@
               "format": "int32"
             }, 
             "reason": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "(brief) reason from the last termination of the container"
             }, 
             "finishedAt": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "format": "date-time"
             }, 
             "startedAt": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "format": "date-time"
             }, 
             "message": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Message regarding the last termination of the container"
             }, 
             "exitCode": {
@@ -96,10 +72,7 @@
           "description": "ContainerStateRunning is a running state of a container.", 
           "properties": {
             "startedAt": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "format": "date-time"
             }
           }
@@ -108,17 +81,11 @@
           "description": "ContainerStateWaiting is a waiting state of a container.", 
           "properties": {
             "message": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Message regarding why the container is not yet running."
             }, 
             "reason": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "(brief) reason the container is not yet running."
             }
           }
@@ -139,10 +106,7 @@
           "description": "ContainerStateTerminated is a terminated state of a container.", 
           "properties": {
             "containerID": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Container's ID in the format 'docker://<container_id>'"
             }, 
             "signal": {
@@ -151,31 +115,19 @@
               "format": "int32"
             }, 
             "reason": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "(brief) reason from the last termination of the container"
             }, 
             "finishedAt": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "format": "date-time"
             }, 
             "startedAt": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "format": "date-time"
             }, 
             "message": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Message regarding the last termination of the container"
             }, 
             "exitCode": {
@@ -189,10 +141,7 @@
           "description": "ContainerStateRunning is a running state of a container.", 
           "properties": {
             "startedAt": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "format": "date-time"
             }
           }
@@ -201,17 +150,11 @@
           "description": "ContainerStateWaiting is a waiting state of a container.", 
           "properties": {
             "message": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Message regarding why the container is not yet running."
             }, 
             "reason": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "(brief) reason the container is not yet running."
             }
           }
@@ -219,10 +162,7 @@
       }
     }, 
     "containerID": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Container's ID in the format 'docker://<container_id>'."
     }
   }

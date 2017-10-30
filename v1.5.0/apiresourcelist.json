@@ -8,20 +8,14 @@
   "description": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced.", 
   "properties": {
     "groupVersion": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "groupVersion is the group and version this APIResourceList is for."
     }, 
     "resources": {
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/unversioned.APIResource"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "resources contains the name of the resources and if they are namespaced."
     }
   }

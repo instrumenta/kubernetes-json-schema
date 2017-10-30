@@ -15,10 +15,7 @@
           "properties": {
             "matchLabels": {
               "additionalProperties": {
-                "type": [
-                  "string", 
-                  "null"
-                ]
+                "type": "string"
               }, 
               "type": "object", 
               "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -37,15 +34,9 @@
                   }, 
                   "values": {
                     "items": {
-                      "type": [
-                        "string", 
-                        "null"
-                      ]
+                      "type": "string"
                     }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
+                    "type": "array", 
                     "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                   }, 
                   "key": {
@@ -56,32 +47,20 @@
                   }
                 }
               }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
+              "type": "array", 
               "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
             }
           }
         }, 
         "namespaces": {
           "items": {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
+          "type": "array", 
           "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
         }, 
         "topologyKey": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
         }
       }

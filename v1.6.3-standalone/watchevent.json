@@ -21,10 +21,7 @@
       }
     }, 
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }
   }
 }

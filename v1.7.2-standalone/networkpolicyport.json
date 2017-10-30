@@ -4,19 +4,13 @@
   "description": "NetworkPolicyPort describes a port to allow traffic on", 
   "properties": {
     "protocol": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
     }, 
     "port": {
       "oneOf": [
         {
-          "type": [
-            "string", 
-            "null"
-          ]
+          "type": "string"
         }, 
         {
           "type": "integer"

@@ -26,10 +26,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.autoscaling.v2alpha1.MetricStatus"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "currentMetrics is the last read state of the metrics used by this autoscaler."
     }, 
     "desiredReplicas": {

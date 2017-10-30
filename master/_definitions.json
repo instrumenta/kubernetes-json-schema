@@ -729,6 +729,11 @@
         }, 
         {
           "kind": "DeleteOptions", 
+          "version": "v1", 
+          "group": "apps"
+        }, 
+        {
+          "kind": "DeleteOptions", 
           "version": "v1beta1", 
           "group": "apps"
         }, 
@@ -791,11 +796,6 @@
           "kind": "DeleteOptions", 
           "version": "v1beta1", 
           "group": "extensions"
-        }, 
-        {
-          "kind": "DeleteOptions", 
-          "version": "v1beta1", 
-          "group": "federation"
         }, 
         {
           "kind": "DeleteOptions", 
@@ -1210,7 +1210,7 @@
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }, 
           "type": "object", 
-          "description": "Hard is the set of desired hard limits for each named resource. More info: https://git.k8s.io/community/contributors/design-proposals/admission_control_resource_quota.md"
+          "description": "Hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/"
         }
       }
     }, 
@@ -1474,6 +1474,38 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1.DaemonSet": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "DaemonSet", 
+          "version": "v1", 
+          "group": "apps"
+        }
+      ], 
+      "description": "DaemonSet represents the configuration of a daemon set.", 
+      "properties": {
+        "status": {
+          "description": "The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1.DaemonSetStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1.DaemonSetSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.VolumeMount": {
       "required": [
         "name", 
@@ -1573,7 +1605,7 @@
         }, 
         "kind": {
           "type": "string", 
-          "description": "Expected values Shared: mulitple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
+          "description": "Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
         }, 
         "fsType": {
           "type": "string", 
@@ -2428,8 +2460,7 @@
     }, 
     "io.k8s.api.core.v1.Container": {
       "required": [
-        "name", 
-        "image"
+        "name"
       ], 
       "description": "A single application container that you want to run within a pod.", 
       "properties": {
@@ -2447,7 +2478,7 @@
         }, 
         "image": {
           "type": "string", 
-          "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images"
+          "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets."
         }, 
         "args": {
           "items": {
@@ -2474,7 +2505,7 @@
           "$ref": "#/definitions/io.k8s.api.core.v1.Lifecycle"
         }, 
         "securityContext": {
-          "description": "Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://git.k8s.io/community/contributors/design-proposals/security_context.md", 
+          "description": "Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/", 
           "$ref": "#/definitions/io.k8s.api.core.v1.SecurityContext"
         }, 
         "name": {
@@ -2682,6 +2713,36 @@
         "updateStrategy": {
           "description": "updateStrategy indicates the StatefulSetUpdateStrategy that will be employed to update Pods in the StatefulSet when a revision is made to Template.", 
           "$ref": "#/definitions/io.k8s.api.apps.v1beta2.StatefulSetUpdateStrategy"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1.DaemonSetSpec": {
+      "required": [
+        "template"
+      ], 
+      "description": "DaemonSetSpec is the specification of a daemon set.", 
+      "properties": {
+        "revisionHistoryLimit": {
+          "type": "integer", 
+          "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
+          "format": "int32"
+        }, 
+        "minReadySeconds": {
+          "type": "integer", 
+          "description": "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).", 
+          "format": "int32"
+        }, 
+        "template": {
+          "description": "An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
+        }, 
+        "updateStrategy": {
+          "description": "An update strategy to replace existing DaemonSet pods with new pods.", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1.DaemonSetUpdateStrategy"
+        }, 
+        "selector": {
+          "description": "A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
         }
       }
     }, 
@@ -3097,7 +3158,7 @@
         }, 
         "allowPrivilegeEscalation": {
           "type": "boolean", 
-          "description": "AllowPrivilegeEscalation determines if a pod can request to allow privilege escalation."
+          "description": "AllowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true."
         }, 
         "hostNetwork": {
           "type": "boolean", 
@@ -3257,6 +3318,19 @@
         "secretName": {
           "type": "string", 
           "description": "Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1.DaemonSetUpdateStrategy": {
+      "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.", 
+      "properties": {
+        "rollingUpdate": {
+          "description": "Rolling update config params. Present only if type = \"RollingUpdate\".", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1.RollingUpdateDaemonSet"
+        }, 
+        "type": {
+          "type": "string", 
+          "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate."
         }
       }
     }, 
@@ -3596,37 +3670,37 @@
         }
       }
     }, 
-    "io.k8s.api.authorization.v1beta1.SubjectAccessReview": {
+    "io.k8s.api.apps.v1.DaemonSetList": {
       "required": [
-        "spec"
+        "items"
       ], 
       "x-kubernetes-group-version-kind": [
         {
-          "kind": "SubjectAccessReview", 
-          "version": "v1beta1", 
-          "group": "authorization.k8s.io"
+          "kind": "DaemonSetList", 
+          "version": "v1", 
+          "group": "apps"
         }
       ], 
-      "description": "SubjectAccessReview checks whether or not a user or group can perform an action.", 
+      "description": "DaemonSetList is a collection of daemon sets.", 
       "properties": {
-        "status": {
-          "description": "Status is filled in by the server and indicates whether the request is allowed or not", 
-          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewStatus"
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.apps.v1.DaemonSet"
+          }, 
+          "type": "array", 
+          "description": "A list of daemon sets."
         }, 
         "kind": {
           "type": "string", 
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "spec": {
-          "description": "Spec holds information about the request being evaluated", 
-          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewSpec"
         }, 
         "apiVersion": {
           "type": "string", 
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
         }, 
         "metadata": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -4111,7 +4185,7 @@
             "$ref": "#/definitions/io.k8s.api.core.v1.ResourceQuota"
           }, 
           "type": "array", 
-          "description": "Items is a list of ResourceQuota objects. More info: https://git.k8s.io/community/contributors/design-proposals/admission_control_resource_quota.md"
+          "description": "Items is a list of ResourceQuota objects. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/"
         }, 
         "kind": {
           "type": "string", 
@@ -5564,156 +5638,47 @@
         }
       }
     }, 
-    "io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent": {
+    "io.k8s.api.core.v1.RBDPersistentVolumeSource": {
       "required": [
-        "type", 
-        "object"
+        "monitors", 
+        "image"
       ], 
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": ""
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1alpha1", 
-          "group": "admission.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1alpha1", 
-          "group": "admissionregistration.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "apps"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta2", 
-          "group": "apps"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": "authentication.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "authentication.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": "authorization.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "authorization.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": "autoscaling"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v2beta1", 
-          "group": "autoscaling"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": "batch"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "batch"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v2alpha1", 
-          "group": "batch"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "certificates.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "extensions"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "federation"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1alpha1", 
-          "group": "imagepolicy.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": "networking.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "policy"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": "rbac.authorization.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1alpha1", 
-          "group": "rbac.authorization.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "rbac.authorization.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1alpha1", 
-          "group": "scheduling.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1alpha1", 
-          "group": "settings.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1", 
-          "group": "storage.k8s.io"
-        }, 
-        {
-          "kind": "WatchEvent", 
-          "version": "v1beta1", 
-          "group": "storage.k8s.io"
-        }
-      ], 
-      "description": "Event represents a single event to a watched resource.", 
+      "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
       "properties": {
-        "object": {
-          "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+        "secretRef": {
+          "description": "SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference"
         }, 
-        "type": {
-          "type": "string"
+        "image": {
+          "type": "string", 
+          "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "keyring": {
+          "type": "string", 
+          "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "user": {
+          "type": "string", 
+          "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "monitors": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
+        }, 
+        "pool": {
+          "type": "string", 
+          "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }
       }
     }, 
@@ -6704,7 +6669,7 @@
             "$ref": "#/definitions/io.k8s.api.core.v1.LimitRange"
           }, 
           "type": "array", 
-          "description": "Items is a list of LimitRange objects. More info: https://git.k8s.io/community/contributors/design-proposals/admission_control_limit_range.md"
+          "description": "Items is a list of LimitRange objects. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
         }, 
         "kind": {
           "type": "string", 
@@ -7331,7 +7296,7 @@
             "type": "string"
           }, 
           "type": "array", 
-          "description": "Resources is a list of resources this rule applies to.  ResourceAll represents all resources.  \"*\" means all."
+          "description": "Resources is a list of resources this rule applies to.  \"*\" means all in the specified apiGroups.\n \"*/foo\" represents the subresource 'foo' for all resources in the specified apiGroups."
         }, 
         "resourceNames": {
           "items": {
@@ -7510,9 +7475,36 @@
         }
       }
     }, 
-    "io.k8s.kubernetes.pkg.apis.apps.v1beta1.Deployment": {
-      "description": "Deprecated. Please use io.k8s.api.apps.v1beta1.Deployment instead.", 
-      "$ref": "#/definitions/io.k8s.api.apps.v1beta1.Deployment"
+    "io.k8s.api.apps.v1beta1.StatefulSet": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "StatefulSet", 
+          "version": "v1beta1", 
+          "group": "apps"
+        }
+      ], 
+      "description": "DEPRECATED - This group version of StatefulSet is deprecated by apps/v1beta2/StatefulSet. See the release notes for more information. StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n - Network: A single stable DNS and hostname.\n - Storage: As many VolumeClaims as requested.\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.", 
+      "properties": {
+        "status": {
+          "description": "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta1.StatefulSetStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Spec defines the desired identities of pods in this set.", 
+          "$ref": "#/definitions/io.k8s.api.apps.v1beta1.StatefulSetSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
     }, 
     "io.k8s.api.apps.v1beta2.StatefulSetStatus": {
       "required": [
@@ -7805,6 +7797,40 @@
       "description": "Deprecated. Please use io.k8s.api.core.v1.ConfigMapProjection instead.", 
       "$ref": "#/definitions/io.k8s.api.core.v1.ConfigMapProjection"
     }, 
+    "io.k8s.api.authorization.v1beta1.SubjectAccessReview": {
+      "required": [
+        "spec"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "SubjectAccessReview", 
+          "version": "v1beta1", 
+          "group": "authorization.k8s.io"
+        }
+      ], 
+      "description": "SubjectAccessReview checks whether or not a user or group can perform an action.", 
+      "properties": {
+        "status": {
+          "description": "Status is filled in by the server and indicates whether the request is allowed or not", 
+          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Spec holds information about the request being evaluated", 
+          "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReviewSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
+    }, 
     "io.k8s.kubernetes.pkg.api.v1.DownwardAPIProjection": {
       "description": "Deprecated. Please use io.k8s.api.core.v1.DownwardAPIProjection instead.", 
       "$ref": "#/definitions/io.k8s.api.core.v1.DownwardAPIProjection"
@@ -7938,7 +7964,7 @@
         }, 
         "manualSelector": {
           "type": "boolean", 
-          "description": "manualSelector controls generation of pod labels and pod selectors. Leave `manualSelector` unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template.  When true, the user is responsible for picking unique labels and specifying the selector.  Failure to pick a unique label may cause this and other jobs to not function correctly.  However, You may see `manualSelector=true` in jobs that were created with the old `extensions/v1beta1` API. More info: https://git.k8s.io/community/contributors/design-proposals/selector-generation.md"
+          "description": "manualSelector controls generation of pod labels and pod selectors. Leave `manualSelector` unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template.  When true, the user is responsible for picking unique labels and specifying the selector.  Failure to pick a unique label may cause this and other jobs to not function correctly.  However, You may see `manualSelector=true` in jobs that were created with the old `extensions/v1beta1` API. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector"
         }, 
         "parallelism": {
           "type": "integer", 
@@ -7983,7 +8009,7 @@
         }, 
         "groupPriorityMinimum": {
           "type": "integer", 
-          "description": "GroupPriorityMininum is the priority this group should have at least. Higher priority means that the group is prefered by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMininum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s", 
+          "description": "GroupPriorityMininum is the priority this group should have at least. Higher priority means that the group is preferred by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMininum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s", 
           "format": "int32"
         }, 
         "insecureSkipTLSVerify": {
@@ -8389,7 +8415,7 @@
       "properties": {
         "storageMode": {
           "type": "string", 
-          "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
         }, 
         "secretRef": {
           "description": "SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.", 
@@ -8397,7 +8423,7 @@
         }, 
         "protectionDomain": {
           "type": "string", 
-          "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
+          "description": "The name of the ScaleIO Protection Domain for the configured storage."
         }, 
         "volumeName": {
           "type": "string", 
@@ -8421,7 +8447,7 @@
         }, 
         "storagePool": {
           "type": "string", 
-          "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
+          "description": "The ScaleIO Storage Pool associated with the protection domain."
         }, 
         "gateway": {
           "type": "string", 
@@ -9969,7 +9995,7 @@
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }, 
           "type": "object", 
-          "description": "Hard is the set of enforced hard limits for each named resource. More info: https://git.k8s.io/community/contributors/design-proposals/admission_control_resource_quota.md"
+          "description": "Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/"
         }, 
         "used": {
           "additionalProperties": {
@@ -10299,7 +10325,7 @@
         }, 
         "scaleIO": {
           "description": "ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.ScaleIOVolumeSource"
+          "$ref": "#/definitions/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource"
         }, 
         "cinder": {
           "description": "Cinder represents a cinder volume attached and mounted on kubelets host machine More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md", 
@@ -10369,7 +10395,7 @@
         }, 
         "rbd": {
           "description": "RBD represents a Rados Block Device mount on the host that shares a pod's lifetime. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.RBDVolumeSource"
+          "$ref": "#/definitions/io.k8s.api.core.v1.RBDPersistentVolumeSource"
         }, 
         "local": {
           "description": "Local represents directly-attached storage with node affinity", 
@@ -10610,7 +10636,7 @@
       "properties": {
         "progressDeadlineSeconds": {
           "type": "integer", 
-          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Once autoRollback is implemented, the deployment controller will automatically rollback failed deployments. Note that progress will not be estimated during the time a deployment is paused. This is not set by default.", 
+          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. This is not set by default.", 
           "format": "int32"
         }, 
         "replicas": {
@@ -10931,7 +10957,7 @@
             "type": "string"
           }, 
           "type": "array", 
-          "description": "Resources is a list of resources this rule applies to.  ResourceAll represents all resources."
+          "description": "Resources is a list of resources this rule applies to.  '*' represents all resources in the specified apiGroups. '*/foo' represents the subresource 'foo' for all resources in the specified apiGroups."
         }, 
         "resourceNames": {
           "items": {
@@ -11560,6 +11586,56 @@
     "io.k8s.apimachinery.pkg.apis.meta.v1.Patch": {
       "description": "Patch is provided to give a concrete name and type to the Kubernetes PATCH request body."
     }, 
+    "io.k8s.api.core.v1.ScaleIOPersistentVolumeSource": {
+      "required": [
+        "gateway", 
+        "system", 
+        "secretRef"
+      ], 
+      "description": "ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume", 
+      "properties": {
+        "storageMode": {
+          "type": "string", 
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+        }, 
+        "secretRef": {
+          "description": "SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference"
+        }, 
+        "protectionDomain": {
+          "type": "string", 
+          "description": "The name of the ScaleIO Protection Domain for the configured storage."
+        }, 
+        "volumeName": {
+          "type": "string", 
+          "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
+        }, 
+        "sslEnabled": {
+          "type": "boolean", 
+          "description": "Flag to enable/disable SSL communication with Gateway, default false"
+        }, 
+        "system": {
+          "type": "string", 
+          "description": "The name of the storage system as configured in ScaleIO."
+        }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+        }, 
+        "storagePool": {
+          "type": "string", 
+          "description": "The ScaleIO Storage Pool associated with the protection domain."
+        }, 
+        "gateway": {
+          "type": "string", 
+          "description": "The host address of the ScaleIO API Gateway."
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.NodeConfigSource": {
       "x-kubernetes-group-version-kind": [
         {
@@ -11580,6 +11656,15 @@
         "apiVersion": {
           "type": "string", 
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }
+      }
+    }, 
+    "io.k8s.api.apps.v1.RollingUpdateDaemonSet": {
+      "description": "Spec to control the desired behavior of daemon set rolling update.", 
+      "properties": {
+        "maxUnavailable": {
+          "description": "The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }
       }
     }, 
@@ -11620,7 +11705,7 @@
       "description": "SELinux  Strategy Options defines the strategy type and any options used to create the strategy.", 
       "properties": {
         "seLinuxOptions": {
-          "description": "seLinuxOptions required to run as; required for MustRunAs More info: https://git.k8s.io/community/contributors/design-proposals/security_context.md", 
+          "description": "seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/", 
           "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions"
         }, 
         "rule": {
@@ -11857,6 +11942,10 @@
     "io.k8s.kubernetes.pkg.api.v1.ISCSIVolumeSource": {
       "description": "Deprecated. Please use io.k8s.api.core.v1.ISCSIVolumeSource instead.", 
       "$ref": "#/definitions/io.k8s.api.core.v1.ISCSIVolumeSource"
+    }, 
+    "io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.ExternalAdmissionHook": {
+      "description": "Deprecated. Please use io.k8s.api.admissionregistration.v1alpha1.ExternalAdmissionHook instead.", 
+      "$ref": "#/definitions/io.k8s.api.admissionregistration.v1alpha1.ExternalAdmissionHook"
     }, 
     "io.k8s.kubernetes.pkg.apis.extensions.v1beta1.DeploymentList": {
       "description": "Deprecated. Please use io.k8s.api.extensions.v1beta1.DeploymentList instead.", 
@@ -12111,6 +12200,159 @@
         }
       }
     }, 
+    "io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent": {
+      "required": [
+        "type", 
+        "object"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": ""
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1alpha1", 
+          "group": "admission.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1alpha1", 
+          "group": "admissionregistration.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "apps"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "apps"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta2", 
+          "group": "apps"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "authentication.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "authentication.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "authorization.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "authorization.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "autoscaling"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v2beta1", 
+          "group": "autoscaling"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "batch"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "batch"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v2alpha1", 
+          "group": "batch"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "certificates.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "extensions"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1alpha1", 
+          "group": "imagepolicy.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "networking.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "policy"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "rbac.authorization.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1alpha1", 
+          "group": "rbac.authorization.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "rbac.authorization.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1alpha1", 
+          "group": "scheduling.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1alpha1", 
+          "group": "settings.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "storage.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "storage.k8s.io"
+        }
+      ], 
+      "description": "Event represents a single event to a watched resource.", 
+      "properties": {
+        "object": {
+          "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+        }, 
+        "type": {
+          "type": "string"
+        }
+      }
+    }, 
     "io.k8s.api.apps.v1beta2.ReplicaSetStatus": {
       "required": [
         "replicas"
@@ -12319,7 +12561,7 @@
       "properties": {
         "failedJobsHistoryLimit": {
           "type": "integer", 
-          "description": "The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.", 
+          "description": "The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.", 
           "format": "int32"
         }, 
         "jobTemplate": {
@@ -12345,7 +12587,7 @@
         }, 
         "successfulJobsHistoryLimit": {
           "type": "integer", 
-          "description": "The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.", 
+          "description": "The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 3.", 
           "format": "int32"
         }
       }
@@ -12358,7 +12600,7 @@
       "properties": {
         "progressDeadlineSeconds": {
           "type": "integer", 
-          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Once autoRollback is implemented, the deployment controller will automatically rollback failed deployments. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.", 
+          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.", 
           "format": "int32"
         }, 
         "replicas": {
@@ -12447,9 +12689,9 @@
       "description": "Deprecated. Please use io.k8s.api.settings.v1alpha1.PodPresetSpec instead.", 
       "$ref": "#/definitions/io.k8s.api.settings.v1alpha1.PodPresetSpec"
     }, 
-    "io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.ExternalAdmissionHook": {
-      "description": "Deprecated. Please use io.k8s.api.admissionregistration.v1alpha1.ExternalAdmissionHook instead.", 
-      "$ref": "#/definitions/io.k8s.api.admissionregistration.v1alpha1.ExternalAdmissionHook"
+    "io.k8s.kubernetes.pkg.apis.apps.v1beta1.Deployment": {
+      "description": "Deprecated. Please use io.k8s.api.apps.v1beta1.Deployment instead.", 
+      "$ref": "#/definitions/io.k8s.api.apps.v1beta1.Deployment"
     }, 
     "io.k8s.kubernetes.pkg.api.v1.ContainerStateTerminated": {
       "description": "Deprecated. Please use io.k8s.api.core.v1.ContainerStateTerminated instead.", 
@@ -12628,7 +12870,7 @@
       "properties": {
         "phase": {
           "type": "string", 
-          "description": "Phase is the current lifecycle phase of the namespace. More info: https://git.k8s.io/community/contributors/design-proposals/namespaces.md#phases"
+          "description": "Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/"
         }
       }
     }, 
@@ -12887,7 +13129,7 @@
             "type": "string"
           }, 
           "type": "array", 
-          "description": "Resources is a list of resources this rule applies to.  ResourceAll represents all resources.  \"*\" means all."
+          "description": "Resources is a list of resources this rule applies to.  \"*\" means all in the specified apiGroups.\n \"*/foo\" represents the subresource 'foo' for all resources in the specified apiGroups."
         }, 
         "resourceNames": {
           "items": {
@@ -13099,6 +13341,62 @@
         }
       }
     }, 
+    "io.k8s.api.apps.v1.DaemonSetStatus": {
+      "required": [
+        "currentNumberScheduled", 
+        "numberMisscheduled", 
+        "desiredNumberScheduled", 
+        "numberReady"
+      ], 
+      "description": "DaemonSetStatus represents the current status of a daemon set.", 
+      "properties": {
+        "collisionCount": {
+          "type": "integer", 
+          "description": "Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
+          "format": "int32"
+        }, 
+        "observedGeneration": {
+          "type": "integer", 
+          "description": "The most recent generation observed by the daemon set controller.", 
+          "format": "int64"
+        }, 
+        "numberAvailable": {
+          "type": "integer", 
+          "description": "The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and available (ready for at least spec.minReadySeconds)", 
+          "format": "int32"
+        }, 
+        "desiredNumberScheduled": {
+          "type": "integer", 
+          "description": "The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/", 
+          "format": "int32"
+        }, 
+        "numberUnavailable": {
+          "type": "integer", 
+          "description": "The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)", 
+          "format": "int32"
+        }, 
+        "currentNumberScheduled": {
+          "type": "integer", 
+          "description": "The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/", 
+          "format": "int32"
+        }, 
+        "numberReady": {
+          "type": "integer", 
+          "description": "The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and ready.", 
+          "format": "int32"
+        }, 
+        "numberMisscheduled": {
+          "type": "integer", 
+          "description": "The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/", 
+          "format": "int32"
+        }, 
+        "updatedNumberScheduled": {
+          "type": "integer", 
+          "description": "The total number of nodes that are running updated daemon pod", 
+          "format": "int32"
+        }
+      }
+    }, 
     "io.k8s.api.core.v1.Probe": {
       "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.", 
       "properties": {
@@ -13229,6 +13527,7 @@
     "io.k8s.api.admissionregistration.v1alpha1.AdmissionHookClientConfig": {
       "required": [
         "service", 
+        "urlPath", 
         "caBundle"
       ], 
       "description": "AdmissionHookClientConfig contains the information to make a TLS connection with the webhook", 
@@ -13237,6 +13536,10 @@
           "type": "string", 
           "description": "CABundle is a PEM encoded CA bundle which will be used to validate webhook's server certificate. Required", 
           "format": "byte"
+        }, 
+        "urlPath": {
+          "type": "string", 
+          "description": "URLPath is an optional field that specifies the URL path to use when posting the AdmissionReview object."
         }, 
         "service": {
           "description": "Service is a reference to the service for this webhook. If there is only one port open for the service, that port will be used. If there are multiple ports open, port 443 will be used if it is open, otherwise it is an error. Required", 
@@ -13320,37 +13623,6 @@
         }
       }
     }, 
-    "io.k8s.api.apps.v1beta1.StatefulSet": {
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "StatefulSet", 
-          "version": "v1beta1", 
-          "group": "apps"
-        }
-      ], 
-      "description": "DEPRECATED - This group version of StatefulSet is deprecated by apps/v1beta2/StatefulSet. See the release notes for more information. StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n - Network: A single stable DNS and hostname.\n - Storage: As many VolumeClaims as requested.\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.", 
-      "properties": {
-        "status": {
-          "description": "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.", 
-          "$ref": "#/definitions/io.k8s.api.apps.v1beta1.StatefulSetStatus"
-        }, 
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "spec": {
-          "description": "Spec defines the desired identities of pods in this set.", 
-          "$ref": "#/definitions/io.k8s.api.apps.v1beta1.StatefulSetSpec"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "metadata": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        }
-      }
-    }, 
     "io.k8s.kubernetes.pkg.apis.extensions.v1beta1.NetworkPolicyPeer": {
       "description": "Deprecated. Please use io.k8s.api.extensions.v1beta1.NetworkPolicyPeer instead.", 
       "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.NetworkPolicyPeer"
@@ -13367,7 +13639,7 @@
             "type": "string"
           }, 
           "type": "array", 
-          "description": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://git.k8s.io/community/contributors/design-proposals/namespaces.md#finalizers"
+          "description": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/"
         }
       }
     }, 
@@ -13505,7 +13777,7 @@
       "properties": {
         "progressDeadlineSeconds": {
           "type": "integer", 
-          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Once autoRollback is implemented, the deployment controller will automatically rollback failed deployments. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.", 
+          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.", 
           "format": "int32"
         }, 
         "replicas": {
@@ -13593,7 +13865,7 @@
           "group": "extensions"
         }
       ], 
-      "description": "DEPRECATED - This group version of ReplicaSet is deprecated by apps/v1beta2/ReplicaSet. See the release notes for more information. ReplicaSet represents the configuration of a ReplicaSet.", 
+      "description": "DEPRECATED - This group version of ReplicaSet is deprecated by apps/v1beta2/ReplicaSet. See the release notes for more information. ReplicaSet ensures that a specified number of pod replicas are running at any given time.", 
       "properties": {
         "status": {
           "description": "Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
@@ -13824,7 +14096,7 @@
           "group": "apps"
         }
       ], 
-      "description": "ReplicaSet represents the configuration of a ReplicaSet.", 
+      "description": "ReplicaSet ensures that a specified number of pod replicas are running at any given time.", 
       "properties": {
         "status": {
           "description": "Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
@@ -13933,7 +14205,7 @@
       }
     }, 
     "io.k8s.api.core.v1.PodAffinityTerm": {
-      "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> tches that of any node on which a pod of the set of pods is running", 
+      "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running", 
       "properties": {
         "labelSelector": {
           "description": "A label query over a set of resources, in this case pods.", 

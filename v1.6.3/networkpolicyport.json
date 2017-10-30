@@ -3,10 +3,7 @@
   "type": "object", 
   "properties": {
     "protocol": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Optional.  The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
     }, 
     "port": {

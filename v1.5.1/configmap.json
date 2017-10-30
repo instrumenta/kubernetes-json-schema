@@ -5,10 +5,7 @@
   "properties": {
     "data": {
       "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
       "type": "object", 
       "description": "Data contains the configuration data. Each key must be a valid DNS_SUBDOMAIN with an optional leading dot."

@@ -39,10 +39,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PhotonPersistentDiskVolumeSource"
     }, 
     "persistentVolumeReclaimPolicy": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "What happens to a persistent volume when released from its claim. Valid options are Retain (default) and Recycle. Recycling must be supported by the volume plugin underlying this persistent volume. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#recycling-policy"
     }, 
     "azureDisk": {
@@ -51,15 +48,9 @@
     }, 
     "accessModes": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "AccessModes contains all ways the volume can be mounted. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes"
     }, 
     "fc": {
@@ -71,10 +62,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.0/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.FlexVolumeSource"
     }, 
     "storageClassName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass."
     }, 
     "rbd": {

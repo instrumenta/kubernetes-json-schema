@@ -10,10 +10,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1beta1.DaemonSet"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Items is a list of daemon sets."
     }, 
     "metadata": {

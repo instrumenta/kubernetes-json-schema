@@ -42,10 +42,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.DeploymentCondition"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Represents the latest available observations of a deployment's current state.", 
       "x-kubernetes-patch-strategy": "merge", 
       "x-kubernetes-patch-merge-key": "type"

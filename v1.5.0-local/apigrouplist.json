@@ -10,10 +10,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/unversioned.APIGroup"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "groups is a list of APIGroup."
     }
   }

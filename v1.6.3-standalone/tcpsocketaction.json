@@ -9,10 +9,7 @@
     "port": {
       "oneOf": [
         {
-          "type": [
-            "string", 
-            "null"
-          ]
+          "type": "string"
         }, 
         {
           "type": "integer"

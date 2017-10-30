@@ -10,19 +10,13 @@
       "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
       "properties": {
         "name": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
         }
       }
     }, 
     "secretFile": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
     }, 
     "readOnly": {
@@ -30,30 +24,18 @@
       "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
     }, 
     "user": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Optional: User is the rados user name, default is admin More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
     }, 
     "path": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
     }, 
     "monitors": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Required: Monitors is a collection of Ceph monitors More info: http://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
     }
   }

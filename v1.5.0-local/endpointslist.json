@@ -10,10 +10,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1.Endpoints"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of endpoints."
     }, 
     "metadata": {

@@ -6,10 +6,7 @@
     "minAvailable": {
       "oneOf": [
         {
-          "type": [
-            "string", 
-            "null"
-          ]
+          "type": "string"
         }, 
         {
           "type": "integer"
@@ -19,10 +16,7 @@
     "maxUnavailable": {
       "oneOf": [
         {
-          "type": [
-            "string", 
-            "null"
-          ]
+          "type": "string"
         }, 
         {
           "type": "integer"
@@ -34,10 +28,7 @@
       "properties": {
         "matchLabels": {
           "additionalProperties": {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           "type": "object", 
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -56,15 +47,9 @@
               }, 
               "values": {
                 "items": {
-                  "type": [
-                    "string", 
-                    "null"
-                  ]
+                  "type": "string"
                 }, 
-                "type": [
-                  "array", 
-                  "null"
-                ], 
+                "type": "array", 
                 "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
               }, 
               "key": {
@@ -75,10 +60,7 @@
               }
             }
           }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
+          "type": "array", 
           "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
         }
       }

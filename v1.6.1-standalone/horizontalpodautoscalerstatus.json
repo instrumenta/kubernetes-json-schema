@@ -30,10 +30,7 @@
               "currentAverageValue": {
                 "oneOf": [
                   {
-                    "type": [
-                      "string", 
-                      "null"
-                    ]
+                    "type": "string"
                   }, 
                   {
                     "type": "integer"
@@ -57,10 +54,7 @@
               "currentValue": {
                 "oneOf": [
                   {
-                    "type": [
-                      "string", 
-                      "null"
-                    ]
+                    "type": "string"
                   }, 
                   {
                     "type": "integer"
@@ -83,10 +77,7 @@
                     "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
                   }, 
                   "apiVersion": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
+                    "type": "string", 
                     "description": "API version of the referent"
                   }
                 }
@@ -107,10 +98,7 @@
               "currentAverageValue": {
                 "oneOf": [
                   {
-                    "type": [
-                      "string", 
-                      "null"
-                    ]
+                    "type": "string"
                   }, 
                   {
                     "type": "integer"
@@ -134,10 +122,7 @@
           }
         }
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "currentMetrics is the last read state of the metrics used by this autoscaler."
     }, 
     "currentReplicas": {
@@ -146,10 +131,7 @@
       "format": "int32"
     }, 
     "lastScaleTime": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "format": "date-time"
     }, 
     "desiredReplicas": {

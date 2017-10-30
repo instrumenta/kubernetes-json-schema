@@ -16,10 +16,7 @@
         "currentAverageValue": {
           "oneOf": [
             {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
             {
               "type": "integer"
@@ -43,10 +40,7 @@
         "currentValue": {
           "oneOf": [
             {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
             {
               "type": "integer"
@@ -69,10 +63,7 @@
               "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
             }, 
             "apiVersion": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "API version of the referent"
             }
           }
@@ -93,10 +84,7 @@
         "currentAverageValue": {
           "oneOf": [
             {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
             {
               "type": "integer"
@@ -115,10 +103,7 @@
       }
     }, 
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "type is the type of metric source.  It will match one of the fields below."
     }
   }

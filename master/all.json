@@ -211,6 +211,9 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ComponentStatusList"
     }, 
     {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSet"
+    }, 
+    {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
     }, 
     {
@@ -403,6 +406,9 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetSpec"
     }, 
     {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetSpec"
+    }, 
+    {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.rbac.v1.Role"
     }, 
     {
@@ -478,6 +484,9 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.SecretVolumeSource"
     }, 
     {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetUpdateStrategy"
+    }, 
+    {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ScaleStatus"
     }, 
     {
@@ -547,7 +556,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeItem"
     }, 
     {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReview"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetList"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.DaemonSetSpec"
@@ -796,7 +805,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStateTerminated"
     }, 
     {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.RBDPersistentVolumeSource"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.networking.v1.NetworkPolicyList"
@@ -1117,7 +1126,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.ResourceMetricStatus"
     }, 
     {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.apps.v1beta1.Deployment"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta1.StatefulSet"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetStatus"
@@ -1166,6 +1175,9 @@
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ConfigMapProjection"
+    }, 
+    {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.SubjectAccessReview"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.DownwardAPIProjection"
@@ -1786,7 +1798,13 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
     }, 
     {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource"
+    }, 
+    {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigSource"
+    }, 
+    {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1.RollingUpdateDaemonSet"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.AdmissionHookClientConfig"
@@ -1832,6 +1850,9 @@
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ISCSIVolumeSource"
+    }, 
+    {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.ExternalAdmissionHook"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.DeploymentList"
@@ -1897,6 +1918,9 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.Secret"
     }, 
     {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+    }, 
+    {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetStatus"
     }, 
     {
@@ -1948,7 +1972,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.settings.v1alpha1.PodPresetSpec"
     }, 
     {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.ExternalAdmissionHook"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.apps.v1beta1.Deployment"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ContainerStateTerminated"
@@ -2077,6 +2101,9 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.SelfSubjectAccessReviewSpec"
     }, 
     {
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetStatus"
+    }, 
+    {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
     }, 
     {
@@ -2123,9 +2150,6 @@
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroupList"
-    }, 
-    {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta1.StatefulSet"
     }, 
     {
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.NetworkPolicyPeer"

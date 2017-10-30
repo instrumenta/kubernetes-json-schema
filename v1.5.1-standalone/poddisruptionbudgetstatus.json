@@ -22,10 +22,7 @@
     }, 
     "disruptedPods": {
       "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
-        ], 
+        "type": "string", 
         "format": "date-time"
       }, 
       "type": "object", 

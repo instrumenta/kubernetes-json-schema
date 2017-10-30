@@ -7,19 +7,13 @@
   "description": "TCPSocketAction describes an action based on opening a socket", 
   "properties": {
     "host": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Optional: Host name to connect to, defaults to the pod IP."
     }, 
     "port": {
       "oneOf": [
         {
-          "type": [
-            "string", 
-            "null"
-          ]
+          "type": "string"
         }, 
         {
           "type": "integer"

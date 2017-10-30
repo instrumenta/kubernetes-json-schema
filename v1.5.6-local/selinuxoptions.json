@@ -4,31 +4,19 @@
   "description": "SELinuxOptions are the labels to be applied to the container", 
   "properties": {
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Type is a SELinux type label that applies to the container."
     }, 
     "role": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Role is a SELinux role label that applies to the container."
     }, 
     "user": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "User is a SELinux user label that applies to the container."
     }, 
     "level": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Level is SELinux level label that applies to the container."
     }
   }

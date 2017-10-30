@@ -15,58 +15,31 @@
   "description": "Info contains versioning information. how we'll want to distribute that information.", 
   "properties": {
     "major": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "gitTreeState": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "buildDate": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "platform": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "gitVersion": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "gitCommit": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "goVersion": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "minor": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }, 
     "compiler": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }
   }
 }

@@ -13,15 +13,9 @@
     }, 
     "targetWWNs": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Required: FC target worldwide names (WWNs)"
     }, 
     "lun": {
@@ -30,10 +24,7 @@
       "format": "int32"
     }, 
     "fsType": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
     }
   }

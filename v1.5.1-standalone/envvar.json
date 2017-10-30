@@ -32,10 +32,7 @@
               "description": "Path of the field to select in the specified API version."
             }, 
             "apiVersion": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
             }
           }
@@ -59,10 +56,7 @@
           "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
           "properties": {
             "containerName": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Container name: required for volumes, optional for env vars"
             }, 
             "resource": {
@@ -70,27 +64,18 @@
               "description": "Required: resource to select"
             }, 
             "divisor": {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }
           }
         }
       }
     }, 
     "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Name of the environment variable. Must be a C_IDENTIFIER."
     }, 
     "value": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\"."
     }
   }

@@ -8,24 +8,15 @@
   "description": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced.", 
   "properties": {
     "kind": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
     }, 
     "groupVersion": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "groupVersion is the group and version this APIResourceList is for."
     }, 
     "apiVersion": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
     }, 
     "resources": {
@@ -41,15 +32,9 @@
         "properties": {
           "shortNames": {
             "items": {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
-            "type": [
-              "array", 
-              "null"
-            ], 
+            "type": "array", 
             "description": "shortNames is a list of suggested short names of the resource."
           }, 
           "namespaced": {
@@ -66,10 +51,7 @@
           }, 
           "verbs": {
             "items": {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
             "type": "array", 
             "description": "verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)"
@@ -80,23 +62,14 @@
           }, 
           "categories": {
             "items": {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
-            "type": [
-              "array", 
-              "null"
-            ], 
+            "type": "array", 
             "description": "categories is a list of the grouped resources this resource belongs to (e.g. 'all')"
           }
         }
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "resources contains the name of the resources and if they are namespaced."
     }
   }

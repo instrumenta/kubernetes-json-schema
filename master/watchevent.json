@@ -22,6 +22,11 @@
     }, 
     {
       "kind": "WatchEvent", 
+      "version": "v1", 
+      "group": "apps"
+    }, 
+    {
+      "kind": "WatchEvent", 
       "version": "v1beta1", 
       "group": "apps"
     }, 
@@ -87,11 +92,6 @@
     }, 
     {
       "kind": "WatchEvent", 
-      "version": "v1beta1", 
-      "group": "federation"
-    }, 
-    {
-      "kind": "WatchEvent", 
       "version": "v1alpha1", 
       "group": "imagepolicy.k8s.io"
     }, 
@@ -149,10 +149,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
     }, 
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }
   }
 }

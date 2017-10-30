@@ -4,23 +4,14 @@
   "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes", 
   "properties": {
     "volumeName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
     }, 
     "accessModes": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "AccessModes contains the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1"
     }, 
     "resources": {

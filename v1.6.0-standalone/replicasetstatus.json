@@ -39,17 +39,11 @@
             "description": "Status of the condition, one of True, False, Unknown."
           }, 
           "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "format": "date-time"
           }, 
           "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "description": "A human readable message indicating details about the transition."
           }, 
           "type": {
@@ -57,18 +51,12 @@
             "description": "Type of replica set condition."
           }, 
           "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "description": "The reason for the condition's last transition."
           }
         }
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Represents the latest available observations of a replica set's current state."
     }, 
     "fullyLabeledReplicas": {

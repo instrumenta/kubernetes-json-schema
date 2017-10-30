@@ -14,10 +14,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeAddress"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-addresses"
     }, 
     "nodeInfo": {
@@ -28,10 +25,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.AttachedVolume"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of volumes that are attached to the node."
     }, 
     "allocatable": {
@@ -43,15 +37,9 @@
     }, 
     "volumesInUse": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of attachable volumes in use (mounted) by the node."
     }, 
     "daemonEndpoints": {
@@ -59,30 +47,21 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeDaemonEndpoints"
     }, 
     "phase": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-phase The field is never populated, and now is deprecated."
     }, 
     "images": {
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ContainerImage"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of container images on this node"
     }, 
     "conditions": {
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeCondition"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Conditions is an array of current observed node conditions. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#node-condition"
     }
   }

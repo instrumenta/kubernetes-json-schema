@@ -8,10 +8,7 @@
       "description": "Specify whether the ConfigMap must be defined"
     }, 
     "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
     }
   }
