@@ -10,10 +10,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.0/_definitions.json#/definitions/v1beta1.ReplicaSet"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of ReplicaSets. More info: http://kubernetes.io/docs/user-guide/replication-controller"
     }, 
     "metadata": {

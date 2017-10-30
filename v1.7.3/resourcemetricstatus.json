@@ -17,10 +17,7 @@
       "format": "int32"
     }, 
     "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "name is the name of the resource in question."
     }
   }

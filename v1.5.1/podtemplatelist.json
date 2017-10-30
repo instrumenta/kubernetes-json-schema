@@ -10,10 +10,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.1/_definitions.json#/definitions/v1.PodTemplate"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of pod templates"
     }, 
     "metadata": {

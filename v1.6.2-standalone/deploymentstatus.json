@@ -46,31 +46,19 @@
             "description": "Status of the condition, one of True, False, Unknown."
           }, 
           "lastUpdateTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "format": "date-time"
           }, 
           "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "format": "date-time"
           }, 
           "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "description": "The reason for the condition's last transition."
           }, 
           "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "description": "A human readable message indicating details about the transition."
           }, 
           "type": {
@@ -79,10 +67,7 @@
           }
         }
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Represents the latest available observations of a deployment's current state."
     }
   }

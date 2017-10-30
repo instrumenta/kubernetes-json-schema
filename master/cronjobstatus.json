@@ -7,10 +7,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "A list of pointers to currently running jobs."
     }, 
     "lastScheduleTime": {

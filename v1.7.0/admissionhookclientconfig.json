@@ -8,10 +8,7 @@
   "description": "AdmissionHookClientConfig contains the information to make a TLS connection with the webhook", 
   "properties": {
     "caBundle": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "CABundle is a PEM encoded CA bundle which will be used to validate webhook's server certificate. Required", 
       "format": "byte"
     }, 

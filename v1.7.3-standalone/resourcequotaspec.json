@@ -5,25 +5,16 @@
   "properties": {
     "scopes": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects."
     }, 
     "hard": {
       "additionalProperties": {
         "oneOf": [
           {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           {
             "type": "integer"

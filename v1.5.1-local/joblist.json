@@ -10,10 +10,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v2alpha1.Job"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Items is the list of Job."
     }, 
     "metadata": {

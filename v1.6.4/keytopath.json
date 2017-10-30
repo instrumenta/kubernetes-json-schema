@@ -8,10 +8,7 @@
   "description": "Maps a string key to a path within a volume.", 
   "properties": {
     "path": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'."
     }, 
     "mode": {
@@ -20,10 +17,7 @@
       "format": "int32"
     }, 
     "key": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "The key to project."
     }
   }

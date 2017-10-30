@@ -7,10 +7,7 @@
       "additionalProperties": {
         "oneOf": [
           {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           {
             "type": "integer"
@@ -39,10 +36,7 @@
         }
       }, 
       "x-kubernetes-patch-merge-key": "type", 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses", 
       "x-kubernetes-patch-strategy": "merge"
     }, 
@@ -60,20 +54,14 @@
           }, 
           "names": {
             "items": {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
             "type": "array", 
             "description": "Names by which this image is known. e.g. [\"gcr.io/google_containers/hyperkube:v1.0.7\", \"dockerhub.io/google_containers/hyperkube:v1.0.7\"]"
           }
         }
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of container images on this node"
     }, 
     "nodeInfo": {
@@ -151,20 +139,14 @@
           }
         }
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of volumes that are attached to the node."
     }, 
     "allocatable": {
       "additionalProperties": {
         "oneOf": [
           {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           {
             "type": "integer"
@@ -176,15 +158,9 @@
     }, 
     "volumesInUse": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of attachable volumes in use (mounted) by the node."
     }, 
     "daemonEndpoints": {
@@ -206,10 +182,7 @@
       }
     }, 
     "phase": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated."
     }, 
     "conditions": {
@@ -225,31 +198,19 @@
             "description": "Status of the condition, one of True, False, Unknown."
           }, 
           "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "format": "date-time"
           }, 
           "lastHeartbeatTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "format": "date-time"
           }, 
           "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "description": "(brief) reason for the condition's last transition."
           }, 
           "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
+            "type": "string", 
             "description": "Human readable message indicating details about last transition."
           }, 
           "type": {
@@ -259,10 +220,7 @@
         }
       }, 
       "x-kubernetes-patch-merge-key": "type", 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition", 
       "x-kubernetes-patch-strategy": "merge"
     }

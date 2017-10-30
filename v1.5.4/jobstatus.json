@@ -30,10 +30,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.5.4/_definitions.json#/definitions/v1beta1.JobCondition"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Conditions represent the latest available observations of an object's current state. More info: http://kubernetes.io/docs/user-guide/jobs"
     }
   }

@@ -20,15 +20,9 @@
           }, 
           "values": {
             "items": {
-              "type": [
-                "string", 
-                "null"
-              ]
+              "type": "string"
             }, 
-            "type": [
-              "array", 
-              "null"
-            ], 
+            "type": "array", 
             "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
           }, 
           "key": {
@@ -37,10 +31,7 @@
           }
         }
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Required. A list of node selector requirements. The requirements are ANDed."
     }
   }

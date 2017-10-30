@@ -8,10 +8,7 @@
       "$ref": "_definitions.json#/definitions/v1beta1.RollingUpdateDeployment"
     }, 
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate."
     }
   }

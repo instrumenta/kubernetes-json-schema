@@ -7,10 +7,7 @@
   "description": "Selects a key from a ConfigMap.", 
   "properties": {
     "key": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "The key to select."
     }
   }

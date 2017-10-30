@@ -14,10 +14,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeAddress"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses", 
       "x-kubernetes-patch-strategy": "merge", 
       "x-kubernetes-patch-merge-key": "type"
@@ -30,10 +27,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.AttachedVolume"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of volumes that are attached to the node."
     }, 
     "allocatable": {
@@ -45,15 +39,9 @@
     }, 
     "volumesInUse": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of attachable volumes in use (mounted) by the node."
     }, 
     "daemonEndpoints": {
@@ -61,30 +49,21 @@
       "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeDaemonEndpoints"
     }, 
     "phase": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated."
     }, 
     "images": {
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ContainerImage"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "List of container images on this node"
     }, 
     "conditions": {
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeCondition"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition", 
       "x-kubernetes-patch-strategy": "merge", 
       "x-kubernetes-patch-merge-key": "type"

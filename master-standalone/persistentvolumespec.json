@@ -16,10 +16,7 @@
           "description": "VolumeID uniquely identifies a Portworx volume"
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "FSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
@@ -47,32 +44,20 @@
     }, 
     "mountOptions": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "A list of mount options, e.g. [\"ro\", \"soft\"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options"
     }, 
     "flocker": {
       "description": "Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.", 
       "properties": {
         "datasetName": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated"
         }, 
         "datasetUUID": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "UUID of the dataset. This is unique identifier of a Flocker dataset"
         }
       }
@@ -93,10 +78,7 @@
           "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false."
         }, 
         "group": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Group to map volume access to Default is no group"
         }, 
         "registry": {
@@ -104,10 +86,7 @@
           "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes"
         }, 
         "user": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "User to map volume access to Defaults to serivceaccount user"
         }
       }
@@ -116,10 +95,7 @@
       "additionalProperties": {
         "oneOf": [
           {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           {
             "type": "integer"
@@ -143,34 +119,22 @@
         }, 
         "portals": {
           "items": {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
+          "type": "array", 
           "description": "iSCSI target portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
         }, 
         "secretRef": {
           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
           "properties": {
             "name": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
             }
           }
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi"
         }, 
         "readOnly": {
@@ -182,17 +146,11 @@
           "description": "whether support iSCSI Session CHAP authentication"
         }, 
         "initiatorName": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
         }, 
         "iscsiInterface": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
         }, 
         "iqn": {
@@ -220,37 +178,28 @@
           "type": "boolean", 
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
         }, 
-        "options": {
-          "additionalProperties": {
-            "type": [
-              "string", 
-              "null"
-            ]
-          }, 
-          "type": "object", 
-          "description": "Optional: Extra command options if any."
+        "secretRef": {
+          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "properties": {
+            "name": {
+              "type": "string", 
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+            }
+          }
         }, 
         "driver": {
           "type": "string", 
           "description": "Driver is the name of the driver to use for this volume."
         }, 
-        "secretRef": {
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
-          "properties": {
-            "name": {
-              "type": [
-                "string", 
-                "null"
-              ], 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
-            }
-          }
+        "options": {
+          "additionalProperties": {
+            "type": "string"
+          }, 
+          "type": "object", 
+          "description": "Optional: Extra command options if any."
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
         }
       }
@@ -274,10 +223,7 @@
       "description": "Represents a Photon Controller persistent disk resource.", 
       "properties": {
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }, 
         "pdID": {
@@ -287,10 +233,7 @@
       }
     }, 
     "persistentVolumeReclaimPolicy": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "What happens to a persistent volume when released from its claim. Valid options are Retain (default) and Recycle. Recycling must be supported by the volume plugin underlying this persistent volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming"
     }, 
     "azureDisk": {
@@ -305,24 +248,15 @@
           "description": "The Name of the data disk in the blob storage"
         }, 
         "cachingMode": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Host Caching mode: None, Read Only, Read Write."
         }, 
         "kind": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Expected values Shared: mulitple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
+          "type": "string", 
+          "description": "Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }, 
         "diskURI": {
@@ -340,23 +274,17 @@
       "properties": {
         "targetWWNs": {
           "items": {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
+          "type": "array", 
           "description": "Optional: FC target worldwide names (WWNs)"
         }, 
-        "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+        "wwids": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -367,84 +295,48 @@
           "description": "Optional: FC target lun number", 
           "format": "int32"
         }, 
-        "wwids": {
-          "items": {
-            "type": [
-              "string", 
-              "null"
-            ]
-          }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
-          "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 
     "accessModes": {
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
+        "type": "string"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes"
     }, 
     "claimRef": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
       "properties": {
         "kind": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
         "name": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
         }, 
         "namespace": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
         }, 
         "apiVersion": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "API version of the referent."
         }, 
         "fieldPath": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object."
         }, 
         "resourceVersion": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
         }, 
         "uid": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids"
         }
       }
@@ -455,39 +347,31 @@
         "system", 
         "secretRef"
       ], 
-      "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
+      "description": "ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume", 
       "properties": {
         "storageMode": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
+          "type": "string", 
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
         }, 
         "secretRef": {
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": "string", 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
-              "type": [
-                "string", 
-                "null"
-              ], 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "type": "string", 
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
         "protectionDomain": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
+          "type": "string", 
+          "description": "The name of the ScaleIO Protection Domain for the configured storage."
         }, 
         "volumeName": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
         }, 
         "sslEnabled": {
@@ -499,10 +383,7 @@
           "description": "The name of the storage system as configured in ScaleIO."
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }, 
         "readOnly": {
@@ -510,11 +391,8 @@
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
         }, 
         "storagePool": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
+          "type": "string", 
+          "description": "The ScaleIO Storage Pool associated with the protection domain."
         }, 
         "gateway": {
           "type": "string", 
@@ -523,10 +401,7 @@
       }
     }, 
     "storageClassName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass."
     }, 
     "cephfs": {
@@ -539,26 +414,17 @@
           "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
             "namespace": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Namespace defines the space within which the secret name must be unique."
             }, 
             "name": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
         "secretFile": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
         }, 
         "readOnly": {
@@ -566,25 +432,16 @@
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
         }, 
         "user": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
         }, 
         "path": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Optional: Used as the mounted root, rather than the full Ceph tree, default is /"
         }, 
         "monitors": {
           "items": {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           "type": "array", 
           "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it"
@@ -607,10 +464,7 @@
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
         }, 
         "secretNamespace": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod"
         }, 
         "secretName": {
@@ -623,10 +477,7 @@
       "description": "Represents a StorageOS persistent volume resource.", 
       "properties": {
         "volumeName": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace."
         }, 
         "readOnly": {
@@ -634,71 +485,44 @@
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
         }, 
         "volumeNamespace": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod's namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to \"default\" if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created."
         }, 
         "secretRef": {
           "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
           "properties": {
             "kind": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
             }, 
             "name": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
             }, 
             "namespace": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
             }, 
             "apiVersion": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "API version of the referent."
             }, 
             "fieldPath": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object."
             }, 
             "resourceVersion": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
             }, 
             "uid": {
-              "type": [
-                "string", 
-                "null"
-              ], 
+              "type": "string", 
               "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids"
             }
           }
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
@@ -714,10 +538,7 @@
           "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
         }, 
         "type": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
         }
       }
@@ -763,10 +584,7 @@
           "description": "Unique name of the PD resource in GCE. Used to identify the disk in GCE. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
         }
       }
@@ -786,10 +604,7 @@
           "description": "volume id used to identify the volume in cinder More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
         }
       }
@@ -814,10 +629,7 @@
           "description": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore"
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore"
         }
       }
@@ -830,14 +642,15 @@
       "description": "Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.", 
       "properties": {
         "secretRef": {
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": "string", 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
-              "type": [
-                "string", 
-                "null"
-              ], 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "type": "string", 
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
@@ -846,17 +659,11 @@
           "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }, 
         "keyring": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd"
         }, 
         "readOnly": {
@@ -864,27 +671,18 @@
           "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }, 
         "user": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }, 
         "monitors": {
           "items": {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           "type": "array", 
           "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }, 
         "pool": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it"
         }
       }
@@ -896,24 +694,15 @@
       "description": "Represents a vSphere volume resource.", 
       "properties": {
         "storagePolicyName": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Storage Policy Based Management (SPBM) profile name."
         }, 
         "fsType": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }, 
         "storagePolicyID": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName."
         }, 
         "volumePath": {

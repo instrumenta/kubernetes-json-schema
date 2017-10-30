@@ -7,10 +7,7 @@
   "description": "ContainerStateTerminated is a terminated state of a container.", 
   "properties": {
     "containerID": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Container's ID in the format 'docker://<container_id>'"
     }, 
     "signal": {
@@ -19,31 +16,19 @@
       "format": "int32"
     }, 
     "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "(brief) reason from the last termination of the container"
     }, 
     "finishedAt": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "format": "date-time"
     }, 
     "startedAt": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "format": "date-time"
     }, 
     "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Message regarding the last termination of the container"
     }, 
     "exitCode": {

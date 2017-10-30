@@ -22,6 +22,11 @@
     }, 
     {
       "kind": "WatchEvent", 
+      "version": "v1", 
+      "group": "apps"
+    }, 
+    {
+      "kind": "WatchEvent", 
       "version": "v1beta1", 
       "group": "apps"
     }, 
@@ -84,11 +89,6 @@
       "kind": "WatchEvent", 
       "version": "v1beta1", 
       "group": "extensions"
-    }, 
-    {
-      "kind": "WatchEvent", 
-      "version": "v1beta1", 
-      "group": "federation"
     }, 
     {
       "kind": "WatchEvent", 
@@ -158,10 +158,7 @@
       }
     }, 
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ]
+      "type": "string"
     }
   }
 }

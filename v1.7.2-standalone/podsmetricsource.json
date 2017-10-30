@@ -10,10 +10,7 @@
     "targetAverageValue": {
       "oneOf": [
         {
-          "type": [
-            "string", 
-            "null"
-          ]
+          "type": "string"
         }, 
         {
           "type": "integer"
@@ -21,10 +18,7 @@
       ]
     }, 
     "metricName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "metricName is the name of the metric in question"
     }
   }

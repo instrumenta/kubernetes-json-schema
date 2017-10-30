@@ -10,10 +10,7 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1alpha1.Role"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Items is a list of Roles"
     }, 
     "metadata": {

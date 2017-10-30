@@ -11,10 +11,7 @@
     "currentValue": {
       "oneOf": [
         {
-          "type": [
-            "string", 
-            "null"
-          ]
+          "type": "string"
         }, 
         {
           "type": "integer"
@@ -37,19 +34,13 @@
           "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
         }, 
         "apiVersion": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "API version of the referent"
         }
       }
     }, 
     "metricName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "metricName is the name of the metric in question."
     }
   }

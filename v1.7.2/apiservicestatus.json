@@ -7,10 +7,7 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.2/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceCondition"
       }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
+      "type": "array", 
       "description": "Current service state of apiService.", 
       "x-kubernetes-patch-strategy": "merge", 
       "x-kubernetes-patch-merge-key": "type"

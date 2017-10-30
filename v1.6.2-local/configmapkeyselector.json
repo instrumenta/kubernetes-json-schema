@@ -11,17 +11,11 @@
       "description": "Specify whether the ConfigMap or it's key must be defined"
     }, 
     "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
     }, 
     "key": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "The key to select."
     }
   }
