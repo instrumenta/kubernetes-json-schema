@@ -20,7 +20,7 @@
     }, 
     "type": {
       "type": "string", 
-      "description": "type is the type of metric source.  It should match one of the fields below."
+      "description": "type is the type of metric source.  It should be one of \"Object\", \"Pods\" or \"Resource\", each mapping to a matching field in the object."
     }
   }
 }

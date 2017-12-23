@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "ExternalDocumentation allows referencing an external resource for extended documentation.", 
+  "properties": {
+    "url": {
+      "type": "string"
+    }, 
+    "description": {
+      "type": "string"
+    }
+  }
+}

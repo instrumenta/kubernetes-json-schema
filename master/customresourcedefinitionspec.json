@@ -14,7 +14,7 @@
       "description": "Scope indicates whether this resource is cluster or namespace scoped.  Default is namespaced"
     }, 
     "validation": {
-      "description": "Validation describes the validation methods for CustomResources This field is alpha-level and should only be sent to servers that enable the CustomResourceValidation feature.", 
+      "description": "Validation describes the validation methods for CustomResources", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation"
     }, 
     "group": {

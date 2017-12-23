@@ -47,6 +47,10 @@
       "type": "boolean", 
       "description": "AllowVolumeExpansion shows whether the storage class allow volume expand"
     }, 
+    "volumeBindingMode": {
+      "type": "string", 
+      "description": "VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is alpha-level and is only honored by servers that enable the VolumeScheduling feature."
+    }, 
     "metadata": {
       "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"

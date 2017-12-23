@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "required": [
+    "selector", 
     "template"
   ], 
   "type": "object", 
@@ -12,7 +13,7 @@
       "format": "int32"
     }, 
     "selector": {
-      "description": "Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.", 
+      "description": "Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }, 
     "paused": {

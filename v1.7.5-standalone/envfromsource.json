@@ -4,10 +4,7 @@
   "description": "EnvFromSource represents the source of a set of ConfigMaps", 
   "properties": {
     "prefix": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
     }, 
     "configMapRef": {
@@ -18,10 +15,7 @@
           "description": "Specify whether the ConfigMap must be defined"
         }, 
         "name": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
         }
       }
@@ -34,10 +28,7 @@
           "description": "Specify whether the Secret must be defined"
         }, 
         "name": {
-          "type": [
-            "string", 
-            "null"
-          ], 
+          "type": "string", 
           "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
         }
       }

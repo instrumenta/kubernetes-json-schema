@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "name", 
+    "devicePath"
+  ], 
+  "type": "object", 
+  "description": "volumeDevice describes a mapping of a raw block device within a container.", 
+  "properties": {
+    "devicePath": {
+      "type": "string", 
+      "description": "devicePath is the path inside of the container that the device will be mapped to."
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "name must match the name of a persistentVolumeClaim in the pod"
+    }
+  }
+}

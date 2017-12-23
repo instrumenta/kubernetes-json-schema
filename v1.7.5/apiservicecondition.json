@@ -7,24 +7,15 @@
   "type": "object", 
   "properties": {
     "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Status is the status of the condition. Can be True, False, Unknown."
     }, 
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Type is the type of the condition."
     }, 
     "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Human-readable message indicating details about last transition."
     }, 
     "lastTransitionTime": {
@@ -32,10 +23,7 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
     }, 
     "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
+      "type": "string", 
       "description": "Unique, one-word, CamelCase reason for the condition's last transition."
     }
   }

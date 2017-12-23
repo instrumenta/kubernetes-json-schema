@@ -12,12 +12,17 @@
     }, 
     {
       "kind": "WatchEvent", 
-      "version": "v1alpha1", 
+      "version": "v1beta1", 
       "group": "admission.k8s.io"
     }, 
     {
       "kind": "WatchEvent", 
       "version": "v1alpha1", 
+      "group": "admissionregistration.k8s.io"
+    }, 
+    {
+      "kind": "WatchEvent", 
+      "version": "v1beta1", 
       "group": "admissionregistration.k8s.io"
     }, 
     {
@@ -88,6 +93,11 @@
     {
       "kind": "WatchEvent", 
       "version": "v1beta1", 
+      "group": "events.k8s.io"
+    }, 
+    {
+      "kind": "WatchEvent", 
+      "version": "v1beta1", 
       "group": "extensions"
     }, 
     {
@@ -133,6 +143,11 @@
     {
       "kind": "WatchEvent", 
       "version": "v1", 
+      "group": "storage.k8s.io"
+    }, 
+    {
+      "kind": "WatchEvent", 
+      "version": "v1alpha1", 
       "group": "storage.k8s.io"
     }, 
     {

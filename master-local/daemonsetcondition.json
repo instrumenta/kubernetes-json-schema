@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "type", 
+    "status"
+  ], 
+  "type": "object", 
+  "description": "DaemonSetCondition describes the state of a DaemonSet at a certain point.", 
+  "properties": {
+    "status": {
+      "type": "string", 
+      "description": "Status of the condition, one of True, False, Unknown."
+    }, 
+    "type": {
+      "type": "string", 
+      "description": "Type of DaemonSet condition."
+    }, 
+    "message": {
+      "type": "string", 
+      "description": "A human readable message indicating details about the transition."
+    }, 
+    "lastTransitionTime": {
+      "description": "Last time the condition transitioned from one status to another.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "reason": {
+      "type": "string", 
+      "description": "The reason for the condition's last transition."
+    }
+  }
+}

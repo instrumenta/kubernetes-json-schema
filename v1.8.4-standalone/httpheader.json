@@ -1,0 +1,17 @@
+{
+  "required": [
+    "name", 
+    "value"
+  ], 
+  "description": "HTTPHeader describes a custom header to be used in HTTP probes", 
+  "properties": {
+    "name": {
+      "type": "string", 
+      "description": "The header field name"
+    }, 
+    "value": {
+      "type": "string", 
+      "description": "The header field value"
+    }
+  }
+}

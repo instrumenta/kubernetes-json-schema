@@ -1,6 +1,10 @@
 {
   "description": "PersistentVolumeSpec is the specification of a persistent volume.", 
   "properties": {
+    "volumeMode": {
+      "type": "string", 
+      "description": "volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec. This is an alpha feature and may change in the future."
+    }, 
     "portworxVolume": {
       "required": [
         "volumeID"
@@ -111,25 +115,29 @@
         "iqn", 
         "lun"
       ], 
-      "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.", 
+      "description": "ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.", 
       "properties": {
         "targetPortal": {
           "type": "string", 
-          "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
+          "description": "iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
         }, 
         "portals": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "iSCSI target portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
+          "description": "iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
         }, 
         "secretRef": {
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": "string", 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
               "type": "string", 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
@@ -147,11 +155,11 @@
         }, 
         "initiatorName": {
           "type": "string", 
-          "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
+          "description": "Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
         }, 
         "iscsiInterface": {
           "type": "string", 
-          "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
+          "description": "iSCSI Interface Name that uses an iSCSI transport. Defaults to 'default' (tcp)."
         }, 
         "iqn": {
           "type": "string", 
@@ -163,8 +171,24 @@
         }, 
         "lun": {
           "type": "integer", 
-          "description": "iSCSI target lun number.", 
+          "description": "iSCSI Target Lun number.", 
           "format": "int32"
+        }
+      }
+    }, 
+    "hostPath": {
+      "required": [
+        "path"
+      ], 
+      "description": "Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.", 
+      "properties": {
+        "path": {
+          "type": "string", 
+          "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+        }, 
+        "type": {
+          "type": "string", 
+          "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
         }
       }
     }, 
@@ -172,18 +196,22 @@
       "required": [
         "driver"
       ], 
-      "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+      "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.", 
       "properties": {
         "readOnly": {
           "type": "boolean", 
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
         }, 
         "secretRef": {
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": "string", 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
               "type": "string", 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
@@ -266,38 +294,6 @@
         "readOnly": {
           "type": "boolean", 
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-        }
-      }
-    }, 
-    "fc": {
-      "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
-      "properties": {
-        "targetWWNs": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "Optional: FC target worldwide names (WWNs)"
-        }, 
-        "wwids": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
-        }, 
-        "readOnly": {
-          "type": "boolean", 
-          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-        }, 
-        "lun": {
-          "type": "integer", 
-          "description": "Optional: FC target lun number", 
-          "format": "int32"
-        }, 
-        "fsType": {
-          "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 
@@ -397,6 +393,27 @@
         "gateway": {
           "type": "string", 
           "description": "The host address of the ScaleIO API Gateway."
+        }
+      }
+    }, 
+    "csi": {
+      "required": [
+        "driver", 
+        "volumeHandle"
+      ], 
+      "description": "Represents storage that is managed by an external CSI volume driver", 
+      "properties": {
+        "volumeHandle": {
+          "type": "string", 
+          "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
+        }, 
+        "driver": {
+          "type": "string", 
+          "description": "Driver is the name of the driver to use for this volume. Required."
         }
       }
     }, 
@@ -527,19 +544,35 @@
         }
       }
     }, 
-    "hostPath": {
-      "required": [
-        "path"
-      ], 
-      "description": "Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.", 
+    "fc": {
+      "description": "Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.", 
       "properties": {
-        "path": {
-          "type": "string", 
-          "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+        "targetWWNs": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Optional: FC target worldwide names (WWNs)"
         }, 
-        "type": {
+        "wwids": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+        }, 
+        "lun": {
+          "type": "integer", 
+          "description": "Optional: FC target lun number", 
+          "format": "int32"
+        }, 
+        "fsType": {
           "type": "string", 
-          "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
         }
       }
     }, 

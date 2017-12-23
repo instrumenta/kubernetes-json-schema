@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "currentReplicas", 
+    "desiredReplicas", 
+    "currentMetrics"
+  ], 
+  "type": "object", 
+  "description": "HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.", 
+  "properties": {
+    "observedGeneration": {
+      "type": "integer", 
+      "description": "observedGeneration is the most recent generation observed by this autoscaler.", 
+      "format": "int64"
+    }, 
+    "lastScaleTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "format": "date-time"
+    }, 
+    "currentReplicas": {
+      "type": "integer", 
+      "description": "currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.", 
+      "format": "int32"
+    }, 
+    "currentMetrics": {
+      "items": {
+        "additionalProperties": false, 
+        "required": [
+          "type"
+        ], 
+        "description": "MetricStatus describes the last-read state of a single metric.", 
+        "properties": {
+          "resource": {
+            "additionalProperties": false, 
+            "required": [
+              "name", 
+              "currentAverageValue"
+            ], 
+            "description": "ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.", 
+            "properties": {
+              "currentAverageValue": {
+                "oneOf": [
+                  {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  {
+                    "type": "integer"
+                  }
+                ]
+              }, 
+              "currentAverageUtilization": {
+                "type": "integer", 
+                "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.", 
+                "format": "int32"
+              }, 
+              "name": {
+                "type": "string", 
+                "description": "name is the name of the resource in question."
+              }
+            }
+          }, 
+          "object": {
+            "additionalProperties": false, 
+            "required": [
+              "target", 
+              "metricName", 
+              "currentValue"
+            ], 
+            "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
+            "properties": {
+              "currentValue": {
+                "oneOf": [
+                  {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  {
+                    "type": "integer"
+                  }
+                ]
+              }, 
+              "target": {
+                "additionalProperties": false, 
+                "required": [
+                  "kind", 
+                  "name"
+                ], 
+                "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.", 
+                "properties": {
+                  "kind": {
+                    "type": "string", 
+                    "description": "Kind of the referent; More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds\""
+                  }, 
+                  "name": {
+                    "type": "string", 
+                    "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+                  }, 
+                  "apiVersion": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "API version of the referent"
+                  }
+                }
+              }, 
+              "metricName": {
+                "type": "string", 
+                "description": "metricName is the name of the metric in question."
+              }
+            }
+          }, 
+          "pods": {
+            "additionalProperties": false, 
+            "required": [
+              "metricName", 
+              "currentAverageValue"
+            ], 
+            "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).", 
+            "properties": {
+              "currentAverageValue": {
+                "oneOf": [
+                  {
+                    "type": [
+                      "string", 
+                      "null"
+                    ]
+                  }, 
+                  {
+                    "type": "integer"
+                  }
+                ]
+              }, 
+              "metricName": {
+                "type": "string", 
+                "description": "metricName is the name of the metric in question"
+              }
+            }
+          }, 
+          "type": {
+            "type": "string", 
+            "description": "type is the type of metric source.  It will match one of the fields below."
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "currentMetrics is the last read state of the metrics used by this autoscaler."
+    }, 
+    "desiredReplicas": {
+      "type": "integer", 
+      "description": "desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.", 
+      "format": "int32"
+    }
+  }
+}

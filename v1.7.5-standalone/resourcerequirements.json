@@ -7,10 +7,7 @@
       "additionalProperties": {
         "oneOf": [
           {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           {
             "type": "integer"
@@ -24,10 +21,7 @@
       "additionalProperties": {
         "oneOf": [
           {
-            "type": [
-              "string", 
-              "null"
-            ]
+            "type": "string"
           }, 
           {
             "type": "integer"

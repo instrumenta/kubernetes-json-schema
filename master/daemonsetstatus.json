@@ -53,6 +53,15 @@
       "type": "integer", 
       "description": "The total number of nodes that are running updated daemon pod", 
       "format": "int32"
+    }, 
+    "conditions": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1.DaemonSetCondition"
+      }, 
+      "type": "array", 
+      "description": "Represents the latest available observations of a DaemonSet's current state.", 
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
     }
   }
 }

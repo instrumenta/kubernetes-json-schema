@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "required": [
+    "selector", 
     "template"
   ], 
   "type": "object", 
@@ -12,7 +13,7 @@
       "format": "int32"
     }, 
     "selector": {
-      "description": "A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors", 
+      "description": "A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors", 
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     }, 
     "updateStrategy": {

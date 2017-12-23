@@ -1,0 +1,17 @@
+{
+  "required": [
+    "namespace", 
+    "name"
+  ], 
+  "description": "ServiceReference holds a reference to Service.legacy.k8s.io", 
+  "properties": {
+    "namespace": {
+      "type": "string", 
+      "description": "Namespace is the namespace of the service Required"
+    }, 
+    "name": {
+      "type": "string", 
+      "description": "Name is the name of the service Required"
+    }
+  }
+}
