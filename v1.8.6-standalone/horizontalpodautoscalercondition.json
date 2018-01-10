@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "type", 
+    "status"
+  ], 
+  "type": "object", 
+  "description": "HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point.", 
+  "properties": {
+    "status": {
+      "type": "string", 
+      "description": "status is the status of the condition (True, False, Unknown)"
+    }, 
+    "lastTransitionTime": {
+      "type": "string", 
+      "format": "date-time"
+    }, 
+    "message": {
+      "type": "string", 
+      "description": "message is a human-readable explanation containing details about the transition"
+    }, 
+    "type": {
+      "type": "string", 
+      "description": "type describes the current condition"
+    }, 
+    "reason": {
+      "type": "string", 
+      "description": "reason is the reason for the condition's last transition."
+    }
+  }
+}

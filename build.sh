@@ -10,6 +10,7 @@
 REPO="garethr/kubernetes-json-schema"
 
 declare -a arr=(master
+                v1.8.6
                 v1.8.5
                 v1.8.4
                 v1.8.3
