@@ -32,7 +32,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1beta1.DeploymentCondition"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Represents the latest available observations of a deployment's current state."
     }
   }

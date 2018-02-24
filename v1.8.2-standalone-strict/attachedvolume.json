@@ -1,8 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "name", 
     "devicePath"
   ], 
+  "type": "object", 
   "description": "AttachedVolume describes a volume attached to a node", 
   "properties": {
     "devicePath": {

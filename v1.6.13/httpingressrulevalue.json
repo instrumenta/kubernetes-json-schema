@@ -10,7 +10,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.13/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.HTTPIngressPath"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "A collection of paths that map requests to backends."
     }
   }

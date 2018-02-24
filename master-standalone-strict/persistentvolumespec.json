@@ -1,6 +1,13 @@
 {
   "description": "PersistentVolumeSpec is the specification of a persistent volume.", 
   "properties": {
+    "volumeMode": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec. This is an alpha feature and may change in the future."
+    }, 
     "portworxVolume": {
       "additionalProperties": false, 
       "required": [
@@ -140,11 +147,11 @@
         "iqn", 
         "lun"
       ], 
-      "description": "Represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.", 
+      "description": "ISCSIPersistentVolumeSource represents an ISCSI disk. ISCSI volumes can only be mounted as read/write once. ISCSI volumes support ownership management and SELinux relabeling.", 
       "properties": {
         "targetPortal": {
           "type": "string", 
-          "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
+          "description": "iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
         }, 
         "portals": {
           "items": {
@@ -157,18 +164,25 @@
             "array", 
             "null"
           ], 
-          "description": "iSCSI target portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
+          "description": "iSCSI Target Portal List. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
         }, 
         "secretRef": {
           "additionalProperties": false, 
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
               "type": [
                 "string", 
                 "null"
               ], 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
@@ -192,14 +206,14 @@
             "string", 
             "null"
           ], 
-          "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
+          "description": "Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
         }, 
         "iscsiInterface": {
           "type": [
             "string", 
             "null"
           ], 
-          "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
+          "description": "iSCSI Interface Name that uses an iSCSI transport. Defaults to 'default' (tcp)."
         }, 
         "chapAuthDiscovery": {
           "type": "boolean", 
@@ -211,7 +225,7 @@
         }, 
         "lun": {
           "type": "integer", 
-          "description": "iSCSI target lun number.", 
+          "description": "iSCSI Target Lun number.", 
           "format": "int32"
         }
       }
@@ -223,25 +237,32 @@
         "system", 
         "secretRef"
       ], 
-      "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
+      "description": "ScaleIOPersistentVolumeSource represents a persistent ScaleIO volume", 
       "properties": {
         "storageMode": {
           "type": [
             "string", 
             "null"
           ], 
-          "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
         }, 
         "secretRef": {
           "additionalProperties": false, 
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
               "type": [
                 "string", 
                 "null"
               ], 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
@@ -250,7 +271,7 @@
             "string", 
             "null"
           ], 
-          "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
+          "description": "The name of the ScaleIO Protection Domain for the configured storage."
         }, 
         "volumeName": {
           "type": [
@@ -283,7 +304,7 @@
             "string", 
             "null"
           ], 
-          "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
+          "description": "The ScaleIO Storage Pool associated with the protection domain."
         }, 
         "gateway": {
           "type": "string", 
@@ -329,7 +350,7 @@
         "string", 
         "null"
       ], 
-      "description": "What happens to a persistent volume when released from its claim. Valid options are Retain (default) and Recycle. Recycling must be supported by the volume plugin underlying this persistent volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming"
+      "description": "What happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming"
     }, 
     "azureDisk": {
       "additionalProperties": false, 
@@ -355,7 +376,7 @@
             "string", 
             "null"
           ], 
-          "description": "Expected values Shared: mulitple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
+          "description": "Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
         }, 
         "fsType": {
           "type": [
@@ -495,18 +516,25 @@
       "required": [
         "driver"
       ], 
-      "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+      "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.", 
       "properties": {
         "secretRef": {
           "additionalProperties": false, 
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
               "type": [
                 "string", 
                 "null"
               ], 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 
@@ -537,6 +565,108 @@
         }
       }
     }, 
+    "csi": {
+      "additionalProperties": false, 
+      "required": [
+        "driver", 
+        "volumeHandle"
+      ], 
+      "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)", 
+      "properties": {
+        "volumeHandle": {
+          "type": "string", 
+          "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
+        }, 
+        "driver": {
+          "type": "string", 
+          "description": "Driver is the name of the driver to use for this volume. Required."
+        }, 
+        "volumeAttributes": {
+          "additionalProperties": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "Attributes of the volume to publish."
+        }, 
+        "fsType": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+        }
+      }
+    }, 
+    "nodeAffinity": {
+      "additionalProperties": false, 
+      "description": "VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.", 
+      "properties": {
+        "required": {
+          "additionalProperties": false, 
+          "required": [
+            "nodeSelectorTerms"
+          ], 
+          "description": "A node selector represents the union of the results of one or more label queries over a set of nodes; that is, it represents the OR of the selectors represented by the node selector terms.", 
+          "properties": {
+            "nodeSelectorTerms": {
+              "items": {
+                "additionalProperties": false, 
+                "required": [
+                  "matchExpressions"
+                ], 
+                "description": "A null or empty node selector term matches no objects.", 
+                "properties": {
+                  "matchExpressions": {
+                    "items": {
+                      "additionalProperties": false, 
+                      "required": [
+                        "key", 
+                        "operator"
+                      ], 
+                      "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                      "properties": {
+                        "operator": {
+                          "type": "string", 
+                          "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt."
+                        }, 
+                        "values": {
+                          "items": {
+                            "type": [
+                              "string", 
+                              "null"
+                            ]
+                          }, 
+                          "type": [
+                            "array", 
+                            "null"
+                          ], 
+                          "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
+                        }, 
+                        "key": {
+                          "type": "string", 
+                          "description": "The label key that the selector applies to."
+                        }
+                      }
+                    }, 
+                    "type": "array", 
+                    "description": "Required. A list of node selector requirements. The requirements are ANDed."
+                  }
+                }
+              }, 
+              "type": "array", 
+              "description": "Required. A list of node selector terms. The terms are ORed."
+            }
+          }
+        }
+      }
+    }, 
     "storageClassName": {
       "type": [
         "string", 
@@ -554,14 +684,21 @@
       "properties": {
         "secretRef": {
           "additionalProperties": false, 
-          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
           "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
             "name": {
               "type": [
                 "string", 
                 "null"
               ], 
-              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              "description": "Name is unique within a namespace to reference a secret resource."
             }
           }
         }, 

@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "port"
   ], 
-  "type": "object", 
   "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
   "properties": {
     "path": {

@@ -19,7 +19,10 @@
                   "properties": {
                     "matchLabels": {
                       "additionalProperties": {
-                        "type": "string"
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
                       }, 
                       "type": "object", 
                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -38,9 +41,15 @@
                           }, 
                           "values": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
-                            "type": "array", 
+                            "type": [
+                              "array", 
+                              "null"
+                            ], 
                             "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                           }, 
                           "key": {
@@ -51,7 +60,10 @@
                           }
                         }
                       }, 
-                      "type": "array", 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
                       "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
                     }
                   }
@@ -61,7 +73,10 @@
                   "properties": {
                     "matchLabels": {
                       "additionalProperties": {
-                        "type": "string"
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
                       }, 
                       "type": "object", 
                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -80,9 +95,15 @@
                           }, 
                           "values": {
                             "items": {
-                              "type": "string"
+                              "type": [
+                                "string", 
+                                "null"
+                              ]
                             }, 
-                            "type": "array", 
+                            "type": [
+                              "array", 
+                              "null"
+                            ], 
                             "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                           }, 
                           "key": {
@@ -93,14 +114,20 @@
                           }
                         }
                       }, 
-                      "type": "array", 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
                       "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
                     }
                   }
                 }
               }
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least on item, this rule allows traffic only if the traffic matches at least one item in the from list."
           }, 
           "ports": {
@@ -108,13 +135,19 @@
               "description": "NetworkPolicyPort describes a port to allow traffic on", 
               "properties": {
                 "protocol": {
-                  "type": "string", 
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
                   "description": "The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
                 }, 
                 "port": {
                   "oneOf": [
                     {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     {
                       "type": "integer"
@@ -123,12 +156,18 @@
                 }
               }
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "List of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list."
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default)"
     }, 
     "podSelector": {
@@ -136,7 +175,10 @@
       "properties": {
         "matchLabels": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -155,9 +197,15 @@
               }, 
               "values": {
                 "items": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
-                "type": "array", 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
                 "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
               }, 
               "key": {
@@ -168,7 +216,10 @@
               }
             }
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
         }
       }

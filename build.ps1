@@ -9,7 +9,12 @@
 $repo="garethr/kubernetes-json-schema"
 
 $arr = @("master",
+         "v1.9.3",
+         "v1.9.2",
+         "v1.9.1",
          "v1.9.0",
+         "v1.8.8",
+         "v1.8.7",
          "v1.8.6",
          "v1.8.5",
          "v1.8.4",
@@ -54,6 +59,10 @@ foreach($version in $arr) {
     $schema="https://raw.githubusercontent.com/kubernetes/kubernetes/${version}/api/openapi-spec/swagger.json"
     $prefix="https://raw.githubusercontent.com/${repo}/master/${version}/_definitions.json"
 
+    Remove-Item "$version-standalone-strict" -Recurse -ErrorAction Ignore
+    Remove-Item "$version-standalone" -Recurse -ErrorAction Ignore
+    Remove-Item "$version-local" -Recurse -ErrorAction Ignore
+    Remove-Item "$version" -Recurse -ErrorAction Ignore
     docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-standalone-strict" --kubernetes --stand-alone --strict "$schema"
     docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-standalone" --kubernetes --stand-alone "$schema"
     docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-local" --kubernetes "$schema"

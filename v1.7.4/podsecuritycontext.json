@@ -21,7 +21,10 @@
         "type": "integer", 
         "format": "int64"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container."
     }, 
     "runAsUser": {

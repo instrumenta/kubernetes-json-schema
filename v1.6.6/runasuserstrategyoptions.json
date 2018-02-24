@@ -10,11 +10,17 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.6.6/_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.IDRange"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Ranges are the allowed ranges of uids that may be used."
     }, 
     "rule": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
     }
   }

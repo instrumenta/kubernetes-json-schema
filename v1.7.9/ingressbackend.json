@@ -8,7 +8,10 @@
   "description": "IngressBackend describes all endpoints for a given service and port.", 
   "properties": {
     "serviceName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Specifies the name of the referenced service."
     }, 
     "servicePort": {

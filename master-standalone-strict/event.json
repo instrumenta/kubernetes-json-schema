@@ -1,5 +1,4 @@
 {
-  "description": "Event is a report of an event somewhere in the cluster.", 
   "required": [
     "metadata", 
     "involvedObject"
@@ -11,8 +10,7 @@
       "group": ""
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "Event is a report of an event somewhere in the cluster.", 
   "properties": {
     "count": {
       "type": "integer", 
@@ -28,7 +26,7 @@
     }, 
     "series": {
       "additionalProperties": false, 
-      "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continously for some time.", 
+      "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.", 
       "properties": {
         "count": {
           "type": "integer", 

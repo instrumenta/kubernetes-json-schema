@@ -11,7 +11,10 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.8/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.SELinuxOptions"
     }, 
     "rule": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "type is the strategy that will dictate the allowable labels that may be set."
     }
   }

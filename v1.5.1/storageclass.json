@@ -7,12 +7,18 @@
   "description": "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.", 
   "properties": {
     "provisioner": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Provisioner indicates the type of the provisioner."
     }, 
     "parameters": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": "object", 
       "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class."

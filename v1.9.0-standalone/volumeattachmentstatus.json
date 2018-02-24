@@ -10,18 +10,27 @@
       "description": "VolumeError captures an error encountered during a volume operation.", 
       "properties": {
         "message": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "String detailing the error encountered during Attach or Detach operation. This string maybe logged, so it should not contain sensitive information."
         }, 
         "time": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "format": "date-time"
         }
       }
     }, 
     "attachmentMetadata": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": "object", 
       "description": "Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher."
@@ -34,11 +43,17 @@
       "description": "VolumeError captures an error encountered during a volume operation.", 
       "properties": {
         "message": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "String detailing the error encountered during Attach or Detach operation. This string maybe logged, so it should not contain sensitive information."
         }, 
         "time": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "format": "date-time"
         }
       }

@@ -1,6 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "required": [
+    "namespace", 
+    "name"
+  ], 
   "description": "ServiceReference holds a reference to Service.legacy.k8s.io", 
   "properties": {
     "namespace": {
@@ -8,14 +10,14 @@
         "string", 
         "null"
       ], 
-      "description": "Namespace is the namespace of the service"
+      "description": "Namespace is the namespace of the service Required"
     }, 
     "name": {
       "type": [
         "string", 
         "null"
       ], 
-      "description": "Name is the name of the service"
+      "description": "Name is the name of the service Required"
     }
   }
 }

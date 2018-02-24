@@ -1,5 +1,4 @@
 {
-  "description": "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.", 
   "required": [
     "subjects", 
     "roleRef"
@@ -7,12 +6,11 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "ClusterRoleBinding", 
-      "version": "v1beta1", 
+      "version": "v1alpha1", 
       "group": "rbac.authorization.k8s.io"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.", 
   "properties": {
     "roleRef": {
       "additionalProperties": false, 
@@ -53,13 +51,6 @@
         ], 
         "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.", 
         "properties": {
-          "apiGroup": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects."
-          }, 
           "kind": {
             "type": "string", 
             "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error."
@@ -74,6 +65,13 @@
           "name": {
             "type": "string", 
             "description": "Name of the object being referenced."
+          }, 
+          "apiVersion": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "APIVersion holds the API group and version of the referenced subject. Defaults to \"v1\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io/v1alpha1\" for User and Group subjects."
           }
         }
       }, 

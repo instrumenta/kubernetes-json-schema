@@ -8,11 +8,17 @@
   "description": "HTTPHeader describes a custom header to be used in HTTP probes", 
   "properties": {
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The header field name"
     }, 
     "value": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "The header field value"
     }
   }

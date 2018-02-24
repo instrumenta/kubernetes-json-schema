@@ -5,7 +5,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "SelfSubjectAccessReview", 
-      "version": "v1beta1", 
+      "version": "v1", 
       "group": "authorization.k8s.io"
     }
   ], 

@@ -6,22 +6,22 @@
   "type": "object", 
   "description": "DeploymentSpec is the specification of the desired behavior of the Deployment.", 
   "properties": {
+    "selector": {
+      "description": "Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.", 
+      "$ref": "_definitions.json#/definitions/unversioned.LabelSelector"
+    }, 
     "replicas": {
       "type": "integer", 
       "description": "Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.", 
       "format": "int32"
     }, 
-    "selector": {
-      "description": "Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.", 
-      "$ref": "_definitions.json#/definitions/unversioned.LabelSelector"
+    "strategy": {
+      "description": "The deployment strategy to use to replace existing pods with new ones.", 
+      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentStrategy"
     }, 
     "paused": {
       "type": "boolean", 
       "description": "Indicates that the deployment is paused and will not be processed by the deployment controller."
-    }, 
-    "strategy": {
-      "description": "The deployment strategy to use to replace existing pods with new ones.", 
-      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentStrategy"
     }, 
     "rollbackTo": {
       "description": "The config this deployment is rolling back to. Will be cleared after rollback is done.", 

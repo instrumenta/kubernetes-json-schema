@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "LimitRangeItem defines a min/max usage limit for any resource that matches on kind.", 
   "properties": {
     "min": {

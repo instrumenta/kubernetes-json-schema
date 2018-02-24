@@ -1,17 +1,15 @@
 {
-  "description": "DeploymentList is a list of Deployments.", 
   "required": [
     "items"
   ], 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "DeploymentList", 
-      "version": "v1beta2", 
+      "version": "v1beta1", 
       "group": "apps"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "DeploymentList is a list of Deployments.", 
   "properties": {
     "items": {
       "items": {
@@ -19,11 +17,11 @@
         "x-kubernetes-group-version-kind": [
           {
             "kind": "Deployment", 
-            "version": "v1beta2", 
+            "version": "v1beta1", 
             "group": "apps"
           }
         ], 
-        "description": "DEPRECATED - This group version of Deployment is deprecated by apps/v1/Deployment. See the release notes for more information. Deployment enables declarative updates for Pods and ReplicaSets.", 
+        "description": "DEPRECATED - This group version of Deployment is deprecated by apps/v1beta2/Deployment. See the release notes for more information. Deployment enables declarative updates for Pods and ReplicaSets.", 
         "properties": {
           "status": {
             "additionalProperties": false, 
@@ -131,7 +129,6 @@
           "spec": {
             "additionalProperties": false, 
             "required": [
-              "selector", 
               "template"
             ], 
             "description": "DeploymentSpec is the specification of the desired behavior of the Deployment.", 
@@ -246,6 +243,17 @@
                 "type": "boolean", 
                 "description": "Indicates that the deployment is paused."
               }, 
+              "rollbackTo": {
+                "additionalProperties": false, 
+                "description": "DEPRECATED.", 
+                "properties": {
+                  "revision": {
+                    "type": "integer", 
+                    "description": "The revision to rollback to. If set to 0, rollback to the last revision.", 
+                    "format": "int64"
+                  }
+                }
+              }, 
               "template": {
                 "additionalProperties": false, 
                 "description": "PodTemplateSpec describes the data a pod should have when created from a template", 
@@ -279,12 +287,9 @@
                         "type": "boolean", 
                         "description": "AutomountServiceAccountToken indicates whether a service account token should be automatically mounted."
                       }, 
-                      "priorityClassName": {
-                        "type": [
-                          "string", 
-                          "null"
-                        ], 
-                        "description": "If specified, indicates the pod's priority. \"SYSTEM\" is a special keyword which indicates the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default."
+                      "shareProcessNamespace": {
+                        "type": "boolean", 
+                        "description": "Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Default to false. This field is alpha-level and is honored only by servers that enable the PodShareProcessNamespace feature."
                       }, 
                       "securityContext": {
                         "additionalProperties": false, 
@@ -1188,7 +1193,7 @@
                                       "string", 
                                       "null"
                                     ], 
-                                    "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+                                    "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                                   }, 
                                   "configMapRef": {
                                     "additionalProperties": false, 
@@ -2087,6 +2092,13 @@
                         "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.", 
                         "x-kubernetes-patch-strategy": "merge", 
                         "x-kubernetes-patch-merge-key": "name"
+                      }, 
+                      "priorityClassName": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ], 
+                        "description": "If specified, indicates the pod's priority. \"system-node-critical\" and \"system-cluster-critical\" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default."
                       }, 
                       "serviceAccountName": {
                         "type": [
@@ -3613,7 +3625,7 @@
                                       "string", 
                                       "null"
                                     ], 
-                                    "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+                                    "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                                   }, 
                                   "configMapRef": {
                                     "additionalProperties": false, 
@@ -4883,7 +4895,7 @@
               }, 
               "revisionHistoryLimit": {
                 "type": "integer", 
-                "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
+                "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 2.", 
                 "format": "int32"
               }, 
               "progressDeadlineSeconds": {

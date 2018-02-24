@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes", 
   "properties": {
     "storageClassName": {

@@ -4,7 +4,10 @@
   "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.", 
   "properties": {
     "uid": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Specifies the target UID."
     }
   }

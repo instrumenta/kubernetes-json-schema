@@ -2,11 +2,17 @@
   "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes", 
   "properties": {
     "storageClassName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1"
     }, 
     "volumeMode": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec. This is an alpha feature and may change in the future."
     }, 
     "selector": {
@@ -14,7 +20,10 @@
       "properties": {
         "matchLabels": {
           "additionalProperties": {
-            "type": "string"
+            "type": [
+              "string", 
+              "null"
+            ]
           }, 
           "type": "object", 
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -33,9 +42,15 @@
               }, 
               "values": {
                 "items": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
-                "type": "array", 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
                 "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
               }, 
               "key": {
@@ -46,20 +61,32 @@
               }
             }
           }, 
-          "type": "array", 
+          "type": [
+            "array", 
+            "null"
+          ], 
           "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
         }
       }
     }, 
     "accessModes": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1"
     }, 
     "volumeName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
     }, 
     "resources": {
@@ -69,7 +96,10 @@
           "additionalProperties": {
             "oneOf": [
               {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               {
                 "type": "integer"
@@ -83,7 +113,10 @@
           "additionalProperties": {
             "oneOf": [
               {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               {
                 "type": "integer"

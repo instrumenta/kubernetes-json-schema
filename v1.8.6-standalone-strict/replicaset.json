@@ -1,12 +1,14 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "ReplicaSet", 
-      "version": "v1beta1", 
-      "group": "extensions"
+      "version": "v1beta2", 
+      "group": "apps"
     }
   ], 
-  "description": "DEPRECATED - This group version of ReplicaSet is deprecated by apps/v1beta2/ReplicaSet. See the release notes for more information. ReplicaSet represents the configuration of a ReplicaSet.", 
+  "description": "ReplicaSet represents the configuration of a ReplicaSet.", 
   "properties": {
     "status": {
       "additionalProperties": false, 
@@ -99,6 +101,9 @@
     }, 
     "spec": {
       "additionalProperties": false, 
+      "required": [
+        "selector"
+      ], 
       "description": "ReplicaSetSpec is the specification of a ReplicaSet.", 
       "properties": {
         "selector": {

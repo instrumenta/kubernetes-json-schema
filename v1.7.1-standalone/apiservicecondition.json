@@ -7,23 +7,38 @@
   "type": "object", 
   "properties": {
     "status": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Status is the status of the condition. Can be True, False, Unknown."
     }, 
     "lastTransitionTime": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "format": "date-time"
     }, 
     "message": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Human-readable message indicating details about last transition."
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Type is the type of the condition."
     }, 
     "reason": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Unique, one-word, CamelCase reason for the condition's last transition."
     }
   }

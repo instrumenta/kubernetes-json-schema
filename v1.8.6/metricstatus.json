@@ -19,7 +19,10 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.8.6/_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.PodsMetricStatus"
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "type is the type of metric source.  It will match one of the fields below."
     }
   }

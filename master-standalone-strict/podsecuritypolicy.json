@@ -1,9 +1,11 @@
 {
+  "type": "object", 
+  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "PodSecurityPolicy", 
       "version": "v1beta1", 
-      "group": "extensions"
+      "group": "policy"
     }
   ], 
   "description": "Pod Security Policy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.", 

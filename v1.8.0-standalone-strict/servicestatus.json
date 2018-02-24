@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "description": "ServiceStatus represents the current status of a service.", 
   "properties": {
     "loadBalancer": {

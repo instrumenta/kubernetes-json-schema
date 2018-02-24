@@ -1,4 +1,5 @@
 {
+  "description": "StatefulSetList is a collection of StatefulSets.", 
   "required": [
     "items"
   ], 
@@ -9,7 +10,8 @@
       "group": "apps"
     }
   ], 
-  "description": "StatefulSetList is a collection of StatefulSets.", 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "properties": {
     "items": {
       "items": {

@@ -11,7 +11,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionCondition"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition"
     }, 
     "acceptedNames": {

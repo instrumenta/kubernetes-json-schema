@@ -12,7 +12,10 @@
       "format": "int32"
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "name is the name of the resource in question."
     }, 
     "targetAverageValue": {

@@ -1,17 +1,15 @@
 {
-  "description": "StorageClassList is a collection of storage classes.", 
   "required": [
     "items"
   ], 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "StorageClassList", 
-      "version": "v1", 
+      "version": "v1beta1", 
       "group": "storage.k8s.io"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "StorageClassList is a collection of storage classes.", 
   "properties": {
     "items": {
       "items": {
@@ -22,7 +20,7 @@
         "x-kubernetes-group-version-kind": [
           {
             "kind": "StorageClass", 
-            "version": "v1", 
+            "version": "v1beta1", 
             "group": "storage.k8s.io"
           }
         ], 
@@ -79,6 +77,13 @@
           "allowVolumeExpansion": {
             "type": "boolean", 
             "description": "AllowVolumeExpansion shows whether the storage class allow volume expand"
+          }, 
+          "volumeBindingMode": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is alpha-level and is only honored by servers that enable the VolumeScheduling feature."
           }, 
           "metadata": {
             "additionalProperties": false, 

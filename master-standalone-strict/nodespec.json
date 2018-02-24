@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "NodeSpec describes the attributes that a node is created with.", 
   "properties": {
     "podCIDR": {

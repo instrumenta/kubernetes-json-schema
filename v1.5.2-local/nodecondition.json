@@ -8,7 +8,10 @@
   "description": "NodeCondition contains condition information for a node.", 
   "properties": {
     "status": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Status of the condition, one of True, False, Unknown."
     }, 
     "lastTransitionTime": {
@@ -16,7 +19,10 @@
       "$ref": "_definitions.json#/definitions/unversioned.Time"
     }, 
     "reason": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "(brief) reason for the condition's last transition."
     }, 
     "lastHeartbeatTime": {
@@ -24,11 +30,17 @@
       "$ref": "_definitions.json#/definitions/unversioned.Time"
     }, 
     "message": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Human readable message indicating details about last transition."
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Type of node condition."
     }
   }

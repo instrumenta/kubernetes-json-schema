@@ -12,7 +12,10 @@
             "properties": {
               "matchLabels": {
                 "additionalProperties": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 "type": "object", 
                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -31,9 +34,15 @@
                     }, 
                     "values": {
                       "items": {
-                        "type": "string"
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
                       }, 
-                      "type": "array", 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
                       "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                     }, 
                     "key": {
@@ -44,7 +53,10 @@
                     }
                   }
                 }, 
-                "type": "array", 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
                 "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
               }
             }
@@ -61,9 +73,15 @@
               }, 
               "except": {
                 "items": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
-                "type": "array", 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
                 "description": "Except is a slice of CIDRs that should not be included within an IP Block Valid examples are \"192.168.1.1/24\" Except values will be rejected if they are outside the CIDR range"
               }
             }
@@ -73,7 +91,10 @@
             "properties": {
               "matchLabels": {
                 "additionalProperties": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 "type": "object", 
                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -92,9 +113,15 @@
                     }, 
                     "values": {
                       "items": {
-                        "type": "string"
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
                       }, 
-                      "type": "array", 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
                       "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                     }, 
                     "key": {
@@ -105,14 +132,20 @@
                     }
                   }
                 }, 
-                "type": "array", 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
                 "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
               }
             }
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list."
     }, 
     "ports": {
@@ -120,13 +153,19 @@
         "description": "NetworkPolicyPort describes a port to allow traffic on", 
         "properties": {
           "protocol": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
           }, 
           "port": {
             "oneOf": [
               {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
               {
                 "type": "integer"
@@ -135,7 +174,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "List of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list."
     }
   }

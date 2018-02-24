@@ -7,17 +7,38 @@
       "description": "Spec to control the desired behavior of rolling update.", 
       "properties": {
         "maxSurge": {
-          "type": "string", 
-          "format": "int-or-string"
+          "oneOf": [
+            {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
         }, 
         "maxUnavailable": {
-          "type": "string", 
-          "format": "int-or-string"
+          "oneOf": [
+            {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            {
+              "type": "integer"
+            }
+          ]
         }
       }
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate."
     }
   }

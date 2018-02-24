@@ -1,9 +1,7 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "matchExpressions"
   ], 
-  "type": "object", 
   "description": "A null or empty node selector term matches no objects.", 
   "properties": {
     "matchExpressions": {

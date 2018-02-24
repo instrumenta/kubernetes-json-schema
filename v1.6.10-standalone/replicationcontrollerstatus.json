@@ -39,11 +39,17 @@
             "description": "Status of the condition, one of True, False, Unknown."
           }, 
           "lastTransitionTime": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }, 
           "message": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "A human readable message indicating details about the transition."
           }, 
           "type": {
@@ -51,12 +57,18 @@
             "description": "Type of replication controller condition."
           }, 
           "reason": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "The reason for the condition's last transition."
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Represents the latest available observations of a replication controller's current state."
     }, 
     "fullyLabeledReplicas": {

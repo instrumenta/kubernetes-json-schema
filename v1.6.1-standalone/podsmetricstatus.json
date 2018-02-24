@@ -10,7 +10,10 @@
     "currentAverageValue": {
       "oneOf": [
         {
-          "type": "string"
+          "type": [
+            "string", 
+            "null"
+          ]
         }, 
         {
           "type": "integer"
@@ -18,7 +21,10 @@
       ]
     }, 
     "metricName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "metricName is the name of the metric in question"
     }
   }

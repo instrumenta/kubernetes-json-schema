@@ -18,7 +18,10 @@
       "format": "int32"
     }, 
     "lastScaleTime": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "format": "date-time"
     }, 
     "currentCPUUtilizationPercentage": {

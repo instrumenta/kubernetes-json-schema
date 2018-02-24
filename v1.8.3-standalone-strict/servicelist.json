@@ -1,5 +1,4 @@
 {
-  "description": "ServiceList holds a list of services.", 
   "required": [
     "items"
   ], 
@@ -10,8 +9,7 @@
       "group": ""
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "ServiceList holds a list of services.", 
   "properties": {
     "items": {
       "items": {

@@ -7,8 +7,17 @@
   "description": "TCPSocketAction describes an action based on opening a socket", 
   "properties": {
     "port": {
-      "type": "string", 
-      "format": "int-or-string"
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
     }
   }
 }

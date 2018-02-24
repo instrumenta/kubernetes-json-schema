@@ -2,7 +2,7 @@
   "required": [
     "replicas"
   ], 
-  "description": "ScaleStatus represents the current status of a scale subresource.", 
+  "description": "represents the current status of a scale subresource.", 
   "properties": {
     "selector": {
       "additionalProperties": {

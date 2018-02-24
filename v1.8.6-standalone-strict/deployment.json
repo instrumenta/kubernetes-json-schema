@@ -4,11 +4,11 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "Deployment", 
-      "version": "v1beta1", 
+      "version": "v1beta2", 
       "group": "apps"
     }
   ], 
-  "description": "DEPRECATED - This group version of Deployment is deprecated by apps/v1beta2/Deployment. See the release notes for more information. Deployment enables declarative updates for Pods and ReplicaSets.", 
+  "description": "Deployment enables declarative updates for Pods and ReplicaSets.", 
   "properties": {
     "status": {
       "additionalProperties": false, 
@@ -116,6 +116,7 @@
     "spec": {
       "additionalProperties": false, 
       "required": [
+        "selector", 
         "template"
       ], 
       "description": "DeploymentSpec is the specification of the desired behavior of the Deployment.", 
@@ -229,17 +230,6 @@
         "paused": {
           "type": "boolean", 
           "description": "Indicates that the deployment is paused."
-        }, 
-        "rollbackTo": {
-          "additionalProperties": false, 
-          "description": "DEPRECATED.", 
-          "properties": {
-            "revision": {
-              "type": "integer", 
-              "description": "The revision to rollback to. If set to 0, rollback to the last revision.", 
-              "format": "int64"
-            }
-          }
         }, 
         "template": {
           "additionalProperties": false, 
@@ -4766,7 +4756,7 @@
         }, 
         "revisionHistoryLimit": {
           "type": "integer", 
-          "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 2.", 
+          "description": "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
           "format": "int32"
         }, 
         "progressDeadlineSeconds": {

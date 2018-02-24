@@ -9,15 +9,24 @@
   "description": "RoleRef contains information that points to the role being used", 
   "properties": {
     "apiGroup": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "APIGroup is the group for the resource being referenced"
     }, 
     "kind": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Kind is the type of resource being referenced"
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Name is the name of resource being referenced"
     }
   }

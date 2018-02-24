@@ -80,7 +80,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "groups is a list of APIGroup."
     }
   }

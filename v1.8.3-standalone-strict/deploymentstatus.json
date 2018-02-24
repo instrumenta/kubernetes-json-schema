@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "description": "DeploymentStatus is the most recently observed status of the Deployment.", 
   "properties": {
     "collisionCount": {

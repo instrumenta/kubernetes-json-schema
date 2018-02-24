@@ -4,7 +4,10 @@
   "description": "ContainerStateRunning is a running state of a container.", 
   "properties": {
     "startedAt": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "format": "date-time"
     }
   }

@@ -1,9 +1,10 @@
 {
-  "description": "This NetworkPolicyIngressRule matches traffic if and only if the traffic matches both ports AND from.", 
+  "description": "NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from.", 
   "properties": {
     "from": {
       "items": {
         "additionalProperties": false, 
+        "description": "NetworkPolicyPeer describes a peer to allow traffic from. Exactly one of its fields must be specified.", 
         "properties": {
           "namespaceSelector": {
             "additionalProperties": false, 
@@ -154,13 +155,14 @@
     "ports": {
       "items": {
         "additionalProperties": false, 
+        "description": "NetworkPolicyPort describes a port to allow traffic on", 
         "properties": {
           "protocol": {
             "type": [
               "string", 
               "null"
             ], 
-            "description": "Optional.  The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
+            "description": "The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
           }, 
           "port": {
             "oneOf": [

@@ -1,0 +1,38 @@
+{
+  "description": "IngressStatus describe the current state of the Ingress.", 
+  "properties": {
+    "loadBalancer": {
+      "additionalProperties": false, 
+      "description": "LoadBalancerStatus represents the status of a load-balancer.", 
+      "properties": {
+        "ingress": {
+          "items": {
+            "additionalProperties": false, 
+            "description": "LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the service should be sent to an ingress point.", 
+            "properties": {
+              "ip": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "IP is set for load-balancer ingress points that are IP based (typically GCE or OpenStack load-balancers)"
+              }, 
+              "hostname": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)"
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points."
+        }
+      }
+    }
+  }
+}

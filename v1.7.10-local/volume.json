@@ -75,7 +75,10 @@
       "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.RBDVolumeSource"
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Volume's name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
     }, 
     "azureFile": {

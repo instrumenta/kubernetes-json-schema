@@ -15,7 +15,10 @@
             "properties": {
               "matchLabels": {
                 "additionalProperties": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 "type": "object", 
                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -34,9 +37,15 @@
                     }, 
                     "values": {
                       "items": {
-                        "type": "string"
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
                       }, 
-                      "type": "array", 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
                       "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                     }, 
                     "key": {
@@ -47,16 +56,25 @@
                     }
                   }
                 }, 
-                "type": "array", 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
                 "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
               }
             }
           }, 
           "namespaces": {
             "items": {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
           }, 
           "topologyKey": {
@@ -65,7 +83,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "If the affinity requirements specified by this field are not met at scheduling time, the pod will not be scheduled onto the node. If the affinity requirements specified by this field cease to be met at some point during pod execution (e.g. due to a pod label update), the system may or may not try to eventually evict the pod from its node. When there are multiple elements, the lists of nodes corresponding to each podAffinityTerm are intersected, i.e. all terms must be satisfied."
     }, 
     "preferredDuringSchedulingIgnoredDuringExecution": {
@@ -87,7 +108,10 @@
                 "properties": {
                   "matchLabels": {
                     "additionalProperties": {
-                      "type": "string"
+                      "type": [
+                        "string", 
+                        "null"
+                      ]
                     }, 
                     "type": "object", 
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
@@ -106,9 +130,15 @@
                         }, 
                         "values": {
                           "items": {
-                            "type": "string"
+                            "type": [
+                              "string", 
+                              "null"
+                            ]
                           }, 
-                          "type": "array", 
+                          "type": [
+                            "array", 
+                            "null"
+                          ], 
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
                         }, 
                         "key": {
@@ -119,16 +149,25 @@
                         }
                       }
                     }, 
-                    "type": "array", 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
                     "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
                   }
                 }
               }, 
               "namespaces": {
                 "items": {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
-                "type": "array", 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
               }, 
               "topologyKey": {
@@ -144,7 +183,10 @@
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "The scheduler will prefer to schedule pods to nodes that satisfy the affinity expressions specified by this field, but it may choose a node that violates one or more of the expressions. The node that is most preferred is the one with the greatest sum of weights, i.e. for each node that meets all of the scheduling requirements (resource request, requiredDuringScheduling affinity expressions, etc.), compute a sum by iterating through the elements of this field and adding \"weight\" to the sum if the node has pods which matches the corresponding podAffinityTerm; the node(s) with the highest sum are the most preferred."
     }
   }

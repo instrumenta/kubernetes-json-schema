@@ -39,6 +39,38 @@
             ], 
             "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
           }, 
+          "series": {
+            "additionalProperties": false, 
+            "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.", 
+            "properties": {
+              "count": {
+                "type": "integer", 
+                "description": "Number of occurrences in this series up to the last heartbeat time", 
+                "format": "int32"
+              }, 
+              "state": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "State of this Series: Ongoing or Finished"
+              }, 
+              "lastObservedTime": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "format": "date-time"
+              }
+            }
+          }, 
+          "reportingInstance": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "ID of the controller instance, e.g. `kubelet-xyzf`."
+          }, 
           "firstTimestamp": {
             "type": [
               "string", 
@@ -53,12 +85,60 @@
             ], 
             "format": "date-time"
           }, 
-          "apiVersion": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+          "related": {
+            "additionalProperties": false, 
+            "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
+            "properties": {
+              "kind": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+              }, 
+              "name": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+              }, 
+              "namespace": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
+              }, 
+              "apiVersion": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "API version of the referent."
+              }, 
+              "fieldPath": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object."
+              }, 
+              "resourceVersion": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
+              }, 
+              "uid": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids"
+              }
+            }
           }, 
           "source": {
             "additionalProperties": false, 
@@ -86,6 +166,13 @@
               "null"
             ], 
             "description": "This should be a short, machine understandable string that gives the reason for the transition into the object's current status."
+          }, 
+          "reportingComponent": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`."
           }, 
           "involvedObject": {
             "additionalProperties": false, 
@@ -142,6 +229,20 @@
               }
             }
           }, 
+          "eventTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "format": "date-time"
+          }, 
+          "apiVersion": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+          }, 
           "message": {
             "type": [
               "string", 
@@ -155,6 +256,13 @@
               "null"
             ], 
             "description": "Type of this event (Normal, Warning), new types could be added in the future"
+          }, 
+          "action": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "What action was taken/failed regarding to the Regarding object."
           }, 
           "metadata": {
             "additionalProperties": false, 

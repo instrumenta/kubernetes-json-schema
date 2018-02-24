@@ -7,7 +7,10 @@
   "description": "StatefulSetStatus represents the current state of a StatefulSet.", 
   "properties": {
     "updateRevision": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)"
     }, 
     "collisionCount": {
@@ -36,7 +39,10 @@
       "format": "int32"
     }, 
     "currentRevision": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas)."
     }, 
     "readyReplicas": {
@@ -57,11 +63,17 @@
             "description": "Status of the condition, one of True, False, Unknown."
           }, 
           "lastTransitionTime": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }, 
           "message": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "A human readable message indicating details about the transition."
           }, 
           "type": {
@@ -69,13 +81,19 @@
             "description": "Type of statefulset condition."
           }, 
           "reason": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "The reason for the condition's last transition."
           }
         }
       }, 
       "x-kubernetes-patch-merge-key": "type", 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Represents the latest available observations of a statefulset's current state.", 
       "x-kubernetes-patch-strategy": "merge"
     }

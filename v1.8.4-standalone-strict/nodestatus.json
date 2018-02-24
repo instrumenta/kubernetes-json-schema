@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "NodeStatus is information about the current status of a node.", 
   "properties": {
     "capacity": {

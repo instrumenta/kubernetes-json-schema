@@ -8,15 +8,24 @@
   "description": "ServiceReference holds a reference to Service.legacy.k8s.io", 
   "properties": {
     "path": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "`path` is an optional URL path which will be sent in any request to this service."
     }, 
     "namespace": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "`namespace` is the namespace of the service. Required"
     }, 
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "`name` is the name of the service. Required"
     }
   }

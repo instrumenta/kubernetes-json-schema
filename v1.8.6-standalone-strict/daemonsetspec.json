@@ -1,15 +1,16 @@
 {
   "$schema": "http://json-schema.org/schema#", 
   "required": [
+    "selector", 
     "template"
   ], 
   "type": "object", 
   "description": "DaemonSetSpec is the specification of a daemon set.", 
   "properties": {
-    "templateGeneration": {
+    "revisionHistoryLimit": {
       "type": "integer", 
-      "description": "DEPRECATED. A sequence number representing a specific generation of the template. Populated by the system. It can be set only during the creation.", 
-      "format": "int64"
+      "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
+      "format": "int32"
     }, 
     "selector": {
       "additionalProperties": false, 
@@ -64,6 +65,38 @@
             "null"
           ], 
           "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+        }
+      }
+    }, 
+    "updateStrategy": {
+      "additionalProperties": false, 
+      "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.", 
+      "properties": {
+        "rollingUpdate": {
+          "additionalProperties": false, 
+          "description": "Spec to control the desired behavior of daemon set rolling update.", 
+          "properties": {
+            "maxUnavailable": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          }
+        }, 
+        "type": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate."
         }
       }
     }, 
@@ -4587,42 +4620,6 @@
               "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
             }
           }
-        }
-      }
-    }, 
-    "revisionHistoryLimit": {
-      "type": "integer", 
-      "description": "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.", 
-      "format": "int32"
-    }, 
-    "updateStrategy": {
-      "additionalProperties": false, 
-      "properties": {
-        "rollingUpdate": {
-          "additionalProperties": false, 
-          "description": "Spec to control the desired behavior of daemon set rolling update.", 
-          "properties": {
-            "maxUnavailable": {
-              "oneOf": [
-                {
-                  "type": [
-                    "string", 
-                    "null"
-                  ]
-                }, 
-                {
-                  "type": "integer"
-                }
-              ]
-            }
-          }
-        }, 
-        "type": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is OnDelete."
         }
       }
     }, 

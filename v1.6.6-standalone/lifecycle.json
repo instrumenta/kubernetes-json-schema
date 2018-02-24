@@ -13,15 +13,24 @@
           "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
           "properties": {
             "path": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Path to access on the HTTP server."
             }, 
             "host": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
             }, 
             "scheme": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Scheme to use for connecting to the host. Defaults to HTTP."
             }, 
             "httpHeaders": {
@@ -42,13 +51,19 @@
                   }
                 }
               }, 
-              "type": "array", 
+              "type": [
+                "array", 
+                "null"
+              ], 
               "description": "Custom headers to set in the request. HTTP allows repeated headers."
             }, 
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -66,7 +81,10 @@
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -80,9 +98,15 @@
           "properties": {
             "command": {
               "items": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
-              "type": "array", 
+              "type": [
+                "array", 
+                "null"
+              ], 
               "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy."
             }
           }
@@ -99,15 +123,24 @@
           "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
           "properties": {
             "path": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Path to access on the HTTP server."
             }, 
             "host": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
             }, 
             "scheme": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "Scheme to use for connecting to the host. Defaults to HTTP."
             }, 
             "httpHeaders": {
@@ -128,13 +161,19 @@
                   }
                 }
               }, 
-              "type": "array", 
+              "type": [
+                "array", 
+                "null"
+              ], 
               "description": "Custom headers to set in the request. HTTP allows repeated headers."
             }, 
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -152,7 +191,10 @@
             "port": {
               "oneOf": [
                 {
-                  "type": "string"
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
                 }, 
                 {
                   "type": "integer"
@@ -166,9 +208,15 @@
           "properties": {
             "command": {
               "items": {
-                "type": "string"
+                "type": [
+                  "string", 
+                  "null"
+                ]
               }, 
-              "type": "array", 
+              "type": [
+                "array", 
+                "null"
+              ], 
               "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy."
             }
           }

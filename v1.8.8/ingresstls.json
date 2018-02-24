@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Deprecated. Please use io.k8s.api.extensions.v1beta1.IngressTLS instead.", 
+  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.8.8/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.IngressTLS"
+}

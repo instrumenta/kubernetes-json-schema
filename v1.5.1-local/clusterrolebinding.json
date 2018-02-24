@@ -15,7 +15,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1alpha1.Subject"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Subjects holds references to the objects the role applies to."
     }, 
     "metadata": {

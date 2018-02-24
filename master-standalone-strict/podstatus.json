@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system.", 
   "properties": {
     "initContainerStatuses": {
@@ -242,7 +240,7 @@
         "string", 
         "null"
       ], 
-      "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md"
+      "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md"
     }, 
     "containerStatuses": {
       "items": {
@@ -519,6 +517,13 @@
         "null"
       ], 
       "description": "A human readable message indicating details about why the pod is in this condition."
+    }, 
+    "nominatedNodeName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be scheduled right away as preemption victims receive their graceful termination periods. This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the resources on this node to a higher priority pod that is created after preemption. As a result, this field may be different than PodSpec.nodeName when the pod is scheduled."
     }, 
     "conditions": {
       "items": {

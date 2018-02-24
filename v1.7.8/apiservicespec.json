@@ -10,7 +10,10 @@
   "description": "APIServiceSpec contains information for locating and communicating with a server. Only https is supported, though you are able to disable certificate verification.", 
   "properties": {
     "group": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Group is the API group name this server hosts"
     }, 
     "service": {
@@ -18,11 +21,17 @@
       "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.8/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.ServiceReference"
     }, 
     "version": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Version is the API version this server hosts.  For example, \"v1\""
     }, 
     "caBundle": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate.", 
       "format": "byte"
     }, 

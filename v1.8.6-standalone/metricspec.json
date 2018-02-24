@@ -16,7 +16,10 @@
         "targetAverageValue": {
           "oneOf": [
             {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
             {
               "type": "integer"
@@ -40,7 +43,10 @@
         "targetValue": {
           "oneOf": [
             {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
             {
               "type": "integer"
@@ -63,7 +69,10 @@
               "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
             }, 
             "apiVersion": {
-              "type": "string", 
+              "type": [
+                "string", 
+                "null"
+              ], 
               "description": "API version of the referent"
             }
           }
@@ -92,7 +101,10 @@
         "targetAverageValue": {
           "oneOf": [
             {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
             {
               "type": "integer"
@@ -102,7 +114,10 @@
       }
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "type is the type of metric source.  It should match one of the fields below."
     }
   }

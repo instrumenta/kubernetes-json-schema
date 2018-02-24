@@ -1,4 +1,6 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
   "description": "ResourceRequirements describes the compute resource requirements.", 
   "properties": {
     "requests": {

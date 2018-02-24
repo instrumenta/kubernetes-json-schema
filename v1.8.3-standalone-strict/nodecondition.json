@@ -1,8 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "type", 
     "status"
   ], 
+  "type": "object", 
   "description": "NodeCondition contains condition information for a node.", 
   "properties": {
     "status": {

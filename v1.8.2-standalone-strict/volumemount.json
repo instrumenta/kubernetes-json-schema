@@ -1,10 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "name", 
     "mountPath"
   ], 
-  "type": "object", 
   "description": "VolumeMount describes a mounting of a Volume within a container.", 
   "properties": {
     "readOnly": {

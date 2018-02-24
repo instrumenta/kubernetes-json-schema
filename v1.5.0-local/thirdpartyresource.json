@@ -7,11 +7,17 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1beta1.APIVersion"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Versions are versions for this third party object"
     }, 
     "description": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Description is the description of this object."
     }, 
     "metadata": {

@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "APIServiceStatus contains derived information about an API server", 
+  "properties": {
+    "conditions": {
+      "items": {
+        "additionalProperties": false, 
+        "required": [
+          "type", 
+          "status"
+        ], 
+        "properties": {
+          "status": {
+            "type": "string", 
+            "description": "Status is the status of the condition. Can be True, False, Unknown."
+          }, 
+          "type": {
+            "type": "string", 
+            "description": "Type is the type of the condition."
+          }, 
+          "message": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Human-readable message indicating details about last transition."
+          }, 
+          "lastTransitionTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "format": "date-time"
+          }, 
+          "reason": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Unique, one-word, CamelCase reason for the condition's last transition."
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Current service state of apiService.", 
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
+    }
+  }
+}

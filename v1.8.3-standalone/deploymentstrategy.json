@@ -7,7 +7,10 @@
         "maxSurge": {
           "oneOf": [
             {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
             {
               "type": "integer"
@@ -17,7 +20,10 @@
         "maxUnavailable": {
           "oneOf": [
             {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
             {
               "type": "integer"
@@ -27,7 +33,10 @@
       }
     }, 
     "type": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate."
     }
   }

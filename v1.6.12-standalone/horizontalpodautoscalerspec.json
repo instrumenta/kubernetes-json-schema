@@ -28,7 +28,10 @@
           "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
         }, 
         "apiVersion": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "API version of the referent"
         }
       }

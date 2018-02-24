@@ -1,8 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "template", 
     "serviceName"
   ], 
+  "type": "object", 
   "description": "A StatefulSetSpec is the specification of a StatefulSet.", 
   "properties": {
     "volumeClaimTemplates": {
@@ -5216,7 +5218,7 @@
           "properties": {
             "partition": {
               "type": "integer", 
-              "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned.", 
+              "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.", 
               "format": "int32"
             }
           }
@@ -5226,7 +5228,7 @@
             "string", 
             "null"
           ], 
-          "description": "Type indicates the type of the StatefulSetUpdateStrategy."
+          "description": "Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate."
         }
       }
     }

@@ -4,7 +4,10 @@
   "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
   "properties": {
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
     }
   }

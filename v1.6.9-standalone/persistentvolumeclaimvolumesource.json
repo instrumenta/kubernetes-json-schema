@@ -11,7 +11,10 @@
       "description": "Will force the ReadOnly setting in VolumeMounts. Default false."
     }, 
     "claimName": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#persistentvolumeclaims"
     }
   }

@@ -3,17 +3,23 @@
   "properties": {
     "targetWWNs": {
       "items": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Optional: FC target worldwide names (WWNs)"
     }, 
-    "wwids": {
-      "items": {
-        "type": "string"
-      }, 
-      "type": "array", 
-      "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
+    "fsType": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
     }, 
     "readOnly": {
       "type": "boolean", 
@@ -24,9 +30,18 @@
       "description": "Optional: FC target lun number", 
       "format": "int32"
     }, 
-    "fsType": {
-      "type": "string", 
-      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+    "wwids": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously."
     }
   }
 }

@@ -10,7 +10,10 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.7.1/_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.NodeSelectorRequirement"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Required. A list of node selector requirements. The requirements are ANDed."
     }
   }

@@ -1,7 +1,6 @@
 {
   "required": [
-    "name", 
-    "image"
+    "name"
   ], 
   "description": "A single application container that you want to run within a pod.", 
   "properties": {
@@ -180,7 +179,7 @@
               "string", 
               "null"
             ], 
-            "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+            "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
           }, 
           "configMapRef": {
             "additionalProperties": false, 
@@ -274,7 +273,7 @@
         "string", 
         "null"
       ], 
-      "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images"
+      "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets."
     }, 
     "args": {
       "items": {
@@ -306,6 +305,33 @@
         "null"
       ], 
       "description": "Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated."
+    }, 
+    "volumeDevices": {
+      "items": {
+        "additionalProperties": false, 
+        "required": [
+          "name", 
+          "devicePath"
+        ], 
+        "description": "volumeDevice describes a mapping of a raw block device within a container.", 
+        "properties": {
+          "devicePath": {
+            "type": "string", 
+            "description": "devicePath is the path inside of the container that the device will be mapped to."
+          }, 
+          "name": {
+            "type": "string", 
+            "description": "name must match the name of a persistentVolumeClaim in the pod"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future.", 
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "devicePath"
     }, 
     "command": {
       "items": {

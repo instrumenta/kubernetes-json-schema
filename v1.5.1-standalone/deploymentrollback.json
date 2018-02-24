@@ -8,7 +8,10 @@
   "description": "DeploymentRollback stores the information required to rollback a deployment.", 
   "properties": {
     "name": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "Required: This must match the Name of a deployment."
     }, 
     "rollbackTo": {
@@ -22,7 +25,10 @@
     }, 
     "updatedAnnotations": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string", 
+          "null"
+        ]
       }, 
       "type": "object", 
       "description": "The annotations to be updated to a deployment"

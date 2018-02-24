@@ -12,7 +12,10 @@
           "description": "Specify whether the Secret or it's key must be defined"
         }, 
         "name": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
         }, 
         "key": {
@@ -32,7 +35,10 @@
           "description": "Path of the field to select in the specified API version."
         }, 
         "apiVersion": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\"."
         }
       }
@@ -48,7 +54,10 @@
           "description": "Specify whether the ConfigMap or it's key must be defined"
         }, 
         "name": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
         }, 
         "key": {
@@ -64,7 +73,10 @@
       "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
       "properties": {
         "containerName": {
-          "type": "string", 
+          "type": [
+            "string", 
+            "null"
+          ], 
           "description": "Container name: required for volumes, optional for env vars"
         }, 
         "resource": {
@@ -74,7 +86,10 @@
         "divisor": {
           "oneOf": [
             {
-              "type": "string"
+              "type": [
+                "string", 
+                "null"
+              ]
             }, 
             {
               "type": "integer"

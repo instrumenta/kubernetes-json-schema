@@ -4,7 +4,10 @@
   "description": "NodeSpec describes the attributes that a node is created with.", 
   "properties": {
     "podCIDR": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "PodCIDR represents the pod IP range assigned to the node."
     }, 
     "unschedulable": {
@@ -12,11 +15,17 @@
       "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: http://releases.k8s.io/HEAD/docs/admin/node.md#manual-node-administration"
     }, 
     "providerID": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>"
     }, 
     "externalID": {
-      "type": "string", 
+      "type": [
+        "string", 
+        "null"
+      ], 
       "description": "External ID of the node assigned by some machine database (e.g. a cloud provider). Deprecated."
     }, 
     "taints": {
@@ -32,7 +41,10 @@
             "description": "Required. The taint key to be applied to a node."
           }, 
           "timeAdded": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "format": "date-time"
           }, 
           "effect": {
@@ -40,12 +52,18 @@
             "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute."
           }, 
           "value": {
-            "type": "string", 
+            "type": [
+              "string", 
+              "null"
+            ], 
             "description": "Required. The taint value corresponding to the taint key."
           }
         }
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "If specified, the node's taints."
     }
   }

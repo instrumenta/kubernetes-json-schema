@@ -6,7 +6,10 @@
     "maxUnavailable": {
       "oneOf": [
         {
-          "type": "string"
+          "type": [
+            "string", 
+            "null"
+          ]
         }, 
         {
           "type": "integer"

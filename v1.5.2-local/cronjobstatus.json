@@ -7,7 +7,10 @@
       "items": {
         "$ref": "_definitions.json#/definitions/v1.ObjectReference"
       }, 
-      "type": "array", 
+      "type": [
+        "array", 
+        "null"
+      ], 
       "description": "Active holds pointers to currently running jobs."
     }, 
     "lastScheduleTime": {

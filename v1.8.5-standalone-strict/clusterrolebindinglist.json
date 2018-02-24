@@ -6,7 +6,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "ClusterRoleBindingList", 
-      "version": "v1", 
+      "version": "v1beta1", 
       "group": "rbac.authorization.k8s.io"
     }
   ], 
@@ -23,7 +23,7 @@
         "x-kubernetes-group-version-kind": [
           {
             "kind": "ClusterRoleBinding", 
-            "version": "v1", 
+            "version": "v1beta1", 
             "group": "rbac.authorization.k8s.io"
           }
         ], 

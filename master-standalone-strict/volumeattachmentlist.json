@@ -6,7 +6,7 @@
   "x-kubernetes-group-version-kind": [
     {
       "kind": "VolumeAttachmentList", 
-      "version": "v1alpha1", 
+      "version": "v1beta1", 
       "group": "storage.k8s.io"
     }
   ], 
@@ -22,7 +22,7 @@
         "x-kubernetes-group-version-kind": [
           {
             "kind": "VolumeAttachment", 
-            "version": "v1alpha1", 
+            "version": "v1beta1", 
             "group": "storage.k8s.io"
           }
         ], 

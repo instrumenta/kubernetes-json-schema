@@ -1,6 +1,4 @@
 {
-  "type": "object", 
-  "$schema": "http://json-schema.org/schema#", 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "Pod", 
@@ -253,7 +251,7 @@
             "string", 
             "null"
           ], 
-          "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md"
+          "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md"
         }, 
         "containerStatuses": {
           "items": {
@@ -531,6 +529,13 @@
           ], 
           "description": "A human readable message indicating details about why the pod is in this condition."
         }, 
+        "nominatedNodeName": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "nominatedNodeName is set only when this pod preempts other pods on the node, but it cannot be scheduled right away as preemption victims receive their graceful termination periods. This field does not guarantee that the pod will be scheduled on this node. Scheduler may decide to place the pod elsewhere if other nodes become available sooner. Scheduler may also decide to give the resources on this node to a higher priority pod that is created after preemption. As a result, this field may be different than PodSpec.nodeName when the pod is scheduled."
+        }, 
         "conditions": {
           "items": {
             "additionalProperties": false, 
@@ -624,12 +629,9 @@
           "type": "boolean", 
           "description": "AutomountServiceAccountToken indicates whether a service account token should be automatically mounted."
         }, 
-        "priorityClassName": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "If specified, indicates the pod's priority. \"SYSTEM\" is a special keyword which indicates the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default."
+        "shareProcessNamespace": {
+          "type": "boolean", 
+          "description": "Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Default to false. This field is alpha-level and is honored only by servers that enable the PodShareProcessNamespace feature."
         }, 
         "securityContext": {
           "additionalProperties": false, 
@@ -1533,7 +1535,7 @@
                         "string", 
                         "null"
                       ], 
-                      "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+                      "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                     }, 
                     "configMapRef": {
                       "additionalProperties": false, 
@@ -2432,6 +2434,13 @@
           "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.", 
           "x-kubernetes-patch-strategy": "merge", 
           "x-kubernetes-patch-merge-key": "name"
+        }, 
+        "priorityClassName": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "If specified, indicates the pod's priority. \"system-node-critical\" and \"system-cluster-critical\" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default."
         }, 
         "serviceAccountName": {
           "type": [
@@ -3958,7 +3967,7 @@
                         "string", 
                         "null"
                       ], 
-                      "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+                      "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                     }, 
                     "configMapRef": {
                       "additionalProperties": false, 

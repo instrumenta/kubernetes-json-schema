@@ -21,7 +21,10 @@
       }
     }, 
     "type": {
-      "type": "string"
+      "type": [
+        "string", 
+        "null"
+      ]
     }
   }
 }

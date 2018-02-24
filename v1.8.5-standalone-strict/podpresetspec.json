@@ -1,6 +1,4 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "PodPresetSpec is a description of a pod preset.", 
   "properties": {
     "selector": {

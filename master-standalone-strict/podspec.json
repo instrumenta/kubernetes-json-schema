@@ -9,7 +9,7 @@
         "string", 
         "null"
       ], 
-      "description": "Set DNS policy for containers within the pod. One of 'ClusterFirstWithHostNet', 'ClusterFirst' or 'Default'. Defaults to \"ClusterFirst\". To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'."
+      "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Note that 'None' policy is an alpha feature introduced in v1.9 and CustomPodDNS feature gate must be enabled to use it."
     }, 
     "hostNetwork": {
       "type": "boolean", 
@@ -26,12 +26,9 @@
       "type": "boolean", 
       "description": "AutomountServiceAccountToken indicates whether a service account token should be automatically mounted."
     }, 
-    "priorityClassName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "If specified, indicates the pod's priority. \"SYSTEM\" is a special keyword which indicates the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default."
+    "shareProcessNamespace": {
+      "type": "boolean", 
+      "description": "Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Default to false. This field is alpha-level and is honored only by servers that enable the PodShareProcessNamespace feature."
     }, 
     "securityContext": {
       "additionalProperties": false, 
@@ -180,7 +177,10 @@
             "requiredDuringSchedulingIgnoredDuringExecution": {
               "items": {
                 "additionalProperties": false, 
-                "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> tches that of any node on which a pod of the set of pods is running", 
+                "required": [
+                  "topologyKey"
+                ], 
+                "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running", 
                 "properties": {
                   "labelSelector": {
                     "additionalProperties": false, 
@@ -252,11 +252,8 @@
                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                   }, 
                   "topologyKey": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
+                    "type": "string", 
+                    "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed."
                   }
                 }
               }, 
@@ -277,7 +274,10 @@
                 "properties": {
                   "podAffinityTerm": {
                     "additionalProperties": false, 
-                    "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> tches that of any node on which a pod of the set of pods is running", 
+                    "required": [
+                      "topologyKey"
+                    ], 
+                    "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running", 
                     "properties": {
                       "labelSelector": {
                         "additionalProperties": false, 
@@ -349,11 +349,8 @@
                         "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                       }, 
                       "topologyKey": {
-                        "type": [
-                          "string", 
-                          "null"
-                        ], 
-                        "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
+                        "type": "string", 
+                        "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed."
                       }
                     }
                   }, 
@@ -508,7 +505,10 @@
             "requiredDuringSchedulingIgnoredDuringExecution": {
               "items": {
                 "additionalProperties": false, 
-                "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> tches that of any node on which a pod of the set of pods is running", 
+                "required": [
+                  "topologyKey"
+                ], 
+                "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running", 
                 "properties": {
                   "labelSelector": {
                     "additionalProperties": false, 
@@ -580,11 +580,8 @@
                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                   }, 
                   "topologyKey": {
-                    "type": [
-                      "string", 
-                      "null"
-                    ], 
-                    "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
+                    "type": "string", 
+                    "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed."
                   }
                 }
               }, 
@@ -605,7 +602,10 @@
                 "properties": {
                   "podAffinityTerm": {
                     "additionalProperties": false, 
-                    "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> tches that of any node on which a pod of the set of pods is running", 
+                    "required": [
+                      "topologyKey"
+                    ], 
+                    "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running", 
                     "properties": {
                       "labelSelector": {
                         "additionalProperties": false, 
@@ -677,11 +677,8 @@
                         "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\""
                       }, 
                       "topologyKey": {
-                        "type": [
-                          "string", 
-                          "null"
-                        ], 
-                        "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. For PreferredDuringScheduling pod anti-affinity, empty topologyKey is interpreted as \"all topologies\" (\"all topologies\" here means all the topologyKeys indicated by scheduler command-line argument --failure-domains); for affinity and for RequiredDuringScheduling pod anti-affinity, empty topologyKey is not allowed."
+                        "type": "string", 
+                        "description": "This pod should be co-located (affinity) or not co-located (anti-affinity) with the pods matching the labelSelector in the specified namespaces, where co-located is defined as running on a node whose value of the label with key topologyKey matches that of any node on which any of the selected pods is running. Empty topologyKey is not allowed."
                       }
                     }
                   }, 
@@ -759,8 +756,7 @@
       "items": {
         "additionalProperties": false, 
         "required": [
-          "name", 
-          "image"
+          "name"
         ], 
         "description": "A single application container that you want to run within a pod.", 
         "properties": {
@@ -936,7 +932,7 @@
                     "string", 
                     "null"
                   ], 
-                  "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+                  "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                 }, 
                 "configMapRef": {
                   "additionalProperties": false, 
@@ -1026,8 +1022,11 @@
             "x-kubernetes-patch-merge-key": "mountPath"
           }, 
           "image": {
-            "type": "string", 
-            "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images"
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets."
           }, 
           "args": {
             "items": {
@@ -1059,6 +1058,33 @@
               "null"
             ], 
             "description": "Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated."
+          }, 
+          "volumeDevices": {
+            "items": {
+              "additionalProperties": false, 
+              "required": [
+                "name", 
+                "devicePath"
+              ], 
+              "description": "volumeDevice describes a mapping of a raw block device within a container.", 
+              "properties": {
+                "devicePath": {
+                  "type": "string", 
+                  "description": "devicePath is the path inside of the container that the device will be mapped to."
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "name must match the name of a persistentVolumeClaim in the pod"
+                }
+              }
+            }, 
+            "type": [
+              "array", 
+              "null"
+            ], 
+            "description": "volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future.", 
+            "x-kubernetes-patch-strategy": "merge", 
+            "x-kubernetes-patch-merge-key": "devicePath"
           }, 
           "command": {
             "items": {
@@ -1809,6 +1835,13 @@
       "x-kubernetes-patch-strategy": "merge", 
       "x-kubernetes-patch-merge-key": "name"
     }, 
+    "priorityClassName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "If specified, indicates the pod's priority. \"system-node-critical\" and \"system-cluster-critical\" are two special keywords which indicate the highest priorities with the former being the highest priority. Any other name must be defined by creating a PriorityClass object with that name. If not specified, the pod priority will be default or zero if there is no default."
+    }, 
     "serviceAccountName": {
       "type": [
         "string", 
@@ -1826,6 +1859,64 @@
     "hostIPC": {
       "type": "boolean", 
       "description": "Use the host's ipc namespace. Optional: Default to false."
+    }, 
+    "dnsConfig": {
+      "additionalProperties": false, 
+      "description": "PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.", 
+      "properties": {
+        "nameservers": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed."
+        }, 
+        "searches": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed."
+        }, 
+        "options": {
+          "items": {
+            "additionalProperties": false, 
+            "description": "PodDNSConfigOption defines DNS resolver options of a pod.", 
+            "properties": {
+              "name": {
+                "type": [
+                  "string", 
+                  "null"
+                ], 
+                "description": "Required."
+              }, 
+              "value": {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }
+            }
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy."
+        }
+      }
     }, 
     "activeDeadlineSeconds": {
       "type": "integer", 
@@ -1997,7 +2088,7 @@
             "properties": {
               "targetPortal": {
                 "type": "string", 
-                "description": "iSCSI target portal. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
+                "description": "iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
               }, 
               "portals": {
                 "items": {
@@ -2010,7 +2101,7 @@
                   "array", 
                   "null"
                 ], 
-                "description": "iSCSI target portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
+                "description": "iSCSI Target Portal List. The portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260)."
               }, 
               "secretRef": {
                 "additionalProperties": false, 
@@ -2045,14 +2136,14 @@
                   "string", 
                   "null"
                 ], 
-                "description": "Custom iSCSI initiator name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
+                "description": "Custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection."
               }, 
               "iscsiInterface": {
                 "type": [
                   "string", 
                   "null"
                 ], 
-                "description": "Optional: Defaults to 'default' (tcp). iSCSI interface name that uses an iSCSI transport."
+                "description": "iSCSI Interface Name that uses an iSCSI transport. Defaults to 'default' (tcp)."
               }, 
               "chapAuthDiscovery": {
                 "type": "boolean", 
@@ -2064,7 +2155,7 @@
               }, 
               "lun": {
                 "type": "integer", 
-                "description": "iSCSI target lun number.", 
+                "description": "iSCSI Target Lun number.", 
                 "format": "int32"
               }
             }
@@ -2337,7 +2428,7 @@
                   "string", 
                   "null"
                 ], 
-                "description": "Indicates whether the storage for a volume should be thick or thin (defaults to \"thin\")."
+                "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
               }, 
               "secretRef": {
                 "additionalProperties": false, 
@@ -2357,7 +2448,7 @@
                   "string", 
                   "null"
                 ], 
-                "description": "The name of the Protection Domain for the configured storage (defaults to \"default\")."
+                "description": "The name of the ScaleIO Protection Domain for the configured storage."
               }, 
               "volumeName": {
                 "type": [
@@ -2390,7 +2481,7 @@
                   "string", 
                   "null"
                 ], 
-                "description": "The Storage Pool associated with the protection domain (defaults to \"default\")."
+                "description": "The ScaleIO Storage Pool associated with the protection domain."
               }, 
               "gateway": {
                 "type": "string", 
@@ -2442,7 +2533,7 @@
                   "string", 
                   "null"
                 ], 
-                "description": "Expected values Shared: mulitple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
+                "description": "Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
               }, 
               "fsType": {
                 "type": [
@@ -2514,7 +2605,7 @@
             "required": [
               "driver"
             ], 
-            "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. This is an alpha feature and may change in future.", 
+            "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.", 
             "properties": {
               "secretRef": {
                 "additionalProperties": false, 
@@ -3100,8 +3191,7 @@
       "items": {
         "additionalProperties": false, 
         "required": [
-          "name", 
-          "image"
+          "name"
         ], 
         "description": "A single application container that you want to run within a pod.", 
         "properties": {
@@ -3277,7 +3367,7 @@
                     "string", 
                     "null"
                   ], 
-                  "description": "An optional identifer to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
+                  "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER."
                 }, 
                 "configMapRef": {
                   "additionalProperties": false, 
@@ -3367,8 +3457,11 @@
             "x-kubernetes-patch-merge-key": "mountPath"
           }, 
           "image": {
-            "type": "string", 
-            "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images"
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets."
           }, 
           "args": {
             "items": {
@@ -3400,6 +3493,33 @@
               "null"
             ], 
             "description": "Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated."
+          }, 
+          "volumeDevices": {
+            "items": {
+              "additionalProperties": false, 
+              "required": [
+                "name", 
+                "devicePath"
+              ], 
+              "description": "volumeDevice describes a mapping of a raw block device within a container.", 
+              "properties": {
+                "devicePath": {
+                  "type": "string", 
+                  "description": "devicePath is the path inside of the container that the device will be mapped to."
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "name must match the name of a persistentVolumeClaim in the pod"
+                }
+              }
+            }, 
+            "type": [
+              "array", 
+              "null"
+            ], 
+            "description": "volumeDevices is the list of block devices to be used by the container. This is an alpha feature and may change in the future.", 
+            "x-kubernetes-patch-strategy": "merge", 
+            "x-kubernetes-patch-merge-key": "devicePath"
           }, 
           "command": {
             "items": {
