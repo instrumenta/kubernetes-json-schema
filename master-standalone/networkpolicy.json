@@ -40,7 +40,7 @@
             "properties": {
               "to": {
                 "items": {
-                  "description": "NetworkPolicyPeer describes a peer to allow traffic from. Exactly one of its fields must be specified.", 
+                  "description": "NetworkPolicyPeer describes a peer to allow traffic from. Only certain combinations of fields are allowed", 
                   "properties": {
                     "namespaceSelector": {
                       "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
@@ -229,7 +229,7 @@
             "properties": {
               "from": {
                 "items": {
-                  "description": "NetworkPolicyPeer describes a peer to allow traffic from. Exactly one of its fields must be specified.", 
+                  "description": "NetworkPolicyPeer describes a peer to allow traffic from. Only certain combinations of fields are allowed", 
                   "properties": {
                     "namespaceSelector": {
                       "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continously for some time.", 
+  "properties": {
+    "count": {
+      "type": "integer", 
+      "description": "Number of occurrences in this series up to the last heartbeat time", 
+      "format": "int32"
+    }, 
+    "state": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "State of this Series: Ongoing or Finished"
+    }, 
+    "lastObservedTime": {
+      "description": "Time of the last occurence observed", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
+    }
+  }
+}

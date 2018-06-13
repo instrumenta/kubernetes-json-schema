@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system.", 
+  "properties": {
+    "containerStatuses": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1.ContainerStatus"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: http://kubernetes.io/docs/user-guide/pod-states#container-statuses"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'OutOfDisk'"
+    }, 
+    "podIP": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated."
+    }, 
+    "startTime": {
+      "description": "RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.", 
+      "$ref": "_definitions.json#/definitions/unversioned.Time"
+    }, 
+    "hostIP": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "IP address of the host to which the pod is assigned. Empty if not yet scheduled."
+    }, 
+    "phase": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Current condition of the pod. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-phase"
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A human readable message indicating details about why the pod is in this condition."
+    }, 
+    "conditions": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1.PodCondition"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Current service state of pod. More info: http://kubernetes.io/docs/user-guide/pod-states#pod-conditions"
+    }
+  }
+}

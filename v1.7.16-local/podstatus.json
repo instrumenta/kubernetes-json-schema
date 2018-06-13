@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system.", 
+  "properties": {
+    "initContainerStatuses": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ContainerStatus"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "The list has one entry per init container in the manifest. The most recent successful init container will have ready = true, the most recently started container will have startTime set. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status"
+    }, 
+    "qosClass": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://github.com/kubernetes/kubernetes/blob/master/docs/design/resource-qos.md"
+    }, 
+    "containerStatuses": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.ContainerStatus"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "The list has one entry per container in the manifest. Each entry is currently the output of `docker inspect`. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-and-container-status"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'OutOfDisk'"
+    }, 
+    "podIP": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "IP address allocated to the pod. Routable at least within the cluster. Empty if not yet allocated."
+    }, 
+    "startTime": {
+      "description": "RFC 3339 date and time at which the object was acknowledged by the Kubelet. This is before the Kubelet pulled the container image(s) for the pod.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "hostIP": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "IP address of the host to which the pod is assigned. Empty if not yet scheduled."
+    }, 
+    "phase": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Current condition of the pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase"
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A human readable message indicating details about why the pod is in this condition."
+    }, 
+    "conditions": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.PodCondition"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions", 
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
+    }
+  }
+}

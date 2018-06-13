@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "conditions": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.certificates.v1beta1.CertificateSigningRequestCondition"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Conditions applied to the request, such as approval or denial."
+    }, 
+    "certificate": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "If request was approved, the controller will place the issued certificate here.", 
+      "format": "byte"
+    }
+  }
+}

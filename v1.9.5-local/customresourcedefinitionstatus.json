@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "conditions", 
+    "acceptedNames"
+  ], 
+  "type": "object", 
+  "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition", 
+  "properties": {
+    "conditions": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionCondition"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition"
+    }, 
+    "acceptedNames": {
+      "description": "AcceptedNames are the names that are actually being used to serve discovery They may be different than the names in spec.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionNames"
+    }
+  }
+}

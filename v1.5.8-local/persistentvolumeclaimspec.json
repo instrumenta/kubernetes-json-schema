@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes", 
+  "properties": {
+    "volumeName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "VolumeName is the binding reference to the PersistentVolume backing this claim."
+    }, 
+    "accessModes": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "AccessModes contains the desired access modes the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#access-modes-1"
+    }, 
+    "resources": {
+      "description": "Resources represents the minimum resources the volume should have. More info: http://kubernetes.io/docs/user-guide/persistent-volumes#resources", 
+      "$ref": "_definitions.json#/definitions/v1.ResourceRequirements"
+    }, 
+    "selector": {
+      "description": "A label query over volumes to consider for binding.", 
+      "$ref": "_definitions.json#/definitions/unversioned.LabelSelector"
+    }
+  }
+}

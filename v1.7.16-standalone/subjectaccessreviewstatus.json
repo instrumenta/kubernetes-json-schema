@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "allowed"
+  ], 
+  "type": "object", 
+  "description": "SubjectAccessReviewStatus", 
+  "properties": {
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Reason is optional.  It indicates why a request was allowed or denied."
+    }, 
+    "evaluationError": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request."
+    }, 
+    "allowed": {
+      "type": "boolean", 
+      "description": "Allowed is required.  True if the action would be allowed, false otherwise."
+    }
+  }
+}

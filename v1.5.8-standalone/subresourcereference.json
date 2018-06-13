@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "SubresourceReference contains enough information to let you inspect or modify the referred subresource.", 
+  "properties": {
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind of the referent; More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+    }, 
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "API version of the referent"
+    }, 
+    "subresource": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Subresource name of the referent"
+    }
+  }
+}

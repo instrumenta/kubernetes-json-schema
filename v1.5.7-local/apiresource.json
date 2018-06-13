@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "name", 
+    "namespaced", 
+    "kind"
+  ], 
+  "type": "object", 
+  "description": "APIResource specifies the name of a resource and whether it is namespaced.", 
+  "properties": {
+    "namespaced": {
+      "type": "boolean", 
+      "description": "namespaced indicates if a resource is namespaced or not."
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')"
+    }, 
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "name is the name of the resource."
+    }
+  }
+}

@@ -1,4 +1,11 @@
 {
+  "x-kubernetes-group-version-kind": [
+    {
+      "kind": "APIService", 
+      "version": "v1", 
+      "group": "apiregistration.k8s.io"
+    }
+  ], 
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
   "description": "APIService represents a server for a particular GroupVersion. Name must be \"version.group\".", 

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "key", 
+    "effect"
+  ], 
+  "type": "object", 
+  "description": "The node this Taint is attached to has the effect \"effect\" on any pod that that does not tolerate the Taint.", 
+  "properties": {
+    "value": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Required. The taint value corresponding to the taint key."
+    }, 
+    "timeAdded": {
+      "description": "TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "effect": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute."
+    }, 
+    "key": {
+      "x-kubernetes-patch-merge-key": "key", 
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Required. The taint key to be applied to a node.", 
+      "x-kubernetes-patch-strategy": "merge"
+    }
+  }
+}

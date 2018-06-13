@@ -14,7 +14,6 @@
     "items": {
       "items": {
         "required": [
-          "subjects", 
           "roleRef"
         ], 
         "x-kubernetes-group-version-kind": [
@@ -87,7 +86,10 @@
                 }
               }
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "Subjects holds references to the objects the role applies to."
           }, 
           "apiVersion": {

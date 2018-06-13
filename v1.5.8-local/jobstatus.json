@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "JobStatus represents the current state of a Job.", 
+  "properties": {
+    "succeeded": {
+      "type": "integer", 
+      "description": "Succeeded is the number of pods which reached Phase Succeeded.", 
+      "format": "int32"
+    }, 
+    "failed": {
+      "type": "integer", 
+      "description": "Failed is the number of pods which reached Phase Failed.", 
+      "format": "int32"
+    }, 
+    "completionTime": {
+      "description": "CompletionTime represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.", 
+      "$ref": "_definitions.json#/definitions/unversioned.Time"
+    }, 
+    "startTime": {
+      "description": "StartTime represents time when the job was acknowledged by the Job Manager. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.", 
+      "$ref": "_definitions.json#/definitions/unversioned.Time"
+    }, 
+    "active": {
+      "type": "integer", 
+      "description": "Active is the number of actively running pods.", 
+      "format": "int32"
+    }, 
+    "conditions": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1beta1.JobCondition"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Conditions represent the latest available observations of an object's current state. More info: http://kubernetes.io/docs/user-guide/jobs"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "schedule", 
+    "jobTemplate"
+  ], 
+  "type": "object", 
+  "description": "CronJobSpec describes how the job execution will look like and when it will actually run.", 
+  "properties": {
+    "jobTemplate": {
+      "description": "JobTemplate is the object that describes the job that will be created when executing a CronJob.", 
+      "$ref": "_definitions.json#/definitions/v2alpha1.JobTemplateSpec"
+    }, 
+    "startingDeadlineSeconds": {
+      "type": "integer", 
+      "description": "Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.", 
+      "format": "int64"
+    }, 
+    "concurrencyPolicy": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "ConcurrencyPolicy specifies how to treat concurrent executions of a Job."
+    }, 
+    "suspend": {
+      "type": "boolean", 
+      "description": "Suspend flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false."
+    }, 
+    "schedule": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Schedule contains the schedule in Cron format, see https://en.wikipedia.org/wiki/Cron."
+    }
+  }
+}

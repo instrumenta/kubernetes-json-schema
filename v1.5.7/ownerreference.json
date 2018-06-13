@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "apiVersion", 
+    "kind", 
+    "name", 
+    "uid"
+  ], 
+  "type": "object", 
+  "description": "OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.", 
+  "properties": {
+    "uid": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind of the referent. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+    }, 
+    "controller": {
+      "type": "boolean", 
+      "description": "If true, this reference points to the managing controller."
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "API version of the referent."
+    }, 
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+    }
+  }
+}

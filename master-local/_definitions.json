@@ -54,7 +54,7 @@
       "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RollingUpdateDeployment"
     }, 
     "io.k8s.api.core.v1.PodStatus": {
-      "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system.", 
+      "description": "PodStatus represents information about the status of a pod. Status may trail the actual state of a system, especially if the node that hosts the pod cannot contact the control plane.", 
       "properties": {
         "initContainerStatuses": {
           "items": {
@@ -92,7 +92,7 @@
         }, 
         "phase": {
           "type": "string", 
-          "description": "Current condition of the pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase"
+          "description": "The phase of a Pod is a simple, high-level summary of where the Pod is in its lifecycle. The conditions array, the reason and message fields, and the individual container status arrays contain more detail about the pod's status. There are five possible phase values:\n\nPending: The pod has been accepted by the Kubernetes system, but one or more of the container images has not been created. This includes time before being scheduled as well as time spent downloading images over the network, which could take a while. Running: The pod has been bound to a node, and all of the containers have been created. At least one container is still running, or is in the process of starting or restarting. Succeeded: All containers in the pod have terminated in success, and will not be restarted. Failed: All containers in the pod have terminated, and at least one container has terminated in failure. The container either exited with non-zero status or was terminated by the system. Unknown: For some reason the state of the pod could not be obtained, typically due to an error in communicating with the host of the pod.\n\nMore info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-phase"
         }, 
         "message": {
           "type": "string", 
@@ -285,11 +285,11 @@
       "description": "Spec to control the desired behavior of rolling update.", 
       "properties": {
         "maxSurge": {
-          "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.", 
+          "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }, 
         "maxUnavailable": {
-          "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old RC can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old RC can be scaled down further, followed by scaling up the new RC, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.", 
+          "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }
       }
@@ -378,18 +378,18 @@
       "required": [
         "rule"
       ], 
-      "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
+      "description": "RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.", 
       "properties": {
         "ranges": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.policy.v1beta1.IDRange"
           }, 
           "type": "array", 
-          "description": "Ranges are the allowed ranges of uids that may be used."
+          "description": "ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs."
         }, 
         "rule": {
           "type": "string", 
-          "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+          "description": "rule is the strategy that will dictate the allowable RunAsUser values that may be set."
         }
       }
     }, 
@@ -620,6 +620,10 @@
           "description": "Set of ids/uuids to uniquely identify the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#info", 
           "$ref": "#/definitions/io.k8s.api.core.v1.NodeSystemInfo"
         }, 
+        "config": {
+          "description": "Status of the config assigned to the node via the dynamic Kubelet config feature.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.NodeConfigStatus"
+        }, 
         "volumesAttached": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.core.v1.AttachedVolume"
@@ -663,6 +667,18 @@
     "io.k8s.kubernetes.pkg.apis.apps.v1beta1.DeploymentStatus": {
       "description": "Deprecated. Please use io.k8s.api.apps.v1beta1.DeploymentStatus instead.", 
       "$ref": "#/definitions/io.k8s.api.apps.v1beta1.DeploymentStatus"
+    }, 
+    "io.k8s.api.core.v1.ScopeSelector": {
+      "description": "A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.", 
+      "properties": {
+        "matchExpressions": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement"
+          }, 
+          "type": "array", 
+          "description": "A list of scope selector requirements by scope of the resources."
+        }
+      }
     }, 
     "io.k8s.api.extensions.v1beta1.IngressRule": {
       "description": "IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.", 
@@ -715,6 +731,30 @@
         "serverAddress": {
           "type": "string", 
           "description": "Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port."
+        }
+      }
+    }, 
+    "io.k8s.api.core.v1.CinderPersistentVolumeSource": {
+      "required": [
+        "volumeID"
+      ], 
+      "description": "Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling.", 
+      "properties": {
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+        }, 
+        "fsType": {
+          "type": "string", 
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+        }, 
+        "secretRef": {
+          "description": "Optional: points to a secret object containing parameters used to connect to OpenStack.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference"
+        }, 
+        "volumeID": {
+          "type": "string", 
+          "description": "volume id used to identify the volume in cinder More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
         }
       }
     }, 
@@ -929,6 +969,21 @@
         }, 
         {
           "kind": "DeleteOptions", 
+          "version": "v1beta1", 
+          "group": "apiextensions.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1", 
+          "group": "apiregistration.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1beta1", 
+          "group": "apiregistration.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
           "version": "v1", 
           "group": "apps"
         }, 
@@ -1039,6 +1094,11 @@
         }, 
         {
           "kind": "DeleteOptions", 
+          "version": "v1beta1", 
+          "group": "scheduling.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
           "version": "v1alpha1", 
           "group": "settings.k8s.io"
         }, 
@@ -1084,6 +1144,40 @@
         "apiVersion": {
           "type": "string", 
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }
+      }
+    }, 
+    "io.k8s.api.scheduling.v1beta1.PriorityClassList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "PriorityClassList", 
+          "version": "v1beta1", 
+          "group": "scheduling.k8s.io"
+        }
+      ], 
+      "description": "PriorityClassList is a collection of priority classes.", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.scheduling.v1beta1.PriorityClass"
+          }, 
+          "type": "array", 
+          "description": "items is the list of PriorityClasses"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
         }
       }
     }, 
@@ -1352,7 +1446,7 @@
             "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.RuleWithOperations"
           }, 
           "type": "array", 
-          "description": "Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule."
+          "description": "Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects."
         }, 
         "failurePolicy": {
           "type": "string", 
@@ -1502,7 +1596,11 @@
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }, 
           "type": "object", 
-          "description": "Hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+          "description": "hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+        }, 
+        "scopeSelector": {
+          "description": "scopeSelector is also a collection of filters like scopes that must match each object tracked by a quota but expressed using ScopeSelectorOperator in combination with possible values. For a resource to match, both scopes AND scopeSelector (if specified in spec), must be matched.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.ScopeSelector"
         }
       }
     }, 
@@ -1816,11 +1914,11 @@
       "required": [
         "driver"
       ], 
-      "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used.", 
+      "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used. Deprecated: use AllowedFlexVolume from policy API Group instead.", 
       "properties": {
         "driver": {
           "type": "string", 
-          "description": "Driver is the name of the Flexvolume driver."
+          "description": "driver is the name of the Flexvolume driver."
         }
       }
     }, 
@@ -1833,7 +1931,7 @@
       "properties": {
         "mountPropagation": {
           "type": "string", 
-          "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
+          "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10."
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -2013,7 +2111,7 @@
       "required": [
         "rule"
       ], 
-      "description": "SELinux  Strategy Options defines the strategy type and any options used to create the strategy.", 
+      "description": "SELinuxStrategyOptions defines the strategy type and any options used to create the strategy.", 
       "properties": {
         "seLinuxOptions": {
           "description": "seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/", 
@@ -2021,7 +2119,7 @@
         }, 
         "rule": {
           "type": "string", 
-          "description": "type is the strategy that will dictate the allowable labels that may be set."
+          "description": "rule is the strategy that will dictate the allowable labels that may be set."
         }
       }
     }, 
@@ -2403,6 +2501,13 @@
       "required": [
         "items"
       ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "APIServiceList", 
+          "version": "v1", 
+          "group": "apiregistration.k8s.io"
+        }
+      ], 
       "description": "APIServiceList is a list of APIService objects.", 
       "properties": {
         "items": {
@@ -2450,7 +2555,6 @@
     }, 
     "io.k8s.api.rbac.v1beta1.ClusterRoleBinding": {
       "required": [
-        "subjects", 
         "roleRef"
       ], 
       "x-kubernetes-group-version-kind": [
@@ -2525,11 +2629,11 @@
       "description": "Spec to control the desired behavior of rolling update.", 
       "properties": {
         "maxSurge": {
-          "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is atmost 130% of desired pods.", 
+          "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is atmost 130% of desired pods.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }, 
         "maxUnavailable": {
-          "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old RC can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old RC can be scaled down further, followed by scaling up the new RC, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.", 
+          "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }
       }
@@ -2601,17 +2705,21 @@
       "$ref": "#/definitions/io.k8s.api.core.v1.AttachedVolume"
     }, 
     "io.k8s.api.core.v1.NodeSelectorTerm": {
-      "required": [
-        "matchExpressions"
-      ], 
-      "description": "A null or empty node selector term matches no objects.", 
+      "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.", 
       "properties": {
+        "matchFields": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+          }, 
+          "type": "array", 
+          "description": "A list of node selector requirements by node's fields."
+        }, 
         "matchExpressions": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
           }, 
           "type": "array", 
-          "description": "Required. A list of node selector requirements. The requirements are ANDed."
+          "description": "A list of node selector requirements by node's labels."
         }
       }
     }, 
@@ -2719,13 +2827,17 @@
           "type": "boolean", 
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
         }, 
-        "volumeID": {
-          "type": "string", 
-          "description": "volume id used to identify the volume in cinder More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
-        }, 
         "fsType": {
           "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+        }, 
+        "secretRef": {
+          "description": "Optional: points to a secret object containing parameters used to connect to OpenStack.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+        }, 
+        "volumeID": {
+          "type": "string", 
+          "description": "volume id used to identify the volume in cinder More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
         }
       }
     }, 
@@ -3411,8 +3523,7 @@
     "io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup": {
       "required": [
         "name", 
-        "versions", 
-        "serverAddressByClientCIDRs"
+        "versions"
       ], 
       "x-kubernetes-group-version-kind": [
         {
@@ -3629,7 +3740,7 @@
         }, 
         "publishNotReadyAddresses": {
           "type": "boolean", 
-          "description": "publishNotReadyAddresses, when set to true, indicates that DNS implementations must publish the notReadyAddresses of subsets for the Endpoints associated with the Service. The default value is false. The primary use case for setting this field is to use a StatefulSet's Headless Service to propagate SRV records for its Pods without respect to their readiness for purpose of peer discovery. This field will replace the service.alpha.kubernetes.io/tolerate-unready-endpoints when that annotation is deprecated and all clients have been converted to use this field."
+          "description": "publishNotReadyAddresses, when set to true, indicates that DNS implementations must publish the notReadyAddresses of subsets for the Endpoints associated with the Service. The default value is false. The primary use case for setting this field is to use a StatefulSet's Headless Service to propagate SRV records for its Pods without respect to their readiness for purpose of peer discovery."
         }
       }
     }, 
@@ -3764,15 +3875,15 @@
         "supplementalGroups", 
         "fsGroup"
       ], 
-      "description": "Pod Security Policy Spec defines the policy enforced.", 
+      "description": "PodSecurityPolicySpec defines the policy enforced. Deprecated: use PodSecurityPolicySpec from policy API Group instead.", 
       "properties": {
         "readOnlyRootFilesystem": {
           "type": "boolean", 
-          "description": "ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
+          "description": "readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
         }, 
         "allowPrivilegeEscalation": {
           "type": "boolean", 
-          "description": "AllowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true."
+          "description": "allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true."
         }, 
         "hostNetwork": {
           "type": "boolean", 
@@ -3782,37 +3893,41 @@
           "type": "boolean", 
           "description": "hostIPC determines if the policy allows the use of HostIPC in the pod spec."
         }, 
+        "forbiddenSysctls": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in \"*\" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.\n\nExamples: e.g. \"foo/*\" forbids \"foo/bar\", \"foo/baz\", etc. e.g. \"foo.*\" forbids \"foo.bar\", \"foo.baz\", etc."
+        }, 
         "defaultAllowPrivilegeEscalation": {
           "type": "boolean", 
-          "description": "DefaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process."
+          "description": "defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process."
         }, 
         "allowedCapabilities": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "AllowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both AllowedCapabilities and RequiredDropCapabilities."
+          "description": "allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities."
         }, 
         "allowedHostPaths": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.AllowedHostPath"
           }, 
           "type": "array", 
-          "description": "is a white list of allowed host paths. Empty indicates that all host paths may be used."
+          "description": "allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used."
         }, 
         "runAsUser": {
           "description": "runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.", 
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions"
         }, 
-        "allowedFlexVolumes": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.AllowedFlexVolume"
-          }, 
-          "type": "array", 
-          "description": "AllowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the \"Volumes\" field."
+        "supplementalGroups": {
+          "description": "supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.", 
+          "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.SupplementalGroupsStrategyOptions"
         }, 
         "fsGroup": {
-          "description": "FSGroup is the strategy that will dictate what fs group is used by the SecurityContext.", 
+          "description": "fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.", 
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.FSGroupStrategyOptions"
         }, 
         "hostPorts": {
@@ -3822,16 +3937,19 @@
           "type": "array", 
           "description": "hostPorts determines which host port ranges are allowed to be exposed."
         }, 
-        "supplementalGroups": {
-          "description": "SupplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.", 
-          "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.SupplementalGroupsStrategyOptions"
+        "allowedFlexVolumes": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.AllowedFlexVolume"
+          }, 
+          "type": "array", 
+          "description": "allowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the \"volumes\" field."
         }, 
         "volumes": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "volumes is a white list of allowed volume plugins.  Empty indicates that all plugins may be used."
+          "description": "volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'."
         }, 
         "seLinux": {
           "description": "seLinux is the strategy that will dictate the allowable labels that may be set.", 
@@ -3842,14 +3960,14 @@
             "type": "string"
           }, 
           "type": "array", 
-          "description": "DefaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both DefaultAddCapabilities and RequiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the AllowedCapabilities list."
+          "description": "defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the allowedCapabilities list."
         }, 
         "requiredDropCapabilities": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "RequiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added."
+          "description": "requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added."
         }, 
         "privileged": {
           "type": "boolean", 
@@ -3858,6 +3976,13 @@
         "hostPID": {
           "type": "boolean", 
           "description": "hostPID determines if the policy allows the use of HostPID in the pod spec."
+        }, 
+        "allowedUnsafeSysctls": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in \"*\" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.\n\nExamples: e.g. \"foo/*\" allows \"foo/bar\", \"foo/baz\", etc. e.g. \"foo.*\" allows \"foo.bar\", \"foo.baz\", etc."
         }
       }
     }, 
@@ -4024,6 +4149,10 @@
           "description": "information about the secret data to project", 
           "$ref": "#/definitions/io.k8s.api.core.v1.SecretProjection"
         }, 
+        "serviceAccountToken": {
+          "description": "information about the serviceAccountToken data to project", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.ServiceAccountTokenProjection"
+        }, 
         "downwardAPI": {
           "description": "information about the downwardAPI data to project", 
           "$ref": "#/definitions/io.k8s.api.core.v1.DownwardAPIProjection"
@@ -4126,7 +4255,7 @@
         "min", 
         "max"
       ], 
-      "description": "Host Port Range defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.", 
+      "description": "HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.", 
       "properties": {
         "max": {
           "type": "integer", 
@@ -4343,14 +4472,14 @@
           "group": "policy"
         }
       ], 
-      "description": "Pod Security Policy List is a list of PodSecurityPolicy objects.", 
+      "description": "PodSecurityPolicyList is a list of PodSecurityPolicy objects.", 
       "properties": {
         "items": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.policy.v1beta1.PodSecurityPolicy"
           }, 
           "type": "array", 
-          "description": "Items is a list of schema objects."
+          "description": "items is a list of schema objects."
         }, 
         "kind": {
           "type": "string", 
@@ -4444,7 +4573,7 @@
       "required": [
         "repository"
       ], 
-      "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.", 
+      "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.\n\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.", 
       "properties": {
         "directory": {
           "type": "string", 
@@ -4573,7 +4702,6 @@
     }, 
     "io.k8s.api.rbac.v1alpha1.RoleBinding": {
       "required": [
-        "subjects", 
         "roleRef"
       ], 
       "x-kubernetes-group-version-kind": [
@@ -4803,7 +4931,6 @@
     "io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIServiceSpec": {
       "required": [
         "service", 
-        "caBundle", 
         "groupPriorityMinimum", 
         "versionPriority"
       ], 
@@ -4837,7 +4964,7 @@
         }, 
         "versionPriority": {
           "type": "integer", 
-          "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) Since it's inside of a group, the number can be small, probably in the 10s.", 
+          "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it's inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is \"kube-like\", it will sort above non \"kube-like\" version strings, which are ordered lexicographically. \"Kube-like\" versions start with a \"v\", then are followed by a number (the major version), then optionally the string \"alpha\" or \"beta\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.", 
           "format": "int32"
         }
       }
@@ -4973,9 +5100,12 @@
       ], 
       "description": "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.", 
       "properties": {
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        "allowedTopologies": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.TopologySelectorTerm"
+          }, 
+          "type": "array", 
+          "description": "Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is alpha-level and is only honored by servers that enable the DynamicProvisioningScheduling feature."
         }, 
         "parameters": {
           "additionalProperties": {
@@ -4983,6 +5113,10 @@
           }, 
           "type": "object", 
           "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
         "apiVersion": {
           "type": "string", 
@@ -5165,7 +5299,7 @@
           "group": "extensions"
         }
       ], 
-      "description": "Pod Security Policy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.", 
+      "description": "PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container. Deprecated: use PodSecurityPolicy from policy API Group instead.", 
       "properties": {
         "kind": {
           "type": "string", 
@@ -5301,6 +5435,13 @@
       }
     }, 
     "io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIService": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "APIService", 
+          "version": "v1beta1", 
+          "group": "apiregistration.k8s.io"
+        }
+      ], 
       "description": "APIService represents a server for a particular GroupVersion. Name must be \"version.group\".", 
       "properties": {
         "status": {
@@ -5326,7 +5467,6 @@
     }, 
     "io.k8s.api.rbac.v1.ClusterRoleBinding": {
       "required": [
-        "subjects", 
         "roleRef"
       ], 
       "x-kubernetes-group-version-kind": [
@@ -5950,92 +6090,6 @@
         }
       }
     }, 
-    "io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta": {
-      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
-      "properties": {
-        "finalizers": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array", 
-          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed.", 
-          "x-kubernetes-patch-strategy": "merge"
-        }, 
-        "clusterName": {
-          "type": "string", 
-          "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
-        }, 
-        "deletionGracePeriodSeconds": {
-          "type": "integer", 
-          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.", 
-          "format": "int64"
-        }, 
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          }, 
-          "type": "object", 
-          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
-        }, 
-        "generateName": {
-          "type": "string", 
-          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency"
-        }, 
-        "ownerReferences": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
-          }, 
-          "x-kubernetes-patch-merge-key": "uid", 
-          "type": "array", 
-          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.", 
-          "x-kubernetes-patch-strategy": "merge"
-        }, 
-        "creationTimestamp": {
-          "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        }, 
-        "uid": {
-          "type": "string", 
-          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
-        }, 
-        "name": {
-          "type": "string", 
-          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-        }, 
-        "deletionTimestamp": {
-          "description": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        }, 
-        "namespace": {
-          "type": "string", 
-          "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
-        }, 
-        "generation": {
-          "type": "integer", 
-          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
-          "format": "int64"
-        }, 
-        "initializers": {
-          "description": "An initializer is a controller which enforces some system invariant at object creation time. This field is a list of initializers that have not yet acted on this object. If nil or empty, this object has been completely initialized. Otherwise, the object is considered uninitialized and is hidden (in list/watch and get calls) from clients that haven't explicitly asked to observe uninitialized objects.\n\nWhen an object is created, the system will populate this list with the current set of initializers. Only privileged users may set or modify this list. Once it is empty, it may not be modified further by any user.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers"
-        }, 
-        "resourceVersion": {
-          "type": "string", 
-          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
-        }, 
-        "annotations": {
-          "additionalProperties": {
-            "type": "string"
-          }, 
-          "type": "object", 
-          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
-        }, 
-        "selfLink": {
-          "type": "string", 
-          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
-        }
-      }
-    }, 
     "io.k8s.api.extensions.v1beta1.DeploymentCondition": {
       "required": [
         "type", 
@@ -6239,9 +6293,38 @@
         }
       }
     }, 
-    "io.k8s.kubernetes.pkg.apis.rbac.v1alpha1.ClusterRoleBindingList": {
-      "description": "Deprecated. Please use io.k8s.api.rbac.v1alpha1.ClusterRoleBindingList instead.", 
-      "$ref": "#/definitions/io.k8s.api.rbac.v1alpha1.ClusterRoleBindingList"
+    "io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus": {
+      "required": [
+        "currentReplicas", 
+        "desiredReplicas"
+      ], 
+      "description": "current status of a horizontal pod autoscaler", 
+      "properties": {
+        "observedGeneration": {
+          "type": "integer", 
+          "description": "most recent generation observed by this autoscaler.", 
+          "format": "int64"
+        }, 
+        "currentReplicas": {
+          "type": "integer", 
+          "description": "current number of replicas of pods managed by this autoscaler.", 
+          "format": "int32"
+        }, 
+        "lastScaleTime": {
+          "description": "last time the HorizontalPodAutoscaler scaled the number of pods; used by the autoscaler to control how often the number of pods is changed.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        }, 
+        "currentCPUUtilizationPercentage": {
+          "type": "integer", 
+          "description": "current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.", 
+          "format": "int32"
+        }, 
+        "desiredReplicas": {
+          "type": "integer", 
+          "description": "desired number of replicas of pods managed by this autoscaler.", 
+          "format": "int32"
+        }
+      }
     }, 
     "io.k8s.api.storage.v1alpha1.VolumeAttachmentStatus": {
       "required": [
@@ -6279,6 +6362,41 @@
           }, 
           "type": "array", 
           "description": "ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added"
+        }
+      }
+    }, 
+    "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceColumnDefinition": {
+      "required": [
+        "name", 
+        "type", 
+        "JSONPath"
+      ], 
+      "description": "CustomResourceColumnDefinition specifies a column for server side printing.", 
+      "properties": {
+        "priority": {
+          "type": "integer", 
+          "description": "priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a higher priority.", 
+          "format": "int32"
+        }, 
+        "JSONPath": {
+          "type": "string", 
+          "description": "JSONPath is a simple JSON path, i.e. with array notation."
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "description is a human readable description of this column."
+        }, 
+        "format": {
+          "type": "string", 
+          "description": "format is an optional OpenAPI type definition for this column. The 'name' format is applied to the primary identifier column to assist in clients identifying column is the resource name. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for more."
+        }, 
+        "type": {
+          "type": "string", 
+          "description": "type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for more."
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "name is a human readable name for the column."
         }
       }
     }, 
@@ -6477,6 +6595,38 @@
         "name": {
           "type": "string", 
           "description": "Name is the name of resource being referenced"
+        }
+      }
+    }, 
+    "io.k8s.api.core.v1.PersistentVolume": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "PersistentVolume", 
+          "version": "v1", 
+          "group": ""
+        }
+      ], 
+      "description": "PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes", 
+      "properties": {
+        "status": {
+          "description": "Status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeStatus"
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "spec": {
+          "description": "Spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeSpec"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -6990,6 +7140,18 @@
       "description": "Deprecated. Please use io.k8s.api.core.v1.ContainerPort instead.", 
       "$ref": "#/definitions/io.k8s.api.core.v1.ContainerPort"
     }, 
+    "io.k8s.api.core.v1.TopologySelectorTerm": {
+      "description": "A topology selector term represents the result of label queries. A null or empty topology selector term matches no objects. The requirements of them are ANDed. It provides a subset of functionality as NodeSelectorTerm. This is an alpha feature and may change in the future.", 
+      "properties": {
+        "matchLabelExpressions": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.TopologySelectorLabelRequirement"
+          }, 
+          "type": "array", 
+          "description": "A list of topology selector requirements by labels."
+        }
+      }
+    }, 
     "io.k8s.api.apps.v1beta2.StatefulSetList": {
       "required": [
         "items"
@@ -7035,35 +7197,24 @@
         }
       }
     }, 
-    "io.k8s.api.core.v1.PersistentVolume": {
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "PersistentVolume", 
-          "version": "v1", 
-          "group": ""
-        }
+    "io.k8s.api.core.v1.ServiceAccountTokenProjection": {
+      "required": [
+        "path"
       ], 
-      "description": "PersistentVolume (PV) is a storage resource provisioned by an administrator. It is analogous to a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes", 
+      "description": "ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise).", 
       "properties": {
-        "status": {
-          "description": "Status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeStatus"
-        }, 
-        "kind": {
+        "path": {
           "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+          "description": "Path is the path relative to the mount point of the file to project the token into."
         }, 
-        "spec": {
-          "description": "Spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeSpec"
-        }, 
-        "apiVersion": {
+        "audience": {
           "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+          "description": "Audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token. The audience defaults to the identifier of the apiserver."
         }, 
-        "metadata": {
-          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        "expirationSeconds": {
+          "type": "integer", 
+          "description": "ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.", 
+          "format": "int64"
         }
       }
     }, 
@@ -7131,11 +7282,15 @@
       "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.IngressList"
     }, 
     "io.k8s.api.policy.v1beta1.AllowedHostPath": {
-      "description": "defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined.", 
+      "description": "AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined.", 
       "properties": {
+        "readOnly": {
+          "type": "boolean", 
+          "description": "when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly."
+        }, 
         "pathPrefix": {
           "type": "string", 
-          "description": "is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`"
+          "description": "pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`"
         }
       }
     }, 
@@ -7177,7 +7332,7 @@
         }, 
         "dnsPolicy": {
           "type": "string", 
-          "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Note that 'None' policy is an alpha feature introduced in v1.9 and CustomPodDNS feature gate must be enabled to use it."
+          "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'."
         }, 
         "serviceAccountName": {
           "type": "string", 
@@ -7221,7 +7376,7 @@
           "description": "NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements."
         }, 
         "dnsConfig": {
-          "description": "Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy. This is an alpha feature introduced in v1.9 and CustomPodDNS feature gate must be enabled to use it.", 
+          "description": "Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy.", 
           "$ref": "#/definitions/io.k8s.api.core.v1.PodDNSConfig"
         }, 
         "hostAliases": {
@@ -7257,6 +7412,13 @@
           "type": "integer", 
           "description": "Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.", 
           "format": "int64"
+        }, 
+        "readinessGates": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.PodReadinessGate"
+          }, 
+          "type": "array", 
+          "description": "If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to \"True\" More info: https://github.com/kubernetes/community/blob/master/keps/sig-network/0007-pod-ready%2B%2B.md"
         }, 
         "affinity": {
           "description": "If specified, the pod's scheduling constraints", 
@@ -7327,11 +7489,11 @@
             "$ref": "#/definitions/io.k8s.api.policy.v1beta1.IDRange"
           }, 
           "type": "array", 
-          "description": "Ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end."
+          "description": "ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs."
         }, 
         "rule": {
           "type": "string", 
-          "description": "Rule is the strategy that will dictate what FSGroup is used in the SecurityContext."
+          "description": "rule is the strategy that will dictate what FSGroup is used in the SecurityContext."
         }
       }
     }, 
@@ -7367,6 +7529,10 @@
           "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids"
         }
       }
+    }, 
+    "io.k8s.kubernetes.pkg.api.v1.Taint": {
+      "description": "Deprecated. Please use io.k8s.api.core.v1.Taint instead.", 
+      "$ref": "#/definitions/io.k8s.api.core.v1.Taint"
     }, 
     "io.k8s.api.core.v1.Taint": {
       "required": [
@@ -7497,7 +7663,7 @@
           "description": "`url` gives the location of the webhook, in standard URL form (`[scheme://]host:port/path`). Exactly one of `url` or `service` must be specified.\n\nThe `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.\n\nPlease note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.\n\nThe scheme must be \"https\"; the URL must begin with \"https://\".\n\nA path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.\n\nAttempting to use a user or basic auth e.g. \"user:password@\" is not allowed. Fragments (\"#...\") and query parameters (\"?...\") are not allowed, either."
         }, 
         "service": {
-          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`.\n\nIf there is only one port open for the service, that port will be used. If there are multiple ports open, port 443 will be used if it is open, otherwise it is an error.", 
+          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`.\n\nPort 443 will be used if it is open, otherwise it is an error.", 
           "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.ServiceReference"
         }
       }
@@ -7734,6 +7900,13 @@
       }
     }, 
     "io.k8s.kube-aggregator.pkg.apis.apiregistration.v1.APIService": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "APIService", 
+          "version": "v1", 
+          "group": "apiregistration.k8s.io"
+        }
+      ], 
       "description": "APIService represents a server for a particular GroupVersion. Name must be \"version.group\".", 
       "properties": {
         "status": {
@@ -7761,36 +7934,15 @@
       "description": "Deprecated. Please use io.k8s.api.batch.v1.Job instead.", 
       "$ref": "#/definitions/io.k8s.api.batch.v1.Job"
     }, 
-    "io.k8s.api.core.v1.ComponentStatus": {
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "ComponentStatus", 
-          "version": "v1", 
-          "group": ""
-        }
+    "io.k8s.api.core.v1.PodReadinessGate": {
+      "required": [
+        "conditionType"
       ], 
-      "description": "ComponentStatus (and ComponentStatusList) holds the cluster validation info.", 
+      "description": "PodReadinessGate contains the reference to a pod condition", 
       "properties": {
-        "kind": {
+        "conditionType": {
           "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "conditions": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.core.v1.ComponentCondition"
-          }, 
-          "x-kubernetes-patch-merge-key": "type", 
-          "type": "array", 
-          "description": "List of component conditions observed", 
-          "x-kubernetes-patch-strategy": "merge"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-        }, 
-        "metadata": {
-          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+          "description": "ConditionType refers to a condition in the pod's condition list with matching type."
         }
       }
     }, 
@@ -7929,19 +8081,32 @@
     "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec": {
       "required": [
         "group", 
-        "version", 
         "names", 
         "scope"
       ], 
       "description": "CustomResourceDefinitionSpec describes how a user wants their resource to appear", 
       "properties": {
-        "version": {
-          "type": "string", 
-          "description": "Version is the version this resource belongs in"
-        }, 
         "group": {
           "type": "string", 
           "description": "Group is the group this resource belongs in"
+        }, 
+        "versions": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionVersion"
+          }, 
+          "type": "array", 
+          "description": "Versions is the list of all supported versions for this resource. If Version field is provided, this field is optional. Validation: All versions must use the same validation schema for now. i.e., top level Validation field is applied to all of these versions. Order: The version name will be used to compute the order. If the version string is \"kube-like\", it will sort above non \"kube-like\" version strings, which are ordered lexicographically. \"Kube-like\" versions start with a \"v\", then are followed by a number (the major version), then optionally the string \"alpha\" or \"beta\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10."
+        }, 
+        "additionalPrinterColumns": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceColumnDefinition"
+          }, 
+          "type": "array", 
+          "description": "AdditionalPrinterColumns are additional columns shown e.g. in kubectl next to the name. Defaults to a created-at column."
+        }, 
+        "version": {
+          "type": "string", 
+          "description": "Version is the version this resource belongs in Should be always first item in Versions field if provided. Optional, but at least one of Version or Versions must be set. Deprecated: Please use `Versions`."
         }, 
         "names": {
           "description": "Names are the names used to describe this custom resource", 
@@ -7956,7 +8121,7 @@
           "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation"
         }, 
         "subresources": {
-          "description": "Subresources describes the subresources for CustomResources This field is alpha-level and should only be sent to servers that enable subresources via the CustomResourceSubresources feature gate.", 
+          "description": "Subresources describes the subresources for CustomResources", 
           "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresources"
         }
       }
@@ -8005,7 +8170,7 @@
         }, 
         "cinder": {
           "description": "Cinder represents a cinder volume attached and mounted on kubelets host machine More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.CinderVolumeSource"
+          "$ref": "#/definitions/io.k8s.api.core.v1.CinderPersistentVolumeSource"
         }, 
         "nodeAffinity": {
           "description": "NodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume.", 
@@ -8100,9 +8265,6 @@
       "$ref": "#/definitions/io.k8s.api.authorization.v1.SelfSubjectAccessReview"
     }, 
     "io.k8s.api.core.v1.Endpoints": {
-      "required": [
-        "subsets"
-      ], 
       "x-kubernetes-group-version-kind": [
         {
           "kind": "Endpoints", 
@@ -8281,6 +8443,13 @@
       "required": [
         "items"
       ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "CustomResourceDefinitionList", 
+          "version": "v1beta1", 
+          "group": "apiextensions.k8s.io"
+        }
+      ], 
       "description": "CustomResourceDefinitionList is a list of CustomResourceDefinition objects.", 
       "properties": {
         "items": {
@@ -8394,7 +8563,6 @@
     }, 
     "io.k8s.api.rbac.v1.RoleBinding": {
       "required": [
-        "subjects", 
         "roleRef"
       ], 
       "x-kubernetes-group-version-kind": [
@@ -8496,11 +8664,11 @@
       "required": [
         "path"
       ], 
-      "description": "Local represents directly-attached storage with node affinity", 
+      "description": "Local represents directly-attached storage with node affinity (Beta feature)", 
       "properties": {
         "path": {
           "type": "string", 
-          "description": "The full path to the volume on the node For alpha, this path must be a directory Once block as a source is supported, then this path can point to a block device"
+          "description": "The full path to the volume on the node. It can be either a directory or block device (disk, partition, ...). Directories can be represented only by PersistentVolume with VolumeMode=Filesystem. Block devices can be represented only by VolumeMode=Block, which also requires the BlockVolume alpha feature gate to be enabled."
         }
       }
     }, 
@@ -8563,6 +8731,46 @@
         "fsType": {
           "type": "string", 
           "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore"
+        }
+      }
+    }, 
+    "io.k8s.api.scheduling.v1beta1.PriorityClass": {
+      "required": [
+        "value"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "PriorityClass", 
+          "version": "v1beta1", 
+          "group": "scheduling.k8s.io"
+        }
+      ], 
+      "description": "PriorityClass defines mapping from a priority class name to the priority integer value. The value can be any valid integer.", 
+      "properties": {
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "description": {
+          "type": "string", 
+          "description": "description is an arbitrary string that usually provides guidelines on when this priority class should be used."
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "globalDefault": {
+          "type": "boolean", 
+          "description": "globalDefault specifies whether this PriorityClass should be considered as the default priority for pods that do not have any priority class. Only one PriorityClass can be marked as `globalDefault`. However, if more than one PriorityClasses exists with their `globalDefault` field set to true, the smallest value of such global default PriorityClasses will be used as the default priority."
+        }, 
+        "value": {
+          "type": "integer", 
+          "description": "The value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.", 
+          "format": "int32"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -8934,18 +9142,18 @@
       }
     }, 
     "io.k8s.api.extensions.v1beta1.SupplementalGroupsStrategyOptions": {
-      "description": "SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.", 
+      "description": "SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use SupplementalGroupsStrategyOptions from policy API Group instead.", 
       "properties": {
         "ranges": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.IDRange"
           }, 
           "type": "array", 
-          "description": "Ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end."
+          "description": "ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs."
         }, 
         "rule": {
           "type": "string", 
-          "description": "Rule is the strategy that will dictate what supplemental groups is used in the SecurityContext."
+          "description": "rule is the strategy that will dictate what supplemental groups is used in the SecurityContext."
         }
       }
     }, 
@@ -9047,18 +9255,18 @@
       "$ref": "#/definitions/io.k8s.api.core.v1.ContainerStateWaiting"
     }, 
     "io.k8s.api.networking.v1.NetworkPolicyPeer": {
-      "description": "NetworkPolicyPeer describes a peer to allow traffic from. Exactly one of its fields must be specified.", 
+      "description": "NetworkPolicyPeer describes a peer to allow traffic from. Only certain combinations of fields are allowed", 
       "properties": {
         "namespaceSelector": {
-          "description": "Selects Namespaces using cluster scoped-labels. This matches all pods in all namespaces selected by this label selector. This field follows standard label selector semantics. If present but empty, this selector selects all namespaces.", 
+          "description": "Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.\n\nIf PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
         }, 
         "ipBlock": {
-          "description": "IPBlock defines policy on a particular IPBlock", 
+          "description": "IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.", 
           "$ref": "#/definitions/io.k8s.api.networking.v1.IPBlock"
         }, 
         "podSelector": {
-          "description": "This is a label selector which selects Pods in this namespace. This field follows standard label selector semantics. If present but empty, this selector selects all pods in this namespace.", 
+          "description": "This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.\n\nIf NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
         }
       }
@@ -9254,7 +9462,6 @@
     "io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceSpec": {
       "required": [
         "service", 
-        "caBundle", 
         "groupPriorityMinimum", 
         "versionPriority"
       ], 
@@ -9288,7 +9495,7 @@
         }, 
         "versionPriority": {
           "type": "integer", 
-          "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) Since it's inside of a group, the number can be small, probably in the 10s.", 
+          "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it's inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is \"kube-like\", it will sort above non \"kube-like\" version strings, which are ordered lexicographically. \"Kube-like\" versions start with a \"v\", then are followed by a number (the major version), then optionally the string \"alpha\" or \"beta\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.", 
           "format": "int32"
         }
       }
@@ -9520,16 +9727,16 @@
         "min", 
         "max"
       ], 
-      "description": "ID Range provides a min/max of an allowed range of IDs.", 
+      "description": "IDRange provides a min/max of an allowed range of IDs.", 
       "properties": {
         "max": {
           "type": "integer", 
-          "description": "Max is the end of the range, inclusive.", 
+          "description": "max is the end of the range, inclusive.", 
           "format": "int64"
         }, 
         "min": {
           "type": "integer", 
-          "description": "Min is the start of the range, inclusive.", 
+          "description": "min is the start of the range, inclusive.", 
           "format": "int64"
         }
       }
@@ -10338,6 +10545,13 @@
       }
     }, 
     "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinition": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "CustomResourceDefinition", 
+          "version": "v1beta1", 
+          "group": "apiextensions.k8s.io"
+        }
+      ], 
       "description": "CustomResourceDefinition represents a resource that should be exposed on the API server.  Its name MUST be in the format <.spec.name>.<.spec.group>.", 
       "properties": {
         "status": {
@@ -10572,13 +10786,9 @@
       ], 
       "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)", 
       "properties": {
-        "volumeHandle": {
-          "type": "string", 
-          "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
-        }, 
-        "readOnly": {
-          "type": "boolean", 
-          "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
+        "nodeStageSecretRef": {
+          "description": "NodeStageSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodeStageVolume and NodeStageVolume and NodeUnstageVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference"
         }, 
         "driver": {
           "type": "string", 
@@ -10591,9 +10801,25 @@
           "type": "object", 
           "description": "Attributes of the volume to publish."
         }, 
+        "controllerPublishSecretRef": {
+          "description": "ControllerPublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerPublishVolume and ControllerUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference"
+        }, 
         "fsType": {
           "type": "string", 
           "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
+        }, 
+        "volumeHandle": {
+          "type": "string", 
+          "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
+        }, 
+        "nodePublishSecretRef": {
+          "description": "NodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and  may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference"
         }
       }
     }, 
@@ -10709,9 +10935,38 @@
         }
       }
     }, 
-    "io.k8s.kubernetes.pkg.api.v1.SecretEnvSource": {
-      "description": "Deprecated. Please use io.k8s.api.core.v1.SecretEnvSource instead.", 
-      "$ref": "#/definitions/io.k8s.api.core.v1.SecretEnvSource"
+    "io.k8s.api.core.v1.ComponentStatus": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "ComponentStatus", 
+          "version": "v1", 
+          "group": ""
+        }
+      ], 
+      "description": "ComponentStatus (and ComponentStatusList) holds the cluster validation info.", 
+      "properties": {
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "conditions": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.ComponentCondition"
+          }, 
+          "x-kubernetes-patch-merge-key": "type", 
+          "type": "array", 
+          "description": "List of component conditions observed", 
+          "x-kubernetes-patch-strategy": "merge"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        }
+      }
     }, 
     "io.k8s.api.core.v1.NodeAddress": {
       "required": [
@@ -10733,10 +10988,18 @@
     "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionStatus": {
       "required": [
         "conditions", 
-        "acceptedNames"
+        "acceptedNames", 
+        "storedVersions"
       ], 
       "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition", 
       "properties": {
+        "storedVersions": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "StoredVersions are all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so the migration controller can first finish a migration to another version (i.e. that no old objects are left in the storage), and then remove the rest of the versions from this list. None of the versions in this list can be removed from the spec.Versions field."
+        }, 
         "acceptedNames": {
           "description": "AcceptedNames are the names that are actually being used to serve discovery They may be different than the names in spec.", 
           "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionNames"
@@ -10786,16 +11049,16 @@
         "min", 
         "max"
       ], 
-      "description": "ID Range provides a min/max of an allowed range of IDs.", 
+      "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.", 
       "properties": {
         "max": {
           "type": "integer", 
-          "description": "Max is the end of the range, inclusive.", 
+          "description": "max is the end of the range, inclusive.", 
           "format": "int64"
         }, 
         "min": {
           "type": "integer", 
-          "description": "Min is the start of the range, inclusive.", 
+          "description": "min is the start of the range, inclusive.", 
           "format": "int64"
         }
       }
@@ -11078,14 +11341,17 @@
           "type": "boolean", 
           "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
         }, 
-        "fsGroup": {
-          "type": "integer", 
-          "description": "A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:\n\n1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----\n\nIf unset, the Kubelet will not modify the ownership and permissions of any volume.", 
-          "format": "int64"
+        "sysctls": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.Sysctl"
+          }, 
+          "type": "array", 
+          "description": "Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch."
         }, 
-        "seLinuxOptions": {
-          "description": "The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions"
+        "runAsGroup": {
+          "type": "integer", 
+          "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
+          "format": "int64"
         }, 
         "runAsUser": {
           "type": "integer", 
@@ -11099,6 +11365,15 @@
           }, 
           "type": "array", 
           "description": "A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container."
+        }, 
+        "fsGroup": {
+          "type": "integer", 
+          "description": "A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:\n\n1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----\n\nIf unset, the Kubelet will not modify the ownership and permissions of any volume.", 
+          "format": "int64"
+        }, 
+        "seLinuxOptions": {
+          "description": "The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions"
         }
       }
     }, 
@@ -11230,14 +11505,14 @@
           "group": "extensions"
         }
       ], 
-      "description": "Pod Security Policy List is a list of PodSecurityPolicy objects.", 
+      "description": "PodSecurityPolicyList is a list of PodSecurityPolicy objects. Deprecated: use PodSecurityPolicyList from policy API Group instead.", 
       "properties": {
         "items": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.PodSecurityPolicy"
           }, 
           "type": "array", 
-          "description": "Items is a list of schema objects."
+          "description": "items is a list of schema objects."
         }, 
         "kind": {
           "type": "string", 
@@ -11250,6 +11525,30 @@
         "metadata": {
           "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
+    }, 
+    "io.k8s.api.core.v1.ScopedResourceSelectorRequirement": {
+      "required": [
+        "scopeName", 
+        "operator"
+      ], 
+      "description": "A scoped-resource selector requirement is a selector that contains values, a scope name, and an operator that relates the scope name and values.", 
+      "properties": {
+        "operator": {
+          "type": "string", 
+          "description": "Represents a scope's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist."
+        }, 
+        "scopeName": {
+          "type": "string", 
+          "description": "The name of the scope that the selector applies to."
+        }, 
+        "values": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
         }
       }
     }, 
@@ -11386,6 +11685,27 @@
     "io.k8s.kubernetes.pkg.api.v1.ConfigMap": {
       "description": "Deprecated. Please use io.k8s.api.core.v1.ConfigMap instead.", 
       "$ref": "#/definitions/io.k8s.api.core.v1.ConfigMap"
+    }, 
+    "io.k8s.api.core.v1.NodeConfigStatus": {
+      "description": "NodeConfigStatus describes the status of the config assigned by Node.Spec.ConfigSource.", 
+      "properties": {
+        "active": {
+          "description": "Active reports the checkpointed config the node is actively using. Active will represent either the current version of the Assigned config, or the current LastKnownGood config, depending on whether attempting to use the Assigned config results in an error.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.NodeConfigSource"
+        }, 
+        "assigned": {
+          "description": "Assigned reports the checkpointed config the node will try to use. When Node.Spec.ConfigSource is updated, the node checkpoints the associated config payload to local disk, along with a record indicating intended config. The node refers to this record to choose its config checkpoint, and reports this record in Assigned. Assigned only updates in the status after the record has been checkpointed to disk. When the Kubelet is restarted, it tries to make the Assigned config the Active config by loading and validating the checkpointed payload identified by Assigned.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.NodeConfigSource"
+        }, 
+        "error": {
+          "type": "string", 
+          "description": "Error describes any problems reconciling the Spec.ConfigSource to the Active config. Errors may occur, for example, attempting to checkpoint Spec.ConfigSource to the local Assigned record, attempting to checkpoint the payload associated with Spec.ConfigSource, attempting to load or validate the Assigned config, etc. Errors may occur at different points while syncing config. Earlier errors (e.g. download or checkpointing errors) will not result in a rollback to LastKnownGood, and may resolve across Kubelet retries. Later errors (e.g. loading or validating a checkpointed config) will result in a rollback to LastKnownGood. In the latter case, it is usually possible to resolve the error by fixing the config assigned in Spec.ConfigSource. You can find additional information for debugging by searching the error message in the Kubelet log. Error is a human-readable description of the error state; machines can check whether or not Error is empty, but should not rely on the stability of the Error text across Kubelet versions."
+        }, 
+        "lastKnownGood": {
+          "description": "LastKnownGood reports the checkpointed config the node will fall back to when it encounters an error attempting to use the Assigned config. The Assigned config becomes the LastKnownGood config when the node determines that the Assigned config is stable and correct. This is currently implemented as a 10-minute soak period starting when the local record of Assigned config is updated. If the Assigned config is Active at the end of this period, it becomes the LastKnownGood. Note that if Spec.ConfigSource is reset to nil (use local defaults), the LastKnownGood is also immediately reset to nil, because the local default config is always assumed good. You should not make assumptions about the node's method of determining config stability and correctness, as this may change or become configurable in the future.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.NodeConfigSource"
+        }
+      }
     }, 
     "io.k8s.kubernetes.pkg.apis.authentication.v1beta1.TokenReviewSpec": {
       "description": "Deprecated. Please use io.k8s.api.authentication.v1beta1.TokenReviewSpec instead.", 
@@ -11557,7 +11877,7 @@
         }, 
         "externalID": {
           "type": "string", 
-          "description": "External ID of the node assigned by some machine database (e.g. a cloud provider). Deprecated."
+          "description": "Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966"
         }, 
         "configSource": {
           "description": "If specified, the source to get node configuration from The DynamicKubeletConfig feature gate must be enabled for the Kubelet to use this field", 
@@ -11579,15 +11899,15 @@
         "supplementalGroups", 
         "fsGroup"
       ], 
-      "description": "Pod Security Policy Spec defines the policy enforced.", 
+      "description": "PodSecurityPolicySpec defines the policy enforced.", 
       "properties": {
         "readOnlyRootFilesystem": {
           "type": "boolean", 
-          "description": "ReadOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
+          "description": "readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to."
         }, 
         "allowPrivilegeEscalation": {
           "type": "boolean", 
-          "description": "AllowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true."
+          "description": "allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true."
         }, 
         "hostNetwork": {
           "type": "boolean", 
@@ -11597,37 +11917,41 @@
           "type": "boolean", 
           "description": "hostIPC determines if the policy allows the use of HostIPC in the pod spec."
         }, 
+        "forbiddenSysctls": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in \"*\" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.\n\nExamples: e.g. \"foo/*\" forbids \"foo/bar\", \"foo/baz\", etc. e.g. \"foo.*\" forbids \"foo.bar\", \"foo.baz\", etc."
+        }, 
         "defaultAllowPrivilegeEscalation": {
           "type": "boolean", 
-          "description": "DefaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process."
+          "description": "defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process."
         }, 
         "allowedCapabilities": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "AllowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both AllowedCapabilities and RequiredDropCapabilities."
+          "description": "allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities."
         }, 
         "allowedHostPaths": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.policy.v1beta1.AllowedHostPath"
           }, 
           "type": "array", 
-          "description": "is a white list of allowed host paths. Empty indicates that all host paths may be used."
+          "description": "allowedHostPaths is a white list of allowed host paths. Empty indicates that all host paths may be used."
         }, 
         "runAsUser": {
           "description": "runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set.", 
           "$ref": "#/definitions/io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions"
         }, 
-        "allowedFlexVolumes": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.policy.v1beta1.AllowedFlexVolume"
-          }, 
-          "type": "array", 
-          "description": "AllowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the \"Volumes\" field."
+        "supplementalGroups": {
+          "description": "supplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.", 
+          "$ref": "#/definitions/io.k8s.api.policy.v1beta1.SupplementalGroupsStrategyOptions"
         }, 
         "fsGroup": {
-          "description": "FSGroup is the strategy that will dictate what fs group is used by the SecurityContext.", 
+          "description": "fsGroup is the strategy that will dictate what fs group is used by the SecurityContext.", 
           "$ref": "#/definitions/io.k8s.api.policy.v1beta1.FSGroupStrategyOptions"
         }, 
         "hostPorts": {
@@ -11637,16 +11961,19 @@
           "type": "array", 
           "description": "hostPorts determines which host port ranges are allowed to be exposed."
         }, 
-        "supplementalGroups": {
-          "description": "SupplementalGroups is the strategy that will dictate what supplemental groups are used by the SecurityContext.", 
-          "$ref": "#/definitions/io.k8s.api.policy.v1beta1.SupplementalGroupsStrategyOptions"
+        "allowedFlexVolumes": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.policy.v1beta1.AllowedFlexVolume"
+          }, 
+          "type": "array", 
+          "description": "allowedFlexVolumes is a whitelist of allowed Flexvolumes.  Empty or nil indicates that all Flexvolumes may be used.  This parameter is effective only when the usage of the Flexvolumes is allowed in the \"volumes\" field."
         }, 
         "volumes": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "volumes is a white list of allowed volume plugins.  Empty indicates that all plugins may be used."
+          "description": "volumes is a white list of allowed volume plugins. Empty indicates that no volumes may be used. To allow all volumes you may use '*'."
         }, 
         "seLinux": {
           "description": "seLinux is the strategy that will dictate the allowable labels that may be set.", 
@@ -11657,14 +11984,14 @@
             "type": "string"
           }, 
           "type": "array", 
-          "description": "DefaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both DefaultAddCapabilities and RequiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the AllowedCapabilities list."
+          "description": "defaultAddCapabilities is the default set of capabilities that will be added to the container unless the pod spec specifically drops the capability.  You may not list a capability in both defaultAddCapabilities and requiredDropCapabilities. Capabilities added here are implicitly allowed, and need not be included in the allowedCapabilities list."
         }, 
         "requiredDropCapabilities": {
           "items": {
             "type": "string"
           }, 
           "type": "array", 
-          "description": "RequiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added."
+          "description": "requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added."
         }, 
         "privileged": {
           "type": "boolean", 
@@ -11673,6 +12000,13 @@
         "hostPID": {
           "type": "boolean", 
           "description": "hostPID determines if the policy allows the use of HostPID in the pod spec."
+        }, 
+        "allowedUnsafeSysctls": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "allowedUnsafeSysctls is a list of explicitly allowed unsafe sysctls, defaults to none. Each entry is either a plain sysctl name or ends in \"*\" in which case it is considered as a prefix of allowed sysctls. Single * means all unsafe sysctls are allowed. Kubelet has to whitelist all allowed unsafe sysctls explicitly to avoid rejection.\n\nExamples: e.g. \"foo/*\" allows \"foo/bar\", \"foo/baz\", etc. e.g. \"foo.*\" allows \"foo.bar\", \"foo.baz\", etc."
         }
       }
     }, 
@@ -12283,11 +12617,15 @@
       }
     }, 
     "io.k8s.api.extensions.v1beta1.AllowedHostPath": {
-      "description": "defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined.", 
+      "description": "AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined. Deprecated: use AllowedHostPath from policy API Group instead.", 
       "properties": {
+        "readOnly": {
+          "type": "boolean", 
+          "description": "when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly."
+        }, 
         "pathPrefix": {
           "type": "string", 
-          "description": "is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`"
+          "description": "pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`"
         }
       }
     }, 
@@ -12296,7 +12634,7 @@
         "min", 
         "max"
       ], 
-      "description": "Host Port Range defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.", 
+      "description": "HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined. Deprecated: use HostPortRange from policy API Group instead.", 
       "properties": {
         "max": {
           "type": "integer", 
@@ -12658,6 +12996,23 @@
         }
       }
     }, 
+    "io.k8s.api.core.v1.Sysctl": {
+      "required": [
+        "name", 
+        "value"
+      ], 
+      "description": "Sysctl defines a kernel parameter to be set", 
+      "properties": {
+        "name": {
+          "type": "string", 
+          "description": "Name of a property to set"
+        }, 
+        "value": {
+          "type": "string", 
+          "description": "Value of a property to set"
+        }
+      }
+    }, 
     "io.k8s.api.rbac.v1beta1.PolicyRule": {
       "required": [
         "verbs"
@@ -12963,15 +13318,15 @@
       "description": "DEPRECATED 1.9 - This group version of NetworkPolicyPeer is deprecated by networking/v1/NetworkPolicyPeer.", 
       "properties": {
         "namespaceSelector": {
-          "description": "Selects Namespaces using cluster scoped-labels.  This matches all pods in all namespaces selected by this label selector. This field follows standard label selector semantics. If present but empty, this selector selects all namespaces.", 
+          "description": "Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.\n\nIf PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
         }, 
         "ipBlock": {
-          "description": "IPBlock defines policy on a particular IPBlock", 
+          "description": "IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.", 
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.IPBlock"
         }, 
         "podSelector": {
-          "description": "This is a label selector which selects Pods in this namespace. This field follows standard label selector semantics. If present but empty, this selector selects all pods in this namespace.", 
+          "description": "This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.\n\nIf NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
         }
       }
@@ -13106,7 +13461,7 @@
       "properties": {
         "driver": {
           "type": "string", 
-          "description": "Driver is the name of the Flexvolume driver."
+          "description": "driver is the name of the Flexvolume driver."
         }
       }
     }, 
@@ -13123,9 +13478,12 @@
       ], 
       "description": "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.", 
       "properties": {
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        "allowedTopologies": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.core.v1.TopologySelectorTerm"
+          }, 
+          "type": "array", 
+          "description": "Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is alpha-level and is only honored by servers that enable the DynamicProvisioningScheduling feature."
         }, 
         "parameters": {
           "additionalProperties": {
@@ -13133,6 +13491,10 @@
           }, 
           "type": "object", 
           "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
         "apiVersion": {
           "type": "string", 
@@ -13194,7 +13556,7 @@
           "$ref": "#/definitions/io.k8s.api.core.v1.GlusterfsVolumeSource"
         }, 
         "gitRepo": {
-          "description": "GitRepo represents a git repository at a particular revision.", 
+          "description": "GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.", 
           "$ref": "#/definitions/io.k8s.api.core.v1.GitRepoVolumeSource"
         }, 
         "scaleIO": {
@@ -13495,25 +13857,11 @@
       }
     }, 
     "io.k8s.api.core.v1.NodeConfigSource": {
-      "x-kubernetes-group-version-kind": [
-        {
-          "kind": "NodeConfigSource", 
-          "version": "v1", 
-          "group": ""
-        }
-      ], 
       "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
       "properties": {
-        "kind": {
-          "type": "string", 
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-        }, 
-        "configMapRef": {
-          "$ref": "#/definitions/io.k8s.api.core.v1.ObjectReference"
-        }, 
-        "apiVersion": {
-          "type": "string", 
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        "configMap": {
+          "description": "ConfigMap is a reference to a Node's ConfigMap", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.ConfigMapNodeConfigSource"
         }
       }
     }, 
@@ -13550,9 +13898,9 @@
         }
       }
     }, 
-    "io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.Rule": {
-      "description": "Deprecated. Please use io.k8s.api.admissionregistration.v1alpha1.Rule instead.", 
-      "$ref": "#/definitions/io.k8s.api.admissionregistration.v1alpha1.Rule"
+    "io.k8s.kubernetes.pkg.api.v1.LoadBalancerStatus": {
+      "description": "Deprecated. Please use io.k8s.api.core.v1.LoadBalancerStatus instead.", 
+      "$ref": "#/definitions/io.k8s.api.core.v1.LoadBalancerStatus"
     }, 
     "io.k8s.api.core.v1.EndpointSubset": {
       "description": "EndpointSubset is a group of addresses with a common set of ports. The expanded set of endpoints is the Cartesian product of Addresses x Ports. For example, given:\n  {\n    Addresses: [{\"ip\": \"10.10.1.1\"}, {\"ip\": \"10.10.2.2\"}],\n    Ports:     [{\"name\": \"a\", \"port\": 8675}, {\"name\": \"b\", \"port\": 309}]\n  }\nThe resulting set of endpoints can be viewed as:\n    a: [ 10.10.1.1:8675, 10.10.2.2:8675 ],\n    b: [ 10.10.1.1:309, 10.10.2.2:309 ]", 
@@ -13584,7 +13932,7 @@
       "required": [
         "rule"
       ], 
-      "description": "SELinux  Strategy Options defines the strategy type and any options used to create the strategy.", 
+      "description": "SELinuxStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use SELinuxStrategyOptions from policy API Group instead.", 
       "properties": {
         "seLinuxOptions": {
           "description": "seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/", 
@@ -13592,7 +13940,7 @@
         }, 
         "rule": {
           "type": "string", 
-          "description": "type is the strategy that will dictate the allowable labels that may be set."
+          "description": "rule is the strategy that will dictate the allowable labels that may be set."
         }
       }
     }, 
@@ -13608,7 +13956,7 @@
           "group": "policy"
         }
       ], 
-      "description": "Pod Security Policy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.", 
+      "description": "PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.", 
       "properties": {
         "kind": {
           "type": "string", 
@@ -13889,7 +14237,6 @@
     }, 
     "io.k8s.api.rbac.v1alpha1.ClusterRoleBinding": {
       "required": [
-        "subjects", 
         "roleRef"
       ], 
       "x-kubernetes-group-version-kind": [
@@ -14203,6 +14550,21 @@
         }, 
         {
           "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "apiextensions.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1", 
+          "group": "apiregistration.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
+          "group": "apiregistration.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
           "version": "v1", 
           "group": "apps"
         }, 
@@ -14309,6 +14671,11 @@
         {
           "kind": "WatchEvent", 
           "version": "v1alpha1", 
+          "group": "scheduling.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
           "group": "scheduling.k8s.io"
         }, 
         {
@@ -14668,7 +15035,7 @@
         }, 
         "type": {
           "type": "string", 
-          "description": "Type is the type of the condition. Currently only Ready. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
+          "description": "Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
         }, 
         "message": {
           "type": "string", 
@@ -14773,7 +15140,6 @@
     }, 
     "io.k8s.api.rbac.v1beta1.RoleBinding": {
       "required": [
-        "subjects", 
         "roleRef"
       ], 
       "x-kubernetes-group-version-kind": [
@@ -14928,18 +15294,18 @@
       "required": [
         "rule"
       ], 
-      "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
+      "description": "RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsUserStrategyOptions from policy API Group instead.", 
       "properties": {
         "ranges": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.IDRange"
           }, 
           "type": "array", 
-          "description": "Ranges are the allowed ranges of uids that may be used."
+          "description": "ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs."
         }, 
         "rule": {
           "type": "string", 
-          "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+          "description": "rule is the strategy that will dictate the allowable RunAsUser values that may be set."
         }
       }
     }, 
@@ -14955,11 +15321,11 @@
             "$ref": "#/definitions/io.k8s.api.policy.v1beta1.IDRange"
           }, 
           "type": "array", 
-          "description": "Ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end."
+          "description": "ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs."
         }, 
         "rule": {
           "type": "string", 
-          "description": "Rule is the strategy that will dictate what supplemental groups is used in the SecurityContext."
+          "description": "rule is the strategy that will dictate what supplemental groups is used in the SecurityContext."
         }
       }
     }, 
@@ -14967,9 +15333,91 @@
       "description": "Deprecated. Please use io.k8s.api.extensions.v1beta1.ScaleStatus instead.", 
       "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.ScaleStatus"
     }, 
-    "io.k8s.kubernetes.pkg.api.v1.LoadBalancerStatus": {
-      "description": "Deprecated. Please use io.k8s.api.core.v1.LoadBalancerStatus instead.", 
-      "$ref": "#/definitions/io.k8s.api.core.v1.LoadBalancerStatus"
+    "io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.", 
+      "properties": {
+        "finalizers": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed.", 
+          "x-kubernetes-patch-strategy": "merge"
+        }, 
+        "clusterName": {
+          "type": "string", 
+          "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request."
+        }, 
+        "deletionGracePeriodSeconds": {
+          "type": "integer", 
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.", 
+          "format": "int64"
+        }, 
+        "labels": {
+          "additionalProperties": {
+            "type": "string"
+          }, 
+          "type": "object", 
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
+        }, 
+        "generateName": {
+          "type": "string", 
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency"
+        }, 
+        "ownerReferences": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+          }, 
+          "x-kubernetes-patch-merge-key": "uid", 
+          "type": "array", 
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.", 
+          "x-kubernetes-patch-strategy": "merge"
+        }, 
+        "creationTimestamp": {
+          "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        }, 
+        "uid": {
+          "type": "string", 
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+        }, 
+        "deletionTimestamp": {
+          "description": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        }, 
+        "namespace": {
+          "type": "string", 
+          "description": "Namespace defines the space within each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces"
+        }, 
+        "generation": {
+          "type": "integer", 
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.", 
+          "format": "int64"
+        }, 
+        "initializers": {
+          "description": "An initializer is a controller which enforces some system invariant at object creation time. This field is a list of initializers that have not yet acted on this object. If nil or empty, this object has been completely initialized. Otherwise, the object is considered uninitialized and is hidden (in list/watch and get calls) from clients that haven't explicitly asked to observe uninitialized objects.\n\nWhen an object is created, the system will populate this list with the current set of initializers. Only privileged users may set or modify this list. Once it is empty, it may not be modified further by any user.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers"
+        }, 
+        "resourceVersion": {
+          "type": "string", 
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
+        }, 
+        "annotations": {
+          "additionalProperties": {
+            "type": "string"
+          }, 
+          "type": "object", 
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations"
+        }, 
+        "selfLink": {
+          "type": "string", 
+          "description": "SelfLink is a URL representing this object. Populated by the system. Read-only."
+        }
+      }
     }, 
     "io.k8s.api.authorization.v1beta1.SubjectRulesReviewStatus": {
       "required": [
@@ -15003,36 +15451,24 @@
         }
       }
     }, 
-    "io.k8s.api.autoscaling.v1.HorizontalPodAutoscalerStatus": {
+    "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionVersion": {
       "required": [
-        "currentReplicas", 
-        "desiredReplicas"
+        "name", 
+        "served", 
+        "storage"
       ], 
-      "description": "current status of a horizontal pod autoscaler", 
       "properties": {
-        "observedGeneration": {
-          "type": "integer", 
-          "description": "most recent generation observed by this autoscaler.", 
-          "format": "int64"
+        "served": {
+          "type": "boolean", 
+          "description": "Served is a flag enabling/disabling this version from being served via REST APIs"
         }, 
-        "currentReplicas": {
-          "type": "integer", 
-          "description": "current number of replicas of pods managed by this autoscaler.", 
-          "format": "int32"
+        "storage": {
+          "type": "boolean", 
+          "description": "Storage flags the version as storage version. There must be exactly one flagged as storage version."
         }, 
-        "lastScaleTime": {
-          "description": "last time the HorizontalPodAutoscaler scaled the number of pods; used by the autoscaler to control how often the number of pods is changed.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        }, 
-        "currentCPUUtilizationPercentage": {
-          "type": "integer", 
-          "description": "current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.", 
-          "format": "int32"
-        }, 
-        "desiredReplicas": {
-          "type": "integer", 
-          "description": "desired number of replicas of pods managed by this autoscaler.", 
-          "format": "int32"
+        "name": {
+          "type": "string", 
+          "description": "Name is the version name, e.g. \u201cv1\u201d, \u201cv2beta1\u201d, etc."
         }
       }
     }, 
@@ -15168,19 +15604,19 @@
       "description": "Deprecated. Please use io.k8s.api.rbac.v1alpha1.ClusterRoleBinding instead.", 
       "$ref": "#/definitions/io.k8s.api.rbac.v1alpha1.ClusterRoleBinding"
     }, 
-    "io.k8s.kubernetes.pkg.api.v1.Taint": {
-      "description": "Deprecated. Please use io.k8s.api.core.v1.Taint instead.", 
-      "$ref": "#/definitions/io.k8s.api.core.v1.Taint"
+    "io.k8s.kubernetes.pkg.apis.admissionregistration.v1alpha1.Rule": {
+      "description": "Deprecated. Please use io.k8s.api.admissionregistration.v1alpha1.Rule instead.", 
+      "$ref": "#/definitions/io.k8s.api.admissionregistration.v1alpha1.Rule"
     }, 
     "io.k8s.api.apps.v1beta2.RollingUpdateDeployment": {
       "description": "Spec to control the desired behavior of rolling update.", 
       "properties": {
         "maxSurge": {
-          "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is atmost 130% of desired pods.", 
+          "description": "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is atmost 130% of desired pods.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }, 
         "maxUnavailable": {
-          "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old RC can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old RC can be scaled down further, followed by scaling up the new RC, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.", 
+          "description": "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.", 
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
         }
       }
@@ -15548,18 +15984,18 @@
       "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimStatus"
     }, 
     "io.k8s.api.extensions.v1beta1.FSGroupStrategyOptions": {
-      "description": "FSGroupStrategyOptions defines the strategy type and options used to create the strategy.", 
+      "description": "FSGroupStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use FSGroupStrategyOptions from policy API Group instead.", 
       "properties": {
         "ranges": {
           "items": {
             "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.IDRange"
           }, 
           "type": "array", 
-          "description": "Ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end."
+          "description": "ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs."
         }, 
         "rule": {
           "type": "string", 
-          "description": "Rule is the strategy that will dictate what FSGroup is used in the SecurityContext."
+          "description": "rule is the strategy that will dictate what FSGroup is used in the SecurityContext."
         }
       }
     }, 
@@ -16000,6 +16436,36 @@
       "description": "Deprecated. Please use io.k8s.api.core.v1.NodeAffinity instead.", 
       "$ref": "#/definitions/io.k8s.api.core.v1.NodeAffinity"
     }, 
+    "io.k8s.api.core.v1.ConfigMapNodeConfigSource": {
+      "required": [
+        "namespace", 
+        "name", 
+        "kubeletConfigKey"
+      ], 
+      "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.", 
+      "properties": {
+        "kubeletConfigKey": {
+          "type": "string", 
+          "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases."
+        }, 
+        "resourceVersion": {
+          "type": "string", 
+          "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+        }, 
+        "namespace": {
+          "type": "string", 
+          "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases."
+        }, 
+        "uid": {
+          "type": "string", 
+          "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases."
+        }
+      }
+    }, 
     "io.k8s.api.extensions.v1beta1.ReplicaSet": {
       "x-kubernetes-group-version-kind": [
         {
@@ -16134,6 +16600,10 @@
         }
       }
     }, 
+    "io.k8s.kubernetes.pkg.api.v1.SecretEnvSource": {
+      "description": "Deprecated. Please use io.k8s.api.core.v1.SecretEnvSource instead.", 
+      "$ref": "#/definitions/io.k8s.api.core.v1.SecretEnvSource"
+    }, 
     "io.k8s.api.rbac.v1.RoleList": {
       "required": [
         "items"
@@ -16171,34 +16641,39 @@
     "io.k8s.api.core.v1.SecurityContext": {
       "description": "SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.", 
       "properties": {
-        "runAsNonRoot": {
-          "type": "boolean", 
-          "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
-        }, 
         "readOnlyRootFilesystem": {
           "type": "boolean", 
           "description": "Whether this container has a read-only root filesystem. Default is false."
         }, 
-        "seLinuxOptions": {
-          "description": "The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
-          "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions"
-        }, 
-        "runAsUser": {
+        "runAsGroup": {
           "type": "integer", 
-          "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+          "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
           "format": "int64"
         }, 
         "allowPrivilegeEscalation": {
           "type": "boolean", 
           "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
         }, 
-        "privileged": {
-          "type": "boolean", 
-          "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false."
+        "runAsUser": {
+          "type": "integer", 
+          "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+          "format": "int64"
         }, 
         "capabilities": {
           "description": "The capabilities to add/drop when running containers. Defaults to the default set of capabilities granted by the container runtime.", 
           "$ref": "#/definitions/io.k8s.api.core.v1.Capabilities"
+        }, 
+        "runAsNonRoot": {
+          "type": "boolean", 
+          "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
+        }, 
+        "seLinuxOptions": {
+          "description": "The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+          "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions"
+        }, 
+        "privileged": {
+          "type": "boolean", 
+          "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false."
         }
       }
     }, 
@@ -16288,6 +16763,13 @@
     "io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceList": {
       "required": [
         "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "APIServiceList", 
+          "version": "v1beta1", 
+          "group": "apiregistration.k8s.io"
+        }
       ], 
       "description": "APIServiceList is a list of APIService objects.", 
       "properties": {
@@ -16475,6 +16957,26 @@
         }
       }
     }, 
+    "io.k8s.api.core.v1.TopologySelectorLabelRequirement": {
+      "required": [
+        "key", 
+        "values"
+      ], 
+      "description": "A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.", 
+      "properties": {
+        "values": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "An array of string values. One value must match the label to be selected. Each entry in Values is ORed."
+        }, 
+        "key": {
+          "type": "string", 
+          "description": "The label key that the selector applies to."
+        }
+      }
+    }, 
     "io.k8s.api.admissionregistration.v1alpha1.Initializer": {
       "required": [
         "name"
@@ -16589,6 +17091,10 @@
           "format": "int32"
         }
       }
+    }, 
+    "io.k8s.kubernetes.pkg.apis.rbac.v1alpha1.ClusterRoleBindingList": {
+      "description": "Deprecated. Please use io.k8s.api.rbac.v1alpha1.ClusterRoleBindingList instead.", 
+      "$ref": "#/definitions/io.k8s.api.rbac.v1alpha1.ClusterRoleBindingList"
     }, 
     "io.k8s.kubernetes.pkg.api.v1.EnvVarSource": {
       "description": "Deprecated. Please use io.k8s.api.core.v1.EnvVarSource instead.", 

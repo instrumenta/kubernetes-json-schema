@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "LoadBalancerStatus represents the status of a load-balancer.", 
+  "properties": {
+    "ingress": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/v1.LoadBalancerIngress"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points."
+    }
+  }
+}

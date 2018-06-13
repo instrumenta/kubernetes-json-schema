@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Deprecated. Please use io.k8s.api.authentication.v1.TokenReview instead.", 
+  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.10.4/_definitions.json#/definitions/io.k8s.api.authentication.v1.TokenReview"
+}

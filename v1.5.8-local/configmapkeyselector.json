@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "key"
+  ], 
+  "type": "object", 
+  "description": "Selects a key from a ConfigMap.", 
+  "properties": {
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+    }, 
+    "key": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The key to select."
+    }
+  }
+}

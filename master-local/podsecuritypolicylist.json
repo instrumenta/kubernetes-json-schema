@@ -1,5 +1,5 @@
 {
-  "description": "Pod Security Policy List is a list of PodSecurityPolicy objects.", 
+  "description": "PodSecurityPolicyList is a list of PodSecurityPolicy objects. Deprecated: use PodSecurityPolicyList from policy API Group instead.", 
   "required": [
     "items"
   ], 
@@ -21,7 +21,7 @@
         "array", 
         "null"
       ], 
-      "description": "Items is a list of schema objects."
+      "description": "items is a list of schema objects."
     }, 
     "kind": {
       "type": [

@@ -11,7 +11,7 @@
         "string", 
         "null"
       ], 
-      "description": "Driver is the name of the Flexvolume driver."
+      "description": "driver is the name of the Flexvolume driver."
     }
   }
 }
