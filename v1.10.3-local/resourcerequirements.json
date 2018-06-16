@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "ResourceRequirements describes the compute resource requirements.", 
+  "properties": {
+    "requests": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
+    }, 
+    "limits": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/"
+    }
+  }
+}

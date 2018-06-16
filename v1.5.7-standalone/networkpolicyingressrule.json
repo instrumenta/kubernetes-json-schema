@@ -1,0 +1,153 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "This NetworkPolicyIngressRule matches traffic if and only if the traffic matches both ports AND from.", 
+  "properties": {
+    "from": {
+      "items": {
+        "properties": {
+          "namespaceSelector": {
+            "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
+            "properties": {
+              "matchLabels": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
+              }, 
+              "matchExpressions": {
+                "items": {
+                  "required": [
+                    "key", 
+                    "operator"
+                  ], 
+                  "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                  "properties": {
+                    "operator": {
+                      "type": "string", 
+                      "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                    }, 
+                    "values": {
+                      "items": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
+                      }, 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
+                      "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+                    }, 
+                    "key": {
+                      "type": "string", 
+                      "description": "key is the label key that the selector applies to."
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+              }
+            }
+          }, 
+          "podSelector": {
+            "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
+            "properties": {
+              "matchLabels": {
+                "additionalProperties": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ]
+                }, 
+                "type": "object", 
+                "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
+              }, 
+              "matchExpressions": {
+                "items": {
+                  "required": [
+                    "key", 
+                    "operator"
+                  ], 
+                  "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                  "properties": {
+                    "operator": {
+                      "type": "string", 
+                      "description": "operator represents a key's relationship to a set of values. Valid operators ard In, NotIn, Exists and DoesNotExist."
+                    }, 
+                    "values": {
+                      "items": {
+                        "type": [
+                          "string", 
+                          "null"
+                        ]
+                      }, 
+                      "type": [
+                        "array", 
+                        "null"
+                      ], 
+                      "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+                    }, 
+                    "key": {
+                      "type": "string", 
+                      "description": "key is the label key that the selector applies to."
+                    }
+                  }
+                }, 
+                "type": [
+                  "array", 
+                  "null"
+                ], 
+                "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+              }
+            }
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is not provided, this rule matches all sources (traffic not restricted by source). If this field is empty, this rule matches no sources (no traffic matches). If this field is present and contains at least on item, this rule allows traffic only if the traffic matches at least one item in the from list."
+    }, 
+    "ports": {
+      "items": {
+        "properties": {
+          "protocol": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Optional.  The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
+          }, 
+          "port": {
+            "oneOf": [
+              {
+                "type": [
+                  "string", 
+                  "null"
+                ]
+              }, 
+              {
+                "type": "integer"
+              }
+            ]
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "List of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is not provided, this rule matches all ports (traffic not restricted by port). If this field is empty, this rule matches no ports (no traffic matches). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list."
+    }
+  }
+}

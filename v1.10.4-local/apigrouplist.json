@@ -1,0 +1,41 @@
+{
+  "description": "APIGroupList is a list of APIGroup, to allow clients to discover the API at /apis.", 
+  "required": [
+    "groups"
+  ], 
+  "x-kubernetes-group-version-kind": [
+    {
+      "kind": "APIGroupList", 
+      "version": "v1", 
+      "group": ""
+    }
+  ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+    }, 
+    "groups": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "groups is a list of APIGroup."
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+    }
+  }
+}

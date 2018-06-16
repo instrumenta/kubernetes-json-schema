@@ -1,0 +1,31 @@
+{
+  "description": "Spec to control the desired behavior of rolling update.", 
+  "properties": {
+    "maxSurge": {
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }, 
+    "maxUnavailable": {
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }
+  }
+}

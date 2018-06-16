@@ -1,0 +1,39 @@
+{
+  "x-kubernetes-group-version-kind": [
+    {
+      "kind": "PodDisruptionBudget", 
+      "version": "v1beta1", 
+      "group": "policy"
+    }
+  ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods", 
+  "properties": {
+    "status": {
+      "description": "Most recently observed status of the PodDisruptionBudget.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.policy.v1beta1.PodDisruptionBudgetStatus"
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+    }, 
+    "spec": {
+      "description": "Specification of the desired behavior of the PodDisruptionBudget.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.policy.v1beta1.PodDisruptionBudgetSpec"
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+    }, 
+    "metadata": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    }
+  }
+}

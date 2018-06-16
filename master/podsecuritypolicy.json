@@ -8,7 +8,7 @@
   ], 
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "Pod Security Policy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.", 
+  "description": "PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.", 
   "properties": {
     "kind": {
       "type": [

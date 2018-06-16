@@ -1,0 +1,787 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/v1.FlockerVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.FlexVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.SecretKeySelector"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.DeleteOptions"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NodeStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.APIResource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ServiceSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NamespaceStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DaemonSetStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.PodDisruptionBudget"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.RoleBindingList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.RoleRef"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ResourceQuotaList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EnvVarSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.TokenReviewStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.ListMeta"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.HTTPIngressPath"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ObjectMeta"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.JobList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.APIVersions"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ThirdPartyResource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.LabelSelectorRequirement"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.NetworkPolicyIngressRule"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ComponentStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ReplicationControllerStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.NetworkPolicyList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.StatusDetails"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.LoadBalancerIngress"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.SecretList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ServicePort"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ReplicationControllerList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.DaemonEndpoint"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.NetworkPolicyPort"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.CrossVersionObjectReference"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Pod"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.SubresourceReference"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodTemplate"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Job"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeClaimVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.JobCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ComponentStatusList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ISCSIVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.HorizontalPodAutoscaler"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Probe"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.APIVersion"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequest"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.CinderVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ResourceQuotaStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeClaimSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.LocalObjectReference"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/runtime.RawExtension"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DaemonSetSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ScaleStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EndpointPort"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ServiceList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.Patch"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentStrategy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ContainerStateTerminated"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.TokenReview"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.IngressBackend"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.Subject"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.JobTemplateSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.LimitRange"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ResourceQuotaSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NamespaceSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.CephFSVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.Ingress"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.JobCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ServiceStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.AzureDiskVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.SubjectAccessReviewStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EventList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Node"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.GroupVersionForDiscovery"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeClaimList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.StorageClass"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.JobStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.SubjectAccessReviewSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ReplicaSetStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.PolicyRule"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ConfigMapKeySelector"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.HostPathVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.JobSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.CronJobList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Endpoints"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.SelfSubjectAccessReviewSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ScaleStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.JobStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.JobList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ContainerStateWaiting"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodTemplateList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeClaimStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.OwnerReference"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ScaleSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.GitRepoVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.NetworkPolicy"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ContainerImage"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EnvVar"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.LimitRangeSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.Role"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ComponentCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.SecurityContext"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.StatefulSetSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.AWSElasticBlockStoreVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ReplicaSet"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EndpointAddress"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.SelfSubjectAccessReview"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DaemonSet"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.CronJobStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DaemonSetList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.RBDVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.StatefulSetStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Volume"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.PodDisruptionBudgetList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.VolumeMount"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NamespaceList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.ClusterRoleBinding"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.HorizontalPodAutoscalerList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.ServerAddressByClientCIDR"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Container"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.RoleList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.VsphereVirtualDiskVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NodeList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EmptyDirVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.TCPSocketAction"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ReplicaSetList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.StatefulSetList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ContainerState"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ReplicaSetSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.AttachedVolume"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolume"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.LimitRangeList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.Status"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.ClusterRoleList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.Job"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Service"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ObjectFieldSelector"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.APIGroup"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Capabilities"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.DownwardAPIVolumeFile"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.GCEPersistentDiskVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.ClusterRoleBindingList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.PodDisruptionBudgetStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.NonResourceAttributes"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.JobCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.Deployment"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.Job"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Namespace"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.NetworkPolicyPeer"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/versioned.Event"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ReplicaSetCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodSecurityContext"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ReplicationControllerCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ResourceQuota"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.LimitRangeItem"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ConfigMapVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.FCVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.RoleBinding"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Handler"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ContainerStateRunning"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.HorizontalPodAutoscalerSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.Scale"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ThirdPartyResourceList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NodeSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.PodDisruptionBudgetSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.SecretVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NodeCondition"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentRollback"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.APIGroupList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeClaim"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.KeyToPath"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.LabelSelector"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.JobList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/intstr.IntOrString"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.StorageClassList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.CronJobSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.StatefulSet"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PersistentVolumeStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ContainerPort"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.HTTPIngressRuleValue"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.AzureFileVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.NetworkPolicySpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodTemplateSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PodSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ResourceRequirements"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.HorizontalPodAutoscalerList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.UserInfo"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NodeSystemInfo"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.SELinuxOptions"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ObjectReference"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/resource.Quantity"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.SubjectAccessReview"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ResourceFieldSelector"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EndpointSubset"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.LoadBalancerStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.HorizontalPodAutoscaler"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.APIResourceList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.DeploymentSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ExecAction"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.HorizontalPodAutoscalerStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.ResourceAttributes"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.ClusterRole"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.JobSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.IngressTLS"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.HorizontalPodAutoscalerSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1alpha1.CertificateSigningRequestStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.Time"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.IngressList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.GlusterfsVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ServiceAccountList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.JobStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ConfigMap"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.IngressRule"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Binding"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.IngressSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ContainerStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.PhotonPersistentDiskVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ServiceAccount"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.HTTPHeader"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/version.Info"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EventSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.CronJob"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.Eviction"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v2alpha1.JobSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.DownwardAPIVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NodeDaemonEndpoints"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.EndpointsList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.LocalSubjectAccessReview"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.IngressStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NodeAddress"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.QuobyteVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ScaleSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.HorizontalPodAutoscalerStatus"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ConfigMapList"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Lifecycle"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.RollingUpdateDeployment"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Event"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Preconditions"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Scale"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.NFSVolumeSource"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.CPUTargetUtilization"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ReplicationControllerSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.HTTPGetAction"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.RollbackConfig"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1beta1.TokenReviewSpec"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.Secret"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/v1.ReplicationController"
+    }, 
+    {
+      "$ref": "_definitions.json#/definitions/unversioned.StatusCause"
+    }
+  ]
+}

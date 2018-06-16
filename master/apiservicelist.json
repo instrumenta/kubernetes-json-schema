@@ -1,10 +1,17 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "APIServiceList is a list of APIService objects.", 
   "required": [
     "items"
   ], 
+  "x-kubernetes-group-version-kind": [
+    {
+      "kind": "APIServiceList", 
+      "version": "v1beta1", 
+      "group": "apiregistration.k8s.io"
+    }
+  ], 
+  "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "APIServiceList is a list of APIService objects.", 
   "properties": {
     "items": {
       "items": {

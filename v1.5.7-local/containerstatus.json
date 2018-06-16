@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "name", 
+    "ready", 
+    "restartCount", 
+    "image", 
+    "imageID"
+  ], 
+  "type": "object", 
+  "description": "ContainerStatus contains details for the current status of this container.", 
+  "properties": {
+    "restartCount": {
+      "type": "integer", 
+      "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.", 
+      "format": "int32"
+    }, 
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated."
+    }, 
+    "image": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The image the container is running. More info: http://kubernetes.io/docs/user-guide/images"
+    }, 
+    "imageID": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "ImageID of the container's image."
+    }, 
+    "state": {
+      "description": "Details about the container's current condition.", 
+      "$ref": "_definitions.json#/definitions/v1.ContainerState"
+    }, 
+    "ready": {
+      "type": "boolean", 
+      "description": "Specifies whether the container has passed its readiness probe."
+    }, 
+    "lastState": {
+      "description": "Details about the container's last termination condition.", 
+      "$ref": "_definitions.json#/definitions/v1.ContainerState"
+    }, 
+    "containerID": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Container's ID in the format 'docker://<container_id>'. More info: http://kubernetes.io/docs/user-guide/container-environment#container-information"
+    }
+  }
+}

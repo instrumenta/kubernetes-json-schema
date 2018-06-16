@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "service", 
+    "caBundle"
+  ], 
+  "type": "object", 
+  "description": "AdmissionHookClientConfig contains the information to make a TLS connection with the webhook", 
+  "properties": {
+    "caBundle": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "CABundle is a PEM encoded CA bundle which will be used to validate webhook's server certificate. Required", 
+      "format": "byte"
+    }, 
+    "service": {
+      "required": [
+        "namespace", 
+        "name"
+      ], 
+      "description": "ServiceReference holds a reference to Service.legacy.k8s.io", 
+      "properties": {
+        "namespace": {
+          "type": "string", 
+          "description": "Namespace is the namespace of the service Required"
+        }, 
+        "name": {
+          "type": "string", 
+          "description": "Name is the name of the service Required"
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,5 @@
 {
   "required": [
-    "subjects", 
     "roleRef"
   ], 
   "x-kubernetes-group-version-kind": [

@@ -1,0 +1,49 @@
+{
+  "x-kubernetes-group-version-kind": [
+    {
+      "kind": "ThirdPartyResource", 
+      "version": "v1beta1", 
+      "group": "extensions"
+    }
+  ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "A ThirdPartyResource is a generic representation of a resource, it is used by add-ons and plugins to add new resource types to the API.  It consists of one or more Versions of the api.", 
+  "properties": {
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+    }, 
+    "versions": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.apis.extensions.v1beta1.APIVersion"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Versions are versions for this third party object"
+    }, 
+    "description": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Description is the description of this object."
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+    }, 
+    "metadata": {
+      "description": "Standard object metadata", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    }
+  }
+}

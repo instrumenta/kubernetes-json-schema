@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "kind", 
+    "name"
+  ], 
+  "type": "object", 
+  "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.", 
+  "properties": {
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind of the referent; More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds\""
+    }, 
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "API version of the referent"
+    }
+  }
+}

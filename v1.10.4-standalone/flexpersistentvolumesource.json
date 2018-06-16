@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "driver"
+  ], 
+  "type": "object", 
+  "description": "FlexPersistentVolumeSource represents a generic persistent volume resource that is provisioned/attached using an exec based plugin.", 
+  "properties": {
+    "readOnly": {
+      "type": "boolean", 
+      "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+    }, 
+    "options": {
+      "additionalProperties": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": "object", 
+      "description": "Optional: Extra command options if any."
+    }, 
+    "driver": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Driver is the name of the driver to use for this volume."
+    }, 
+    "secretRef": {
+      "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
+      "properties": {
+        "namespace": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Namespace defines the space within which the secret name must be unique."
+        }, 
+        "name": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Name is unique within a namespace to reference a secret resource."
+        }
+      }
+    }, 
+    "fsType": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+    }
+  }
+}

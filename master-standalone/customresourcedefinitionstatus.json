@@ -2,7 +2,8 @@
   "$schema": "http://json-schema.org/schema#", 
   "required": [
     "conditions", 
-    "acceptedNames"
+    "acceptedNames", 
+    "storedVersions"
   ], 
   "type": "object", 
   "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition", 
@@ -108,6 +109,19 @@
         "null"
       ], 
       "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition"
+    }, 
+    "storedVersions": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "StoredVersions are all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so the migration controller can first finish a migration to another version (i.e. that no old objects are left in the storage), and then remove the rest of the versions from this list. None of the versions in this list can be removed from the spec.Versions field."
     }
   }
 }

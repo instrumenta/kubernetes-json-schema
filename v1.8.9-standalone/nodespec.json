@@ -1,0 +1,150 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "NodeSpec describes the attributes that a node is created with.", 
+  "properties": {
+    "unschedulable": {
+      "type": "boolean", 
+      "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration"
+    }, 
+    "configSource": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "NodeConfigSource", 
+          "version": "v1", 
+          "group": ""
+        }
+      ], 
+      "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
+      "properties": {
+        "kind": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "configMapRef": {
+          "description": "ObjectReference contains enough information to let you inspect or modify the referred object.", 
+          "properties": {
+            "kind": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+            }, 
+            "name": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+            }, 
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
+            }, 
+            "apiVersion": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "API version of the referent."
+            }, 
+            "fieldPath": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object."
+            }, 
+            "resourceVersion": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency"
+            }, 
+            "uid": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids"
+            }
+          }
+        }, 
+        "apiVersion": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }
+      }
+    }, 
+    "taints": {
+      "items": {
+        "required": [
+          "key", 
+          "effect"
+        ], 
+        "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.", 
+        "properties": {
+          "key": {
+            "type": "string", 
+            "description": "Required. The taint key to be applied to a node."
+          }, 
+          "timeAdded": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "format": "date-time"
+          }, 
+          "effect": {
+            "type": "string", 
+            "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute."
+          }, 
+          "value": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Required. The taint value corresponding to the taint key."
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "If specified, the node's taints."
+    }, 
+    "podCIDR": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "PodCIDR represents the pod IP range assigned to the node."
+    }, 
+    "providerID": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>"
+    }, 
+    "externalID": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "External ID of the node assigned by some machine database (e.g. a cloud provider). Deprecated."
+    }
+  }
+}

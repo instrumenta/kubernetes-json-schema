@@ -32,6 +32,21 @@
         }, 
         {
           "kind": "DeleteOptions", 
+          "version": "v1beta1", 
+          "group": "apiextensions.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1", 
+          "group": "apiregistration.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1beta1", 
+          "group": "apiregistration.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
           "version": "v1", 
           "group": "apps"
         }, 
@@ -138,6 +153,11 @@
         {
           "kind": "DeleteOptions", 
           "version": "v1alpha1", 
+          "group": "scheduling.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1beta1", 
           "group": "scheduling.k8s.io"
         }, 
         {

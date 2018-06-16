@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "groupVersion", 
+    "resources"
+  ], 
+  "type": "object", 
+  "description": "APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced.", 
+  "properties": {
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#types-kinds"
+    }, 
+    "groupVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "groupVersion is the group and version this APIResourceList is for."
+    }, 
+    "resources": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/unversioned.APIResource"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "resources contains the name of the resources and if they are namespaced."
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: http://releases.k8s.io/HEAD/docs/devel/api-conventions.md#resources"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "diskName", 
+    "diskURI"
+  ], 
+  "type": "object", 
+  "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.", 
+  "properties": {
+    "diskURI": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The URI the data disk in the blob storage"
+    }, 
+    "diskName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The Name of the data disk in the blob storage"
+    }, 
+    "fsType": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+    }, 
+    "readOnly": {
+      "type": "boolean", 
+      "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+    }, 
+    "cachingMode": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Host Caching mode: None, Read Only, Read Write."
+    }
+  }
+}

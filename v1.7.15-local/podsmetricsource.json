@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "metricName", 
+    "targetAverageValue"
+  ], 
+  "type": "object", 
+  "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.", 
+  "properties": {
+    "targetAverageValue": {
+      "description": "targetAverageValue is the target value of the average of the metric across all relevant pods (as a quantity)", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }, 
+    "metricName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "metricName is the name of the metric in question"
+    }
+  }
+}

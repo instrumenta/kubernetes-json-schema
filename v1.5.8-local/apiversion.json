@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "An APIVersion represents a single concrete version of an object model.", 
+  "properties": {
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Name of this version (e.g. 'v1')."
+    }
+  }
+}

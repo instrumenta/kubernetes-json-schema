@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "scaleRef", 
+    "maxReplicas"
+  ], 
+  "type": "object", 
+  "description": "specification of a horizontal pod autoscaler.", 
+  "properties": {
+    "minReplicas": {
+      "type": "integer", 
+      "description": "lower limit for the number of pods that can be set by the autoscaler, default 1.", 
+      "format": "int32"
+    }, 
+    "scaleRef": {
+      "description": "reference to Scale subresource; horizontal pod autoscaler will learn the current resource consumption from its status, and will set the desired number of pods by modifying its spec.", 
+      "$ref": "_definitions.json#/definitions/v1beta1.SubresourceReference"
+    }, 
+    "cpuUtilization": {
+      "description": "target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified it defaults to the target CPU utilization at 80% of the requested resources.", 
+      "$ref": "_definitions.json#/definitions/v1beta1.CPUTargetUtilization"
+    }, 
+    "maxReplicas": {
+      "type": "integer", 
+      "description": "upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.", 
+      "format": "int32"
+    }
+  }
+}

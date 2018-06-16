@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "verbs"
+  ], 
+  "type": "object", 
+  "description": "ResourceRule is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.", 
+  "properties": {
+    "apiGroups": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.  \"*\" means all."
+    }, 
+    "verbs": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Verb is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy.  \"*\" means all."
+    }, 
+    "resources": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Resources is a list of resources this rule applies to.  \"*\" means all in the specified apiGroups.\n \"*/foo\" represents the subresource 'foo' for all resources in the specified apiGroups."
+    }, 
+    "resourceNames": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.  \"*\" means all."
+    }
+  }
+}

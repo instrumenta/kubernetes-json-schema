@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "driver", 
+    "volumeHandle"
+  ], 
+  "type": "object", 
+  "description": "Represents storage that is managed by an external CSI volume driver", 
+  "properties": {
+    "volumeHandle": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
+    }, 
+    "readOnly": {
+      "type": "boolean", 
+      "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
+    }, 
+    "driver": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Driver is the name of the driver to use for this volume. Required."
+    }
+  }
+}

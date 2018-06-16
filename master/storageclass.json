@@ -13,12 +13,15 @@
   "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
   "properties": {
-    "kind": {
+    "allowedTopologies": {
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.TopologySelectorTerm"
+      }, 
       "type": [
-        "string", 
+        "array", 
         "null"
       ], 
-      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+      "description": "Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is alpha-level and is only honored by servers that enable the DynamicProvisioningScheduling feature."
     }, 
     "parameters": {
       "additionalProperties": {
@@ -29,6 +32,13 @@
       }, 
       "type": "object", 
       "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class."
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
     }, 
     "apiVersion": {
       "type": [

@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "type", 
+    "status"
+  ], 
+  "type": "object", 
+  "description": "DeploymentCondition describes the state of a deployment at a certain point.", 
+  "properties": {
+    "status": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Status of the condition, one of True, False, Unknown."
+    }, 
+    "lastUpdateTime": {
+      "description": "The last time this condition was updated.", 
+      "$ref": "_definitions.json#/definitions/unversioned.Time"
+    }, 
+    "lastTransitionTime": {
+      "description": "Last time the condition transitioned from one status to another.", 
+      "$ref": "_definitions.json#/definitions/unversioned.Time"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The reason for the condition's last transition."
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A human readable message indicating details about the transition."
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Type of deployment condition."
+    }
+  }
+}

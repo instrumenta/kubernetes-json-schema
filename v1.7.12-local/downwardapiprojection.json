@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.", 
+  "properties": {
+    "items": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.kubernetes.pkg.api.v1.DownwardAPIVolumeFile"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Items is a list of DownwardAPIVolume file"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "protocol": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Optional.  The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
+    }, 
+    "port": {
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }
+  }
+}

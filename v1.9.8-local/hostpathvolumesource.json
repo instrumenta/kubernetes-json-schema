@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "path"
+  ], 
+  "type": "object", 
+  "description": "Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.", 
+  "properties": {
+    "path": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Type for HostPath Volume Defaults to \"\" More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+    }
+  }
+}
