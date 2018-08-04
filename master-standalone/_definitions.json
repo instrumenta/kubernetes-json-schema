@@ -1050,6 +1050,11 @@
         {
           "kind": "DeleteOptions", 
           "version": "v1beta1", 
+          "group": "coordination.k8s.io"
+        }, 
+        {
+          "kind": "DeleteOptions", 
+          "version": "v1beta1", 
           "group": "events.k8s.io"
         }, 
         {
@@ -1133,13 +1138,20 @@
           "type": "string", 
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
-        "preconditions": {
-          "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
+        "dryRun": {
+          "items": {
+            "type": "string"
+          }, 
+          "type": "array", 
+          "description": "When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed"
         }, 
         "orphanDependents": {
           "type": "boolean", 
           "description": "Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the \"orphan\" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both."
+        }, 
+        "preconditions": {
+          "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
         }, 
         "apiVersion": {
           "type": "string", 
@@ -1931,7 +1943,7 @@
       "properties": {
         "mountPropagation": {
           "type": "string", 
-          "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10."
+          "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10."
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -2753,22 +2765,7 @@
       }
     }, 
     "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray": {
-      "required": [
-        "Schema", 
-        "JSONSchemas"
-      ], 
-      "description": "JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization purposes.", 
-      "properties": {
-        "JSONSchemas": {
-          "items": {
-            "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
-          }, 
-          "type": "array"
-        }, 
-        "Schema": {
-          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
-        }
-      }
+      "description": "JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization purposes."
     }, 
     "io.k8s.api.authorization.v1.SelfSubjectAccessReview": {
       "required": [
@@ -3788,6 +3785,7 @@
     }, 
     "io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime": {
       "type": "string", 
+      "description": "MicroTime is version of Time with microsecond level precision.", 
       "format": "date-time"
     }, 
     "io.k8s.api.core.v1.PodTemplateList": {
@@ -5423,16 +5421,7 @@
       }
     }, 
     "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON": {
-      "required": [
-        "Raw"
-      ], 
-      "description": "JSON represents any valid JSON value. These types are supported: bool, int64, float64, string, []interface{}, map[string]interface{} and nil.", 
-      "properties": {
-        "Raw": {
-          "type": "string", 
-          "format": "byte"
-        }
-      }
+      "description": "JSON represents any valid JSON value. These types are supported: bool, int64, float64, string, []interface{}, map[string]interface{} and nil."
     }, 
     "io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIService": {
       "x-kubernetes-group-version-kind": [
@@ -8685,27 +8674,31 @@
         }
       }
     }, 
-    "io.k8s.api.autoscaling.v2beta1.ExternalMetricSource": {
-      "required": [
-        "metricName"
+    "io.k8s.api.coordination.v1beta1.Lease": {
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "Lease", 
+          "version": "v1beta1", 
+          "group": "coordination.k8s.io"
+        }
       ], 
-      "description": "ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster). Exactly one \"target\" type should be set.", 
+      "description": "Lease defines a lease concept.", 
       "properties": {
-        "targetValue": {
-          "description": "targetValue is the target value of the metric (as a quantity). Mutually exclusive with TargetAverageValue.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
-        }, 
-        "metricName": {
+        "kind": {
           "type": "string", 
-          "description": "metricName is the name of the metric in question."
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
         }, 
-        "metricSelector": {
-          "description": "metricSelector is used to identify a specific time series within a given metric.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+        "spec": {
+          "description": "Specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status", 
+          "$ref": "#/definitions/io.k8s.api.coordination.v1beta1.LeaseSpec"
         }, 
-        "targetAverageValue": {
-          "description": "targetAverageValue is the target per-pod value of global metric (as a quantity). Mutually exclusive with TargetValue.", 
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         }
       }
     }, 
@@ -9593,22 +9586,7 @@
       }
     }, 
     "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray": {
-      "required": [
-        "Schema", 
-        "Property"
-      ], 
-      "description": "JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array.", 
-      "properties": {
-        "Property": {
-          "items": {
-            "type": "string"
-          }, 
-          "type": "array"
-        }, 
-        "Schema": {
-          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
-        }
-      }
+      "description": "JSONSchemaPropsOrStringArray represents a JSONSchemaProps or a string array."
     }, 
     "io.k8s.kubernetes.pkg.apis.extensions.v1beta1.NetworkPolicyPort": {
       "description": "Deprecated. Please use io.k8s.api.extensions.v1beta1.NetworkPolicyPort instead.", 
@@ -9901,7 +9879,7 @@
       "properties": {
         "storageMode": {
           "type": "string", 
-          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
         }, 
         "secretRef": {
           "description": "SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.", 
@@ -9925,7 +9903,7 @@
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\"."
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -10807,7 +10785,7 @@
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\"."
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -11282,19 +11260,7 @@
       }
     }, 
     "io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool": {
-      "required": [
-        "Allows", 
-        "Schema"
-      ], 
-      "description": "JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the boolean property.", 
-      "properties": {
-        "Allows": {
-          "type": "boolean"
-        }, 
-        "Schema": {
-          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
-        }
-      }
+      "description": "JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the boolean property."
     }, 
     "io.k8s.kubernetes.pkg.api.v1.AzureFileVolumeSource": {
       "description": "Deprecated. Please use io.k8s.api.core.v1.AzureFileVolumeSource instead.", 
@@ -11678,9 +11644,39 @@
       "description": "Deprecated. Please use io.k8s.api.core.v1.ObjectFieldSelector instead.", 
       "$ref": "#/definitions/io.k8s.api.core.v1.ObjectFieldSelector"
     }, 
-    "io.k8s.kubernetes.pkg.api.v1.SecurityContext": {
-      "description": "Deprecated. Please use io.k8s.api.core.v1.SecurityContext instead.", 
-      "$ref": "#/definitions/io.k8s.api.core.v1.SecurityContext"
+    "io.k8s.api.coordination.v1beta1.LeaseList": {
+      "required": [
+        "items"
+      ], 
+      "x-kubernetes-group-version-kind": [
+        {
+          "kind": "LeaseList", 
+          "version": "v1beta1", 
+          "group": "coordination.k8s.io"
+        }
+      ], 
+      "description": "LeaseList is a list of Lease objects.", 
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.coordination.v1beta1.Lease"
+          }, 
+          "type": "array", 
+          "description": "Items is a list of schema objects."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+        }, 
+        "apiVersion": {
+          "type": "string", 
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+        }, 
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      }
     }, 
     "io.k8s.kubernetes.pkg.api.v1.ConfigMap": {
       "description": "Deprecated. Please use io.k8s.api.core.v1.ConfigMap instead.", 
@@ -12703,7 +12699,7 @@
       "properties": {
         "progressDeadlineSeconds": {
           "type": "integer", 
-          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. This is not set by default.", 
+          "description": "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. This is set to the max value of int32 (i.e. 2147483647) by default, which means \"no deadline\".", 
           "format": "int32"
         }, 
         "replicas": {
@@ -13689,6 +13685,33 @@
         }
       }
     }, 
+    "io.k8s.api.coordination.v1beta1.LeaseSpec": {
+      "description": "LeaseSpec is a specification of a Lease.", 
+      "properties": {
+        "leaseDurationSeconds": {
+          "type": "integer", 
+          "description": "leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.", 
+          "format": "int32"
+        }, 
+        "holderIdentity": {
+          "type": "string", 
+          "description": "holderIdentity contains the identity of the holder of a current lease."
+        }, 
+        "acquireTime": {
+          "description": "acquireTime is a time when the current lease was acquired.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
+        }, 
+        "renewTime": {
+          "description": "renewTime is a time when the current holder of a lease has last updated the lease.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
+        }, 
+        "leaseTransitions": {
+          "type": "integer", 
+          "description": "leaseTransitions is the number of transitions of a lease between holders.", 
+          "format": "int32"
+        }
+      }
+    }, 
     "io.k8s.api.rbac.v1alpha1.RoleList": {
       "required": [
         "items"
@@ -13816,7 +13839,7 @@
       "properties": {
         "storageMode": {
           "type": "string", 
-          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
         }, 
         "secretRef": {
           "description": "SecretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail.", 
@@ -13840,7 +13863,7 @@
         }, 
         "fsType": {
           "type": "string", 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\""
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -13946,6 +13969,7 @@
     }, 
     "io.k8s.apimachinery.pkg.apis.meta.v1.Time": {
       "type": "string", 
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
       "format": "date-time"
     }, 
     "io.k8s.api.policy.v1beta1.PodSecurityPolicy": {
@@ -14631,6 +14655,11 @@
         {
           "kind": "WatchEvent", 
           "version": "v1beta1", 
+          "group": "coordination.k8s.io"
+        }, 
+        {
+          "kind": "WatchEvent", 
+          "version": "v1beta1", 
           "group": "events.k8s.io"
         }, 
         {
@@ -14887,6 +14916,30 @@
         "name": {
           "type": "string", 
           "description": "The name of this port within the service. This must be a DNS_LABEL. All ports within a ServiceSpec must have unique names. This maps to the 'Name' field in EndpointPort objects. Optional if only one ServicePort is defined on this service."
+        }
+      }
+    }, 
+    "io.k8s.api.autoscaling.v2beta1.ExternalMetricSource": {
+      "required": [
+        "metricName"
+      ], 
+      "description": "ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster). Exactly one \"target\" type should be set.", 
+      "properties": {
+        "targetValue": {
+          "description": "targetValue is the target value of the metric (as a quantity). Mutually exclusive with TargetAverageValue.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        }, 
+        "metricName": {
+          "type": "string", 
+          "description": "metricName is the name of the metric in question."
+        }, 
+        "metricSelector": {
+          "description": "metricSelector is used to identify a specific time series within a given metric.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+        }, 
+        "targetAverageValue": {
+          "description": "targetAverageValue is the target per-pod value of global metric (as a quantity). Mutually exclusive with TargetValue.", 
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
         }
       }
     }, 
@@ -16956,6 +17009,10 @@
           "x-kubernetes-patch-strategy": "merge"
         }
       }
+    }, 
+    "io.k8s.kubernetes.pkg.api.v1.SecurityContext": {
+      "description": "Deprecated. Please use io.k8s.api.core.v1.SecurityContext instead.", 
+      "$ref": "#/definitions/io.k8s.api.core.v1.SecurityContext"
     }, 
     "io.k8s.api.core.v1.TopologySelectorLabelRequirement": {
       "required": [

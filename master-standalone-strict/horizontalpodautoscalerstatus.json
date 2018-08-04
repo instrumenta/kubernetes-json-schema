@@ -1,10 +1,8 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "currentReplicas", 
     "desiredReplicas"
   ], 
-  "type": "object", 
   "description": "current status of a horizontal pod autoscaler", 
   "properties": {
     "observedGeneration": {
@@ -22,6 +20,7 @@
         "string", 
         "null"
       ], 
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
       "format": "date-time"
     }, 
     "desiredReplicas": {

@@ -13,7 +13,7 @@
         "string", 
         "null"
       ], 
-      "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+      "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
     }, 
     "secretRef": {
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
@@ -64,7 +64,7 @@
         "string", 
         "null"
       ], 
-      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\""
     }, 
     "readOnly": {
       "type": "boolean", 

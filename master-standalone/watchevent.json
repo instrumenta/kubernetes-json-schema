@@ -108,6 +108,11 @@
     {
       "kind": "WatchEvent", 
       "version": "v1beta1", 
+      "group": "coordination.k8s.io"
+    }, 
+    {
+      "kind": "WatchEvent", 
+      "version": "v1beta1", 
       "group": "events.k8s.io"
     }, 
     {

@@ -1,8 +1,10 @@
 {
+  "$schema": "http://json-schema.org/schema#", 
   "required": [
     "key", 
     "effect"
   ], 
+  "type": "object", 
   "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.", 
   "properties": {
     "value": {
@@ -17,6 +19,7 @@
         "string", 
         "null"
       ], 
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
       "format": "date-time"
     }, 
     "effect": {

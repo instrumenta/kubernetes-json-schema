@@ -109,6 +109,7 @@
                         "string", 
                         "null"
                       ], 
+                      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                       "format": "date-time"
                     }, 
                     "reason": {
@@ -254,7 +255,7 @@
                           "string", 
                           "null"
                         ], 
-                        "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'. Note that 'None' policy is an alpha feature introduced in v1.9 and CustomPodDNS feature gate must be enabled to use it."
+                        "description": "Set DNS policy for the pod. Defaults to \"ClusterFirst\". Valid values are 'ClusterFirstWithHostNet', 'ClusterFirst', 'Default' or 'None'. DNS parameters given in DNSConfig will be merged with the policy selected with DNSPolicy. To have DNS options set along with hostNetwork, you have to specify DNS policy explicitly to 'ClusterFirstWithHostNet'."
                       }, 
                       "hostNetwork": {
                         "type": "boolean", 
@@ -279,9 +280,26 @@
                         "additionalProperties": false, 
                         "description": "PodSecurityContext holds pod-level security attributes and common container settings. Some fields are also present in container.securityContext.  Field values of container.securityContext take precedence over field values of PodSecurityContext.", 
                         "properties": {
-                          "runAsNonRoot": {
-                            "type": "boolean", 
-                            "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
+                          "runAsGroup": {
+                            "type": "integer", 
+                            "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
+                            "format": "int64"
+                          }, 
+                          "runAsUser": {
+                            "type": "integer", 
+                            "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
+                            "format": "int64"
+                          }, 
+                          "supplementalGroups": {
+                            "items": {
+                              "type": "integer", 
+                              "format": "int64"
+                            }, 
+                            "type": [
+                              "array", 
+                              "null"
+                            ], 
+                            "description": "A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container."
                           }, 
                           "fsGroup": {
                             "type": "integer", 
@@ -322,21 +340,34 @@
                               }
                             }
                           }, 
-                          "supplementalGroups": {
+                          "runAsNonRoot": {
+                            "type": "boolean", 
+                            "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
+                          }, 
+                          "sysctls": {
                             "items": {
-                              "type": "integer", 
-                              "format": "int64"
+                              "additionalProperties": false, 
+                              "required": [
+                                "name", 
+                                "value"
+                              ], 
+                              "description": "Sysctl defines a kernel parameter to be set", 
+                              "properties": {
+                                "name": {
+                                  "type": "string", 
+                                  "description": "Name of a property to set"
+                                }, 
+                                "value": {
+                                  "type": "string", 
+                                  "description": "Value of a property to set"
+                                }
+                              }
                             }, 
                             "type": [
                               "array", 
                               "null"
                             ], 
-                            "description": "A list of groups applied to the first process run in each container, in addition to the container's primary GID.  If unspecified, no groups will be added to any container."
-                          }, 
-                          "runAsUser": {
-                            "type": "integer", 
-                            "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.", 
-                            "format": "int64"
+                            "description": "Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch."
                           }
                         }
                       }, 
@@ -628,11 +659,46 @@
                                   "nodeSelectorTerms": {
                                     "items": {
                                       "additionalProperties": false, 
-                                      "required": [
-                                        "matchExpressions"
-                                      ], 
-                                      "description": "A null or empty node selector term matches no objects.", 
+                                      "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.", 
                                       "properties": {
+                                        "matchFields": {
+                                          "items": {
+                                            "additionalProperties": false, 
+                                            "required": [
+                                              "key", 
+                                              "operator"
+                                            ], 
+                                            "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                                            "properties": {
+                                              "operator": {
+                                                "type": "string", 
+                                                "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt."
+                                              }, 
+                                              "values": {
+                                                "items": {
+                                                  "type": [
+                                                    "string", 
+                                                    "null"
+                                                  ]
+                                                }, 
+                                                "type": [
+                                                  "array", 
+                                                  "null"
+                                                ], 
+                                                "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
+                                              }, 
+                                              "key": {
+                                                "type": "string", 
+                                                "description": "The label key that the selector applies to."
+                                              }
+                                            }
+                                          }, 
+                                          "type": [
+                                            "array", 
+                                            "null"
+                                          ], 
+                                          "description": "A list of node selector requirements by node's fields."
+                                        }, 
                                         "matchExpressions": {
                                           "items": {
                                             "additionalProperties": false, 
@@ -665,8 +731,11 @@
                                               }
                                             }
                                           }, 
-                                          "type": "array", 
-                                          "description": "Required. A list of node selector requirements. The requirements are ANDed."
+                                          "type": [
+                                            "array", 
+                                            "null"
+                                          ], 
+                                          "description": "A list of node selector requirements by node's labels."
                                         }
                                       }
                                     }, 
@@ -686,11 +755,46 @@
                                   "properties": {
                                     "preference": {
                                       "additionalProperties": false, 
-                                      "required": [
-                                        "matchExpressions"
-                                      ], 
-                                      "description": "A null or empty node selector term matches no objects.", 
+                                      "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.", 
                                       "properties": {
+                                        "matchFields": {
+                                          "items": {
+                                            "additionalProperties": false, 
+                                            "required": [
+                                              "key", 
+                                              "operator"
+                                            ], 
+                                            "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                                            "properties": {
+                                              "operator": {
+                                                "type": "string", 
+                                                "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt."
+                                              }, 
+                                              "values": {
+                                                "items": {
+                                                  "type": [
+                                                    "string", 
+                                                    "null"
+                                                  ]
+                                                }, 
+                                                "type": [
+                                                  "array", 
+                                                  "null"
+                                                ], 
+                                                "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
+                                              }, 
+                                              "key": {
+                                                "type": "string", 
+                                                "description": "The label key that the selector applies to."
+                                              }
+                                            }
+                                          }, 
+                                          "type": [
+                                            "array", 
+                                            "null"
+                                          ], 
+                                          "description": "A list of node selector requirements by node's fields."
+                                        }, 
                                         "matchExpressions": {
                                           "items": {
                                             "additionalProperties": false, 
@@ -723,8 +827,11 @@
                                               }
                                             }
                                           }, 
-                                          "type": "array", 
-                                          "description": "Required. A list of node selector requirements. The requirements are ANDed."
+                                          "type": [
+                                            "array", 
+                                            "null"
+                                          ], 
+                                          "description": "A list of node selector requirements by node's labels."
                                         }
                                       }
                                     }, 
@@ -1239,7 +1346,7 @@
                                       "string", 
                                       "null"
                                     ], 
-                                    "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
+                                    "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10."
                                   }, 
                                   "subPath": {
                                     "type": [
@@ -1642,14 +1749,19 @@
                                   "type": "boolean", 
                                   "description": "Whether this container has a read-only root filesystem. Default is false."
                                 }, 
-                                "allowPrivilegeEscalation": {
-                                  "type": "boolean", 
-                                  "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+                                "runAsGroup": {
+                                  "type": "integer", 
+                                  "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+                                  "format": "int64"
                                 }, 
                                 "runAsUser": {
                                   "type": "integer", 
                                   "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
                                   "format": "int64"
+                                }, 
+                                "allowPrivilegeEscalation": {
+                                  "type": "boolean", 
+                                  "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
                                 }, 
                                 "capabilities": {
                                   "additionalProperties": false, 
@@ -2170,6 +2282,26 @@
                         "description": "Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.", 
                         "format": "int64"
                       }, 
+                      "readinessGates": {
+                        "items": {
+                          "additionalProperties": false, 
+                          "required": [
+                            "conditionType"
+                          ], 
+                          "description": "PodReadinessGate contains the reference to a pod condition", 
+                          "properties": {
+                            "conditionType": {
+                              "type": "string", 
+                              "description": "ConditionType refers to a condition in the pod's condition list with matching type."
+                            }
+                          }
+                        }, 
+                        "type": [
+                          "array", 
+                          "null"
+                        ], 
+                        "description": "If specified, all readiness gates will be evaluated for pod readiness. A pod is ready when all its containers are ready AND all conditions specified in the readiness gates have status equal to \"True\" More info: https://github.com/kubernetes/community/blob/master/keps/sig-network/0007-pod-ready%2B%2B.md"
+                      }, 
                       "hostPID": {
                         "type": "boolean", 
                         "description": "Use the host's pid namespace. Optional: Default to false."
@@ -2233,7 +2365,7 @@
                               "required": [
                                 "repository"
                               ], 
-                              "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.", 
+                              "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.\n\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.", 
                               "properties": {
                                 "directory": {
                                   "type": [
@@ -2508,6 +2640,31 @@
                                           }
                                         }
                                       }, 
+                                      "serviceAccountToken": {
+                                        "additionalProperties": false, 
+                                        "required": [
+                                          "path"
+                                        ], 
+                                        "description": "ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise).", 
+                                        "properties": {
+                                          "path": {
+                                            "type": "string", 
+                                            "description": "Path is the path relative to the mount point of the file to project the token into."
+                                          }, 
+                                          "audience": {
+                                            "type": [
+                                              "string", 
+                                              "null"
+                                            ], 
+                                            "description": "Audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token. The audience defaults to the identifier of the apiserver."
+                                          }, 
+                                          "expirationSeconds": {
+                                            "type": "integer", 
+                                            "description": "ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.", 
+                                            "format": "int64"
+                                          }
+                                        }
+                                      }, 
                                       "downwardAPI": {
                                         "additionalProperties": false, 
                                         "description": "Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.", 
@@ -2670,7 +2827,7 @@
                                     "string", 
                                     "null"
                                   ], 
-                                  "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+                                  "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
                                 }, 
                                 "secretRef": {
                                   "additionalProperties": false, 
@@ -2712,7 +2869,7 @@
                                     "string", 
                                     "null"
                                   ], 
-                                  "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                                  "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\"."
                                 }, 
                                 "readOnly": {
                                   "type": "boolean", 
@@ -3202,6 +3359,19 @@
                                   "type": "boolean", 
                                   "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
                                 }, 
+                                "secretRef": {
+                                  "additionalProperties": false, 
+                                  "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+                                  "properties": {
+                                    "name": {
+                                      "type": [
+                                        "string", 
+                                        "null"
+                                      ], 
+                                      "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+                                    }
+                                  }
+                                }, 
                                 "volumeID": {
                                   "type": "string", 
                                   "description": "volume id used to identify the volume in cinder More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
@@ -3671,7 +3841,7 @@
                                       "string", 
                                       "null"
                                     ], 
-                                    "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
+                                    "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10."
                                   }, 
                                   "subPath": {
                                     "type": [
@@ -4074,14 +4244,19 @@
                                   "type": "boolean", 
                                   "description": "Whether this container has a read-only root filesystem. Default is false."
                                 }, 
-                                "allowPrivilegeEscalation": {
-                                  "type": "boolean", 
-                                  "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+                                "runAsGroup": {
+                                  "type": "integer", 
+                                  "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+                                  "format": "int64"
                                 }, 
                                 "runAsUser": {
                                   "type": "integer", 
                                   "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
                                   "format": "int64"
+                                }, 
+                                "allowPrivilegeEscalation": {
+                                  "type": "boolean", 
+                                  "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
                                 }, 
                                 "capabilities": {
                                   "additionalProperties": false, 
@@ -4552,6 +4727,7 @@
                           "string", 
                           "null"
                         ], 
+                        "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                         "format": "date-time"
                       }, 
                       "clusterName": {
@@ -4847,6 +5023,7 @@
                           "string", 
                           "null"
                         ], 
+                        "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                         "format": "date-time"
                       }, 
                       "annotations": {
@@ -4907,6 +5084,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "clusterName": {
@@ -5202,6 +5380,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "annotations": {

@@ -1,29 +1,26 @@
 {
-  "description": "ClusterRoleBindingList is a collection of ClusterRoleBindings", 
   "required": [
     "items"
   ], 
   "x-kubernetes-group-version-kind": [
     {
       "kind": "ClusterRoleBindingList", 
-      "version": "v1beta1", 
+      "version": "v1alpha1", 
       "group": "rbac.authorization.k8s.io"
     }
   ], 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  "description": "ClusterRoleBindingList is a collection of ClusterRoleBindings", 
   "properties": {
     "items": {
       "items": {
         "additionalProperties": false, 
         "required": [
-          "subjects", 
           "roleRef"
         ], 
         "x-kubernetes-group-version-kind": [
           {
             "kind": "ClusterRoleBinding", 
-            "version": "v1beta1", 
+            "version": "v1alpha1", 
             "group": "rbac.authorization.k8s.io"
           }
         ], 
@@ -68,13 +65,6 @@
               ], 
               "description": "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.", 
               "properties": {
-                "apiGroup": {
-                  "type": [
-                    "string", 
-                    "null"
-                  ], 
-                  "description": "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects."
-                }, 
                 "kind": {
                   "type": "string", 
                   "description": "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error."
@@ -89,10 +79,20 @@
                 "name": {
                   "type": "string", 
                   "description": "Name of the object being referenced."
+                }, 
+                "apiVersion": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "APIVersion holds the API group and version of the referenced subject. Defaults to \"v1\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io/v1alpha1\" for User and Group subjects."
                 }
               }
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "Subjects holds references to the objects the role applies to."
           }, 
           "apiVersion": {
@@ -118,6 +118,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "clusterName": {
@@ -413,6 +414,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "annotations": {

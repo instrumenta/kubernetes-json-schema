@@ -1,20 +1,23 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "description": "SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext.  When both are set, the values in SecurityContext take precedence.", 
   "properties": {
     "readOnlyRootFilesystem": {
       "type": "boolean", 
       "description": "Whether this container has a read-only root filesystem. Default is false."
     }, 
-    "allowPrivilegeEscalation": {
-      "type": "boolean", 
-      "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+    "runAsGroup": {
+      "type": "integer", 
+      "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+      "format": "int64"
     }, 
     "runAsUser": {
       "type": "integer", 
       "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
       "format": "int64"
+    }, 
+    "allowPrivilegeEscalation": {
+      "type": "boolean", 
+      "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
     }, 
     "capabilities": {
       "additionalProperties": false, 

@@ -103,6 +103,63 @@
         }
       }
     }, 
+    "conditions": {
+      "items": {
+        "additionalProperties": false, 
+        "required": [
+          "type", 
+          "status"
+        ], 
+        "description": "NodeCondition contains condition information for a node.", 
+        "properties": {
+          "status": {
+            "type": "string", 
+            "description": "Status of the condition, one of True, False, Unknown."
+          }, 
+          "lastTransitionTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+            "format": "date-time"
+          }, 
+          "reason": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "(brief) reason for the condition's last transition."
+          }, 
+          "lastHeartbeatTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+            "format": "date-time"
+          }, 
+          "message": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Human readable message indicating details about last transition."
+          }, 
+          "type": {
+            "type": "string", 
+            "description": "Type of node condition."
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition", 
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "type"
+    }, 
     "volumesAttached": {
       "items": {
         "additionalProperties": false, 
@@ -216,60 +273,147 @@
       ], 
       "description": "List of container images on this node"
     }, 
-    "conditions": {
-      "items": {
-        "additionalProperties": false, 
-        "required": [
-          "type", 
-          "status"
-        ], 
-        "description": "NodeCondition contains condition information for a node.", 
-        "properties": {
-          "status": {
-            "type": "string", 
-            "description": "Status of the condition, one of True, False, Unknown."
-          }, 
-          "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "format": "date-time"
-          }, 
-          "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "(brief) reason for the condition's last transition."
-          }, 
-          "lastHeartbeatTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "format": "date-time"
-          }, 
-          "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Human readable message indicating details about last transition."
-          }, 
-          "type": {
-            "type": "string", 
-            "description": "Type of node condition."
+    "config": {
+      "additionalProperties": false, 
+      "description": "NodeConfigStatus describes the status of the config assigned by Node.Spec.ConfigSource.", 
+      "properties": {
+        "active": {
+          "additionalProperties": false, 
+          "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
+          "properties": {
+            "configMap": {
+              "additionalProperties": false, 
+              "required": [
+                "namespace", 
+                "name", 
+                "kubeletConfigKey"
+              ], 
+              "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.", 
+              "properties": {
+                "kubeletConfigKey": {
+                  "type": "string", 
+                  "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases."
+                }, 
+                "namespace": {
+                  "type": "string", 
+                  "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases."
+                }, 
+                "uid": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases."
+                }, 
+                "resourceVersion": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+                }
+              }
+            }
           }
+        }, 
+        "assigned": {
+          "additionalProperties": false, 
+          "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
+          "properties": {
+            "configMap": {
+              "additionalProperties": false, 
+              "required": [
+                "namespace", 
+                "name", 
+                "kubeletConfigKey"
+              ], 
+              "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.", 
+              "properties": {
+                "kubeletConfigKey": {
+                  "type": "string", 
+                  "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases."
+                }, 
+                "namespace": {
+                  "type": "string", 
+                  "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases."
+                }, 
+                "uid": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases."
+                }, 
+                "resourceVersion": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+                }
+              }
+            }
+          }
+        }, 
+        "lastKnownGood": {
+          "additionalProperties": false, 
+          "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
+          "properties": {
+            "configMap": {
+              "additionalProperties": false, 
+              "required": [
+                "namespace", 
+                "name", 
+                "kubeletConfigKey"
+              ], 
+              "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.", 
+              "properties": {
+                "kubeletConfigKey": {
+                  "type": "string", 
+                  "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases."
+                }, 
+                "namespace": {
+                  "type": "string", 
+                  "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases."
+                }, 
+                "uid": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+                }, 
+                "name": {
+                  "type": "string", 
+                  "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases."
+                }, 
+                "resourceVersion": {
+                  "type": [
+                    "string", 
+                    "null"
+                  ], 
+                  "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+                }
+              }
+            }
+          }
+        }, 
+        "error": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Error describes any problems reconciling the Spec.ConfigSource to the Active config. Errors may occur, for example, attempting to checkpoint Spec.ConfigSource to the local Assigned record, attempting to checkpoint the payload associated with Spec.ConfigSource, attempting to load or validate the Assigned config, etc. Errors may occur at different points while syncing config. Earlier errors (e.g. download or checkpointing errors) will not result in a rollback to LastKnownGood, and may resolve across Kubelet retries. Later errors (e.g. loading or validating a checkpointed config) will result in a rollback to LastKnownGood. In the latter case, it is usually possible to resolve the error by fixing the config assigned in Spec.ConfigSource. You can find additional information for debugging by searching the error message in the Kubelet log. Error is a human-readable description of the error state; machines can check whether or not Error is empty, but should not rely on the stability of the Error text across Kubelet versions."
         }
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      }
     }
   }
 }

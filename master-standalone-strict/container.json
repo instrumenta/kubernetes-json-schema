@@ -241,7 +241,7 @@
               "string", 
               "null"
             ], 
-            "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
+            "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10."
           }, 
           "subPath": {
             "type": [
@@ -644,14 +644,19 @@
           "type": "boolean", 
           "description": "Whether this container has a read-only root filesystem. Default is false."
         }, 
-        "allowPrivilegeEscalation": {
-          "type": "boolean", 
-          "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
+        "runAsGroup": {
+          "type": "integer", 
+          "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
+          "format": "int64"
         }, 
         "runAsUser": {
           "type": "integer", 
           "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.", 
           "format": "int64"
+        }, 
+        "allowPrivilegeEscalation": {
+          "type": "boolean", 
+          "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN"
         }, 
         "capabilities": {
           "additionalProperties": false, 

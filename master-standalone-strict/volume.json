@@ -55,7 +55,7 @@
       "required": [
         "repository"
       ], 
-      "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.", 
+      "description": "Represents a volume that is populated with the contents of a git repository. Git repo volumes do not support ownership management. Git repo volumes support SELinux relabeling.\n\nDEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod's container.", 
       "properties": {
         "directory": {
           "type": [
@@ -330,6 +330,31 @@
                   }
                 }
               }, 
+              "serviceAccountToken": {
+                "additionalProperties": false, 
+                "required": [
+                  "path"
+                ], 
+                "description": "ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise).", 
+                "properties": {
+                  "path": {
+                    "type": "string", 
+                    "description": "Path is the path relative to the mount point of the file to project the token into."
+                  }, 
+                  "audience": {
+                    "type": [
+                      "string", 
+                      "null"
+                    ], 
+                    "description": "Audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token. The audience defaults to the identifier of the apiserver."
+                  }, 
+                  "expirationSeconds": {
+                    "type": "integer", 
+                    "description": "ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.", 
+                    "format": "int64"
+                  }
+                }
+              }, 
               "downwardAPI": {
                 "additionalProperties": false, 
                 "description": "Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.", 
@@ -492,7 +517,7 @@
             "string", 
             "null"
           ], 
-          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
         }, 
         "secretRef": {
           "additionalProperties": false, 
@@ -534,7 +559,7 @@
             "string", 
             "null"
           ], 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\"."
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -1026,6 +1051,19 @@
         "readOnly": {
           "type": "boolean", 
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+        }, 
+        "secretRef": {
+          "additionalProperties": false, 
+          "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+          "properties": {
+            "name": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+            }
+          }
         }, 
         "volumeID": {
           "type": "string", 

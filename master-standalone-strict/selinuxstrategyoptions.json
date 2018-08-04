@@ -4,7 +4,7 @@
     "rule"
   ], 
   "type": "object", 
-  "description": "SELinux  Strategy Options defines the strategy type and any options used to create the strategy.", 
+  "description": "SELinuxStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use SELinuxStrategyOptions from policy API Group instead.", 
   "properties": {
     "seLinuxOptions": {
       "additionalProperties": false, 
@@ -45,7 +45,7 @@
         "string", 
         "null"
       ], 
-      "description": "type is the strategy that will dictate the allowable labels that may be set."
+      "description": "rule is the strategy that will dictate the allowable labels that may be set."
     }
   }
 }

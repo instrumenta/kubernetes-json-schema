@@ -19,6 +19,7 @@
         "string", 
         "null"
       ], 
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
       "format": "date-time"
     }, 
     "reason": {
@@ -33,6 +34,7 @@
         "string", 
         "null"
       ], 
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
       "format": "date-time"
     }, 
     "message": {
@@ -47,7 +49,7 @@
         "string", 
         "null"
       ], 
-      "description": "Type is the type of the condition. Currently only Ready. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
+      "description": "Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
     }
   }
 }

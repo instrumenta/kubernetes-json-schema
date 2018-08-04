@@ -26,12 +26,49 @@
         ], 
         "description": "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.", 
         "properties": {
-          "kind": {
+          "allowedTopologies": {
+            "items": {
+              "additionalProperties": false, 
+              "description": "A topology selector term represents the result of label queries. A null or empty topology selector term matches no objects. The requirements of them are ANDed. It provides a subset of functionality as NodeSelectorTerm. This is an alpha feature and may change in the future.", 
+              "properties": {
+                "matchLabelExpressions": {
+                  "items": {
+                    "additionalProperties": false, 
+                    "required": [
+                      "key", 
+                      "values"
+                    ], 
+                    "description": "A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.", 
+                    "properties": {
+                      "values": {
+                        "items": {
+                          "type": [
+                            "string", 
+                            "null"
+                          ]
+                        }, 
+                        "type": "array", 
+                        "description": "An array of string values. One value must match the label to be selected. Each entry in Values is ORed."
+                      }, 
+                      "key": {
+                        "type": "string", 
+                        "description": "The label key that the selector applies to."
+                      }
+                    }
+                  }, 
+                  "type": [
+                    "array", 
+                    "null"
+                  ], 
+                  "description": "A list of topology selector requirements by labels."
+                }
+              }
+            }, 
             "type": [
-              "string", 
+              "array", 
               "null"
             ], 
-            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+            "description": "Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is alpha-level and is only honored by servers that enable the DynamicProvisioningScheduling feature."
           }, 
           "parameters": {
             "additionalProperties": {
@@ -42,6 +79,13 @@
             }, 
             "type": "object", 
             "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class."
+          }, 
+          "kind": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
           }, 
           "apiVersion": {
             "type": [
@@ -101,6 +145,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "clusterName": {
@@ -396,6 +441,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "annotations": {

@@ -15,7 +15,6 @@
       "items": {
         "additionalProperties": false, 
         "required": [
-          "subjects", 
           "roleRef"
         ], 
         "x-kubernetes-group-version-kind": [
@@ -90,7 +89,10 @@
                 }
               }
             }, 
-            "type": "array", 
+            "type": [
+              "array", 
+              "null"
+            ], 
             "description": "Subjects holds references to the objects the role applies to."
           }, 
           "apiVersion": {
@@ -116,6 +118,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "clusterName": {
@@ -411,6 +414,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "annotations": {

@@ -1,5 +1,5 @@
 {
-  "description": "NetworkPolicyPeer describes a peer to allow traffic from. Exactly one of its fields must be specified.", 
+  "description": "NetworkPolicyPeer describes a peer to allow traffic from. Only certain combinations of fields are allowed", 
   "properties": {
     "namespaceSelector": {
       "additionalProperties": false, 

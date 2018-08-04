@@ -561,7 +561,7 @@
                       "string", 
                       "null"
                     ], 
-                    "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+                    "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
                   }, 
                   "secretRef": {
                     "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
@@ -609,7 +609,7 @@
                       "string", 
                       "null"
                     ], 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\""
                   }, 
                   "readOnly": {
                     "type": "boolean", 
@@ -692,7 +692,7 @@
                       "string", 
                       "null"
                     ], 
-                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                    "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\"."
                   }, 
                   "readOnly": {
                     "type": "boolean", 
@@ -1292,6 +1292,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "clusterName": {
@@ -1536,6 +1537,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "annotations": {

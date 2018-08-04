@@ -24,6 +24,21 @@
     }, 
     {
       "kind": "DeleteOptions", 
+      "version": "v1beta1", 
+      "group": "apiextensions.k8s.io"
+    }, 
+    {
+      "kind": "DeleteOptions", 
+      "version": "v1", 
+      "group": "apiregistration.k8s.io"
+    }, 
+    {
+      "kind": "DeleteOptions", 
+      "version": "v1beta1", 
+      "group": "apiregistration.k8s.io"
+    }, 
+    {
+      "kind": "DeleteOptions", 
       "version": "v1", 
       "group": "apps"
     }, 
@@ -90,6 +105,11 @@
     {
       "kind": "DeleteOptions", 
       "version": "v1beta1", 
+      "group": "coordination.k8s.io"
+    }, 
+    {
+      "kind": "DeleteOptions", 
+      "version": "v1beta1", 
       "group": "events.k8s.io"
     }, 
     {
@@ -134,6 +154,11 @@
     }, 
     {
       "kind": "DeleteOptions", 
+      "version": "v1beta1", 
+      "group": "scheduling.k8s.io"
+    }, 
+    {
+      "kind": "DeleteOptions", 
       "version": "v1alpha1", 
       "group": "settings.k8s.io"
     }, 
@@ -161,6 +186,19 @@
         "null"
       ], 
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+    }, 
+    "dryRun": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed"
     }, 
     "orphanDependents": {
       "type": "boolean", 

@@ -53,6 +53,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "message": {
@@ -1204,7 +1205,7 @@
                                 "string", 
                                 "null"
                               ], 
-                              "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10."
+                              "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10."
                             }, 
                             "subPath": {
                               "type": [
@@ -2757,7 +2758,7 @@
                               "string", 
                               "null"
                             ], 
-                            "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+                            "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
                           }, 
                           "secretRef": {
                             "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
@@ -2798,7 +2799,7 @@
                               "string", 
                               "null"
                             ], 
-                            "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+                            "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\"."
                           }, 
                           "readOnly": {
                             "type": "boolean", 
@@ -3608,7 +3609,7 @@
                                 "string", 
                                 "null"
                               ], 
-                              "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is beta in 1.10."
+                              "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10."
                             }, 
                             "subPath": {
                               "type": [
@@ -4481,6 +4482,7 @@
                     "string", 
                     "null"
                   ], 
+                  "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                   "format": "date-time"
                 }, 
                 "clusterName": {
@@ -4725,6 +4727,7 @@
                     "string", 
                     "null"
                   ], 
+                  "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                   "format": "date-time"
                 }, 
                 "annotations": {
@@ -4877,6 +4880,7 @@
             "string", 
             "null"
           ], 
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
           "format": "date-time"
         }, 
         "clusterName": {
@@ -5121,6 +5125,7 @@
             "string", 
             "null"
           ], 
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
           "format": "date-time"
         }, 
         "annotations": {

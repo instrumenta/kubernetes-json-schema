@@ -1,14 +1,28 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "APIServiceList is a list of APIService objects.", 
   "required": [
     "items"
   ], 
+  "x-kubernetes-group-version-kind": [
+    {
+      "kind": "APIServiceList", 
+      "version": "v1beta1", 
+      "group": "apiregistration.k8s.io"
+    }
+  ], 
+  "$schema": "http://json-schema.org/schema#", 
   "type": "object", 
-  "description": "APIServiceList is a list of APIService objects.", 
   "properties": {
     "items": {
       "items": {
         "additionalProperties": false, 
+        "x-kubernetes-group-version-kind": [
+          {
+            "kind": "APIService", 
+            "version": "v1beta1", 
+            "group": "apiregistration.k8s.io"
+          }
+        ], 
         "description": "APIService represents a server for a particular GroupVersion. Name must be \"version.group\".", 
         "properties": {
           "status": {
@@ -43,6 +57,7 @@
                         "string", 
                         "null"
                       ], 
+                      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                       "format": "date-time"
                     }, 
                     "reason": {
@@ -75,7 +90,6 @@
             "additionalProperties": false, 
             "required": [
               "service", 
-              "caBundle", 
               "groupPriorityMinimum", 
               "versionPriority"
             ], 
@@ -116,7 +130,10 @@
                 "description": "Version is the API version this server hosts.  For example, \"v1\""
               }, 
               "caBundle": {
-                "type": "string", 
+                "type": [
+                  "string", 
+                  "null"
+                ], 
                 "description": "CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate.", 
                 "format": "byte"
               }, 
@@ -131,7 +148,7 @@
               }, 
               "versionPriority": {
                 "type": "integer", 
-                "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) Since it's inside of a group, the number can be small, probably in the 10s.", 
+                "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it's inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is \"kube-like\", it will sort above non \"kube-like\" version strings, which are ordered lexicographically. \"Kube-like\" versions start with a \"v\", then are followed by a number (the major version), then optionally the string \"alpha\" or \"beta\" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.", 
                 "format": "int32"
               }
             }
@@ -159,6 +176,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "clusterName": {
@@ -454,6 +472,7 @@
                   "string", 
                   "null"
                 ], 
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
                 "format": "date-time"
               }, 
               "annotations": {

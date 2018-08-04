@@ -244,7 +244,7 @@
             "string", 
             "null"
           ], 
-          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
+          "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned."
         }, 
         "secretRef": {
           "additionalProperties": false, 
@@ -293,7 +293,7 @@
             "string", 
             "null"
           ], 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Default is \"xfs\""
         }, 
         "readOnly": {
           "type": "boolean", 
@@ -317,11 +317,11 @@
       "required": [
         "path"
       ], 
-      "description": "Local represents directly-attached storage with node affinity", 
+      "description": "Local represents directly-attached storage with node affinity (Beta feature)", 
       "properties": {
         "path": {
           "type": "string", 
-          "description": "The full path to the volume on the node For alpha, this path must be a directory Once block as a source is supported, then this path can point to a block device"
+          "description": "The full path to the volume on the node. It can be either a directory or block device (disk, partition, ...). Directories can be represented only by PersistentVolume with VolumeMode=Filesystem. Block devices can be represented only by VolumeMode=Block, which also requires the BlockVolume alpha feature gate to be enabled."
         }
       }
     }, 
@@ -573,13 +573,25 @@
       ], 
       "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)", 
       "properties": {
-        "volumeHandle": {
-          "type": "string", 
-          "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
-        }, 
-        "readOnly": {
-          "type": "boolean", 
-          "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
+        "nodeStageSecretRef": {
+          "additionalProperties": false, 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
+          "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
+            "name": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name is unique within a namespace to reference a secret resource."
+            }
+          }
         }, 
         "driver": {
           "type": "string", 
@@ -595,12 +607,60 @@
           "type": "object", 
           "description": "Attributes of the volume to publish."
         }, 
+        "controllerPublishSecretRef": {
+          "additionalProperties": false, 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
+          "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
+            "name": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name is unique within a namespace to reference a secret resource."
+            }
+          }
+        }, 
         "fsType": {
           "type": [
             "string", 
             "null"
           ], 
-          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
+          "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\"."
+        }, 
+        "readOnly": {
+          "type": "boolean", 
+          "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
+        }, 
+        "volumeHandle": {
+          "type": "string", 
+          "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
+        }, 
+        "nodePublishSecretRef": {
+          "additionalProperties": false, 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
+          "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
+            "name": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name is unique within a namespace to reference a secret resource."
+            }
+          }
         }
       }
     }, 
@@ -618,11 +678,46 @@
             "nodeSelectorTerms": {
               "items": {
                 "additionalProperties": false, 
-                "required": [
-                  "matchExpressions"
-                ], 
-                "description": "A null or empty node selector term matches no objects.", 
+                "description": "A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.", 
                 "properties": {
+                  "matchFields": {
+                    "items": {
+                      "additionalProperties": false, 
+                      "required": [
+                        "key", 
+                        "operator"
+                      ], 
+                      "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
+                      "properties": {
+                        "operator": {
+                          "type": "string", 
+                          "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt."
+                        }, 
+                        "values": {
+                          "items": {
+                            "type": [
+                              "string", 
+                              "null"
+                            ]
+                          }, 
+                          "type": [
+                            "array", 
+                            "null"
+                          ], 
+                          "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch."
+                        }, 
+                        "key": {
+                          "type": "string", 
+                          "description": "The label key that the selector applies to."
+                        }
+                      }
+                    }, 
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
+                    "description": "A list of node selector requirements by node's fields."
+                  }, 
                   "matchExpressions": {
                     "items": {
                       "additionalProperties": false, 
@@ -655,8 +750,11 @@
                         }
                       }
                     }, 
-                    "type": "array", 
-                    "description": "Required. A list of node selector requirements. The requirements are ANDed."
+                    "type": [
+                      "array", 
+                      "null"
+                    ], 
+                    "description": "A list of node selector requirements by node's labels."
                   }
                 }
               }, 
@@ -951,6 +1049,26 @@
         "readOnly": {
           "type": "boolean", 
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+        }, 
+        "secretRef": {
+          "additionalProperties": false, 
+          "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
+          "properties": {
+            "namespace": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Namespace defines the space within which the secret name must be unique."
+            }, 
+            "name": {
+              "type": [
+                "string", 
+                "null"
+              ], 
+              "description": "Name is unique within a namespace to reference a secret resource."
+            }
+          }
         }, 
         "volumeID": {
           "type": "string", 
