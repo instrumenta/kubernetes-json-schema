@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "group", 
+    "version", 
+    "names", 
+    "scope"
+  ], 
+  "type": "object", 
+  "description": "CustomResourceDefinitionSpec describes how a user wants their resource to appear", 
+  "properties": {
+    "group": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Group is the group this resource belongs in"
+    }, 
+    "version": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Version is the version this resource belongs in"
+    }, 
+    "names": {
+      "description": "Names are the names used to describe this custom resource", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionNames"
+    }, 
+    "scope": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Scope indicates whether this resource is cluster or namespace scoped.  Default is namespaced"
+    }, 
+    "validation": {
+      "description": "Validation describes the validation methods for CustomResources", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceValidation"
+    }, 
+    "subresources": {
+      "description": "Subresources describes the subresources for CustomResources This field is alpha-level and should only be sent to servers that enable subresources via the CustomResourceSubresources feature gate.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresources"
+    }
+  }
+}

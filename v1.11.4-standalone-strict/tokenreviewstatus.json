@@ -1,0 +1,66 @@
+{
+  "additionalProperties": false, 
+  "description": "TokenReviewStatus is the result of the token authentication request.", 
+  "properties": {
+    "authenticated": {
+      "type": "boolean", 
+      "description": "Authenticated indicates that the token was associated with a known user."
+    }, 
+    "user": {
+      "additionalProperties": false, 
+      "description": "UserInfo holds the information about the user needed to implement the user.Info interface.", 
+      "properties": {
+        "username": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "The name that uniquely identifies this user among all active users."
+        }, 
+        "uid": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs."
+        }, 
+        "groups": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "The names of groups this user is a part of."
+        }, 
+        "extra": {
+          "additionalProperties": {
+            "items": {
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "type": [
+              "array", 
+              "null"
+            ]
+          }, 
+          "type": "object", 
+          "description": "Any additional information provided by the authenticator."
+        }
+      }
+    }, 
+    "error": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Error indicates that the token couldn't be checked"
+    }
+  }
+}

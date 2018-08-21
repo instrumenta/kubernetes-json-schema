@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "target", 
+    "metricName", 
+    "targetValue"
+  ], 
+  "type": "object", 
+  "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
+  "properties": {
+    "targetValue": {
+      "description": "targetValue is the target value of the metric (as a quantity).", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }, 
+    "target": {
+      "description": "target is the described Kubernetes object.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference"
+    }, 
+    "metricName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "metricName is the name of the metric in question."
+    }
+  }
+}

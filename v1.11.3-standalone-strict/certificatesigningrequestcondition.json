@@ -1,0 +1,39 @@
+{
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "type"
+  ], 
+  "type": "object", 
+  "properties": {
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "human readable message with details about the request state"
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "request approval state, currently Approved or Denied."
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "brief reason for the request state"
+    }, 
+    "lastUpdateTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "additionalProperties": false, 
+  "description": "PersistentVolumeClaimStatus is the current status of a persistent volume claim.", 
+  "properties": {
+    "phase": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Phase represents the current phase of PersistentVolumeClaim."
+    }, 
+    "accessModes": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "AccessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1"
+    }, 
+    "capacity": {
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          {
+            "type": "integer"
+          }
+        ]
+      }, 
+      "type": "object", 
+      "description": "Represents the actual resources of the underlying volume."
+    }, 
+    "conditions": {
+      "items": {
+        "additionalProperties": false, 
+        "required": [
+          "type", 
+          "status"
+        ], 
+        "description": "PersistentVolumeClaimCondition contails details about state of pvc", 
+        "properties": {
+          "status": {
+            "type": "string"
+          }, 
+          "lastTransitionTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+            "format": "date-time"
+          }, 
+          "reason": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized."
+          }, 
+          "lastProbeTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+            "format": "date-time"
+          }, 
+          "message": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Human-readable message indicating details about last transition."
+          }, 
+          "type": {
+            "type": "string"
+          }
+        }
+      }, 
+      "x-kubernetes-patch-merge-key": "type", 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'ResizeStarted'.", 
+      "x-kubernetes-patch-strategy": "merge"
+    }
+  }
+}

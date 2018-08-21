@@ -1,0 +1,14 @@
+{
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "namespace": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Namespace to evaluate rules for. Required."
+    }
+  }
+}

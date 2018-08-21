@@ -1,0 +1,47 @@
+{
+  "description": "StatefulSetCondition describes the state of a statefulset at a certain point.", 
+  "required": [
+    "type", 
+    "status"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "status": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Status of the condition, one of True, False, Unknown."
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Type of statefulset condition."
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "A human readable message indicating details about the transition."
+    }, 
+    "lastTransitionTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "format": "date-time"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "The reason for the condition's last transition."
+    }
+  }
+}

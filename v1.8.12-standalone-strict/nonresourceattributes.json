@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface", 
+  "properties": {
+    "path": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Path is the URL path of the request"
+    }, 
+    "verb": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Verb is the standard HTTP verb"
+    }
+  }
+}

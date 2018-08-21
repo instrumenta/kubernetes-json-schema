@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "conditions", 
+    "acceptedNames", 
+    "storedVersions"
+  ], 
+  "type": "object", 
+  "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition", 
+  "properties": {
+    "acceptedNames": {
+      "required": [
+        "plural", 
+        "kind"
+      ], 
+      "description": "CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition", 
+      "properties": {
+        "shortNames": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "ShortNames are short names for the resource.  It must be all lowercase."
+        }, 
+        "kind": {
+          "type": "string", 
+          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and singular."
+        }, 
+        "singular": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Singular is the singular name of the resource.  It must be all lowercase  Defaults to lowercased <kind>"
+        }, 
+        "listKind": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "ListKind is the serialized kind of the list for this resource.  Defaults to <kind>List."
+        }, 
+        "plural": {
+          "type": "string", 
+          "description": "Plural is the plural name of the resource to serve.  It must match the name of the CustomResourceDefinition-registration too: plural.group and it must be all lowercase."
+        }, 
+        "categories": {
+          "items": {
+            "type": [
+              "string", 
+              "null"
+            ]
+          }, 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "description": "Categories is a list of grouped resources custom resources belong to (e.g. 'all')"
+        }
+      }
+    }, 
+    "conditions": {
+      "items": {
+        "required": [
+          "type", 
+          "status"
+        ], 
+        "description": "CustomResourceDefinitionCondition contains details for the current condition of this pod.", 
+        "properties": {
+          "status": {
+            "type": "string", 
+            "description": "Status is the status of the condition. Can be True, False, Unknown."
+          }, 
+          "lastTransitionTime": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+            "format": "date-time"
+          }, 
+          "message": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Human-readable message indicating details about last transition."
+          }, 
+          "type": {
+            "type": "string", 
+            "description": "Type is the type of the condition."
+          }, 
+          "reason": {
+            "type": [
+              "string", 
+              "null"
+            ], 
+            "description": "Unique, one-word, CamelCase reason for the condition's last transition."
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition"
+    }, 
+    "storedVersions": {
+      "items": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "StoredVersions are all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so the migration controller can first finish a migration to another version (i.e. that no old objects are left in the storage), and then remove the rest of the versions from this list. None of the versions in this list can be removed from the spec.Versions field."
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "description": "PodCondition contains details for the current condition of this pod.", 
+  "required": [
+    "type", 
+    "status"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "status": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
+    }, 
+    "lastTransitionTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "format": "date-time"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Unique, one-word, CamelCase reason for the condition's last transition."
+    }, 
+    "lastProbeTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "format": "date-time"
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Human-readable message indicating details about last transition."
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Type is the type of the condition. Currently only Ready. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
+    }
+  }
+}

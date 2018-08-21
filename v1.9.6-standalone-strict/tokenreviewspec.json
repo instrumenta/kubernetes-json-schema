@@ -1,0 +1,12 @@
+{
+  "description": "TokenReviewSpec is a description of the token authentication request.", 
+  "properties": {
+    "token": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Token is the opaque bearer token."
+    }
+  }
+}

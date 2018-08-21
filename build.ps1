@@ -8,11 +8,14 @@
 
 $repo="garethr/kubernetes-json-schema"
 
-$arr = @("master",
-         "v1.11.1",
+$arr = @("v1.11.4",
+         "v1.11.3",
+         "v1.11.2",
          "v1.11.0",
-         "v1.10.5",
-         "v1.10.5",
+         "v1.10.10",
+         "v1.10.9",
+         "v1.10.8",
+         "v1.10.7",
          "v1.10.6",
          "v1.10.5",
          "v1.10.4",
@@ -36,9 +39,7 @@ $arr = @("master",
          "v1.8.13",
          "v1.8.12",
          "v1.8.11",
-         "v1.8.10")
-
-$arr2 = @("master",
+         "v1.8.10",
          "v1.8.9",
          "v1.8.8",
          "v1.8.7",
@@ -86,14 +87,14 @@ foreach($version in $arr) {
     $schema="https://raw.githubusercontent.com/kubernetes/kubernetes/${version}/api/openapi-spec/swagger.json"
     $prefix="https://raw.githubusercontent.com/${repo}/master/${version}/_definitions.json"
 
-#    Remove-Item "$version-standalone-strict" -Recurse -ErrorAction Ignore
-#    Remove-Item "$version-standalone" -Recurse -ErrorAction Ignore
-#    Remove-Item "$version-local" -Recurse -ErrorAction Ignore
-#    Remove-Item "$version" -Recurse -ErrorAction Ignore
-#    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-standalone-strict" --kubernetes --stand-alone --strict "$schema"
-#    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-standalone" --kubernetes --stand-alone "$schema"
-#    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-local" --kubernetes "$schema"
-#    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version" --kubernetes --prefix "$prefix" "$schema"
+    Remove-Item "$version-standalone-strict" -Recurse -ErrorAction Ignore
+    Remove-Item "$version-standalone" -Recurse -ErrorAction Ignore
+    Remove-Item "$version-local" -Recurse -ErrorAction Ignore
+    Remove-Item "$version" -Recurse -ErrorAction Ignore
+    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-standalone-strict" --kubernetes --stand-alone --strict "$schema"
+    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-standalone" --kubernetes --stand-alone "$schema"
+    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version-local" --kubernetes "$schema"
+    docker run --rm -v ${PWD}:/out garethr/openapi2jsonschema -o "$version" --kubernetes --prefix "$prefix" "$schema"
     dos2unix.exe "$version-standalone-strict/*"
     dos2unix.exe "$version-standalone/*"
     dos2unix.exe "$version-local/*"

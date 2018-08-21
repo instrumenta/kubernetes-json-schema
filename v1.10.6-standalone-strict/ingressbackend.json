@@ -1,0 +1,32 @@
+{
+  "description": "IngressBackend describes all endpoints for a given service and port.", 
+  "required": [
+    "serviceName", 
+    "servicePort"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "serviceName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Specifies the name of the referenced service."
+    }, 
+    "servicePort": {
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }
+  }
+}

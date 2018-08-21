@@ -1,0 +1,52 @@
+{
+  "additionalProperties": false, 
+  "required": [
+    "type", 
+    "status"
+  ], 
+  "description": "JobCondition describes current state of a job.", 
+  "properties": {
+    "status": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Status of the condition, one of True, False, Unknown."
+    }, 
+    "lastTransitionTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "format": "date-time"
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "(brief) reason for the condition's last transition."
+    }, 
+    "lastProbeTime": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "format": "date-time"
+    }, 
+    "message": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Human readable message indicating details about last transition."
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Type of job condition, Complete or Failed."
+    }
+  }
+}

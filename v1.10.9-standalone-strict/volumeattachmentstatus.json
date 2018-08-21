@@ -1,0 +1,65 @@
+{
+  "description": "VolumeAttachmentStatus is the status of a VolumeAttachment request.", 
+  "required": [
+    "attached"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "attachError": {
+      "additionalProperties": false, 
+      "description": "VolumeError captures an error encountered during a volume operation.", 
+      "properties": {
+        "message": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "String detailing the error encountered during Attach or Detach operation. This string maybe logged, so it should not contain sensitive information."
+        }, 
+        "time": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "format": "date-time"
+        }
+      }
+    }, 
+    "attachmentMetadata": {
+      "additionalProperties": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": "object", 
+      "description": "Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher."
+    }, 
+    "attached": {
+      "type": "boolean", 
+      "description": "Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher."
+    }, 
+    "detachError": {
+      "additionalProperties": false, 
+      "description": "VolumeError captures an error encountered during a volume operation.", 
+      "properties": {
+        "message": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "String detailing the error encountered during Attach or Detach operation. This string maybe logged, so it should not contain sensitive information."
+        }, 
+        "time": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

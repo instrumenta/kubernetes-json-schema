@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "Schema", 
+    "JSONSchemas"
+  ], 
+  "type": "object", 
+  "description": "JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization purposes.", 
+  "properties": {
+    "JSONSchemas": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ]
+    }, 
+    "Schema": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "additionalProperties": false, 
+  "description": "DEPRECATED 1.9 - This group version of NetworkPolicyPort is deprecated by networking/v1/NetworkPolicyPort.", 
+  "properties": {
+    "protocol": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Optional.  The protocol (TCP or UDP) which traffic must match. If not specified, this field defaults to TCP."
+    }, 
+    "port": {
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }
+  }
+}

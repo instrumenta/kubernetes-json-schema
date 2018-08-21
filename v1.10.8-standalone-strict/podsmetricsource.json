@@ -1,0 +1,32 @@
+{
+  "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.", 
+  "required": [
+    "metricName", 
+    "targetAverageValue"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "targetAverageValue": {
+      "oneOf": [
+        {
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }, 
+    "metricName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "metricName is the name of the metric in question"
+    }
+  }
+}

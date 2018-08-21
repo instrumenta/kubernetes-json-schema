@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false, 
+  "required": [
+    "min", 
+    "max"
+  ], 
+  "description": "ID Range provides a min/max of an allowed range of IDs.", 
+  "properties": {
+    "max": {
+      "type": "integer", 
+      "description": "Max is the end of the range, inclusive.", 
+      "format": "int64"
+    }, 
+    "min": {
+      "type": "integer", 
+      "description": "Min is the start of the range, inclusive.", 
+      "format": "int64"
+    }
+  }
+}

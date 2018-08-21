@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "driver"
+  ], 
+  "type": "object", 
+  "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used.", 
+  "properties": {
+    "driver": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Driver is the name of the Flexvolume driver."
+    }
+  }
+}

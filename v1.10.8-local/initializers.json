@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "pending"
+  ], 
+  "type": "object", 
+  "description": "Initializers tracks the progress of initialization.", 
+  "properties": {
+    "result": {
+      "description": "If result is set with the Failure field, the object will be persisted to storage and then deleted, ensuring that other clients can observe the deletion.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
+    }, 
+    "pending": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Initializer"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Pending is a list of initializers that must execute in order before this object is visible. When the last pending initializer is removed, and no failing result is set, the initializers struct will be set to nil and the object is considered as initialized and visible to all clients.", 
+      "x-kubernetes-patch-strategy": "merge", 
+      "x-kubernetes-patch-merge-key": "name"
+    }
+  }
+}
