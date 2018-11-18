@@ -1,0 +1,50 @@
+{
+  "additionalProperties": false, 
+  "required": [
+    "driver"
+  ], 
+  "description": "FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.", 
+  "properties": {
+    "secretRef": {
+      "additionalProperties": false, 
+      "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+      "properties": {
+        "name": {
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+        }
+      }
+    }, 
+    "fsType": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". The default filesystem depends on FlexVolume script."
+    }, 
+    "driver": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Driver is the name of the driver to use for this volume."
+    }, 
+    "readOnly": {
+      "type": "boolean", 
+      "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+    }, 
+    "options": {
+      "additionalProperties": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": "object", 
+      "description": "Optional: Extra command options if any."
+    }
+  }
+}
