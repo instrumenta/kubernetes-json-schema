@@ -3,11 +3,17 @@
   "properties": {
     "address": {
       "description": "The node address.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "type": {
       "description": "Node address type, one of Hostname, ExternalIP or InternalIP.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

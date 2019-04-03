@@ -3,7 +3,10 @@
   "properties": {
     "driver": {
       "description": "driver is the name of the Flexvolume driver.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

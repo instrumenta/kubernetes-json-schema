@@ -3,22 +3,31 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "fields": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Fields",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Fields",
       "description": "Fields identifies a set of fields."
     },
     "manager": {
       "description": "Manager is an identifier of the workflow managing these fields.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "operation": {
       "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "time": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time is timestamp of when these fields were set. It should always be empty if Operation is 'Apply'"
     }
   },

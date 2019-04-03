@@ -3,23 +3,35 @@
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "name": {
       "description": "Required: This must match the Name of a deployment.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "rollbackTo": {
-      "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RollbackConfig",
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RollbackConfig",
       "description": "The config of this deployment rollback."
     },
     "updatedAnnotations": {
       "additionalProperties": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
       "description": "The annotations to be updated to a deployment",
       "type": "object"

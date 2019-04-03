@@ -3,11 +3,17 @@
   "properties": {
     "devicePath": {
       "description": "DevicePath represents the device path where the volume should be available",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "name": {
       "description": "Name of the attached volume",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

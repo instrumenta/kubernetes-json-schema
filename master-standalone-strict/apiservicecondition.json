@@ -1,46 +1,48 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "type", 
-    "status"
-  ], 
-  "type": "object", 
+  "description": "APIServiceCondition describes the state of an APIService at a particular point",
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status is the status of the condition. Can be True, False, Unknown."
-    }, 
-    "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type is the type of the condition."
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Human-readable message indicating details about last transition."
-    }, 
     "lastTransitionTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "format": "date-time",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-      "format": "date-time"
-    }, 
+      ]
+    },
+    "message": {
+      "description": "Human-readable message indicating details about last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "reason": {
+      "description": "Unique, one-word, CamelCase reason for the condition's last transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Unique, one-word, CamelCase reason for the condition's last transition."
+      ]
+    },
+    "status": {
+      "description": "Status is the status of the condition. Can be True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type is the type of the condition.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
 }

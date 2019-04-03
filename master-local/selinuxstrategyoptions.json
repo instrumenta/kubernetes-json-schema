@@ -3,10 +3,13 @@
   "properties": {
     "rule": {
       "description": "rule is the strategy that will dictate the allowable labels that may be set.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "seLinuxOptions": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SELinuxOptions",
       "description": "seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/"
     }
   },

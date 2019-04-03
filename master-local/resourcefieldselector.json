@@ -3,15 +3,21 @@
   "properties": {
     "containerName": {
       "description": "Container name: required for volumes, optional for env vars",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "divisor": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity",
       "description": "Specifies the output format of the exposed resources, defaults to \"1\""
     },
     "resource": {
       "description": "Required: resource to select",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

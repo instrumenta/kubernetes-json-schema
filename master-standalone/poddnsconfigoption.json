@@ -3,10 +3,16 @@
   "properties": {
     "name": {
       "description": "Required.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "value": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

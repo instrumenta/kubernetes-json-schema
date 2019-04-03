@@ -2,15 +2,18 @@
   "description": "EnvFromSource represents the source of a set of ConfigMaps",
   "properties": {
     "configMapRef": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.ConfigMapEnvSource",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapEnvSource",
       "description": "The ConfigMap to select from"
     },
     "prefix": {
       "description": "An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "secretRef": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.SecretEnvSource",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretEnvSource",
       "description": "The Secret to select from"
     }
   },

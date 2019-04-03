@@ -2,7 +2,7 @@
   "description": "IngressStatus describe the current state of the Ingress.",
   "properties": {
     "loadBalancer": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.LoadBalancerStatus",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LoadBalancerStatus",
       "description": "LoadBalancer contains the current status of the load-balancer."
     }
   },

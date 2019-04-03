@@ -21,7 +21,7 @@
       "type": "integer"
     },
     "seLinuxOptions": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions",
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.SELinuxOptions",
       "description": "The SELinux context to be applied to all containers. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container."
     },
     "supplementalGroups": {
@@ -30,14 +30,20 @@
         "format": "int64",
         "type": "integer"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "sysctls": {
       "description": "Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.Sysctl"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.Sysctl"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "type": "object",

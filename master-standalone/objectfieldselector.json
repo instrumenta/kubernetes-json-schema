@@ -3,11 +3,17 @@
   "properties": {
     "apiVersion": {
       "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "fieldPath": {
       "description": "Path of the field to select in the specified API version.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

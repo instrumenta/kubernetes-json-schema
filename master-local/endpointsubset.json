@@ -4,23 +4,32 @@
     "addresses": {
       "description": "IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.EndpointAddress"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointAddress"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "notReadyAddresses": {
       "description": "IP addresses which offer the related ports but are not currently marked as ready because they have not yet finished starting, have recently failed a readiness check, or have recently failed a liveness check.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.EndpointAddress"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointAddress"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "ports": {
       "description": "Port numbers available on the related IP addresses.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.EndpointPort"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointPort"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "type": "object",

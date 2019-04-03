@@ -3,7 +3,10 @@
   "properties": {
     "containerID": {
       "description": "Container's ID in the format 'docker://<container_id>'",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "exitCode": {
       "description": "Exit status from the last termination of the container",
@@ -11,16 +14,22 @@
       "type": "integer"
     },
     "finishedAt": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time at which the container last terminated"
     },
     "message": {
       "description": "Message regarding the last termination of the container",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "reason": {
       "description": "(brief) reason from the last termination of the container",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "signal": {
       "description": "Signal from the last termination of the container",
@@ -28,7 +37,7 @@
       "type": "integer"
     },
     "startedAt": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time at which previous execution of the container started"
     }
   },

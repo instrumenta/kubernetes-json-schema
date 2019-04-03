@@ -2,55 +2,73 @@
   "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).",
   "properties": {
     "$ref": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "$schema": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "additionalItems": {
-      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
     },
     "additionalProperties": {
-      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
     },
     "allOf": {
       "items": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "anyOf": {
       "items": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "default": {
-      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
     },
     "definitions": {
       "additionalProperties": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
       "type": "object"
     },
     "dependencies": {
       "additionalProperties": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray"
       },
       "type": "object"
     },
     "description": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "enum": {
       "items": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "example": {
-      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
     },
     "exclusiveMaximum": {
       "type": "boolean"
@@ -59,16 +77,22 @@
       "type": "boolean"
     },
     "externalDocs": {
-      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
     },
     "format": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "id": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "items": {
-      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray"
     },
     "maxItems": {
       "format": "int64",
@@ -107,29 +131,35 @@
       "type": "number"
     },
     "not": {
-      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
     },
     "nullable": {
       "type": "boolean"
     },
     "oneOf": {
       "items": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "pattern": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "patternProperties": {
       "additionalProperties": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
       "type": "object"
     },
     "properties": {
       "additionalProperties": {
-        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
       "type": "object"
     },
@@ -137,13 +167,22 @@
       "items": {
         "type": "string"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "title": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "type": {
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "uniqueItems": {
       "type": "boolean"

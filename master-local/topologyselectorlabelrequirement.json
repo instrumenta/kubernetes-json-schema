@@ -3,14 +3,23 @@
   "properties": {
     "key": {
       "description": "The label key that the selector applies to.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "values": {
       "description": "An array of string values. One value must match the label to be selected. Each entry in Values is ORed.",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "required": [

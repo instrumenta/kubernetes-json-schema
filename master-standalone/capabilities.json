@@ -4,16 +4,28 @@
     "add": {
       "description": "Added capabilities",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "drop": {
       "description": "Removed capabilities",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "type": "object",

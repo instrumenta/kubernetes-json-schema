@@ -9,9 +9,12 @@
     "conditions": {
       "description": "Represents the latest available observations of a replica set's current state.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSetCondition"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSetCondition"
       },
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "x-kubernetes-patch-merge-key": "type",
       "x-kubernetes-patch-strategy": "merge"
     },

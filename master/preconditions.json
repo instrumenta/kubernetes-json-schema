@@ -3,11 +3,17 @@
   "properties": {
     "resourceVersion": {
       "description": "Specifies the target ResourceVersion",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "uid": {
       "description": "Specifies the target UID.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

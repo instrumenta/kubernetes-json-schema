@@ -3,11 +3,17 @@
   "properties": {
     "datasetName": {
       "description": "Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "datasetUUID": {
       "description": "UUID of the dataset. This is unique identifier of a Flocker dataset",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

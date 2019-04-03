@@ -4,16 +4,28 @@
     "nonResourceURLs": {
       "description": "NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  \"*\" means all.",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "verbs": {
       "description": "Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  \"*\" means all.",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "required": [

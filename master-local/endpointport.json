@@ -3,7 +3,10 @@
   "properties": {
     "name": {
       "description": "The name of this port (corresponds to ServicePort.Name). Must be a DNS_LABEL. Optional only if one port is defined.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "port": {
       "description": "The port number of the endpoint.",
@@ -12,7 +15,10 @@
     },
     "protocol": {
       "description": "The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

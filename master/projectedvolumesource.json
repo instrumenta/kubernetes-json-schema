@@ -9,9 +9,12 @@
     "sources": {
       "description": "list of volume projections",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.VolumeProjection"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.VolumeProjection"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "required": [

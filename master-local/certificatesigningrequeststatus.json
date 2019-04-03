@@ -3,14 +3,20 @@
     "certificate": {
       "description": "If request was approved, the controller will place the issued certificate here.",
       "format": "byte",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "conditions": {
       "description": "Conditions applied to the request, such as approval or denial.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.certificates.v1beta1.CertificateSigningRequestCondition"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.certificates.v1beta1.CertificateSigningRequestCondition"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "type": "object",

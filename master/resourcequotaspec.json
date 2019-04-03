@@ -3,21 +3,27 @@
   "properties": {
     "hard": {
       "additionalProperties": {
-        "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       },
       "description": "hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
       "type": "object"
     },
     "scopeSelector": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.ScopeSelector",
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.ScopeSelector",
       "description": "scopeSelector is also a collection of filters like scopes that must match each object tracked by a quota but expressed using ScopeSelectorOperator in combination with possible values. For a resource to match, both scopes AND scopeSelector (if specified in spec), must be matched."
     },
     "scopes": {
       "description": "A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "type": "object",

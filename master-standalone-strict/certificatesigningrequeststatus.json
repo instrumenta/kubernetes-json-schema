@@ -1,53 +1,57 @@
 {
   "properties": {
+    "certificate": {
+      "description": "If request was approved, the controller will place the issued certificate here.",
+      "format": "byte",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "conditions": {
+      "description": "Conditions applied to the request, such as approval or denial.",
       "items": {
-        "additionalProperties": false, 
+        "properties": {
+          "lastUpdateTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "format": "date-time",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "message": {
+            "description": "human readable message with details about the request state",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "brief reason for the request state",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "description": "request approval state, currently Approved or Denied.",
+            "type": "string"
+          }
+        },
         "required": [
           "type"
-        ], 
-        "properties": {
-          "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "human readable message with details about the request state"
-          }, 
-          "type": {
-            "type": "string", 
-            "description": "request approval state, currently Approved or Denied."
-          }, 
-          "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "brief reason for the request state"
-          }, 
-          "lastUpdateTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-            "format": "date-time"
-          }
-        }
-      }, 
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
       "type": [
-        "array", 
+        "array",
         "null"
-      ], 
-      "description": "Conditions applied to the request, such as approval or denial."
-    }, 
-    "certificate": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "If request was approved, the controller will place the issued certificate here.", 
-      "format": "byte"
+      ]
     }
-  }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
 }

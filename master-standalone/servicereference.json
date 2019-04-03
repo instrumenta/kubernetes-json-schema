@@ -3,11 +3,17 @@
   "properties": {
     "name": {
       "description": "Name is the name of the service",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "namespace": {
       "description": "Namespace is the namespace of the service",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

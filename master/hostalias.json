@@ -4,13 +4,22 @@
     "hostnames": {
       "description": "Hostnames for the above IP address.",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "ip": {
       "description": "IP address of the host file entry.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

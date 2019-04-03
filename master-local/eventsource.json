@@ -3,11 +3,17 @@
   "properties": {
     "component": {
       "description": "Component from which the event is generated.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "host": {
       "description": "Node name on which the event is generated.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

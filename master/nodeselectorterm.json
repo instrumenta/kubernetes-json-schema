@@ -4,16 +4,22 @@
     "matchExpressions": {
       "description": "A list of node selector requirements by node's labels.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "matchFields": {
       "description": "A list of node selector requirements by node's fields.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "type": "object",

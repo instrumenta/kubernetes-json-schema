@@ -2,12 +2,15 @@
   "description": "LeaseSpec is a specification of a Lease.",
   "properties": {
     "acquireTime": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
       "description": "acquireTime is a time when the current lease was acquired."
     },
     "holderIdentity": {
       "description": "holderIdentity contains the identity of the holder of a current lease.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "leaseDurationSeconds": {
       "description": "leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.",
@@ -20,7 +23,7 @@
       "type": "integer"
     },
     "renewTime": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
       "description": "renewTime is a time when the current holder of a lease has last updated the lease."
     }
   },

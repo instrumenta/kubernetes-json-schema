@@ -3,11 +3,17 @@
   "properties": {
     "name": {
       "description": "Name of a property to set",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "value": {
       "description": "Value of a property to set",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

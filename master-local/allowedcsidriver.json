@@ -3,7 +3,10 @@
   "properties": {
     "name": {
       "description": "Name is the registered name of the CSI driver",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

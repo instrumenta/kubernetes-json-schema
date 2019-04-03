@@ -7,12 +7,15 @@
       "type": "integer"
     },
     "lastObservedTime": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",
       "description": "Time when last Event from the series was seen before last heartbeat."
     },
     "state": {
       "description": "Information whether this series is ongoing or finished.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

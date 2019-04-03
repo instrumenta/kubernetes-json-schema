@@ -1,44 +1,48 @@
 {
-  "description": "DeploymentStrategy describes how to replace existing pods with new ones.", 
+  "description": "DeploymentStrategy describes how to replace existing pods with new ones.",
   "properties": {
     "rollingUpdate": {
-      "additionalProperties": false, 
-      "description": "Spec to control the desired behavior of rolling update.", 
+      "description": "Spec to control the desired behavior of rolling update.",
       "properties": {
         "maxSurge": {
           "oneOf": [
             {
               "type": [
-                "string", 
+                "string",
                 "null"
               ]
-            }, 
+            },
             {
               "type": "integer"
             }
           ]
-        }, 
+        },
         "maxUnavailable": {
           "oneOf": [
             {
               "type": [
-                "string", 
+                "string",
                 "null"
               ]
-            }, 
+            },
             {
               "type": "integer"
             }
           ]
         }
-      }
-    }, 
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
     "type": {
+      "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate."
+      ]
     }
-  }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
 }

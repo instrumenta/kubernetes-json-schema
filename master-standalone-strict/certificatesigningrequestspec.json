@@ -1,72 +1,75 @@
 {
-  "required": [
-    "request"
-  ], 
-  "description": "This information is immutable after the request is created. Only the Request and Usages fields can be set on creation, other fields are derived by Kubernetes and cannot be modified by users.", 
+  "description": "This information is immutable after the request is created. Only the Request and Usages fields can be set on creation, other fields are derived by Kubernetes and cannot be modified by users.",
   "properties": {
-    "username": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Information about the requesting user. See user.Info interface for details."
-    }, 
-    "usages": {
-      "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "allowedUsages specifies a set of usage contexts the key will be valid for. See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3\n     https://tools.ietf.org/html/rfc5280#section-4.2.1.12"
-    }, 
-    "uid": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "UID information about the requesting user. See user.Info interface for details."
-    }, 
     "extra": {
       "additionalProperties": {
         "items": {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         "type": [
-          "array", 
+          "array",
           "null"
         ]
-      }, 
-      "type": "object", 
-      "description": "Extra information about the requesting user. See user.Info interface for details."
-    }, 
-    "request": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Base64-encoded PKCS#10 CSR data", 
-      "format": "byte"
-    }, 
+      },
+      "description": "Extra information about the requesting user. See user.Info interface for details.",
+      "type": "object"
+    },
     "groups": {
+      "description": "Group information about the requesting user. See user.Info interface for details.",
       "items": {
         "type": [
-          "string", 
+          "string",
           "null"
         ]
-      }, 
+      },
       "type": [
-        "array", 
+        "array",
         "null"
-      ], 
-      "description": "Group information about the requesting user. See user.Info interface for details."
+      ]
+    },
+    "request": {
+      "description": "Base64-encoded PKCS#10 CSR data",
+      "format": "byte",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uid": {
+      "description": "UID information about the requesting user. See user.Info interface for details.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "usages": {
+      "description": "allowedUsages specifies a set of usage contexts the key will be valid for. See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3\n     https://tools.ietf.org/html/rfc5280#section-4.2.1.12",
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "username": {
+      "description": "Information about the requesting user. See user.Info interface for details.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "required": [
+    "request"
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -3,11 +3,17 @@
   "properties": {
     "key": {
       "description": "The key to select.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "name": {
       "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "optional": {
       "description": "Specify whether the ConfigMap or it's key must be defined",

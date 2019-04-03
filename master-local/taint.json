@@ -3,19 +3,28 @@
   "properties": {
     "effect": {
       "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "key": {
       "description": "Required. The taint key to be applied to a node.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "timeAdded": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints."
     },
     "value": {
       "description": "Required. The taint value corresponding to the taint key.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

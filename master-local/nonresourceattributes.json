@@ -3,11 +3,17 @@
   "properties": {
     "path": {
       "description": "Path is the URL path of the request",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "verb": {
       "description": "Verb is the standard HTTP verb",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

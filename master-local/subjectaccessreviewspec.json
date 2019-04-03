@@ -4,9 +4,15 @@
     "extra": {
       "additionalProperties": {
         "items": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "type": "array"
+        "type": [
+          "array",
+          "null"
+        ]
       },
       "description": "Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.",
       "type": "object"
@@ -14,25 +20,37 @@
     "group": {
       "description": "Groups is the groups you're testing for.",
       "items": {
-        "type": "string"
+        "type": [
+          "string",
+          "null"
+        ]
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "nonResourceAttributes": {
-      "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.NonResourceAttributes",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.NonResourceAttributes",
       "description": "NonResourceAttributes describes information for a non-resource access request"
     },
     "resourceAttributes": {
-      "$ref": "#/definitions/io.k8s.api.authorization.v1beta1.ResourceAttributes",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1beta1.ResourceAttributes",
       "description": "ResourceAuthorizationAttributes describes information for a resource access request"
     },
     "uid": {
       "description": "UID information about the requesting user.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "user": {
       "description": "User is the user you're testing for. If you specify \"User\" but not \"Group\", then is it interpreted as \"What if User were not a member of any groups",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

@@ -3,11 +3,17 @@
   "properties": {
     "devicePath": {
       "description": "devicePath is the path inside of the container that the device will be mapped to.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "name": {
       "description": "name must match the name of a persistentVolumeClaim in the pod",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

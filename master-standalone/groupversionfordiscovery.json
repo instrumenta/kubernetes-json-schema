@@ -3,11 +3,17 @@
   "properties": {
     "groupVersion": {
       "description": "groupVersion specifies the API group and version in the form \"group/version\"",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "version": {
       "description": "version specifies the version in the form of \"version\". This is to save the clients the trouble of splitting the GroupVersion.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

@@ -3,26 +3,38 @@
   "properties": {
     "host": {
       "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "httpHeaders": {
       "description": "Custom headers to set in the request. HTTP allows repeated headers.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.HTTPHeader"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "path": {
       "description": "Path to access on the HTTP server.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "port": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
       "description": "Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME."
     },
     "scheme": {
       "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

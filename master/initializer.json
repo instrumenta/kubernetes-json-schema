@@ -3,7 +3,10 @@
   "properties": {
     "name": {
       "description": "name of the process that is responsible for initializing this object.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

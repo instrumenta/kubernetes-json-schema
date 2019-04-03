@@ -3,10 +3,13 @@
   "properties": {
     "serviceName": {
       "description": "Specifies the name of the referenced service.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "servicePort": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
       "description": "Specifies the port of the referenced service."
     }
   },

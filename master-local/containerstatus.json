@@ -3,23 +3,35 @@
   "properties": {
     "containerID": {
       "description": "Container's ID in the format 'docker://<container_id>'.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "image": {
       "description": "The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "imageID": {
       "description": "ImageID of the container's image.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "lastState": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.ContainerState",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState",
       "description": "Details about the container's last termination condition."
     },
     "name": {
       "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "ready": {
       "description": "Specifies whether the container has passed its readiness probe.",
@@ -31,7 +43,7 @@
       "type": "integer"
     },
     "state": {
-      "$ref": "#/definitions/io.k8s.api.core.v1.ContainerState",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState",
       "description": "Details about the container's current condition."
     }
   },

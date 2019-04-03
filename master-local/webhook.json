@@ -2,11 +2,11 @@
   "description": "Webhook holds the configuration of the webhook",
   "properties": {
     "clientConfig": {
-      "$ref": "#/definitions/io.k8s.api.auditregistration.v1alpha1.WebhookClientConfig",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.auditregistration.v1alpha1.WebhookClientConfig",
       "description": "ClientConfig holds the connection parameters for the webhook required"
     },
     "throttle": {
-      "$ref": "#/definitions/io.k8s.api.auditregistration.v1alpha1.WebhookThrottleConfig",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.auditregistration.v1alpha1.WebhookThrottleConfig",
       "description": "Throttle holds the options for throttling the webhook"
     }
   },

@@ -9,9 +9,12 @@
     "conditions": {
       "description": "Represents the latest available observations of a statefulset's current state.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.apps.v1beta2.StatefulSetCondition"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetCondition"
       },
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "x-kubernetes-patch-merge-key": "type",
       "x-kubernetes-patch-strategy": "merge"
     },
@@ -22,7 +25,10 @@
     },
     "currentRevision": {
       "description": "currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "observedGeneration": {
       "description": "observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.",
@@ -41,7 +47,10 @@
     },
     "updateRevision": {
       "description": "updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "updatedReplicas": {
       "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.",

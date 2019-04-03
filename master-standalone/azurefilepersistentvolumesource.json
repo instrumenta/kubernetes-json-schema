@@ -7,15 +7,24 @@
     },
     "secretName": {
       "description": "the name of secret that contains Azure Storage Account Name and Key",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "secretNamespace": {
       "description": "the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "shareName": {
       "description": "Share Name",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

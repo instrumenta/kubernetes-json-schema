@@ -1,45 +1,48 @@
 {
-  "required": [
-    "type", 
-    "status"
-  ], 
-  "description": "ReplicaSetCondition describes the state of a replica set at a certain point.", 
+  "description": "ReplicaSetCondition describes the state of a replica set at a certain point.",
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
-    "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type of replica set condition."
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "A human readable message indicating details about the transition."
-    }, 
     "lastTransitionTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "format": "date-time",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-      "format": "date-time"
-    }, 
+      ]
+    },
+    "message": {
+      "description": "A human readable message indicating details about the transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "reason": {
+      "description": "The reason for the condition's last transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The reason for the condition's last transition."
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of replica set condition.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
 }

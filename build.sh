@@ -10,8 +10,11 @@
 REPO="garethr/kubernetes-json-schema"
 
 declare -a arr=(
-#    master
-    v1.14.0
+    master
+)
+
+declare -a old=(
+    v2.14.0
     v1.13.5
     v1.13.4
     v1.13.3
@@ -26,13 +29,10 @@ declare -a arr=(
     v1.11.7
     v1.11.6
     v1.12.3
-#    v1.11.5
-)
-
-declare -a old=(master
     v1.12.2
     v1.12.1
     v1.12.0
+    v1.11.5
     v1.11.4
     v1.11.3
     v1.11.2

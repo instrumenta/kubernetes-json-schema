@@ -3,10 +3,13 @@
   "properties": {
     "message": {
       "description": "String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "time": {
-      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "Time the error was encountered."
     }
   },

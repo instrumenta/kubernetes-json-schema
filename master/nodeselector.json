@@ -4,9 +4,12 @@
     "nodeSelectorTerms": {
       "description": "Required. A list of node selector terms. The terms are ORed.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.core.v1.NodeSelectorTerm"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorTerm"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     }
   },
   "required": [

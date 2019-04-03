@@ -11,11 +11,17 @@
     },
     "evaluationError": {
       "description": "EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "reason": {
       "description": "Reason is optional.  It indicates why a request was allowed or denied.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

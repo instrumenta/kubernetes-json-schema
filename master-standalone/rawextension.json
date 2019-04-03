@@ -4,7 +4,10 @@
     "Raw": {
       "description": "Raw is the underlying serialization of this object.",
       "format": "byte",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

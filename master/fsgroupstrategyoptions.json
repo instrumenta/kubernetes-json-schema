@@ -4,13 +4,19 @@
     "ranges": {
       "description": "ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.policy.v1beta1.IDRange"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.policy.v1beta1.IDRange"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "rule": {
       "description": "rule is the strategy that will dictate what FSGroup is used in the SecurityContext.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "type": "object",

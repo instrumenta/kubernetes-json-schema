@@ -4,13 +4,19 @@
     "ranges": {
       "description": "ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.",
       "items": {
-        "$ref": "#/definitions/io.k8s.api.policy.v1beta1.IDRange"
+        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.policy.v1beta1.IDRange"
       },
-      "type": "array"
+      "type": [
+        "array",
+        "null"
+      ]
     },
     "rule": {
       "description": "rule is the strategy that will dictate the allowable RunAsGroup values that may be set.",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [

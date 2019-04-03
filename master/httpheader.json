@@ -3,11 +3,17 @@
   "properties": {
     "name": {
       "description": "The header field name",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     },
     "value": {
       "description": "The header field value",
-      "type": "string"
+      "type": [
+        "string",
+        "null"
+      ]
     }
   },
   "required": [
