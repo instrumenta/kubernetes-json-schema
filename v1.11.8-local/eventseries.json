@@ -1,0 +1,28 @@
+{
+  "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.",
+  "required": [
+    "count",
+    "lastObservedTime",
+    "state"
+  ],
+  "properties": {
+    "count": {
+      "description": "Number of occurrences in this series up to the last heartbeat time",
+      "type": "integer",
+      "format": "int32"
+    },
+    "lastObservedTime": {
+      "description": "Time when last Event from the series was seen before last heartbeat.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
+    },
+    "state": {
+      "description": "Information whether this series is ongoing or finished.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

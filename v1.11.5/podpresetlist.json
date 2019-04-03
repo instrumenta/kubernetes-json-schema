@@ -1,0 +1,6 @@
+{
+  "description": "Deprecated. Please use io.k8s.api.settings.v1alpha1.PodPresetList instead.",
+  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.11.5/_definitions.json#/definitions/io.k8s.api.settings.v1alpha1.PodPresetList",
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

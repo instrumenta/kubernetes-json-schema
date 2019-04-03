@@ -1,22 +1,19 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "serviceName", 
-    "servicePort"
-  ], 
-  "type": "object", 
-  "description": "IngressBackend describes all endpoints for a given service and port.", 
+  "description": "IngressBackend describes all endpoints for a given service and port.",
   "properties": {
     "serviceName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Specifies the name of the referenced service."
-    }, 
+      "description": "Specifies the name of the referenced service.",
+      "type": "string"
+    },
     "servicePort": {
-      "description": "Specifies the port of the referenced service.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString",
+      "description": "Specifies the port of the referenced service."
     }
-  }
+  },
+  "required": [
+    "serviceName",
+    "servicePort"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

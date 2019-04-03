@@ -1,21 +1,15 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "ContainerStateWaiting is a waiting state of a container.", 
+  "description": "ContainerStateWaiting is a waiting state of a container.",
   "properties": {
     "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Message regarding why the container is not yet running."
-    }, 
+      "description": "Message regarding why the container is not yet running.",
+      "type": "string"
+    },
     "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "(brief) reason the container is not yet running."
+      "description": "(brief) reason the container is not yet running.",
+      "type": "string"
     }
-  }
+  },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

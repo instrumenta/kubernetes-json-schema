@@ -1,47 +1,35 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "type", 
-    "status"
-  ], 
-  "type": "object", 
-  "description": "NodeCondition contains condition information for a node.", 
+  "description": "NodeCondition contains condition information for a node.",
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
-    "lastTransitionTime": {
-      "description": "Last time the condition transit from one status to another.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
-    "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "(brief) reason for the condition's last transition."
-    }, 
     "lastHeartbeatTime": {
-      "description": "Last time we got an update on a given condition.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "Last time we got an update on a given condition."
+    },
+    "lastTransitionTime": {
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "Last time the condition transit from one status to another."
+    },
     "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Human readable message indicating details about last transition."
-    }, 
+      "description": "Human readable message indicating details about last transition.",
+      "type": "string"
+    },
+    "reason": {
+      "description": "(brief) reason for the condition's last transition.",
+      "type": "string"
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": "string"
+    },
     "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type of node condition."
+      "description": "Type of node condition.",
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

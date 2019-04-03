@@ -1,0 +1,154 @@
+{
+  "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).",
+  "properties": {
+    "$ref": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    },
+    "additionalItems": {
+      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+    },
+    "additionalProperties": {
+      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+    },
+    "allOf": {
+      "items": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": "array"
+    },
+    "anyOf": {
+      "items": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": "array"
+    },
+    "default": {
+      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+    },
+    "definitions": {
+      "additionalProperties": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": "object"
+    },
+    "dependencies": {
+      "additionalProperties": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray"
+      },
+      "type": "object"
+    },
+    "description": {
+      "type": "string"
+    },
+    "enum": {
+      "items": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+      },
+      "type": "array"
+    },
+    "example": {
+      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+    },
+    "exclusiveMaximum": {
+      "type": "boolean"
+    },
+    "exclusiveMinimum": {
+      "type": "boolean"
+    },
+    "externalDocs": {
+      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
+    },
+    "format": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "items": {
+      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray"
+    },
+    "maxItems": {
+      "format": "int64",
+      "type": "integer"
+    },
+    "maxLength": {
+      "format": "int64",
+      "type": "integer"
+    },
+    "maxProperties": {
+      "format": "int64",
+      "type": "integer"
+    },
+    "maximum": {
+      "format": "double",
+      "type": "number"
+    },
+    "minItems": {
+      "format": "int64",
+      "type": "integer"
+    },
+    "minLength": {
+      "format": "int64",
+      "type": "integer"
+    },
+    "minProperties": {
+      "format": "int64",
+      "type": "integer"
+    },
+    "minimum": {
+      "format": "double",
+      "type": "number"
+    },
+    "multipleOf": {
+      "format": "double",
+      "type": "number"
+    },
+    "not": {
+      "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+    },
+    "nullable": {
+      "type": "boolean"
+    },
+    "oneOf": {
+      "items": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": "array"
+    },
+    "pattern": {
+      "type": "string"
+    },
+    "patternProperties": {
+      "additionalProperties": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": "object"
+    },
+    "properties": {
+      "additionalProperties": {
+        "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": "object"
+    },
+    "required": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "title": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "uniqueItems": {
+      "type": "boolean"
+    }
+  },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
+}

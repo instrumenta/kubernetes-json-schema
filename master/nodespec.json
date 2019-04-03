@@ -1,6 +1,34 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.core.v1.NodeSpec instead.", 
-  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.NodeSpec"
+  "description": "NodeSpec describes the attributes that a node is created with.",
+  "properties": {
+    "configSource": {
+      "$ref": "#/definitions/io.k8s.api.core.v1.NodeConfigSource",
+      "description": "If specified, the source to get node configuration from The DynamicKubeletConfig feature gate must be enabled for the Kubelet to use this field"
+    },
+    "externalID": {
+      "description": "Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966",
+      "type": "string"
+    },
+    "podCIDR": {
+      "description": "PodCIDR represents the pod IP range assigned to the node.",
+      "type": "string"
+    },
+    "providerID": {
+      "description": "ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>",
+      "type": "string"
+    },
+    "taints": {
+      "description": "If specified, the node's taints.",
+      "items": {
+        "$ref": "#/definitions/io.k8s.api.core.v1.Taint"
+      },
+      "type": "array"
+    },
+    "unschedulable": {
+      "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration",
+      "type": "boolean"
+    }
+  },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

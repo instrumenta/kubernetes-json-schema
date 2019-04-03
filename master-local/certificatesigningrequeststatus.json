@@ -1,6 +1,18 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.certificates.v1beta1.CertificateSigningRequestStatus instead.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.certificates.v1beta1.CertificateSigningRequestStatus"
+  "properties": {
+    "certificate": {
+      "description": "If request was approved, the controller will place the issued certificate here.",
+      "format": "byte",
+      "type": "string"
+    },
+    "conditions": {
+      "description": "Conditions applied to the request, such as approval or denial.",
+      "items": {
+        "$ref": "#/definitions/io.k8s.api.certificates.v1beta1.CertificateSigningRequestCondition"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

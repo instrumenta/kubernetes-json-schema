@@ -1,6 +1,35 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.core.v1.VolumeMount instead.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+  "description": "VolumeMount describes a mounting of a Volume within a container.",
+  "properties": {
+    "mountPath": {
+      "description": "Path within the container at which the volume should be mounted.  Must not contain ':'.",
+      "type": "string"
+    },
+    "mountPropagation": {
+      "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10.",
+      "type": "string"
+    },
+    "name": {
+      "description": "This must match the Name of a Volume.",
+      "type": "string"
+    },
+    "readOnly": {
+      "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.",
+      "type": "boolean"
+    },
+    "subPath": {
+      "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root).",
+      "type": "string"
+    },
+    "subPathExpr": {
+      "description": "Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to \"\" (volume's root). SubPathExpr and SubPath are mutually exclusive. This field is alpha in 1.14.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "mountPath"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

@@ -1,6 +1,17 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.core.v1.LimitRangeSpec instead.", 
-  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeSpec"
+  "description": "LimitRangeSpec defines a min/max usage limit for resources that match on kind.",
+  "properties": {
+    "limits": {
+      "description": "Limits is the list of LimitRangeItem objects that are enforced.",
+      "items": {
+        "$ref": "#/definitions/io.k8s.api.core.v1.LimitRangeItem"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "limits"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

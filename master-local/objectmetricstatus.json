@@ -1,27 +1,23 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "target", 
-    "metricName", 
-    "currentValue"
-  ], 
-  "type": "object", 
-  "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
+  "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
   "properties": {
-    "currentValue": {
-      "description": "currentValue is the current value of the metric (as a quantity).", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
-    }, 
-    "target": {
-      "description": "target is the described Kubernetes object.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference"
-    }, 
-    "metricName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "metricName is the name of the metric in question."
+    "current": {
+      "$ref": "#/definitions/io.k8s.api.autoscaling.v2beta2.MetricValueStatus",
+      "description": "current contains the current value for the given metric"
+    },
+    "describedObject": {
+      "$ref": "#/definitions/io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference"
+    },
+    "metric": {
+      "$ref": "#/definitions/io.k8s.api.autoscaling.v2beta2.MetricIdentifier",
+      "description": "metric identifies the target metric by name and selector"
     }
-  }
+  },
+  "required": [
+    "metric",
+    "current",
+    "describedObject"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

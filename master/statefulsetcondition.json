@@ -1,43 +1,31 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "required": [
-    "type", 
-    "status"
-  ], 
-  "type": "object", 
-  "description": "StatefulSetCondition describes the state of a statefulset at a certain point.", 
+  "description": "StatefulSetCondition describes the state of a statefulset at a certain point.",
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
-    "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type of statefulset condition."
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "A human readable message indicating details about the transition."
-    }, 
     "lastTransitionTime": {
-      "description": "Last time the condition transitioned from one status to another.", 
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
+      "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "description": "Last time the condition transitioned from one status to another."
+    },
+    "message": {
+      "description": "A human readable message indicating details about the transition.",
+      "type": "string"
+    },
     "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "The reason for the condition's last transition."
+      "description": "The reason for the condition's last transition.",
+      "type": "string"
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": "string"
+    },
+    "type": {
+      "description": "Type of statefulset condition.",
+      "type": "string"
     }
-  }
+  },
+  "required": [
+    "type",
+    "status"
+  ],
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }

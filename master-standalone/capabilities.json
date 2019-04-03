@@ -1,31 +1,21 @@
 {
-  "description": "Adds and removes POSIX capabilities from running containers.", 
+  "description": "Adds and removes POSIX capabilities from running containers.",
   "properties": {
     "add": {
+      "description": "Added capabilities",
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Added capabilities"
-    }, 
+        "type": "string"
+      },
+      "type": "array"
+    },
     "drop": {
+      "description": "Removed capabilities",
       "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Removed capabilities"
+        "type": "string"
+      },
+      "type": "array"
     }
-  }
+  },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
 }
