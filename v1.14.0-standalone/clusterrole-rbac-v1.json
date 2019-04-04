@@ -75,6 +75,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "rbac.authorization.k8s.io/v1"
       ]
     },
     "kind": {
@@ -82,6 +85,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ClusterRole"
       ]
     },
     "metadata": {
@@ -181,6 +187,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "v1"
                   ]
                 },
                 "code": {
@@ -266,6 +275,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {

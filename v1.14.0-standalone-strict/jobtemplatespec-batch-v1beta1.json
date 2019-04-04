@@ -99,6 +99,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "v1"
                   ]
                 },
                 "code": {
@@ -186,6 +189,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -583,6 +589,9 @@
                           "type": [
                             "string",
                             "null"
+                          ],
+                          "enum": [
+                            "v1"
                           ]
                         },
                         "code": {
@@ -670,6 +679,9 @@
                           "type": [
                             "string",
                             "null"
+                          ],
+                          "enum": [
+                            "Status"
                           ]
                         },
                         "message": {

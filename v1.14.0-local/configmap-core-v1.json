@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "v1"
       ]
     },
     "binaryData": {
@@ -34,6 +37,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ConfigMap"
       ]
     },
     "metadata": {

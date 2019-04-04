@@ -5,6 +5,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "certificates.k8s.io/v1beta1"
       ]
     },
     "items": {
@@ -16,6 +19,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "certificates.k8s.io/v1beta1"
             ]
           },
           "kind": {
@@ -23,6 +29,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "CertificateSigningRequest"
             ]
           },
           "metadata": {
@@ -123,6 +132,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "v1"
                         ]
                       },
                       "code": {
@@ -210,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -569,6 +584,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CertificateSigningRequestList"
       ]
     },
     "metadata": {

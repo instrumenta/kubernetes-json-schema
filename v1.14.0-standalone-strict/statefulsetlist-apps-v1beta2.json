@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "apps/v1beta2"
       ]
     },
     "items": {
@@ -17,6 +20,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "apps/v1beta2"
             ]
           },
           "kind": {
@@ -24,6 +30,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "StatefulSet"
             ]
           },
           "metadata": {
@@ -124,6 +133,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "v1"
                         ]
                       },
                       "code": {
@@ -211,6 +223,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -605,6 +620,9 @@
                                 "type": [
                                   "string",
                                   "null"
+                                ],
+                                "enum": [
+                                  "v1"
                                 ]
                               },
                               "code": {
@@ -692,6 +710,9 @@
                                 "type": [
                                   "string",
                                   "null"
+                                ],
+                                "enum": [
+                                  "Status"
                                 ]
                               },
                               "message": {
@@ -5678,6 +5699,9 @@
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "v1"
                       ]
                     },
                     "kind": {
@@ -5685,6 +5709,9 @@
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "PersistentVolumeClaim"
                       ]
                     },
                     "metadata": {
@@ -5785,6 +5812,9 @@
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "v1"
                                   ]
                                 },
                                 "code": {
@@ -5872,6 +5902,9 @@
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "Status"
                                   ]
                                 },
                                 "message": {
@@ -6499,6 +6532,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "StatefulSetList"
       ]
     },
     "metadata": {

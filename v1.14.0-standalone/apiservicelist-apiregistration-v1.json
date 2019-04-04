@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "apiregistration.k8s.io/v1"
       ]
     },
     "items": {
@@ -17,6 +20,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "apiregistration.k8s.io/v1"
             ]
           },
           "kind": {
@@ -24,6 +30,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "APIService"
             ]
           },
           "metadata": {
@@ -123,6 +132,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "v1"
                         ]
                       },
                       "code": {
@@ -208,6 +220,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -555,6 +570,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "APIServiceList"
       ]
     },
     "metadata": {

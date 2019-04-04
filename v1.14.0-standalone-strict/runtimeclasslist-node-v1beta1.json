@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "node.k8s.io/v1beta1"
       ]
     },
     "items": {
@@ -18,6 +21,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "node.k8s.io/v1beta1"
             ]
           },
           "handler": {
@@ -29,6 +35,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "RuntimeClass"
             ]
           },
           "metadata": {
@@ -129,6 +138,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "v1"
                         ]
                       },
                       "code": {
@@ -216,6 +228,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -451,6 +466,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "RuntimeClassList"
       ]
     },
     "metadata": {

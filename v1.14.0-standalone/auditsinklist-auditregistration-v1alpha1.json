@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "auditregistration.k8s.io/v1alpha1"
       ]
     },
     "items": {
@@ -18,6 +21,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "auditregistration.k8s.io/v1alpha1"
             ]
           },
           "kind": {
@@ -25,6 +31,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "AuditSink"
             ]
           },
           "metadata": {
@@ -124,6 +133,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "v1"
                         ]
                       },
                       "code": {
@@ -209,6 +221,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -541,6 +556,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "AuditSinkList"
       ]
     },
     "metadata": {

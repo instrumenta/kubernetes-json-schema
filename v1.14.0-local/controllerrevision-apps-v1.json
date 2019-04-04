@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "apps/v1"
       ]
     },
     "data": {
@@ -17,6 +20,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ControllerRevision"
       ]
     },
     "metadata": {

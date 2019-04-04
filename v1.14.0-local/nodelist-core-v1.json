@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "v1"
       ]
     },
     "items": {
@@ -23,6 +26,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NodeList"
       ]
     },
     "metadata": {

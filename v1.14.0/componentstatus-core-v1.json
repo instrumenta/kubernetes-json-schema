@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "v1"
       ]
     },
     "conditions": {
@@ -25,6 +28,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ComponentStatus"
       ]
     },
     "metadata": {

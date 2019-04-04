@@ -13,6 +13,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "v1"
       ]
     },
     "count": {
@@ -37,6 +40,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Event"
       ]
     },
     "lastTimestamp": {

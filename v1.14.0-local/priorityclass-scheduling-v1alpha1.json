@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "scheduling.k8s.io/v1alpha1"
       ]
     },
     "description": {
@@ -24,6 +27,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PriorityClass"
       ]
     },
     "metadata": {

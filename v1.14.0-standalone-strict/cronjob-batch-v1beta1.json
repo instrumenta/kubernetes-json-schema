@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "batch/v1beta1"
       ]
     },
     "kind": {
@@ -13,6 +16,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CronJob"
       ]
     },
     "metadata": {
@@ -113,6 +119,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "v1"
                   ]
                 },
                 "code": {
@@ -200,6 +209,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -527,6 +539,9 @@
                           "type": [
                             "string",
                             "null"
+                          ],
+                          "enum": [
+                            "v1"
                           ]
                         },
                         "code": {
@@ -614,6 +629,9 @@
                           "type": [
                             "string",
                             "null"
+                          ],
+                          "enum": [
+                            "Status"
                           ]
                         },
                         "message": {
@@ -1011,6 +1029,9 @@
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "v1"
                                   ]
                                 },
                                 "code": {
@@ -1098,6 +1119,9 @@
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "Status"
                                   ]
                                 },
                                 "message": {

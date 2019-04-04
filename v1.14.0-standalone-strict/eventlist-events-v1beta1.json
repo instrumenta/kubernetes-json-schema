@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "events.k8s.io/v1beta1"
       ]
     },
     "items": {
@@ -25,6 +28,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "events.k8s.io/v1beta1"
             ]
           },
           "deprecatedCount": {
@@ -79,6 +85,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Event"
             ]
           },
           "metadata": {
@@ -179,6 +188,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "v1"
                         ]
                       },
                       "code": {
@@ -266,6 +278,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -674,6 +689,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "EventList"
       ]
     },
     "metadata": {

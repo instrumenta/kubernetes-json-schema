@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "extensions/v1beta1"
       ]
     },
     "items": {
@@ -23,6 +26,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodSecurityPolicyList"
       ]
     },
     "metadata": {

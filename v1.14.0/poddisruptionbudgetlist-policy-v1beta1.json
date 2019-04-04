@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "policy/v1beta1"
       ]
     },
     "items": {
@@ -22,6 +25,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodDisruptionBudgetList"
       ]
     },
     "metadata": {

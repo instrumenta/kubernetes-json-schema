@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "v1"
       ]
     },
     "items": {
@@ -18,6 +21,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "v1"
             ]
           },
           "conditions": {
@@ -67,6 +73,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ComponentStatus"
             ]
           },
           "metadata": {
@@ -167,6 +176,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "v1"
                         ]
                       },
                       "code": {
@@ -254,6 +266,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -486,6 +501,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ComponentStatusList"
       ]
     },
     "metadata": {
