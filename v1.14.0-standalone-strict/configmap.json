@@ -34,6 +34,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ConfigMap"
       ]
     },
     "metadata": {
@@ -221,6 +224,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {

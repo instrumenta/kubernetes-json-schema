@@ -1,7 +1,7 @@
 {
   "properties": {
     "lastUpdateTime": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
+      "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
       "description": "timestamp for the last update to this condition"
     },
     "message": {

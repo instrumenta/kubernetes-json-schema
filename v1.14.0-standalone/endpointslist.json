@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Endpoints"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -660,6 +666,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "EndpointsList"
       ]
     },
     "metadata": {

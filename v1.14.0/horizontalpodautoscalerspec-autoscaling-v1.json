@@ -12,7 +12,7 @@
       "type": "integer"
     },
     "scaleTargetRef": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.api.autoscaling.v1.CrossVersionObjectReference",
+      "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.api.autoscaling.v1.CrossVersionObjectReference",
       "description": "reference to scaled resource; horizontal pod autoscaler will learn the current resource consumption and will set the desired number of pods by using its Scale subresource."
     },
     "targetCPUUtilizationPercentage": {

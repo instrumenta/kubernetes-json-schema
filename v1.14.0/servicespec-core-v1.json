@@ -63,7 +63,7 @@
     "ports": {
       "description": "The list of ports that are exposed by this service. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
+        "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
       },
       "type": [
         "array",
@@ -99,7 +99,7 @@
       ]
     },
     "sessionAffinityConfig": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig",
+      "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig",
       "description": "sessionAffinityConfig contains the configurations of session affinity."
     },
     "type": {

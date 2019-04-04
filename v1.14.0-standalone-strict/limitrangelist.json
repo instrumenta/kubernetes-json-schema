@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "LimitRange"
             ]
           },
           "metadata": {
@@ -212,6 +215,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -557,6 +563,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "LimitRangeList"
       ]
     },
     "metadata": {

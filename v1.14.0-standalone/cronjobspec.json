@@ -198,6 +198,9 @@
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "Status"
                       ]
                     },
                     "message": {
@@ -671,6 +674,9 @@
                               "type": [
                                 "string",
                                 "null"
+                              ],
+                              "enum": [
+                                "Status"
                               ]
                             },
                             "message": {

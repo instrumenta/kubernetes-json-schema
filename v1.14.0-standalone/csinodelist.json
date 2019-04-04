@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "CSINode"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -483,6 +489,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CSINodeList"
       ]
     },
     "metadata": {

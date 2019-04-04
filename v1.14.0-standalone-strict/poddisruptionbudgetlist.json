@@ -24,6 +24,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PodDisruptionBudget"
             ]
           },
           "metadata": {
@@ -211,6 +214,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -584,6 +590,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodDisruptionBudgetList"
       ]
     },
     "metadata": {

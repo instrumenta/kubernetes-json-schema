@@ -17,6 +17,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ControllerRevision"
       ]
     },
     "metadata": {

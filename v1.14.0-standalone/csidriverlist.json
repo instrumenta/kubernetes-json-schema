@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "CSIDriver"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -451,6 +457,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CSIDriverList"
       ]
     },
     "metadata": {

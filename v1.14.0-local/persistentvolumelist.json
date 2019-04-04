@@ -23,6 +23,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PersistentVolumeList"
       ]
     },
     "metadata": {

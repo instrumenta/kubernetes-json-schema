@@ -9,7 +9,7 @@
     "conditions": {
       "description": "Represents the latest available observations of a replica set's current state.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetCondition"
+        "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ReplicaSetCondition"
       },
       "type": [
         "array",

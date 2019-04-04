@@ -11,7 +11,7 @@
     "items": {
       "description": "items is a list of schema objects.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodSecurityPolicy"
+        "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.api.policy.v1beta1.PodSecurityPolicy"
       },
       "type": [
         "array",
@@ -23,10 +23,13 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodSecurityPolicyList"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
+      "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata"
     }
   },

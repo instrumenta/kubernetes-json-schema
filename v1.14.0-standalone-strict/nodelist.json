@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Node"
             ]
           },
           "metadata": {
@@ -212,6 +215,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -997,6 +1003,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NodeList"
       ]
     },
     "metadata": {

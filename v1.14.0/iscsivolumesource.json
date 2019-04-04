@@ -60,7 +60,7 @@
       "type": "boolean"
     },
     "secretRef": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.14.0/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference",
+      "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference",
       "description": "CHAP Secret for iSCSI target and initiator authentication"
     },
     "targetPortal": {

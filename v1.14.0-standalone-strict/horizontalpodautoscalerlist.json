@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "HorizontalPodAutoscaler"
             ]
           },
           "metadata": {
@@ -212,6 +215,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -1527,6 +1533,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "HorizontalPodAutoscalerList"
       ]
     },
     "metadata": {
