@@ -30,6 +30,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "CertificateSigningRequest"
             ]
           },
           "metadata": {
@@ -214,6 +217,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -501,6 +507,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CertificateSigningRequestList"
       ]
     },
     "metadata": {
@@ -536,5 +545,7 @@
       "kind": "CertificateSigningRequestList",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

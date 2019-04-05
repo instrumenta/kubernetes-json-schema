@@ -202,6 +202,9 @@
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "Status"
                       ]
                     },
                     "message": {
@@ -622,6 +625,9 @@
                               "type": [
                                 "string",
                                 "null"
+                              ],
+                              "enum": [
+                                "Status"
                               ]
                             },
                             "message": {
@@ -5146,5 +5152,7 @@
       "description": "This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.",
       "type": "boolean"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
