@@ -4488,5 +4488,7 @@
       "x-kubernetes-patch-strategy": "merge,retainKeys"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

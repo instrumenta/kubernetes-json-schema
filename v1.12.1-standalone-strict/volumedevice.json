@@ -1,26 +1,26 @@
 {
-  "description": "volumeDevice describes a mapping of a raw block device within a container.", 
+  "description": "volumeDevice describes a mapping of a raw block device within a container.",
   "required": [
-    "name", 
+    "name",
     "devicePath"
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
     "devicePath": {
+      "description": "devicePath is the path inside of the container that the device will be mapped to.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "devicePath is the path inside of the container that the device will be mapped to."
-    }, 
+      ]
+    },
     "name": {
+      "description": "name must match the name of a persistentVolumeClaim in the pod",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "name must match the name of a persistentVolumeClaim in the pod"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

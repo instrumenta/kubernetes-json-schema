@@ -1,47 +1,47 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "StatefulSetCondition describes the state of a statefulset at a certain point.",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "type": "object", 
-  "description": "StatefulSetCondition describes the state of a statefulset at a certain point.", 
+  ],
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
     "lastTransitionTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+      ],
       "format": "date-time"
-    }, 
+    },
     "message": {
+      "description": "A human readable message indicating details about the transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "A human readable message indicating details about the transition."
-    }, 
-    "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type of statefulset condition."
-    }, 
+      ]
+    },
     "reason": {
+      "description": "The reason for the condition's last transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The reason for the condition's last transition."
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of statefulset condition.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

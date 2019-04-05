@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PodPreset"
             ]
           },
           "metadata": {
@@ -216,6 +219,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -1903,6 +1909,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodPresetList"
       ]
     },
     "metadata": {
@@ -1938,5 +1947,7 @@
       "kind": "PodPresetList",
       "version": "v1alpha1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

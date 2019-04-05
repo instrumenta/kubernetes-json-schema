@@ -1,19 +1,21 @@
 {
-  "description": "LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the service should be sent to an ingress point.", 
+  "description": "LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the service should be sent to an ingress point.",
   "properties": {
-    "ip": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "IP is set for load-balancer ingress points that are IP based (typically GCE or OpenStack load-balancers)"
-    }, 
     "hostname": {
+      "description": "Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)"
+      ]
+    },
+    "ip": {
+      "description": "IP is set for load-balancer ingress points that are IP based (typically GCE or OpenStack load-balancers)",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

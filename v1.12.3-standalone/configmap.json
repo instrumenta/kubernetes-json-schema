@@ -34,6 +34,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ConfigMap"
       ]
     },
     "metadata": {
@@ -218,6 +221,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -376,5 +382,7 @@
       "kind": "ConfigMap",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

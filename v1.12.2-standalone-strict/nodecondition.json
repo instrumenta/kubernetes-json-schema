@@ -1,56 +1,56 @@
 {
-  "description": "NodeCondition contains condition information for a node.", 
+  "description": "NodeCondition contains condition information for a node.",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
-    "lastTransitionTime": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-      "format": "date-time"
-    }, 
-    "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "(brief) reason for the condition's last transition."
-    }, 
     "lastHeartbeatTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
+      ],
       "format": "date-time"
-    }, 
+    },
+    "lastTransitionTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
     "message": {
+      "description": "Human readable message indicating details about last transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Human readable message indicating details about last transition."
-    }, 
+      ]
+    },
+    "reason": {
+      "description": "(brief) reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "type": {
+      "description": "Type of node condition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Type of node condition."
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,48 +1,48 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric",
   "required": [
     "type"
-  ], 
-  "type": "object", 
-  "description": "MetricTarget defines the target value, average value, or average utilization of a specific metric", 
+  ],
   "properties": {
+    "averageUtilization": {
+      "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
+      "type": "integer",
+      "format": "int32"
+    },
     "averageValue": {
       "oneOf": [
         {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         {
           "type": "integer"
         }
       ]
-    }, 
-    "averageUtilization": {
-      "type": "integer", 
-      "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type", 
-      "format": "int32"
-    }, 
+    },
     "type": {
+      "description": "type represents whether the metric type is Utilization, Value, or AverageValue",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "type represents whether the metric type is Utilization, Value, or AverageValue"
-    }, 
+      ]
+    },
     "value": {
       "oneOf": [
         {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         {
           "type": "integer"
         }
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

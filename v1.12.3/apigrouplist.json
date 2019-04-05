@@ -18,7 +18,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
+        "$ref": "https://kubernetesjsonschema.dev/v1.12.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
       }
     },
     "kind": {
@@ -26,6 +26,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "APIGroupList"
       ]
     }
   },

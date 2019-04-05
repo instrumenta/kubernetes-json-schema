@@ -272,6 +272,9 @@
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "Status"
                       ]
                     },
                     "message": {
@@ -4926,5 +4929,7 @@
       "format": "int32"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

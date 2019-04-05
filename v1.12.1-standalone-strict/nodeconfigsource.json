@@ -1,45 +1,45 @@
 {
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
+  "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.",
   "properties": {
     "configMap": {
-      "additionalProperties": false, 
+      "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.",
       "required": [
-        "namespace", 
-        "name", 
+        "namespace",
+        "name",
         "kubeletConfigKey"
-      ], 
-      "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.", 
+      ],
       "properties": {
         "kubeletConfigKey": {
-          "type": "string", 
-          "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases."
-        }, 
-        "resourceVersion": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
-        }, 
-        "namespace": {
-          "type": "string", 
-          "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases."
-        }, 
-        "uid": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
-        }, 
+          "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.",
+          "type": "string"
+        },
         "name": {
-          "type": "string", 
-          "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases."
+          "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.",
+          "type": "string"
+        },
+        "resourceVersion": {
+          "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uid": {
+          "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+          "type": [
+            "string",
+            "null"
+          ]
         }
-      }
+      },
+      "additionalProperties": false
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

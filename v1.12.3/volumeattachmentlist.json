@@ -18,7 +18,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.3/_definitions.json#/definitions/io.k8s.api.storage.v1beta1.VolumeAttachment"
+        "$ref": "https://kubernetesjsonschema.dev/v1.12.3/_definitions.json#/definitions/io.k8s.api.storage.v1beta1.VolumeAttachment"
       }
     },
     "kind": {
@@ -26,11 +26,14 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "VolumeAttachmentList"
       ]
     },
     "metadata": {
       "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+      "$ref": "https://kubernetesjsonschema.dev/v1.12.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
     }
   },
   "x-kubernetes-group-version-kind": [

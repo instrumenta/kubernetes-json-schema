@@ -1,351 +1,443 @@
 {
-  "description": "MetricStatus describes the last-read state of a single metric.", 
+  "description": "MetricStatus describes the last-read state of a single metric.",
   "required": [
     "type"
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
-    "resource": {
-      "additionalProperties": false, 
-      "required": [
-        "name", 
-        "currentAverageValue"
-      ], 
-      "description": "ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.", 
-      "properties": {
-        "currentAverageValue": {
-          "oneOf": [
-            {
-              "type": [
-                "string", 
-                "null"
-              ]
-            }, 
-            {
-              "type": "integer"
-            }
-          ]
-        }, 
-        "currentAverageUtilization": {
-          "type": "integer", 
-          "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.", 
-          "format": "int32"
-        }, 
-        "name": {
-          "type": "string", 
-          "description": "name is the name of the resource in question."
-        }
-      }
-    }, 
-    "object": {
-      "additionalProperties": false, 
-      "required": [
-        "target", 
-        "metricName", 
-        "currentValue"
-      ], 
-      "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
-      "properties": {
-        "averageValue": {
-          "oneOf": [
-            {
-              "type": [
-                "string", 
-                "null"
-              ]
-            }, 
-            {
-              "type": "integer"
-            }
-          ]
-        }, 
-        "currentValue": {
-          "oneOf": [
-            {
-              "type": [
-                "string", 
-                "null"
-              ]
-            }, 
-            {
-              "type": "integer"
-            }
-          ]
-        }, 
-        "metricName": {
-          "type": "string", 
-          "description": "metricName is the name of the metric in question."
-        }, 
-        "target": {
-          "additionalProperties": false, 
-          "required": [
-            "kind", 
-            "name"
-          ], 
-          "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.", 
-          "properties": {
-            "kind": {
-              "type": "string", 
-              "description": "Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds\""
-            }, 
-            "name": {
-              "type": "string", 
-              "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names"
-            }, 
-            "apiVersion": {
-              "type": [
-                "string", 
-                "null"
-              ], 
-              "description": "API version of the referent"
-            }
-          }
-        }, 
-        "selector": {
-          "additionalProperties": false, 
-          "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
-          "properties": {
-            "matchLabels": {
-              "additionalProperties": {
-                "type": [
-                  "string", 
-                  "null"
-                ]
-              }, 
-              "type": "object", 
-              "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
-            }, 
-            "matchExpressions": {
-              "items": {
-                "additionalProperties": false, 
-                "required": [
-                  "key", 
-                  "operator"
-                ], 
-                "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
-                "properties": {
-                  "operator": {
-                    "type": "string", 
-                    "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
-                  }, 
-                  "values": {
-                    "items": {
-                      "type": [
-                        "string", 
-                        "null"
-                      ]
-                    }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
-                    "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
-                  }, 
-                  "key": {
-                    "x-kubernetes-patch-merge-key": "key", 
-                    "type": "string", 
-                    "description": "key is the label key that the selector applies to.", 
-                    "x-kubernetes-patch-strategy": "merge"
-                  }
-                }
-              }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
-              "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
-            }
-          }
-        }
-      }
-    }, 
-    "pods": {
-      "additionalProperties": false, 
-      "required": [
-        "metricName", 
-        "currentAverageValue"
-      ], 
-      "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).", 
-      "properties": {
-        "currentAverageValue": {
-          "oneOf": [
-            {
-              "type": [
-                "string", 
-                "null"
-              ]
-            }, 
-            {
-              "type": "integer"
-            }
-          ]
-        }, 
-        "metricName": {
-          "type": "string", 
-          "description": "metricName is the name of the metric in question"
-        }, 
-        "selector": {
-          "additionalProperties": false, 
-          "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
-          "properties": {
-            "matchLabels": {
-              "additionalProperties": {
-                "type": [
-                  "string", 
-                  "null"
-                ]
-              }, 
-              "type": "object", 
-              "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
-            }, 
-            "matchExpressions": {
-              "items": {
-                "additionalProperties": false, 
-                "required": [
-                  "key", 
-                  "operator"
-                ], 
-                "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
-                "properties": {
-                  "operator": {
-                    "type": "string", 
-                    "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
-                  }, 
-                  "values": {
-                    "items": {
-                      "type": [
-                        "string", 
-                        "null"
-                      ]
-                    }, 
-                    "type": [
-                      "array", 
-                      "null"
-                    ], 
-                    "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
-                  }, 
-                  "key": {
-                    "x-kubernetes-patch-merge-key": "key", 
-                    "type": "string", 
-                    "description": "key is the label key that the selector applies to.", 
-                    "x-kubernetes-patch-strategy": "merge"
-                  }
-                }
-              }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
-              "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
-            }
-          }
-        }
-      }
-    }, 
     "external": {
-      "additionalProperties": false, 
+      "description": "ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.",
       "required": [
-        "metricName", 
-        "currentValue"
-      ], 
-      "description": "ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.", 
+        "metric",
+        "current"
+      ],
       "properties": {
-        "currentAverageValue": {
-          "oneOf": [
-            {
-              "type": [
-                "string", 
-                "null"
-              ]
-            }, 
-            {
-              "type": "integer"
-            }
-          ]
-        }, 
-        "currentValue": {
-          "oneOf": [
-            {
-              "type": [
-                "string", 
-                "null"
-              ]
-            }, 
-            {
-              "type": "integer"
-            }
-          ]
-        }, 
-        "metricSelector": {
-          "additionalProperties": false, 
-          "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.", 
+        "current": {
+          "description": "MetricValueStatus holds the current value for a metric",
           "properties": {
-            "matchLabels": {
-              "additionalProperties": {
-                "type": [
-                  "string", 
-                  "null"
-                ]
-              }, 
-              "type": "object", 
-              "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed."
-            }, 
-            "matchExpressions": {
-              "items": {
-                "additionalProperties": false, 
-                "required": [
-                  "key", 
-                  "operator"
-                ], 
-                "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.", 
-                "properties": {
-                  "operator": {
-                    "type": "string", 
-                    "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
-                  }, 
-                  "values": {
-                    "items": {
-                      "type": [
-                        "string", 
-                        "null"
-                      ]
-                    }, 
+            "averageUtilization": {
+              "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "averageValue": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "metric": {
+          "description": "MetricIdentifier defines the name and optionally selector for a metric",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the name of the given metric",
+              "type": "string"
+            },
+            "selector": {
+              "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+              "properties": {
+                "matchExpressions": {
+                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                    "required": [
+                      "key",
+                      "operator"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "key is the label key that the selector applies to.",
+                        "type": "string",
+                        "x-kubernetes-patch-merge-key": "key",
+                        "x-kubernetes-patch-strategy": "merge"
+                      },
+                      "operator": {
+                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                        "type": "string"
+                      },
+                      "values": {
+                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "matchLabels": {
+                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                  "type": "object",
+                  "additionalProperties": {
                     "type": [
-                      "array", 
+                      "string",
                       "null"
-                    ], 
-                    "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
-                  }, 
-                  "key": {
-                    "x-kubernetes-patch-merge-key": "key", 
-                    "type": "string", 
-                    "description": "key is the label key that the selector applies to.", 
-                    "x-kubernetes-patch-strategy": "merge"
+                    ]
                   }
                 }
-              }, 
-              "type": [
-                "array", 
-                "null"
-              ], 
-              "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+              },
+              "additionalProperties": false
             }
-          }
-        }, 
-        "metricName": {
-          "type": "string", 
-          "description": "metricName is the name of a metric used for autoscaling in metric system."
+          },
+          "additionalProperties": false
         }
-      }
-    }, 
+      },
+      "additionalProperties": false
+    },
+    "object": {
+      "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
+      "required": [
+        "metric",
+        "current",
+        "describedObject"
+      ],
+      "properties": {
+        "current": {
+          "description": "MetricValueStatus holds the current value for a metric",
+          "properties": {
+            "averageUtilization": {
+              "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "averageValue": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "describedObject": {
+          "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
+          "required": [
+            "kind",
+            "name"
+          ],
+          "properties": {
+            "apiVersion": {
+              "description": "API version of the referent",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "description": "Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds\"",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "metric": {
+          "description": "MetricIdentifier defines the name and optionally selector for a metric",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the name of the given metric",
+              "type": "string"
+            },
+            "selector": {
+              "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+              "properties": {
+                "matchExpressions": {
+                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                    "required": [
+                      "key",
+                      "operator"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "key is the label key that the selector applies to.",
+                        "type": "string",
+                        "x-kubernetes-patch-merge-key": "key",
+                        "x-kubernetes-patch-strategy": "merge"
+                      },
+                      "operator": {
+                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                        "type": "string"
+                      },
+                      "values": {
+                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "matchLabels": {
+                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "pods": {
+      "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).",
+      "required": [
+        "metric",
+        "current"
+      ],
+      "properties": {
+        "current": {
+          "description": "MetricValueStatus holds the current value for a metric",
+          "properties": {
+            "averageUtilization": {
+              "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "averageValue": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "metric": {
+          "description": "MetricIdentifier defines the name and optionally selector for a metric",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the name of the given metric",
+              "type": "string"
+            },
+            "selector": {
+              "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+              "properties": {
+                "matchExpressions": {
+                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                    "required": [
+                      "key",
+                      "operator"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "key is the label key that the selector applies to.",
+                        "type": "string",
+                        "x-kubernetes-patch-merge-key": "key",
+                        "x-kubernetes-patch-strategy": "merge"
+                      },
+                      "operator": {
+                        "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                        "type": "string"
+                      },
+                      "values": {
+                        "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "matchLabels": {
+                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "resource": {
+      "description": "ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.",
+      "required": [
+        "name",
+        "current"
+      ],
+      "properties": {
+        "current": {
+          "description": "MetricValueStatus holds the current value for a metric",
+          "properties": {
+            "averageUtilization": {
+              "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
+              "type": "integer",
+              "format": "int32"
+            },
+            "averageValue": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "value": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "name": {
+          "description": "Name is the name of the resource in question.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
     "type": {
+      "description": "type is the type of metric source.  It will be one of \"Object\", \"Pods\" or \"Resource\", each corresponds to a matching field in the object.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "type is the type of metric source.  It will be one of \"Object\", \"Pods\" or \"Resource\", each corresponds to a matching field in the object."
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

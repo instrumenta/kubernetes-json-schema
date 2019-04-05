@@ -1,6 +1,18 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.extensions.v1beta1.NetworkPolicyPort instead.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.NetworkPolicyPort"
+  "description": "NetworkPolicyPort describes a port to allow traffic on",
+  "properties": {
+    "port": {
+      "description": "The port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "protocol": {
+      "description": "The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

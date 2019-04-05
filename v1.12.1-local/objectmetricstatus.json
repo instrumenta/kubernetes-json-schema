@@ -1,35 +1,23 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
   "required": [
-    "target", 
-    "metricName", 
-    "currentValue"
-  ], 
-  "type": "object", 
-  "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).", 
+    "metric",
+    "current",
+    "describedObject"
+  ],
   "properties": {
-    "averageValue": {
-      "description": "averageValue is the current value of the average of the metric across all relevant pods (as a quantity)", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
-    }, 
-    "currentValue": {
-      "description": "currentValue is the current value of the metric (as a quantity).", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
-    }, 
-    "selector": {
-      "description": "selector is the string-encoded form of a standard kubernetes label selector for the given metric When set in the ObjectMetricSource, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
-    }, 
-    "target": {
-      "description": "target is the described Kubernetes object.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta1.CrossVersionObjectReference"
-    }, 
-    "metricName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "metricName is the name of the metric in question."
+    "current": {
+      "description": "current contains the current value for the given metric",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.MetricValueStatus"
+    },
+    "describedObject": {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.CrossVersionObjectReference"
+    },
+    "metric": {
+      "description": "metric identifies the target metric by name and selector",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2beta2.MetricIdentifier"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
