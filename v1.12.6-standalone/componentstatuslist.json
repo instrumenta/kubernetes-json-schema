@@ -72,6 +72,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ComponentStatus"
             ]
           },
           "metadata": {
@@ -256,6 +259,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -422,6 +428,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ComponentStatusList"
       ]
     },
     "metadata": {
@@ -457,5 +466,7 @@
       "kind": "ComponentStatusList",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -18,7 +18,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.6/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfiguration"
+        "$ref": "https://kubernetesjsonschema.dev/v1.12.6/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfiguration"
       }
     },
     "kind": {
@@ -26,11 +26,14 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ValidatingWebhookConfigurationList"
       ]
     },
     "metadata": {
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+      "$ref": "https://kubernetesjsonschema.dev/v1.12.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
     }
   },
   "x-kubernetes-group-version-kind": [

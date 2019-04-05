@@ -35,6 +35,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "RoleBinding"
             ]
           },
           "metadata": {
@@ -222,6 +225,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -456,6 +462,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "RoleBindingList"
       ]
     },
     "metadata": {
@@ -493,5 +502,7 @@
       "version": "v1beta1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

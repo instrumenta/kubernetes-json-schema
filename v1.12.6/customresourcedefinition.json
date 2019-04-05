@@ -16,18 +16,21 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CustomResourceDefinition"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://kubernetesjsonschema.dev/v1.12.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "Spec describes how the user wants the resources to appear",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.6/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec"
+      "$ref": "https://kubernetesjsonschema.dev/v1.12.6/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionSpec"
     },
     "status": {
       "description": "Status indicates the actual state of the CustomResourceDefinition",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.6/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionStatus"
+      "$ref": "https://kubernetesjsonschema.dev/v1.12.6/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionStatus"
     }
   },
   "x-kubernetes-group-version-kind": [

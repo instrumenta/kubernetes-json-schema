@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Lease"
             ]
           },
           "metadata": {
@@ -219,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -430,6 +436,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "LeaseList"
       ]
     },
     "metadata": {

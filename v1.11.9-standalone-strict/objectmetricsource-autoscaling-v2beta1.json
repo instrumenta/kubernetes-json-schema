@@ -1,0 +1,58 @@
+{
+  "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
+  "required": [
+    "target",
+    "metricName",
+    "targetValue"
+  ],
+  "properties": {
+    "metricName": {
+      "description": "metricName is the name of the metric in question.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
+      "required": [
+        "kind",
+        "name"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "API version of the referent",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "description": "Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds\"",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "targetValue": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "type": "integer"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

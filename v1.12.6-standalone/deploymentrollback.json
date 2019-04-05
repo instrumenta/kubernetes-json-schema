@@ -17,6 +17,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "DeploymentRollback"
       ]
     },
     "name": {
@@ -53,5 +56,7 @@
       "kind": "DeploymentRollback",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

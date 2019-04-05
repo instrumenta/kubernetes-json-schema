@@ -1,5 +1,5 @@
 {
-  "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.",
+  "description": "IDRange provides a min/max of an allowed range of IDs.",
   "required": [
     "min",
     "max"
@@ -15,5 +15,7 @@
       "type": "integer",
       "format": "int64"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
