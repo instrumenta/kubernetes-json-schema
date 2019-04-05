@@ -1,43 +1,43 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "StatefulSetCondition describes the state of a statefulset at a certain point.",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "type": "object", 
-  "description": "StatefulSetCondition describes the state of a statefulset at a certain point.", 
+  ],
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
-    "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type of statefulset condition."
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "A human readable message indicating details about the transition."
-    }, 
     "lastTransitionTime": {
-      "description": "Last time the condition transitioned from one status to another.", 
+      "description": "Last time the condition transitioned from one status to another.",
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
-    "reason": {
+    },
+    "message": {
+      "description": "A human readable message indicating details about the transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The reason for the condition's last transition."
+      ]
+    },
+    "reason": {
+      "description": "The reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of statefulset condition.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,44 +1,45 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.",
   "required": [
     "rule"
-  ], 
-  "type": "object", 
-  "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
+  ],
   "properties": {
     "ranges": {
+      "description": "Ranges are the allowed ranges of uids that may be used.",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
-        "additionalProperties": false, 
+        "description": "ID Range provides a min/max of an allowed range of IDs.",
         "required": [
-          "min", 
+          "min",
           "max"
-        ], 
-        "description": "ID Range provides a min/max of an allowed range of IDs.", 
+        ],
         "properties": {
           "max": {
-            "type": "integer", 
-            "description": "Max is the end of the range, inclusive.", 
+            "description": "Max is the end of the range, inclusive.",
+            "type": "integer",
             "format": "int64"
-          }, 
+          },
           "min": {
-            "type": "integer", 
-            "description": "Min is the start of the range, inclusive.", 
+            "description": "Min is the start of the range, inclusive.",
+            "type": "integer",
             "format": "int64"
           }
-        }
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Ranges are the allowed ranges of uids that may be used."
-    }, 
+        },
+        "additionalProperties": false
+      }
+    },
     "rule": {
+      "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

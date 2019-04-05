@@ -1,83 +1,83 @@
 {
-  "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume", 
+  "description": "ScaleIOVolumeSource represents a persistent ScaleIO volume",
   "required": [
-    "gateway", 
-    "system", 
+    "gateway",
+    "system",
     "secretRef"
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
-    "storageMode": {
+    "fsType": {
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned."
-    }, 
+      ]
+    },
+    "gateway": {
+      "description": "The host address of the ScaleIO API Gateway.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "protectionDomain": {
+      "description": "The name of the ScaleIO Protection Domain for the configured storage.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "readOnly": {
+      "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
+      "type": "boolean"
+    },
     "secretRef": {
-      "additionalProperties": false, 
-      "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+      "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
       "properties": {
         "name": {
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
           "type": [
-            "string", 
+            "string",
             "null"
-          ], 
-          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+          ]
         }
-      }
-    }, 
-    "protectionDomain": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "The name of the ScaleIO Protection Domain for the configured storage."
-    }, 
-    "volumeName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source."
-    }, 
+      },
+      "additionalProperties": false
+    },
     "sslEnabled": {
-      "type": "boolean", 
-      "description": "Flag to enable/disable SSL communication with Gateway, default false"
-    }, 
-    "system": {
+      "description": "Flag to enable/disable SSL communication with Gateway, default false",
+      "type": "boolean"
+    },
+    "storageMode": {
+      "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The name of the storage system as configured in ScaleIO."
-    }, 
-    "fsType": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-    }, 
-    "readOnly": {
-      "type": "boolean", 
-      "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
-    }, 
+      ]
+    },
     "storagePool": {
+      "description": "The ScaleIO Storage Pool associated with the protection domain.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The ScaleIO Storage Pool associated with the protection domain."
-    }, 
-    "gateway": {
+      ]
+    },
+    "system": {
+      "description": "The name of the storage system as configured in ScaleIO.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The host address of the ScaleIO API Gateway."
+      ]
+    },
+    "volumeName": {
+      "description": "The name of a volume already created in the ScaleIO system that is associated with this volume source.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

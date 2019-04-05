@@ -1,73 +1,73 @@
 {
-  "description": "Info contains versioning information. how we'll want to distribute that information.", 
+  "description": "Info contains versioning information. how we'll want to distribute that information.",
   "required": [
-    "major", 
-    "minor", 
-    "gitVersion", 
-    "gitCommit", 
-    "gitTreeState", 
-    "buildDate", 
-    "goVersion", 
-    "compiler", 
+    "major",
+    "minor",
+    "gitVersion",
+    "gitCommit",
+    "gitTreeState",
+    "buildDate",
+    "goVersion",
+    "compiler",
     "platform"
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
-    "major": {
-      "type": [
-        "string", 
-        "null"
-      ]
-    }, 
-    "gitTreeState": {
-      "type": [
-        "string", 
-        "null"
-      ]
-    }, 
     "buildDate": {
       "type": [
-        "string", 
+        "string",
         "null"
       ]
-    }, 
-    "platform": {
-      "type": [
-        "string", 
-        "null"
-      ]
-    }, 
-    "minor": {
-      "type": [
-        "string", 
-        "null"
-      ]
-    }, 
-    "gitCommit": {
-      "type": [
-        "string", 
-        "null"
-      ]
-    }, 
+    },
     "compiler": {
       "type": [
-        "string", 
+        "string",
         "null"
       ]
-    }, 
+    },
+    "gitCommit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gitTreeState": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "gitVersion": {
       "type": [
-        "string", 
+        "string",
         "null"
       ]
-    }, 
+    },
     "goVersion": {
       "type": [
-        "string", 
+        "string",
+        "null"
+      ]
+    },
+    "major": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "minor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "platform": {
+      "type": [
+        "string",
         "null"
       ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
