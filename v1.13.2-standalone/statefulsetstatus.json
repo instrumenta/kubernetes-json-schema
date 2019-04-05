@@ -96,5 +96,7 @@
       "type": "integer",
       "format": "int32"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -13,18 +13,21 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "APIService"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://kubernetesjsonschema.dev/v1.13.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "Spec contains information for locating and communicating with a server",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.2/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceSpec"
+      "$ref": "https://kubernetesjsonschema.dev/v1.13.2/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceSpec"
     },
     "status": {
       "description": "Status contains derived information about an API server",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.2/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceStatus"
+      "$ref": "https://kubernetesjsonschema.dev/v1.13.2/_definitions.json#/definitions/io.k8s.kube-aggregator.pkg.apis.apiregistration.v1beta1.APIServiceStatus"
     }
   },
   "x-kubernetes-group-version-kind": [

@@ -16,6 +16,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ClusterRoleBinding"
       ]
     },
     "metadata": {
@@ -200,6 +203,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -418,5 +424,7 @@
       "kind": "ClusterRoleBinding",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

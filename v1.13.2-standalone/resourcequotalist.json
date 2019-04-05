@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ResourceQuota"
             ]
           },
           "metadata": {
@@ -216,6 +219,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -498,6 +504,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ResourceQuotaList"
       ]
     },
     "metadata": {
@@ -533,5 +542,7 @@
       "kind": "ResourceQuotaList",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

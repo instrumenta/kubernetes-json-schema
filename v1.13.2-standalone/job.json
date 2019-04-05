@@ -13,6 +13,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Job"
       ]
     },
     "metadata": {
@@ -197,6 +200,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -617,6 +623,9 @@
                           "type": [
                             "string",
                             "null"
+                          ],
+                          "enum": [
+                            "Status"
                           ]
                         },
                         "message": {
@@ -5217,5 +5226,7 @@
       "kind": "Job",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

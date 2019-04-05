@@ -16,6 +16,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "TokenReview"
       ]
     },
     "metadata": {
@@ -200,6 +203,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -460,5 +466,7 @@
       "kind": "TokenReview",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

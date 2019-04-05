@@ -1,6 +1,15 @@
 {
-  "description": "Deprecated. Please use io.k8s.api.core.v1.DaemonEndpoint instead.",
-  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.1/_definitions.json#/definitions/io.k8s.api.core.v1.DaemonEndpoint",
+  "description": "DaemonEndpoint contains information about a single Daemon endpoint.",
+  "required": [
+    "Port"
+  ],
+  "properties": {
+    "Port": {
+      "description": "Port number of the given endpoint.",
+      "type": "integer",
+      "format": "int32"
+    }
+  },
   "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }

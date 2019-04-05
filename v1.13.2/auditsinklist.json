@@ -18,7 +18,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.2/_definitions.json#/definitions/io.k8s.api.auditregistration.v1alpha1.AuditSink"
+        "$ref": "https://kubernetesjsonschema.dev/v1.13.2/_definitions.json#/definitions/io.k8s.api.auditregistration.v1alpha1.AuditSink"
       }
     },
     "kind": {
@@ -26,10 +26,13 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "AuditSinkList"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+      "$ref": "https://kubernetesjsonschema.dev/v1.13.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
     }
   },
   "x-kubernetes-group-version-kind": [

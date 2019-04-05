@@ -1,0 +1,42 @@
+{
+  "description": "FSGroupStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use FSGroupStrategyOptions from policy API Group instead.",
+  "properties": {
+    "ranges": {
+      "description": "ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.",
+        "required": [
+          "min",
+          "max"
+        ],
+        "properties": {
+          "max": {
+            "description": "max is the end of the range, inclusive.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "min": {
+            "description": "min is the start of the range, inclusive.",
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "rule": {
+      "description": "rule is the strategy that will dictate what FSGroup is used in the SecurityContext.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

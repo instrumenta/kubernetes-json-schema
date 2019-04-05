@@ -31,6 +31,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PodDisruptionBudget"
             ]
           },
           "metadata": {
@@ -218,6 +221,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -527,6 +533,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodDisruptionBudgetList"
       ]
     },
     "metadata": {
@@ -564,5 +573,7 @@
       "version": "v1beta1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
