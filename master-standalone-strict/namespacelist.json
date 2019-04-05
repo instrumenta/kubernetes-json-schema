@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Namespace"
             ]
           },
           "metadata": {
@@ -212,6 +215,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -478,6 +484,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NamespaceList"
       ]
     },
     "metadata": {

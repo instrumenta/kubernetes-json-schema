@@ -23,6 +23,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "CertificateSigningRequest"
             ]
           },
           "metadata": {
@@ -207,6 +210,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -556,6 +562,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CertificateSigningRequestList"
       ]
     },
     "metadata": {

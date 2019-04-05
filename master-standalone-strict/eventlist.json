@@ -79,6 +79,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Event"
             ]
           },
           "metadata": {
@@ -266,6 +269,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -674,6 +680,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "EventList"
       ]
     },
     "metadata": {

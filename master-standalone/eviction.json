@@ -41,6 +41,9 @@
           "type": [
             "string",
             "null"
+          ],
+          "enum": [
+            "DeleteOptions"
           ]
         },
         "orphanDependents": {
@@ -289,6 +292,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Eviction"
       ]
     },
     "metadata": {
@@ -473,6 +479,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {

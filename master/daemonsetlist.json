@@ -11,7 +11,7 @@
     "items": {
       "description": "A list of daemon sets.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.DaemonSet"
+        "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.DaemonSet"
       },
       "type": [
         "array",
@@ -23,10 +23,13 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "DaemonSetList"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
     }
   },

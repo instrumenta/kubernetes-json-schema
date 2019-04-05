@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "DaemonSet"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -668,6 +674,9 @@
                                 "type": [
                                   "string",
                                   "null"
+                                ],
+                                "enum": [
+                                  "Status"
                                 ]
                               },
                               "message": {
@@ -5615,6 +5624,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "DaemonSetList"
       ]
     },
     "metadata": {

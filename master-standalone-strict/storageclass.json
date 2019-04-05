@@ -63,6 +63,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "StorageClass"
       ]
     },
     "metadata": {
@@ -250,6 +253,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {

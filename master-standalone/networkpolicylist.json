@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "NetworkPolicy"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -906,6 +912,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NetworkPolicyList"
       ]
     },
     "metadata": {

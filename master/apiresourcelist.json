@@ -20,12 +20,15 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "APIResourceList"
       ]
     },
     "resources": {
       "description": "resources contains the name of the resources and if they are namespaced.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
+        "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
       },
       "type": [
         "array",

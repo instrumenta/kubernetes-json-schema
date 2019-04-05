@@ -11,7 +11,7 @@
     "items": {
       "description": "Items is a list of schema objects.",
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.coordination.v1beta1.Lease"
+        "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.coordination.v1beta1.Lease"
       },
       "type": [
         "array",
@@ -23,10 +23,13 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "LeaseList"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta",
       "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata"
     }
   },

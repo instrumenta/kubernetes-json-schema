@@ -41,6 +41,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Event"
       ]
     },
     "metadata": {

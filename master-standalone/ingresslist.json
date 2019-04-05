@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Ingress"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -615,6 +621,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "IngressList"
       ]
     },
     "metadata": {

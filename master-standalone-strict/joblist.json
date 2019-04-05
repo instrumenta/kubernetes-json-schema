@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Job"
             ]
           },
           "metadata": {
@@ -212,6 +215,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -696,6 +702,9 @@
                                 "type": [
                                   "string",
                                   "null"
+                                ],
+                                "enum": [
+                                  "Status"
                                 ]
                               },
                               "message": {
@@ -5775,6 +5784,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "JobList"
       ]
     },
     "metadata": {

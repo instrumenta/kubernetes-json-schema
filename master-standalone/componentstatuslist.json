@@ -66,6 +66,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ComponentStatus"
             ]
           },
           "metadata": {
@@ -250,6 +253,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -475,6 +481,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ComponentStatusList"
       ]
     },
     "metadata": {

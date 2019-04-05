@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "RoleBinding"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -499,6 +505,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "RoleBindingList"
       ]
     },
     "metadata": {

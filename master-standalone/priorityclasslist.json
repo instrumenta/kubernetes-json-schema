@@ -36,6 +36,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PriorityClass"
             ]
           },
           "metadata": {
@@ -220,6 +223,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -453,6 +459,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PriorityClassList"
       ]
     },
     "metadata": {

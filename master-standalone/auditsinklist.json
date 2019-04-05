@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "AuditSink"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -541,6 +547,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "AuditSinkList"
       ]
     },
     "metadata": {

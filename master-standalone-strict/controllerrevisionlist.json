@@ -40,6 +40,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ControllerRevision"
             ]
           },
           "metadata": {
@@ -227,6 +230,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -467,6 +473,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ControllerRevisionList"
       ]
     },
     "metadata": {

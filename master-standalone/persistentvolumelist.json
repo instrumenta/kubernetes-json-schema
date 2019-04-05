@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PersistentVolume"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -1692,6 +1698,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PersistentVolumeList"
       ]
     },
     "metadata": {

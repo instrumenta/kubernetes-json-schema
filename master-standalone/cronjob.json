@@ -13,6 +13,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CronJob"
       ]
     },
     "metadata": {
@@ -197,6 +200,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -602,6 +608,9 @@
                           "type": [
                             "string",
                             "null"
+                          ],
+                          "enum": [
+                            "Status"
                           ]
                         },
                         "message": {
@@ -1075,6 +1084,9 @@
                                   "type": [
                                     "string",
                                     "null"
+                                  ],
+                                  "enum": [
+                                    "Status"
                                   ]
                                 },
                                 "message": {

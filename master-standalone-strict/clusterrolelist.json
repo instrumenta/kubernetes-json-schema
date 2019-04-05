@@ -97,6 +97,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ClusterRole"
             ]
           },
           "metadata": {
@@ -284,6 +287,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -595,6 +601,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ClusterRoleList"
       ]
     },
     "metadata": {

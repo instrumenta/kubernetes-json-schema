@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Role"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -512,6 +518,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "RoleList"
       ]
     },
     "metadata": {

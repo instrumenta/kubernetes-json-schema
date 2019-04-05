@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Service"
             ]
           },
           "metadata": {
@@ -212,6 +215,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -660,6 +666,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ServiceList"
       ]
     },
     "metadata": {

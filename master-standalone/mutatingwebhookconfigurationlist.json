@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "MutatingWebhookConfiguration"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -663,6 +669,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "MutatingWebhookConfigurationList"
       ]
     },
     "metadata": {

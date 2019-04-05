@@ -29,6 +29,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "RuntimeClass"
             ]
           },
           "metadata": {
@@ -213,6 +216,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -441,6 +447,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "RuntimeClassList"
       ]
     },
     "metadata": {

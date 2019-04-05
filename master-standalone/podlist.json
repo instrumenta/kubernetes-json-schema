@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Pod"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -5605,6 +5611,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodList"
       ]
     },
     "metadata": {

@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PodSecurityPolicy"
             ]
           },
           "metadata": {
@@ -212,6 +215,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -888,6 +894,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodSecurityPolicyList"
       ]
     },
     "metadata": {

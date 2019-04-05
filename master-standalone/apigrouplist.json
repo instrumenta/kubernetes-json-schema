@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "APIGroup"
             ]
           },
           "name": {
@@ -120,6 +123,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "APIGroupList"
       ]
     }
   },

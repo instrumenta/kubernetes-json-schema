@@ -13,17 +13,20 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "StatefulSet"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetSpec",
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetSpec",
       "description": "Spec defines the desired identities of pods in this set."
     },
     "status": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetStatus",
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSetStatus",
       "description": "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time."
     }
   },

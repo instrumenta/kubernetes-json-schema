@@ -25,6 +25,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ReplicaSet"
             ]
           },
           "metadata": {
@@ -209,6 +212,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -668,6 +674,9 @@
                                 "type": [
                                   "string",
                                   "null"
+                                ],
+                                "enum": [
+                                  "Status"
                                 ]
                               },
                               "message": {
@@ -5553,6 +5562,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ReplicaSetList"
       ]
     },
     "metadata": {
