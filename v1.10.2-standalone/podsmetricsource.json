@@ -1,31 +1,31 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
   "required": [
-    "metricName", 
+    "metricName",
     "targetAverageValue"
-  ], 
-  "type": "object", 
-  "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.", 
+  ],
   "properties": {
+    "metricName": {
+      "description": "metricName is the name of the metric in question",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "targetAverageValue": {
       "oneOf": [
         {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         {
           "type": "integer"
         }
       ]
-    }, 
-    "metricName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "metricName is the name of the metric in question"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

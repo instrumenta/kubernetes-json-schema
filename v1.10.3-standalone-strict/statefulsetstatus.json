@@ -1,102 +1,103 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "StatefulSetStatus represents the current state of a StatefulSet.",
   "required": [
     "replicas"
-  ], 
-  "type": "object", 
-  "description": "StatefulSetStatus represents the current state of a StatefulSet.", 
+  ],
   "properties": {
-    "updateRevision": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)"
-    }, 
     "collisionCount": {
-      "type": "integer", 
-      "description": "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.", 
+      "description": "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
+      "type": "integer",
       "format": "int32"
-    }, 
-    "replicas": {
-      "type": "integer", 
-      "description": "replicas is the number of Pods created by the StatefulSet controller.", 
-      "format": "int32"
-    }, 
-    "observedGeneration": {
-      "type": "integer", 
-      "description": "observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.", 
-      "format": "int64"
-    }, 
-    "currentReplicas": {
-      "type": "integer", 
-      "description": "currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.", 
-      "format": "int32"
-    }, 
-    "updatedReplicas": {
-      "type": "integer", 
-      "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.", 
-      "format": "int32"
-    }, 
-    "currentRevision": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas)."
-    }, 
-    "readyReplicas": {
-      "type": "integer", 
-      "description": "readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.", 
-      "format": "int32"
-    }, 
+    },
     "conditions": {
+      "description": "Represents the latest available observations of a statefulset's current state.",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
-        "additionalProperties": false, 
+        "description": "StatefulSetCondition describes the state of a statefulset at a certain point.",
         "required": [
-          "type", 
+          "type",
           "status"
-        ], 
-        "description": "StatefulSetCondition describes the state of a statefulset at a certain point.", 
+        ],
         "properties": {
-          "status": {
-            "type": "string", 
-            "description": "Status of the condition, one of True, False, Unknown."
-          }, 
-          "type": {
-            "type": "string", 
-            "description": "Type of statefulset condition."
-          }, 
-          "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "A human readable message indicating details about the transition."
-          }, 
           "lastTransitionTime": {
             "type": [
-              "string", 
+              "string",
               "null"
-            ], 
+            ],
             "format": "date-time"
-          }, 
-          "reason": {
+          },
+          "message": {
+            "description": "A human readable message indicating details about the transition.",
             "type": [
-              "string", 
+              "string",
               "null"
-            ], 
-            "description": "The reason for the condition's last transition."
+            ]
+          },
+          "reason": {
+            "description": "The reason for the condition's last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "Status of the condition, one of True, False, Unknown.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of statefulset condition.",
+            "type": "string"
           }
-        }
-      }, 
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "currentReplicas": {
+      "description": "currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "currentRevision": {
+      "description": "currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).",
       "type": [
-        "array", 
+        "string",
         "null"
-      ], 
-      "description": "Represents the latest available observations of a statefulset's current state.", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      ]
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.",
+      "type": "integer",
+      "format": "int64"
+    },
+    "readyReplicas": {
+      "description": "readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "replicas": {
+      "description": "replicas is the number of Pods created by the StatefulSet controller.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "updateRevision": {
+      "description": "updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updatedReplicas": {
+      "description": "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.",
+      "type": "integer",
+      "format": "int32"
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

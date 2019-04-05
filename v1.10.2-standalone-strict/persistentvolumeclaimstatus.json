@@ -1,95 +1,98 @@
 {
-  "description": "PersistentVolumeClaimStatus is the current status of a persistent volume claim.", 
+  "description": "PersistentVolumeClaimStatus is the current status of a persistent volume claim.",
   "properties": {
-    "phase": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Phase represents the current phase of PersistentVolumeClaim."
-    }, 
     "accessModes": {
+      "description": "AccessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
         "type": [
-          "string", 
+          "string",
           "null"
         ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "AccessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1"
-    }, 
-    "conditions": {
-      "items": {
-        "additionalProperties": false, 
-        "required": [
-          "type", 
-          "status"
-        ], 
-        "description": "PersistentVolumeClaimCondition contails details about state of pvc", 
-        "properties": {
-          "status": {
-            "type": "string"
-          }, 
-          "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "format": "date-time"
-          }, 
-          "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized."
-          }, 
-          "lastProbeTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "format": "date-time"
-          }, 
-          "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Human-readable message indicating details about last transition."
-          }, 
-          "type": {
-            "type": "string"
-          }
-        }
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'ResizeStarted'.", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
-    }, 
+      }
+    },
     "capacity": {
+      "description": "Represents the actual resources of the underlying volume.",
+      "type": "object",
       "additionalProperties": {
         "oneOf": [
           {
             "type": [
-              "string", 
+              "string",
               "null"
             ]
-          }, 
+          },
           {
             "type": "integer"
           }
         ]
-      }, 
-      "type": "object", 
-      "description": "Represents the actual resources of the underlying volume."
+      }
+    },
+    "conditions": {
+      "description": "Current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to 'ResizeStarted'.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "PersistentVolumeClaimCondition contails details about state of pvc",
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastProbeTime": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "lastTransitionTime": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "description": "Human-readable message indicating details about last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "phase": {
+      "description": "Phase represents the current phase of PersistentVolumeClaim.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

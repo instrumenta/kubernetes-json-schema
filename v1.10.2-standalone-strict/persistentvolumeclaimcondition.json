@@ -1,51 +1,52 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "PersistentVolumeClaimCondition contails details about state of pvc",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "type": "object", 
-  "description": "PersistentVolumeClaimCondition contails details about state of pvc", 
+  ],
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ]
-    }, 
-    "lastTransitionTime": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "format": "date-time"
-    }, 
-    "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized."
-    }, 
     "lastProbeTime": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
+      ],
       "format": "date-time"
-    }, 
-    "message": {
+    },
+    "lastTransitionTime": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Human-readable message indicating details about last transition."
-    }, 
+      ],
+      "format": "date-time"
+    },
+    "message": {
+      "description": "Human-readable message indicating details about last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "type": {
       "type": [
-        "string", 
+        "string",
         "null"
       ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

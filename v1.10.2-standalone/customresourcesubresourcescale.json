@@ -1,32 +1,32 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "CustomResourceSubresourceScale defines how to serve the scale subresource for CustomResources.",
   "required": [
-    "specReplicasPath", 
+    "specReplicasPath",
     "statusReplicasPath"
-  ], 
-  "type": "object", 
-  "description": "CustomResourceSubresourceScale defines how to serve the scale subresource for CustomResources.", 
+  ],
   "properties": {
     "labelSelectorPath": {
+      "description": "LabelSelectorPath defines the JSON path inside of a CustomResource that corresponds to Scale.Status.Selector. Only JSON paths without the array notation are allowed. Must be a JSON Path under .status. Must be set to work with HPA. If there is no value under the given path in the CustomResource, the status label selector value in the /scale subresource will default to the empty string.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "LabelSelectorPath defines the JSON path inside of a CustomResource that corresponds to Scale.Status.Selector. Only JSON paths without the array notation are allowed. Must be a JSON Path under .status. Must be set to work with HPA. If there is no value under the given path in the CustomResource, the status label selector value in the /scale subresource will default to the empty string."
-    }, 
-    "statusReplicasPath": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "StatusReplicasPath defines the JSON path inside of a CustomResource that corresponds to Scale.Status.Replicas. Only JSON paths without the array notation are allowed. Must be a JSON Path under .status. If there is no value under the given path in the CustomResource, the status replica value in the /scale subresource will default to 0."
-    }, 
+      ]
+    },
     "specReplicasPath": {
+      "description": "SpecReplicasPath defines the JSON path inside of a CustomResource that corresponds to Scale.Spec.Replicas. Only JSON paths without the array notation are allowed. Must be a JSON Path under .spec. If there is no value under the given path in the CustomResource, the /scale subresource will return an error on GET.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "SpecReplicasPath defines the JSON path inside of a CustomResource that corresponds to Scale.Spec.Replicas. Only JSON paths without the array notation are allowed. Must be a JSON Path under .spec. If there is no value under the given path in the CustomResource, the /scale subresource will return an error on GET."
+      ]
+    },
+    "statusReplicasPath": {
+      "description": "StatusReplicasPath defines the JSON path inside of a CustomResource that corresponds to Scale.Status.Replicas. Only JSON paths without the array notation are allowed. Must be a JSON Path under .status. If there is no value under the given path in the CustomResource, the status replica value in the /scale subresource will default to 0.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

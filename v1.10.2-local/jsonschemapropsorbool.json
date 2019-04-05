@@ -1,0 +1,17 @@
+{
+  "description": "JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the boolean property.",
+  "required": [
+    "Allows",
+    "Schema"
+  ],
+  "properties": {
+    "Allows": {
+      "type": "boolean"
+    },
+    "Schema": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}
