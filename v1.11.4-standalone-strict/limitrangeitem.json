@@ -1,98 +1,100 @@
 {
-  "additionalProperties": false, 
-  "description": "LimitRangeItem defines a min/max usage limit for any resource that matches on kind.", 
+  "description": "LimitRangeItem defines a min/max usage limit for any resource that matches on kind.",
   "properties": {
-    "min": {
-      "additionalProperties": {
-        "oneOf": [
-          {
-            "type": [
-              "string", 
-              "null"
-            ]
-          }, 
-          {
-            "type": "integer"
-          }
-        ]
-      }, 
-      "type": "object", 
-      "description": "Min usage constraints on this kind by resource name."
-    }, 
     "default": {
+      "description": "Default resource requirement limit value by resource name if resource limit is omitted.",
+      "type": "object",
       "additionalProperties": {
         "oneOf": [
           {
             "type": [
-              "string", 
+              "string",
               "null"
             ]
-          }, 
+          },
           {
             "type": "integer"
           }
         ]
-      }, 
-      "type": "object", 
-      "description": "Default resource requirement limit value by resource name if resource limit is omitted."
-    }, 
-    "max": {
-      "additionalProperties": {
-        "oneOf": [
-          {
-            "type": [
-              "string", 
-              "null"
-            ]
-          }, 
-          {
-            "type": "integer"
-          }
-        ]
-      }, 
-      "type": "object", 
-      "description": "Max usage constraints on this kind by resource name."
-    }, 
+      }
+    },
     "defaultRequest": {
+      "description": "DefaultRequest is the default resource requirement request value by resource name if resource request is omitted.",
+      "type": "object",
       "additionalProperties": {
         "oneOf": [
           {
             "type": [
-              "string", 
+              "string",
               "null"
             ]
-          }, 
+          },
           {
             "type": "integer"
           }
         ]
-      }, 
-      "type": "object", 
-      "description": "DefaultRequest is the default resource requirement request value by resource name if resource request is omitted."
-    }, 
+      }
+    },
+    "max": {
+      "description": "Max usage constraints on this kind by resource name.",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      }
+    },
     "maxLimitRequestRatio": {
+      "description": "MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource.",
+      "type": "object",
       "additionalProperties": {
         "oneOf": [
           {
             "type": [
-              "string", 
+              "string",
               "null"
             ]
-          }, 
+          },
           {
             "type": "integer"
           }
         ]
-      }, 
-      "type": "object", 
-      "description": "MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource."
-    }, 
+      }
+    },
+    "min": {
+      "description": "Min usage constraints on this kind by resource name.",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          {
+            "type": "integer"
+          }
+        ]
+      }
+    },
     "type": {
+      "description": "Type of resource that this limit applies to.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Type of resource that this limit applies to."
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

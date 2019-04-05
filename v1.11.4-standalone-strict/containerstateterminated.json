@@ -1,56 +1,58 @@
 {
-  "additionalProperties": false, 
+  "description": "ContainerStateTerminated is a terminated state of a container.",
   "required": [
     "exitCode"
-  ], 
-  "description": "ContainerStateTerminated is a terminated state of a container.", 
+  ],
   "properties": {
     "containerID": {
+      "description": "Container's ID in the format 'docker://<container_id>'",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Container's ID in the format 'docker://<container_id>'"
-    }, 
-    "signal": {
-      "type": "integer", 
-      "description": "Signal from the last termination of the container", 
-      "format": "int32"
-    }, 
-    "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "(brief) reason from the last termination of the container"
-    }, 
-    "finishedAt": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-      "format": "date-time"
-    }, 
-    "startedAt": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-      "format": "date-time"
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Message regarding the last termination of the container"
-    }, 
+      ]
+    },
     "exitCode": {
-      "type": "integer", 
-      "description": "Exit status from the last termination of the container", 
+      "description": "Exit status from the last termination of the container",
+      "type": "integer",
       "format": "int32"
+    },
+    "finishedAt": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "message": {
+      "description": "Message regarding the last termination of the container",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "(brief) reason from the last termination of the container",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "signal": {
+      "description": "Signal from the last termination of the container",
+      "type": "integer",
+      "format": "int32"
+    },
+    "startedAt": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,61 +1,64 @@
 {
-  "description": "DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.", 
+  "description": "DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.",
   "required": [
-    "name", 
+    "name",
     "rollbackTo"
-  ], 
-  "x-kubernetes-group-version-kind": [
-    {
-      "kind": "DeploymentRollback", 
-      "version": "v1beta1", 
-      "group": "extensions"
-    }
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
-    "kind": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
-    }, 
-    "updatedAnnotations": {
-      "additionalProperties": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": "object", 
-      "description": "The annotations to be updated to a deployment"
-    }, 
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "DeploymentRollback"
+      ]
+    },
+    "name": {
+      "description": "Required: This must match the Name of a deployment.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "rollbackTo": {
-      "additionalProperties": false, 
-      "description": "DEPRECATED.", 
+      "description": "DEPRECATED.",
       "properties": {
         "revision": {
-          "type": "integer", 
-          "description": "The revision to rollback to. If set to 0, rollback to the last revision.", 
+          "description": "The revision to rollback to. If set to 0, rollback to the last revision.",
+          "type": "integer",
           "format": "int64"
         }
+      },
+      "additionalProperties": false
+    },
+    "updatedAnnotations": {
+      "description": "The annotations to be updated to a deployment",
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ]
       }
-    }, 
-    "apiVersion": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
-    }, 
-    "name": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Required: This must match the Name of a deployment."
     }
-  }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "extensions",
+      "kind": "DeploymentRollback",
+      "version": "v1beta1"
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

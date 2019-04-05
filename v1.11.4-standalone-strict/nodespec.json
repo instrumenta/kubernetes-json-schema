@@ -1,114 +1,116 @@
 {
-  "additionalProperties": false, 
-  "description": "NodeSpec describes the attributes that a node is created with.", 
+  "description": "NodeSpec describes the attributes that a node is created with.",
   "properties": {
-    "unschedulable": {
-      "type": "boolean", 
-      "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration"
-    }, 
     "configSource": {
-      "additionalProperties": false, 
-      "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.", 
+      "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.",
       "properties": {
         "configMap": {
-          "additionalProperties": false, 
+          "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.",
           "required": [
-            "namespace", 
-            "name", 
+            "namespace",
+            "name",
             "kubeletConfigKey"
-          ], 
-          "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.", 
+          ],
           "properties": {
             "kubeletConfigKey": {
-              "type": "string", 
-              "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases."
-            }, 
-            "resourceVersion": {
-              "type": [
-                "string", 
-                "null"
-              ], 
-              "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
-            }, 
-            "namespace": {
-              "type": "string", 
-              "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases."
-            }, 
-            "uid": {
-              "type": [
-                "string", 
-                "null"
-              ], 
-              "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
-            }, 
+              "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.",
+              "type": "string"
+            },
             "name": {
-              "type": "string", 
-              "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases."
+              "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.",
+              "type": "string"
+            },
+            "namespace": {
+              "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.",
+              "type": "string"
+            },
+            "resourceVersion": {
+              "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "uid": {
+              "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+              "type": [
+                "string",
+                "null"
+              ]
             }
-          }
+          },
+          "additionalProperties": false
         }
-      }
-    }, 
-    "taints": {
-      "items": {
-        "additionalProperties": false, 
-        "required": [
-          "key", 
-          "effect"
-        ], 
-        "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.", 
-        "properties": {
-          "key": {
-            "type": "string", 
-            "description": "Required. The taint key to be applied to a node."
-          }, 
-          "timeAdded": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-            "format": "date-time"
-          }, 
-          "effect": {
-            "type": "string", 
-            "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute."
-          }, 
-          "value": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Required. The taint value corresponding to the taint key."
-          }
-        }
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "If specified, the node's taints."
-    }, 
-    "podCIDR": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "PodCIDR represents the pod IP range assigned to the node."
-    }, 
-    "providerID": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>"
-    }, 
+      },
+      "additionalProperties": false
+    },
     "externalID": {
+      "description": "Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966"
+      ]
+    },
+    "podCIDR": {
+      "description": "PodCIDR represents the pod IP range assigned to the node.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "providerID": {
+      "description": "ID of the node assigned by the cloud provider in the format: <ProviderName>://<ProviderSpecificNodeID>",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "taints": {
+      "description": "If specified, the node's taints.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.",
+        "required": [
+          "key",
+          "effect"
+        ],
+        "properties": {
+          "effect": {
+            "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.",
+            "type": "string"
+          },
+          "key": {
+            "description": "Required. The taint key to be applied to a node.",
+            "type": "string"
+          },
+          "timeAdded": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "value": {
+            "description": "Required. The taint value corresponding to the taint key.",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "unschedulable": {
+      "description": "Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration",
+      "type": "boolean"
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

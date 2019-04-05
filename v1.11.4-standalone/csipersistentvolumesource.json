@@ -1,103 +1,103 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)",
   "required": [
-    "driver", 
+    "driver",
     "volumeHandle"
-  ], 
-  "type": "object", 
-  "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)", 
+  ],
   "properties": {
-    "nodeStageSecretRef": {
-      "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
+    "controllerPublishSecretRef": {
+      "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
       "properties": {
-        "namespace": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Namespace defines the space within which the secret name must be unique."
-        }, 
         "name": {
+          "description": "Name is unique within a namespace to reference a secret resource.",
           "type": [
-            "string", 
+            "string",
             "null"
-          ], 
-          "description": "Name is unique within a namespace to reference a secret resource."
+          ]
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which the secret name must be unique.",
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
-    }, 
+    },
     "driver": {
+      "description": "Driver is the name of the driver to use for this volume. Required.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Driver is the name of the driver to use for this volume. Required."
-    }, 
+      ]
+    },
+    "fsType": {
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nodePublishSecretRef": {
+      "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
+      "properties": {
+        "name": {
+          "description": "Name is unique within a namespace to reference a secret resource.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which the secret name must be unique.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "nodeStageSecretRef": {
+      "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
+      "properties": {
+        "name": {
+          "description": "Name is unique within a namespace to reference a secret resource.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which the secret name must be unique.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "readOnly": {
+      "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
+      "type": "boolean"
+    },
     "volumeAttributes": {
+      "description": "Attributes of the volume to publish.",
+      "type": "object",
       "additionalProperties": {
         "type": [
-          "string", 
+          "string",
           "null"
         ]
-      }, 
-      "type": "object", 
-      "description": "Attributes of the volume to publish."
-    }, 
-    "controllerPublishSecretRef": {
-      "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
-      "properties": {
-        "namespace": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Namespace defines the space within which the secret name must be unique."
-        }, 
-        "name": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Name is unique within a namespace to reference a secret resource."
-        }
       }
-    }, 
-    "fsType": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\"."
-    }, 
-    "readOnly": {
-      "type": "boolean", 
-      "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write)."
-    }, 
+    },
     "volumeHandle": {
+      "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required."
-    }, 
-    "nodePublishSecretRef": {
-      "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace", 
-      "properties": {
-        "namespace": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Namespace defines the space within which the secret name must be unique."
-        }, 
-        "name": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Name is unique within a namespace to reference a secret resource."
-        }
-      }
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

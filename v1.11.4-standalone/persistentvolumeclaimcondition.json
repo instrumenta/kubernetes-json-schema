@@ -1,53 +1,53 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "PersistentVolumeClaimCondition contails details about state of pvc",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "type": "object", 
-  "description": "PersistentVolumeClaimCondition contails details about state of pvc", 
+  ],
   "properties": {
-    "status": {
+    "lastProbeTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "type": [
-        "string", 
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "lastTransitionTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "message": {
+      "description": "Human-readable message indicating details about last transition.",
+      "type": [
+        "string",
         "null"
       ]
-    }, 
-    "lastTransitionTime": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-      "format": "date-time"
-    }, 
+    },
     "reason": {
+      "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized."
-    }, 
-    "lastProbeTime": {
+      ]
+    },
+    "status": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-      "format": "date-time"
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Human-readable message indicating details about last transition."
-    }, 
+      ]
+    },
     "type": {
       "type": [
-        "string", 
+        "string",
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

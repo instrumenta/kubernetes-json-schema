@@ -1,5 +1,5 @@
 {
-  "description": "PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container. Deprecated: use PodSecurityPolicy from policy API Group instead.",
+  "description": "PodSecurityPolicy governs the ability to make requests that affect the Security Context that will be applied to a pod and container.",
   "properties": {
     "apiVersion": {
       "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
@@ -13,6 +13,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodSecurityPolicy"
       ]
     },
     "metadata": {
@@ -197,6 +200,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -349,7 +355,7 @@
       }
     },
     "spec": {
-      "description": "PodSecurityPolicySpec defines the policy enforced. Deprecated: use PodSecurityPolicySpec from policy API Group instead.",
+      "description": "PodSecurityPolicySpec defines the policy enforced.",
       "required": [
         "seLinux",
         "runAsUser",
@@ -381,7 +387,7 @@
             "null"
           ],
           "items": {
-            "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used. Deprecated: use AllowedFlexVolume from policy API Group instead.",
+            "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used.",
             "required": [
               "driver"
             ],
@@ -400,7 +406,7 @@
             "null"
           ],
           "items": {
-            "description": "AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined. Deprecated: use AllowedHostPath from policy API Group instead.",
+            "description": "AllowedHostPath defines the host volume conditions that will be enabled by a policy for pods to use. It requires the path prefix to be defined.",
             "properties": {
               "pathPrefix": {
                 "description": "pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`",
@@ -460,7 +466,7 @@
           }
         },
         "fsGroup": {
-          "description": "FSGroupStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use FSGroupStrategyOptions from policy API Group instead.",
+          "description": "FSGroupStrategyOptions defines the strategy type and options used to create the strategy.",
           "properties": {
             "ranges": {
               "description": "ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.",
@@ -469,7 +475,7 @@
                 "null"
               ],
               "items": {
-                "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.",
+                "description": "IDRange provides a min/max of an allowed range of IDs.",
                 "required": [
                   "min",
                   "max"
@@ -516,7 +522,7 @@
             "null"
           ],
           "items": {
-            "description": "HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined. Deprecated: use HostPortRange from policy API Group instead.",
+            "description": "HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.",
             "required": [
               "min",
               "max"
@@ -557,7 +563,7 @@
           }
         },
         "runAsUser": {
-          "description": "RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsUserStrategyOptions from policy API Group instead.",
+          "description": "RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.",
           "required": [
             "rule"
           ],
@@ -569,7 +575,7 @@
                 "null"
               ],
               "items": {
-                "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.",
+                "description": "IDRange provides a min/max of an allowed range of IDs.",
                 "required": [
                   "min",
                   "max"
@@ -595,7 +601,7 @@
           }
         },
         "seLinux": {
-          "description": "SELinuxStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use SELinuxStrategyOptions from policy API Group instead.",
+          "description": "SELinuxStrategyOptions defines the strategy type and any options used to create the strategy.",
           "required": [
             "rule"
           ],
@@ -640,7 +646,7 @@
           }
         },
         "supplementalGroups": {
-          "description": "SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy. Deprecated: use SupplementalGroupsStrategyOptions from policy API Group instead.",
+          "description": "SupplementalGroupsStrategyOptions defines the strategy type and options used to create the strategy.",
           "properties": {
             "ranges": {
               "description": "ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.",
@@ -649,7 +655,7 @@
                 "null"
               ],
               "items": {
-                "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.",
+                "description": "IDRange provides a min/max of an allowed range of IDs.",
                 "required": [
                   "min",
                   "max"
@@ -695,9 +701,11 @@
   },
   "x-kubernetes-group-version-kind": [
     {
-      "group": "extensions",
+      "group": "policy",
       "kind": "PodSecurityPolicy",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

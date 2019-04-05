@@ -1,6 +1,22 @@
 {
-  "description": "Deprecated. Please use io.k8s.api.extensions.v1beta1.IngressBackend instead.",
-  "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.IngressBackend",
+  "description": "IngressBackend describes all endpoints for a given service and port.",
+  "required": [
+    "serviceName",
+    "servicePort"
+  ],
+  "properties": {
+    "serviceName": {
+      "description": "Specifies the name of the referenced service.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "servicePort": {
+      "description": "Specifies the port of the referenced service.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }
+  },
   "$schema": "http://json-schema.org/schema#",
   "type": "object"
 }
