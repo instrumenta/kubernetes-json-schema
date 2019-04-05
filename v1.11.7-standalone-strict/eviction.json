@@ -28,6 +28,9 @@
           "type": [
             "string",
             "null"
+          ],
+          "enum": [
+            "DeleteOptions"
           ]
         },
         "orphanDependents": {
@@ -234,6 +237,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Eviction"
       ]
     },
     "metadata": {
@@ -421,6 +427,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -585,5 +594,7 @@
       "version": "v1beta1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

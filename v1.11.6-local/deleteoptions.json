@@ -18,6 +18,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "DeleteOptions"
       ]
     },
     "orphanDependents": {

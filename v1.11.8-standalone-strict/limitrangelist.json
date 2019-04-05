@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "LimitRange"
             ]
           },
           "metadata": {
@@ -219,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -502,6 +508,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "LimitRangeList"
       ]
     },
     "metadata": {
@@ -539,5 +548,7 @@
       "version": "v1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

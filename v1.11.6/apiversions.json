@@ -17,6 +17,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "APIVersions"
       ]
     },
     "serverAddressByClientCIDRs": {
@@ -26,7 +29,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.11.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR"
+        "$ref": "https://kubernetesjsonschema.dev/v1.11.6/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR"
       }
     },
     "versions": {

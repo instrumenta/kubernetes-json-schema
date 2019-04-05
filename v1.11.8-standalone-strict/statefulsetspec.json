@@ -1,6 +1,7 @@
 {
   "description": "A StatefulSetSpec is the specification of a StatefulSet.",
   "required": [
+    "selector",
     "template",
     "serviceName"
   ],
@@ -273,6 +274,9 @@
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "Status"
                       ]
                     },
                     "message": {
@@ -4907,7 +4911,7 @@
           "description": "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.",
           "properties": {
             "partition": {
-              "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned.",
+              "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.",
               "type": "integer",
               "format": "int32"
             }
@@ -4915,7 +4919,7 @@
           "additionalProperties": false
         },
         "type": {
-          "description": "Type indicates the type of the StatefulSetUpdateStrategy.",
+          "description": "Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.",
           "type": [
             "string",
             "null"
@@ -4945,6 +4949,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PersistentVolumeClaim"
             ]
           },
           "metadata": {
@@ -5132,6 +5139,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -5534,5 +5544,7 @@
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

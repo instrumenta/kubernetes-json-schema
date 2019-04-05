@@ -104,6 +104,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "InitializerConfiguration"
             ]
           },
           "metadata": {
@@ -288,6 +291,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -454,6 +460,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "InitializerConfigurationList"
       ]
     },
     "metadata": {
@@ -489,5 +498,7 @@
       "kind": "InitializerConfigurationList",
       "version": "v1alpha1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

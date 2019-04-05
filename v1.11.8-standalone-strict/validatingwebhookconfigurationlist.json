@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ValidatingWebhookConfiguration"
             ]
           },
           "metadata": {
@@ -219,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -588,6 +594,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ValidatingWebhookConfigurationList"
       ]
     },
     "metadata": {
