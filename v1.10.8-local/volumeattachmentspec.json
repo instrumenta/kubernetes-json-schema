@@ -1,30 +1,30 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "VolumeAttachmentSpec is the specification of a VolumeAttachment request.",
   "required": [
-    "attacher", 
-    "source", 
+    "attacher",
+    "source",
     "nodeName"
-  ], 
-  "type": "object", 
-  "description": "VolumeAttachmentSpec is the specification of a VolumeAttachment request.", 
+  ],
   "properties": {
-    "source": {
-      "description": "Source represents the volume that should be attached.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1alpha1.VolumeAttachmentSource"
-    }, 
     "attacher": {
+      "description": "Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName()."
-    }, 
+      ]
+    },
     "nodeName": {
+      "description": "The node that the volume should be attached to.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The node that the volume should be attached to."
+      ]
+    },
+    "source": {
+      "description": "Source represents the volume that should be attached.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1beta1.VolumeAttachmentSource"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

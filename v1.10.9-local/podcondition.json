@@ -1,47 +1,47 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "PodCondition contains details for the current condition of this pod.",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "type": "object", 
-  "description": "PodCondition contains details for the current condition of this pod.", 
+  ],
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
-    }, 
-    "lastTransitionTime": {
-      "description": "Last time the condition transitioned from one status to another.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
-    "reason": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Unique, one-word, CamelCase reason for the condition's last transition."
-    }, 
     "lastProbeTime": {
-      "description": "Last time we probed the condition.", 
+      "description": "Last time we probed the condition.",
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
+    },
+    "lastTransitionTime": {
+      "description": "Last time the condition transitioned from one status to another.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
     "message": {
+      "description": "Human-readable message indicating details about last transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Human-readable message indicating details about last transition."
-    }, 
+      ]
+    },
+    "reason": {
+      "description": "Unique, one-word, CamelCase reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "type": {
+      "description": "Type is the type of the condition. Currently only Ready. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Type is the type of the condition. Currently only Ready. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions"
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

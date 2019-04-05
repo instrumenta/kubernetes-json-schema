@@ -1,53 +1,55 @@
 {
-  "additionalProperties": false, 
   "properties": {
+    "certificate": {
+      "description": "If request was approved, the controller will place the issued certificate here.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
     "conditions": {
+      "description": "Conditions applied to the request, such as approval or denial.",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
-        "additionalProperties": false, 
         "required": [
           "type"
-        ], 
+        ],
         "properties": {
-          "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "human readable message with details about the request state"
-          }, 
-          "type": {
-            "type": "string", 
-            "description": "request approval state, currently Approved or Denied."
-          }, 
-          "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "brief reason for the request state"
-          }, 
           "lastUpdateTime": {
             "type": [
-              "string", 
+              "string",
               "null"
-            ], 
+            ],
             "format": "date-time"
+          },
+          "message": {
+            "description": "human readable message with details about the request state",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "brief reason for the request state",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "description": "request approval state, currently Approved or Denied.",
+            "type": "string"
           }
-        }
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Conditions applied to the request, such as approval or denial."
-    }, 
-    "certificate": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "If request was approved, the controller will place the issued certificate here.", 
-      "format": "byte"
+        },
+        "additionalProperties": false
+      }
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
