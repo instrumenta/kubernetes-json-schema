@@ -1,15 +1,15 @@
 {
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.", 
+  "description": "Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.",
   "properties": {
     "uid": {
+      "description": "Specifies the target UID.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Specifies the target UID."
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

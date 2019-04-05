@@ -1,18 +1,18 @@
 {
-  "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used.", 
+  "description": "AllowedFlexVolume represents a single Flexvolume that is allowed to be used.",
   "required": [
     "driver"
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
     "driver": {
+      "description": "driver is the name of the Flexvolume driver.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "driver is the name of the Flexvolume driver."
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,13 +1,13 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
   "properties": {
     "namespace": {
+      "description": "Namespace to evaluate rules for. Required.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Namespace to evaluate rules for. Required."
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

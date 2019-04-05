@@ -1,56 +1,56 @@
 {
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "APIServiceStatus contains derived information about an API server", 
+  "description": "APIServiceStatus contains derived information about an API server",
   "properties": {
     "conditions": {
-      "items": {
-        "additionalProperties": false, 
-        "required": [
-          "type", 
-          "status"
-        ], 
-        "properties": {
-          "status": {
-            "type": "string", 
-            "description": "Status is the status of the condition. Can be True, False, Unknown."
-          }, 
-          "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.", 
-            "format": "date-time"
-          }, 
-          "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Human-readable message indicating details about last transition."
-          }, 
-          "type": {
-            "type": "string", 
-            "description": "Type is the type of the condition."
-          }, 
-          "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Unique, one-word, CamelCase reason for the condition's last transition."
-          }
-        }
-      }, 
+      "description": "Current service state of apiService.",
       "type": [
-        "array", 
+        "array",
         "null"
-      ], 
-      "description": "Current service state of apiService.", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      ],
+      "items": {
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "description": "Human-readable message indicating details about last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "Unique, one-word, CamelCase reason for the condition's last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "Status is the status of the condition. Can be True, False, Unknown.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type is the type of the condition.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

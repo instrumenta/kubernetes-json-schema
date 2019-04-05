@@ -1,35 +1,38 @@
 {
+  "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
   "required": [
     "resource"
-  ], 
-  "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format", 
+  ],
   "properties": {
     "containerName": {
+      "description": "Container name: required for volumes, optional for env vars",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Container name: required for volumes, optional for env vars"
-    }, 
-    "resource": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Required: resource to select"
-    }, 
+      ]
+    },
     "divisor": {
       "oneOf": [
         {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         {
           "type": "integer"
         }
       ]
+    },
+    "resource": {
+      "description": "Required: resource to select",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

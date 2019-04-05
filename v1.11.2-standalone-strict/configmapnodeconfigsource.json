@@ -1,48 +1,48 @@
 {
-  "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.", 
+  "description": "ConfigMapNodeConfigSource contains the information to reference a ConfigMap as a config source for the Node.",
   "required": [
-    "namespace", 
-    "name", 
+    "namespace",
+    "name",
     "kubeletConfigKey"
-  ], 
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
+  ],
   "properties": {
     "kubeletConfigKey": {
+      "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases."
-    }, 
-    "namespace": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases."
-    }, 
-    "uid": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
-    }, 
+      ]
+    },
     "name": {
+      "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Name is the metadata.name of the referenced ConfigMap. This field is required in all cases."
-    }, 
+      ]
+    },
+    "namespace": {
+      "description": "Namespace is the metadata.namespace of the referenced ConfigMap. This field is required in all cases.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "resourceVersion": {
+      "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "ResourceVersion is the metadata.ResourceVersion of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status."
+      ]
+    },
+    "uid": {
+      "description": "UID is the metadata.UID of the referenced ConfigMap. This field is forbidden in Node.Spec, and required in Node.Status.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

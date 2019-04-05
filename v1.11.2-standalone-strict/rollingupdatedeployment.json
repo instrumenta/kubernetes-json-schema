@@ -1,34 +1,34 @@
 {
-  "additionalProperties": false, 
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Spec to control the desired behavior of rolling update.", 
+  "description": "Spec to control the desired behavior of rolling update.",
   "properties": {
     "maxSurge": {
       "oneOf": [
         {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         {
           "type": "integer"
         }
       ]
-    }, 
+    },
     "maxUnavailable": {
       "oneOf": [
         {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         {
           "type": "integer"
         }
       ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

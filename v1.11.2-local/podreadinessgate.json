@@ -1,17 +1,17 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "PodReadinessGate contains the reference to a pod condition",
   "required": [
     "conditionType"
-  ], 
-  "type": "object", 
-  "description": "PodReadinessGate contains the reference to a pod condition", 
+  ],
   "properties": {
     "conditionType": {
+      "description": "ConditionType refers to a condition in the pod's condition list with matching type.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "ConditionType refers to a condition in the pod's condition list with matching type."
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

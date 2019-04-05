@@ -1,49 +1,51 @@
 {
-  "additionalProperties": false, 
+  "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.",
   "required": [
-    "diskName", 
+    "diskName",
     "diskURI"
-  ], 
-  "description": "AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.", 
+  ],
   "properties": {
-    "diskName": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "The Name of the data disk in the blob storage"
-    }, 
     "cachingMode": {
+      "description": "Host Caching mode: None, Read Only, Read Write.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Host Caching mode: None, Read Only, Read Write."
-    }, 
-    "kind": {
+      ]
+    },
+    "diskName": {
+      "description": "The Name of the data disk in the blob storage",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared"
-    }, 
-    "fsType": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified."
-    }, 
+      ]
+    },
     "diskURI": {
+      "description": "The URI the data disk in the blob storage",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The URI the data disk in the blob storage"
-    }, 
+      ]
+    },
+    "fsType": {
+      "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Expected values Shared: multiple blob disks per storage account  Dedicated: single blob disk per storage account  Managed: azure managed data disk (only in managed availability set). defaults to shared",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "readOnly": {
-      "type": "boolean", 
-      "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts."
+      "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
+      "type": "boolean"
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
