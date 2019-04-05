@@ -35,6 +35,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Role"
             ]
           },
           "metadata": {
@@ -219,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -459,6 +465,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "RoleList"
       ]
     },
     "metadata": {
@@ -494,5 +503,7 @@
       "kind": "RoleList",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

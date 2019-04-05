@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Endpoints"
             ]
           },
           "metadata": {
@@ -216,6 +219,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -602,6 +608,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "EndpointsList"
       ]
     },
     "metadata": {
@@ -637,5 +646,7 @@
       "kind": "EndpointsList",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

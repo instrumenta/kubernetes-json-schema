@@ -1,0 +1,26 @@
+{
+  "required": [
+    "name",
+    "served",
+    "storage"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name is the version name, e.g. \u201cv1\u201d, \u201cv2beta1\u201d, etc.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "served": {
+      "description": "Served is a flag enabling/disabling this version from being served via REST APIs",
+      "type": "boolean"
+    },
+    "storage": {
+      "description": "Storage flags the version as storage version. There must be exactly one flagged as storage version.",
+      "type": "boolean"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

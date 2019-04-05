@@ -31,6 +31,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "APIService"
             ]
           },
           "metadata": {
@@ -218,6 +221,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -511,6 +517,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "APIServiceList"
       ]
     },
     "metadata": {

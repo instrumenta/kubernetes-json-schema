@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Node"
             ]
           },
           "metadata": {
@@ -219,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -925,6 +931,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NodeList"
       ]
     },
     "metadata": {
@@ -962,5 +971,7 @@
       "version": "v1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

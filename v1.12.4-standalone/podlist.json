@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Pod"
             ]
           },
           "metadata": {
@@ -216,6 +219,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -5289,6 +5295,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodList"
       ]
     },
     "metadata": {
@@ -5324,5 +5333,7 @@
       "kind": "PodList",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -18,7 +18,7 @@
         "null"
       ],
       "items": {
-        "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.5/_definitions.json#/definitions/io.k8s.api.scheduling.v1beta1.PriorityClass"
+        "$ref": "https://kubernetesjsonschema.dev/v1.12.5/_definitions.json#/definitions/io.k8s.api.scheduling.v1beta1.PriorityClass"
       }
     },
     "kind": {
@@ -26,11 +26,14 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PriorityClassList"
       ]
     },
     "metadata": {
       "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.12.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+      "$ref": "https://kubernetesjsonschema.dev/v1.12.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
     }
   },
   "x-kubernetes-group-version-kind": [

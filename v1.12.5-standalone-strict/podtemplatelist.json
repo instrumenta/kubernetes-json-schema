@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PodTemplate"
             ]
           },
           "metadata": {
@@ -219,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -563,6 +569,9 @@
                             "type": [
                               "string",
                               "null"
+                            ],
+                            "enum": [
+                              "Status"
                             ]
                           },
                           "message": {
@@ -5227,6 +5236,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PodTemplateList"
       ]
     },
     "metadata": {
@@ -5264,5 +5276,7 @@
       "version": "v1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

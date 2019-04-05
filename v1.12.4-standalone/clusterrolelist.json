@@ -101,6 +101,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "ClusterRole"
             ]
           },
           "metadata": {
@@ -285,6 +288,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -525,6 +531,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ClusterRoleList"
       ]
     },
     "metadata": {
@@ -560,5 +569,7 @@
       "kind": "ClusterRoleList",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

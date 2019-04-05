@@ -44,5 +44,7 @@
       "type": "integer",
       "format": "int64"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
