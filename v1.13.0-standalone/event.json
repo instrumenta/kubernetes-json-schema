@@ -1,12 +1,11 @@
 {
-  "description": "Event is a report of an event somewhere in the cluster.",
+  "description": "Event is a report of an event somewhere in the cluster. It generally denotes some state change in the system.",
   "required": [
-    "metadata",
-    "involvedObject"
+    "eventTime"
   ],
   "properties": {
     "action": {
-      "description": "What action was taken/failed regarding to the Regarding object.",
+      "description": "What action was taken/failed regarding to the regarding object.",
       "type": [
         "string",
         "null"
@@ -19,10 +18,45 @@
         "null"
       ]
     },
-    "count": {
-      "description": "The number of times this event has occurred.",
+    "deprecatedCount": {
+      "description": "Deprecated field assuring backward compatibility with core.v1 Event type",
       "type": "integer",
       "format": "int32"
+    },
+    "deprecatedFirstTimestamp": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "deprecatedLastTimestamp": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "deprecatedSource": {
+      "description": "EventSource contains information for an event.",
+      "properties": {
+        "component": {
+          "description": "Component from which the event is generated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "host": {
+          "description": "Node name on which the event is generated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
     },
     "eventTime": {
       "description": "MicroTime is version of Time with microsecond level precision.",
@@ -32,88 +66,14 @@
       ],
       "format": "date-time"
     },
-    "firstTimestamp": {
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
-      ],
-      "format": "date-time"
-    },
-    "involvedObject": {
-      "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
-      "properties": {
-        "apiVersion": {
-          "description": "API version of the referent.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "fieldPath": {
-          "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "kind": {
-          "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "name": {
-          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "namespace": {
-          "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "resourceVersion": {
-          "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "uid": {
-          "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
-    },
     "kind": {
       "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
       "type": [
         "string",
         "null"
-      ]
-    },
-    "lastTimestamp": {
-      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-      "type": [
-        "string",
-        "null"
       ],
-      "format": "date-time"
-    },
-    "message": {
-      "description": "A human-readable description of the status of this operation.",
-      "type": [
-        "string",
-        "null"
+      "enum": [
+        "Event"
       ]
     },
     "metadata": {
@@ -298,6 +258,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -449,12 +412,73 @@
         }
       }
     },
-    "reason": {
-      "description": "This should be a short, machine understandable string that gives the reason for the transition into the object's current status.",
+    "note": {
+      "description": "Optional. A human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.",
       "type": [
         "string",
         "null"
       ]
+    },
+    "reason": {
+      "description": "Why the action was taken.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "regarding": {
+      "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+      "properties": {
+        "apiVersion": {
+          "description": "API version of the referent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fieldPath": {
+          "description": "If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: \"spec.containers{name}\" (where \"name\" refers to the name of the container that triggered the event) or if no container name is specified \"spec.containers[2]\" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resourceVersion": {
+          "description": "Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uid": {
+          "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
     },
     "related": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
@@ -510,7 +534,7 @@
         }
       }
     },
-    "reportingComponent": {
+    "reportingController": {
       "description": "Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.",
       "type": [
         "string",
@@ -526,6 +550,11 @@
     },
     "series": {
       "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.",
+      "required": [
+        "count",
+        "lastObservedTime",
+        "state"
+      ],
       "properties": {
         "count": {
           "description": "Number of occurrences in this series up to the last heartbeat time",
@@ -534,42 +563,17 @@
         },
         "lastObservedTime": {
           "description": "MicroTime is version of Time with microsecond level precision.",
-          "type": [
-            "string",
-            "null"
-          ],
+          "type": "string",
           "format": "date-time"
         },
         "state": {
-          "description": "State of this Series: Ongoing or Finished",
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      }
-    },
-    "source": {
-      "description": "EventSource contains information for an event.",
-      "properties": {
-        "component": {
-          "description": "Component from which the event is generated.",
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "host": {
-          "description": "Node name on which the event is generated.",
-          "type": [
-            "string",
-            "null"
-          ]
+          "description": "Information whether this series is ongoing or finished.",
+          "type": "string"
         }
       }
     },
     "type": {
-      "description": "Type of this event (Normal, Warning), new types could be added in the future",
+      "description": "Type of this event (Normal, Warning), new types could be added in the future.",
       "type": [
         "string",
         "null"
@@ -578,9 +582,11 @@
   },
   "x-kubernetes-group-version-kind": [
     {
-      "group": "",
+      "group": "events.k8s.io",
       "kind": "Event",
-      "version": "v1"
+      "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

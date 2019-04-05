@@ -26,6 +26,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "AuditSinkList"
       ]
     },
     "metadata": {

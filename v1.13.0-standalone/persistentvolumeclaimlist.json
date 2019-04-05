@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "PersistentVolumeClaim"
             ]
           },
           "metadata": {
@@ -216,6 +219,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -634,6 +640,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "PersistentVolumeClaimList"
       ]
     },
     "metadata": {
@@ -669,5 +678,7 @@
       "kind": "PersistentVolumeClaimList",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

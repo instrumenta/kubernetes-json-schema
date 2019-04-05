@@ -13,14 +13,17 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "AuditSink"
       ]
     },
     "metadata": {
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+      "$ref": "https://kubernetesjsonschema.dev/v1.13.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
       "description": "Spec defines the audit configuration spec",
-      "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.13.0/_definitions.json#/definitions/io.k8s.api.auditregistration.v1alpha1.AuditSinkSpec"
+      "$ref": "https://kubernetesjsonschema.dev/v1.13.0/_definitions.json#/definitions/io.k8s.api.auditregistration.v1alpha1.AuditSinkSpec"
     }
   },
   "x-kubernetes-group-version-kind": [
