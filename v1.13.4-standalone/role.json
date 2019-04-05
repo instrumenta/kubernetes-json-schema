@@ -16,6 +16,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Role"
       ]
     },
     "metadata": {
@@ -200,6 +203,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -435,5 +441,7 @@
       "kind": "Role",
       "version": "v1beta1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

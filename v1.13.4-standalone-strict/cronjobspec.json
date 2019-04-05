@@ -205,6 +205,9 @@
                       "type": [
                         "string",
                         "null"
+                      ],
+                      "enum": [
+                        "Status"
                       ]
                     },
                     "message": {
@@ -635,6 +638,9 @@
                               "type": [
                                 "string",
                                 "null"
+                              ],
+                              "enum": [
+                                "Status"
                               ]
                             },
                             "message": {
@@ -5330,5 +5336,7 @@
       "type": "boolean"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

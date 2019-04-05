@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "CronJob"
             ]
           },
           "metadata": {
@@ -216,6 +219,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -571,6 +577,9 @@
                                 "type": [
                                   "string",
                                   "null"
+                                ],
+                                "enum": [
+                                  "Status"
                                 ]
                               },
                               "message": {
@@ -991,6 +1000,9 @@
                                         "type": [
                                           "string",
                                           "null"
+                                        ],
+                                        "enum": [
+                                          "Status"
                                         ]
                                       },
                                       "message": {
@@ -5603,6 +5615,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CronJobList"
       ]
     },
     "metadata": {
@@ -5638,5 +5653,7 @@
       "kind": "CronJobList",
       "version": "v2alpha1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

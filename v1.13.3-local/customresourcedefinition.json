@@ -16,6 +16,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CustomResourceDefinition"
       ]
     },
     "metadata": {

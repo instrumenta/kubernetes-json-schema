@@ -32,6 +32,9 @@
             "type": [
               "string",
               "null"
+            ],
+            "enum": [
+              "Namespace"
             ]
           },
           "metadata": {
@@ -219,6 +222,9 @@
                         "type": [
                           "string",
                           "null"
+                        ],
+                        "enum": [
+                          "Status"
                         ]
                       },
                       "message": {
@@ -423,6 +429,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NamespaceList"
       ]
     },
     "metadata": {
@@ -460,5 +469,7 @@
       "version": "v1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -13,6 +13,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Service"
       ]
     },
     "metadata": {
@@ -197,6 +200,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -552,5 +558,7 @@
       "kind": "Service",
       "version": "v1"
     }
-  ]
+  ],
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

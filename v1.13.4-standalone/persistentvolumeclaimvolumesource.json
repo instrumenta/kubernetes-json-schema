@@ -15,5 +15,7 @@
       "description": "Will force the ReadOnly setting in VolumeMounts. Default false.",
       "type": "boolean"
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

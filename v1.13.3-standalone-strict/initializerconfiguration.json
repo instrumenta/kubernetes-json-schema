@@ -87,6 +87,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "InitializerConfiguration"
       ]
     },
     "metadata": {
@@ -274,6 +277,9 @@
                   "type": [
                     "string",
                     "null"
+                  ],
+                  "enum": [
+                    "Status"
                   ]
                 },
                 "message": {
@@ -438,5 +444,7 @@
       "version": "v1alpha1"
     }
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

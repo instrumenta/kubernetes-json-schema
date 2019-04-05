@@ -1,0 +1,32 @@
+{
+  "description": "ServiceReference holds a reference to Service.legacy.k8s.io",
+  "required": [
+    "namespace",
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "`name` is the name of the service. Required",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "`namespace` is the namespace of the service. Required",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "path": {
+      "description": "`path` is an optional URL path which will be sent in any request to this service.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}
