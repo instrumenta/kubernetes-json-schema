@@ -1,31 +1,34 @@
 {
+  "description": "RoleRef contains information that points to the role being used",
   "required": [
-    "apiGroup", 
-    "kind", 
+    "apiGroup",
+    "kind",
     "name"
-  ], 
-  "description": "RoleRef contains information that points to the role being used", 
+  ],
   "properties": {
     "apiGroup": {
+      "description": "APIGroup is the group for the resource being referenced",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "APIGroup is the group for the resource being referenced"
-    }, 
+      ]
+    },
     "kind": {
+      "description": "Kind is the type of resource being referenced",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Kind is the type of resource being referenced"
-    }, 
+      ]
+    },
     "name": {
+      "description": "Name is the name of resource being referenced",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Name is the name of resource being referenced"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

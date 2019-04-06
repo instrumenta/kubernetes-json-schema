@@ -1,69 +1,70 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "APIServiceSpec contains information for locating and communicating with a server. Only https is supported, though you are able to disable certificate verification.",
   "required": [
-    "service", 
-    "caBundle", 
-    "groupPriorityMinimum", 
+    "service",
+    "caBundle",
+    "groupPriorityMinimum",
     "versionPriority"
-  ], 
-  "type": "object", 
-  "description": "APIServiceSpec contains information for locating and communicating with a server. Only https is supported, though you are able to disable certificate verification.", 
+  ],
   "properties": {
-    "group": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Group is the API group name this server hosts"
-    }, 
-    "service": {
-      "additionalProperties": false, 
-      "description": "ServiceReference holds a reference to Service.legacy.k8s.io", 
-      "properties": {
-        "namespace": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Namespace is the namespace of the service"
-        }, 
-        "name": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "Name is the name of the service"
-        }
-      }
-    }, 
-    "version": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Version is the API version this server hosts.  For example, \"v1\""
-    }, 
     "caBundle": {
+      "description": "CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate.", 
+      ],
       "format": "byte"
-    }, 
+    },
+    "group": {
+      "description": "Group is the API group name this server hosts",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "groupPriorityMinimum": {
-      "type": "integer", 
-      "description": "GroupPriorityMininum is the priority this group should have at least. Higher priority means that the group is prefered by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMininum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s", 
+      "description": "GroupPriorityMininum is the priority this group should have at least. Higher priority means that the group is prefered by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMininum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s",
+      "type": "integer",
       "format": "int32"
-    }, 
+    },
     "insecureSkipTLSVerify": {
-      "type": "boolean", 
-      "description": "InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead."
-    }, 
+      "description": "InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead.",
+      "type": "boolean"
+    },
+    "service": {
+      "description": "ServiceReference holds a reference to Service.legacy.k8s.io",
+      "properties": {
+        "name": {
+          "description": "Name is the name of the service",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "description": "Namespace is the namespace of the service",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "version": {
+      "description": "Version is the API version this server hosts.  For example, \"v1\"",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "versionPriority": {
-      "type": "integer", 
-      "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) Since it's inside of a group, the number can be small, probably in the 10s.", 
+      "description": "VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) Since it's inside of a group, the number can be small, probably in the 10s.",
+      "type": "integer",
       "format": "int32"
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,102 +1,103 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition",
   "required": [
-    "conditions", 
+    "conditions",
     "acceptedNames"
-  ], 
-  "type": "object", 
-  "description": "CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition", 
+  ],
   "properties": {
-    "conditions": {
-      "items": {
-        "additionalProperties": false, 
-        "required": [
-          "type", 
-          "status"
-        ], 
-        "description": "CustomResourceDefinitionCondition contains details for the current condition of this pod.", 
-        "properties": {
-          "status": {
-            "type": "string", 
-            "description": "Status is the status of the condition. Can be True, False, Unknown."
-          }, 
-          "type": {
-            "type": "string", 
-            "description": "Type is the type of the condition."
-          }, 
-          "message": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Human-readable message indicating details about last transition."
-          }, 
-          "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "format": "date-time"
-          }, 
-          "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "Unique, one-word, CamelCase reason for the condition's last transition."
-          }
-        }
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition"
-    }, 
     "acceptedNames": {
-      "additionalProperties": false, 
+      "description": "CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition",
       "required": [
-        "plural", 
+        "plural",
         "kind"
-      ], 
-      "description": "CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition", 
+      ],
       "properties": {
+        "kind": {
+          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and singular.",
+          "type": "string"
+        },
+        "listKind": {
+          "description": "ListKind is the serialized kind of the list for this resource.  Defaults to <kind>List.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "plural": {
+          "description": "Plural is the plural name of the resource to serve.  It must match the name of the CustomResourceDefinition-registration too: plural.group and it must be all lowercase.",
+          "type": "string"
+        },
         "shortNames": {
+          "description": "ShortNames are short names for the resource.  It must be all lowercase.",
+          "type": [
+            "array",
+            "null"
+          ],
           "items": {
             "type": [
-              "string", 
+              "string",
               "null"
             ]
-          }, 
-          "type": [
-            "array", 
-            "null"
-          ], 
-          "description": "ShortNames are short names for the resource.  It must be all lowercase."
-        }, 
-        "kind": {
-          "type": "string", 
-          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and singular."
-        }, 
-        "plural": {
-          "type": "string", 
-          "description": "Plural is the plural name of the resource to serve.  It must match the name of the CustomResourceDefinition-registration too: plural.group and it must be all lowercase."
-        }, 
-        "listKind": {
-          "type": [
-            "string", 
-            "null"
-          ], 
-          "description": "ListKind is the serialized kind of the list for this resource.  Defaults to <kind>List."
-        }, 
+          }
+        },
         "singular": {
+          "description": "Singular is the singular name of the resource.  It must be all lowercase  Defaults to lowercased <kind>",
           "type": [
-            "string", 
+            "string",
             "null"
-          ], 
-          "description": "Singular is the singular name of the resource.  It must be all lowercase  Defaults to lowercased <kind>"
+          ]
         }
+      },
+      "additionalProperties": false
+    },
+    "conditions": {
+      "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "CustomResourceDefinitionCondition contains details for the current condition of this pod.",
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "description": "Human-readable message indicating details about last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "Unique, one-word, CamelCase reason for the condition's last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "Status is the status of the condition. Can be True, False, Unknown.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type is the type of the condition.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       }
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
