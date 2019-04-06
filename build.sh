@@ -5,14 +5,11 @@
 #
 #   X.Y.Z - URL referenced based on the specified GitHub repository
 #   X.Y.Z-standalone - de-referenced schemas, more useful as standalone documents
+#   X.Y.Z-standalone-strict - de-referenced schemas, more useful as standalone documents, additionalProperties disallowed
 #   X.Y.Z-local - relative references, useful to avoid the network dependency
 
 declare -a arr=(
-    #master
-    v1.14.0
-)
-
-declare -a old=(
+    master
     v1.14.0
     v1.13.5
     v1.13.4
@@ -23,14 +20,14 @@ declare -a old=(
     v1.12.6
     v1.12.5
     v1.12.4
-    v1.11.9
-    v1.11.8
-    v1.11.7
-    v1.11.6
     v1.12.3
     v1.12.2
     v1.12.1
     v1.12.0
+    v1.11.9
+    v1.11.8
+    v1.11.7
+    v1.11.6
     v1.11.5
     v1.11.4
     v1.11.3
@@ -87,6 +84,7 @@ declare -a old=(
     v1.7.2
     v1.7.1
     v1.7.0
+
     v1.6.13
     v1.6.12
     v1.6.11

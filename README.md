@@ -1,7 +1,5 @@
 # Kubernetes JSON Schemas
 
-[![Build Status](https://travis-ci.org/garethr/kubernetes-json-schema.svg?branch=master)](https://travis-ci.org/garethr/kubernetes-json-schema)
-
 While exploring tooling for Kubernetes I had need for schemas to
 describe the definition files, and went looking for something that
 didn't require either `kubectl` or similar installed or even a working
@@ -24,14 +22,19 @@ Note that the Kubernetes API allows additional properties to be submitted,
 but `kubectl` acts like the strict flavour above.
 
 
+## kubernetesjsonschema.dev
+
+The schemas are now all available from [kubernetesjsonschema.dev](https://kubernetesjsonschema.dev), for instance
+the schema for v1 of the Pod object is Kubernetes 1.14.0 is available at: [kubernetesjsonschema.dev/v1.14.0-standalone/pod-v1.json](https://kubernetesjsonschema.dev/v1.14.0-standalone/pod-v1.json)
+
 ## Example
 
-Here are the links to the `deployment` schemas for Kubernetes 1.6.6:
+Here are the links to the `deployment` schemas for Kubernetes 1.14.0:
 
-* [v1.6.6/deployment.json](v1.6.6/deployment.json)
-* [v1.6.6-standalone/deployment.json](v1.6.6-standalone/deployment.json)
-* [v1.6.6-local/deployment.json](v1.6.6-local/deployment.json)
-* [v1.6.6-strict/deployment.json](v1.6.6-strict/deployment.json)
+* [v1.14.0/deployment.json](v1.14.0/deployment.json)
+* [v1.14.0-standalone/deployment.json](v1.14.0-standalone/deployment.json)
+* [v1.14.0-local/deployment.json](v1.14.0-local/deployment.json)
+* [v1.14.0-standalone-strict/deployment.json](v1.14.0-standalone-strict/deployment.json)
 
 ## Usage
 
@@ -42,7 +45,7 @@ validate a Kubernetes definition.
 Here is a very simply example using the Python [jsonschema client](https://github.com/Julian/jsonschema) and an invalid deployment file:
 
 ```
-$ jsonschema -F "{error.message}" -i hello-nginx.json 1.6.6-standalone/deployment.json
+$ jsonschema -F "{error.message}" -i hello-nginx.json v1.14.0-standalone/deployment.json
 u'template' is a required property
 ```
 
@@ -77,7 +80,7 @@ to the approach I ended up taking.
 ## Building the schemas yourself
 
 The tooling for generating these schemas is [openapi2jsonschema](https://github.com/garethr/openapi2jsonschema). 
-It's not Kubernetes specific and should work with other OpenAPI specificied
+It's not Kubernetes specific and should work with other OpenAPI
 APIs too. This should be useful if you're using a pre-release or otherwise
 modified version of Kubernetes, or something like OpenShift which extends the
 standard APIs with additional types.
