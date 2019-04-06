@@ -1,44 +1,47 @@
 {
+  "description": "ReplicationControllerCondition describes the state of a replication controller at a certain point.",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "description": "ReplicationControllerCondition describes the state of a replication controller at a certain point.", 
+  ],
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
-    "type": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Type of replication controller condition."
-    }, 
-    "message": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "A human readable message indicating details about the transition."
-    }, 
     "lastTransitionTime": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
+      ],
       "format": "date-time"
-    }, 
-    "reason": {
+    },
+    "message": {
+      "description": "A human readable message indicating details about the transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "The reason for the condition's last transition."
+      ]
+    },
+    "reason": {
+      "description": "The reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of replication controller condition.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
