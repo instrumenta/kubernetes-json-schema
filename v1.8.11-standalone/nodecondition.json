@@ -1,53 +1,53 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "NodeCondition contains condition information for a node.",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "type": "object", 
-  "description": "NodeCondition contains condition information for a node.", 
+  ],
   "properties": {
-    "status": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Status of the condition, one of True, False, Unknown."
-    }, 
-    "lastTransitionTime": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "format": "date-time"
-    }, 
     "lastHeartbeatTime": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
+      ],
       "format": "date-time"
-    }, 
-    "reason": {
+    },
+    "lastTransitionTime": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "(brief) reason for the condition's last transition."
-    }, 
+      ],
+      "format": "date-time"
+    },
     "message": {
+      "description": "Human readable message indicating details about last transition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Human readable message indicating details about last transition."
-    }, 
+      ]
+    },
+    "reason": {
+      "description": "(brief) reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "type": {
+      "description": "Type of node condition.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Type of node condition."
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,32 +1,31 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.", 
   "properties": {
     "rollingUpdate": {
-      "description": "Spec to control the desired behavior of daemon set rolling update.", 
+      "description": "Spec to control the desired behavior of daemon set rolling update.",
       "properties": {
         "maxUnavailable": {
           "oneOf": [
             {
               "type": [
-                "string", 
+                "string",
                 "null"
               ]
-            }, 
+            },
             {
               "type": "integer"
             }
           ]
         }
       }
-    }, 
+    },
     "type": {
+      "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is OnDelete.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate."
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

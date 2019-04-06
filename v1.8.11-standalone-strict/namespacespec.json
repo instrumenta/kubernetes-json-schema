@@ -1,20 +1,21 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "NamespaceSpec describes the attributes on a Namespace.", 
+  "description": "NamespaceSpec describes the attributes on a Namespace.",
   "properties": {
     "finalizers": {
+      "description": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://git.k8s.io/community/contributors/design-proposals/namespaces.md#finalizers",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
         "type": [
-          "string", 
+          "string",
           "null"
         ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://git.k8s.io/community/contributors/design-proposals/namespaces.md#finalizers"
+      }
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
