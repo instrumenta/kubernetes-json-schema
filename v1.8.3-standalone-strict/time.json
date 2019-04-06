@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "format": "date-time"
+  "type": "string",
+  "format": "date-time",
+  "$schema": "http://json-schema.org/schema#"
 }

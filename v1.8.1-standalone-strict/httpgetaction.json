@@ -1,67 +1,70 @@
 {
+  "description": "HTTPGetAction describes an action based on HTTP Get requests.",
   "required": [
     "port"
-  ], 
-  "description": "HTTPGetAction describes an action based on HTTP Get requests.", 
+  ],
   "properties": {
-    "path": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Path to access on the HTTP server."
-    }, 
     "host": {
+      "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead."
-    }, 
-    "scheme": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Scheme to use for connecting to the host. Defaults to HTTP."
-    }, 
+      ]
+    },
     "httpHeaders": {
+      "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
-        "additionalProperties": false, 
+        "description": "HTTPHeader describes a custom header to be used in HTTP probes",
         "required": [
-          "name", 
+          "name",
           "value"
-        ], 
-        "description": "HTTPHeader describes a custom header to be used in HTTP probes", 
+        ],
         "properties": {
           "name": {
-            "type": "string", 
-            "description": "The header field name"
-          }, 
+            "description": "The header field name",
+            "type": "string"
+          },
           "value": {
-            "type": "string", 
-            "description": "The header field value"
+            "description": "The header field value",
+            "type": "string"
           }
-        }
-      }, 
+        },
+        "additionalProperties": false
+      }
+    },
+    "path": {
+      "description": "Path to access on the HTTP server.",
       "type": [
-        "array", 
+        "string",
         "null"
-      ], 
-      "description": "Custom headers to set in the request. HTTP allows repeated headers."
-    }, 
+      ]
+    },
     "port": {
       "oneOf": [
         {
           "type": [
-            "string", 
+            "string",
             "null"
           ]
-        }, 
+        },
         {
           "type": "integer"
         }
       ]
+    },
+    "scheme": {
+      "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+      "type": [
+        "string",
+        "null"
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

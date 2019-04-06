@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "ipBlock": {
+      "description": "IPBlock defines policy on a particular IPBlock",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.IPBlock"
+    },
+    "namespaceSelector": {
+      "description": "Selects Namespaces using cluster scoped-labels.  This matches all pods in all namespaces selected by this label selector. This field follows standard label selector semantics. If present but empty, this selector selects all namespaces.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "podSelector": {
+      "description": "This is a label selector which selects Pods in this namespace. This field follows standard label selector semantics. If present but empty, this selector selects all pods in this namespace.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

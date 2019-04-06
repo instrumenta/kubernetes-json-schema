@@ -1,0 +1,22 @@
+{
+  "description": "TokenReviewStatus is the result of the token authentication request.",
+  "properties": {
+    "authenticated": {
+      "description": "Authenticated indicates that the token was associated with a known user.",
+      "type": "boolean"
+    },
+    "error": {
+      "description": "Error indicates that the token couldn't be checked",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "user": {
+      "description": "User is the UserInfo associated with the provided token.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authentication.v1.UserInfo"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

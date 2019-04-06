@@ -1,89 +1,92 @@
 {
-  "description": "JobStatus represents the current state of a Job.", 
+  "description": "JobStatus represents the current state of a Job.",
   "properties": {
-    "succeeded": {
-      "type": "integer", 
-      "description": "The number of pods which reached phase Succeeded.", 
+    "active": {
+      "description": "The number of actively running pods.",
+      "type": "integer",
       "format": "int32"
-    }, 
-    "failed": {
-      "type": "integer", 
-      "description": "The number of pods which reached phase Failed.", 
-      "format": "int32"
-    }, 
+    },
     "completionTime": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
+      ],
       "format": "date-time"
-    }, 
-    "startTime": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "format": "date-time"
-    }, 
-    "active": {
-      "type": "integer", 
-      "description": "The number of actively running pods.", 
-      "format": "int32"
-    }, 
+    },
     "conditions": {
+      "description": "The latest available observations of an object's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
-        "additionalProperties": false, 
+        "description": "JobCondition describes current state of a job.",
         "required": [
-          "type", 
+          "type",
           "status"
-        ], 
-        "description": "JobCondition describes current state of a job.", 
+        ],
         "properties": {
-          "status": {
-            "type": "string", 
-            "description": "Status of the condition, one of True, False, Unknown."
-          }, 
-          "lastTransitionTime": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "format": "date-time"
-          }, 
-          "reason": {
-            "type": [
-              "string", 
-              "null"
-            ], 
-            "description": "(brief) reason for the condition's last transition."
-          }, 
           "lastProbeTime": {
             "type": [
-              "string", 
+              "string",
               "null"
-            ], 
+            ],
             "format": "date-time"
-          }, 
-          "message": {
+          },
+          "lastTransitionTime": {
             "type": [
-              "string", 
+              "string",
               "null"
-            ], 
-            "description": "Human readable message indicating details about last transition."
-          }, 
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "description": "Human readable message indicating details about last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "(brief) reason for the condition's last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "Status of the condition, one of True, False, Unknown.",
+            "type": "string"
+          },
           "type": {
-            "type": "string", 
-            "description": "Type of job condition, Complete or Failed."
+            "description": "Type of job condition, Complete or Failed.",
+            "type": "string"
           }
-        }
-      }, 
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "failed": {
+      "description": "The number of pods which reached phase Failed.",
+      "type": "integer",
+      "format": "int32"
+    },
+    "startTime": {
       "type": [
-        "array", 
+        "string",
         "null"
-      ], 
-      "description": "The latest available observations of an object's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/", 
-      "x-kubernetes-patch-strategy": "merge", 
-      "x-kubernetes-patch-merge-key": "type"
+      ],
+      "format": "date-time"
+    },
+    "succeeded": {
+      "description": "The number of pods which reached phase Succeeded.",
+      "type": "integer",
+      "format": "int32"
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

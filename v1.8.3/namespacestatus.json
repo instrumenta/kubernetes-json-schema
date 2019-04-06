@@ -1,6 +1,14 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.core.v1.NamespaceStatus instead.", 
-  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.8.3/_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceStatus"
+  "description": "NamespaceStatus is information about the current status of a Namespace.",
+  "properties": {
+    "phase": {
+      "description": "Phase is the current lifecycle phase of the namespace. More info: https://git.k8s.io/community/contributors/design-proposals/namespaces.md#phases",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

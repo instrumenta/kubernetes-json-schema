@@ -1,6 +1,19 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.core.v1.VolumeProjection instead.", 
-  "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeProjection"
+  "description": "Projection that may be projected along with other supported volume types",
+  "properties": {
+    "configMap": {
+      "description": "information about the configMap data to project",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapProjection"
+    },
+    "downwardAPI": {
+      "description": "information about the downwardAPI data to project",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DownwardAPIProjection"
+    },
+    "secret": {
+      "description": "information about the secret data to project",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretProjection"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

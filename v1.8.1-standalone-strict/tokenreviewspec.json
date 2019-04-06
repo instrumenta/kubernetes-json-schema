@@ -1,12 +1,15 @@
 {
-  "description": "TokenReviewSpec is a description of the token authentication request.", 
+  "description": "TokenReviewSpec is a description of the token authentication request.",
   "properties": {
     "token": {
+      "description": "Token is the opaque bearer token.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Token is the opaque bearer token."
+      ]
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

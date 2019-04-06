@@ -1,45 +1,45 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
+  "description": "PersistentVolumeClaimCondition contails details about state of pvc",
   "required": [
-    "type", 
+    "type",
     "status"
-  ], 
-  "type": "object", 
-  "description": "PersistentVolumeClaimCondition contails details about state of pvc", 
+  ],
   "properties": {
-    "status": {
+    "lastProbeTime": {
+      "description": "Last time we probed the condition.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "lastTransitionTime": {
+      "description": "Last time the condition transitioned from one status to another.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "Human-readable message indicating details about last transition.",
       "type": [
-        "string", 
+        "string",
         "null"
       ]
-    }, 
-    "lastTransitionTime": {
-      "description": "Last time the condition transitioned from one status to another.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
+    },
     "reason": {
+      "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Unique, this should be a short, machine understandable string that gives the reason for condition's last transition. If it reports \"ResizeStarted\" that means the underlying persistent volume is being resized."
-    }, 
-    "lastProbeTime": {
-      "description": "Last time we probed the condition.", 
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-    }, 
-    "message": {
+      ]
+    },
+    "status": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Human-readable message indicating details about last transition."
-    }, 
+      ]
+    },
     "type": {
       "type": [
-        "string", 
+        "string",
         "null"
       ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
