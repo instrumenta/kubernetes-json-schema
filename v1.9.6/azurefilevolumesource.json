@@ -1,6 +1,29 @@
 {
-  "$schema": "http://json-schema.org/schema#", 
-  "type": "object", 
-  "description": "Deprecated. Please use io.k8s.api.core.v1.AzureFileVolumeSource instead.", 
-  "$ref": "https://raw.githubusercontent.com/garethr/kubernetes-json-schema/master/v1.9.6/_definitions.json#/definitions/io.k8s.api.core.v1.AzureFileVolumeSource"
+  "description": "AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
+  "required": [
+    "secretName",
+    "shareName"
+  ],
+  "properties": {
+    "readOnly": {
+      "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
+      "type": "boolean"
+    },
+    "secretName": {
+      "description": "the name of secret that contains Azure Storage Account Name and Key",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shareName": {
+      "description": "Share Name",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

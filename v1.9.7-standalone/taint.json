@@ -1,37 +1,39 @@
 {
+  "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.",
   "required": [
-    "key", 
+    "key",
     "effect"
-  ], 
-  "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.", 
+  ],
   "properties": {
-    "key": {
+    "effect": {
+      "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Required. The taint key to be applied to a node."
-    }, 
+      ]
+    },
+    "key": {
+      "description": "Required. The taint key to be applied to a node.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "timeAdded": {
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
+      ],
       "format": "date-time"
-    }, 
-    "effect": {
-      "type": [
-        "string", 
-        "null"
-      ], 
-      "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute."
-    }, 
+    },
     "value": {
+      "description": "Required. The taint value corresponding to the taint key.",
       "type": [
-        "string", 
+        "string",
         "null"
-      ], 
-      "description": "Required. The taint value corresponding to the taint key."
+      ]
     }
-  }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }

@@ -1,35 +1,38 @@
 {
-  "description": "ResourceQuotaSpec defines the desired hard limits to enforce for Quota.", 
+  "description": "ResourceQuotaSpec defines the desired hard limits to enforce for Quota.",
   "properties": {
-    "scopes": {
-      "items": {
-        "type": [
-          "string", 
-          "null"
-        ]
-      }, 
-      "type": [
-        "array", 
-        "null"
-      ], 
-      "description": "A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects."
-    }, 
     "hard": {
+      "description": "Hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
+      "type": "object",
       "additionalProperties": {
         "oneOf": [
           {
             "type": [
-              "string", 
+              "string",
               "null"
             ]
-          }, 
+          },
           {
             "type": "integer"
           }
         ]
-      }, 
-      "type": "object", 
-      "description": "Hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/"
+      }
+    },
+    "scopes": {
+      "description": "A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
     }
-  }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
 }
