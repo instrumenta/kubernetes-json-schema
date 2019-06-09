@@ -11,7 +11,7 @@
       "description": "Time when last Event from the series was seen before last heartbeat."
     },
     "state": {
-      "description": "Information whether this series is ongoing or finished.",
+      "description": "Information whether this series is ongoing or finished. Deprecated. Planned removal for 1.18",
       "type": [
         "string",
         "null"

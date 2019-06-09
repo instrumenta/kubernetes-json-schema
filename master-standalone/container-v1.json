@@ -61,7 +61,7 @@
                     ]
                   },
                   "optional": {
-                    "description": "Specify whether the ConfigMap or it's key must be defined",
+                    "description": "Specify whether the ConfigMap or its key must be defined",
                     "type": "boolean"
                   }
                 },
@@ -138,7 +138,7 @@
                     ]
                   },
                   "optional": {
-                    "description": "Specify whether the Secret or it's key must be defined",
+                    "description": "Specify whether the Secret or its key must be defined",
                     "type": "boolean"
                   }
                 },
@@ -977,6 +977,26 @@
             }
           },
           "type": "object"
+        },
+        "windowsOptions": {
+          "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
+          "properties": {
+            "gmsaCredentialSpec": {
+              "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "gmsaCredentialSpecName": {
+              "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -1066,7 +1086,7 @@
             ]
           },
           "subPathExpr": {
-            "description": "Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to \"\" (volume's root). SubPathExpr and SubPath are mutually exclusive. This field is alpha in 1.14.",
+            "description": "Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to \"\" (volume's root). SubPathExpr and SubPath are mutually exclusive. This field is beta in 1.15.",
             "type": [
               "string",
               "null"

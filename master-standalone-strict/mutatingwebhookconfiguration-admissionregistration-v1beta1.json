@@ -231,6 +231,11 @@
                         "null"
                       ]
                     },
+                    "remainingItemCount": {
+                      "description": "remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.\n\nThis field is alpha and can be changed or removed without notice.",
+                      "format": "int64",
+                      "type": "integer"
+                    },
                     "resourceVersion": {
                       "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
                       "type": [
@@ -426,7 +431,7 @@
     "webhooks": {
       "description": "Webhooks is a list of webhooks and the affected resources and operations.",
       "items": {
-        "description": "Webhook describes an admission webhook and the resources and operations it applies to.",
+        "description": "MutatingWebhook describes an admission webhook and the resources and operations it applies to.",
         "properties": {
           "admissionReviewVersions": {
             "description": "AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. Default to `['v1beta1']`.",
@@ -469,6 +474,11 @@
                       "string",
                       "null"
                     ]
+                  },
+                  "port": {
+                    "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+                    "format": "int32",
+                    "type": "integer"
                   }
                 },
                 "required": [
@@ -491,6 +501,13 @@
           },
           "failurePolicy": {
             "description": "FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed values are Ignore or Fail. Defaults to Ignore.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "matchPolicy": {
+            "description": "matchPolicy defines how the \"rules\" list is used to match incoming requests. Allowed values are \"Exact\" or \"Equivalent\".\n\n- Exact: match a request only if it exactly matches a specified rule. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but \"rules\" only included `apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]`, a request to apps/v1beta1 or extensions/v1beta1 would not be sent to the webhook.\n\n- Equivalent: match a request if modifies a resource listed in rules, even via another API group or version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, and \"rules\" only included `apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]`, a request to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1 and sent to the webhook.\n\nDefaults to \"Exact\"",
             "type": [
               "string",
               "null"
@@ -557,6 +574,71 @@
             },
             "type": "object",
             "additionalProperties": false
+          },
+          "objectSelector": {
+            "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+            "properties": {
+              "matchExpressions": {
+                "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                "items": {
+                  "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+                  "properties": {
+                    "key": {
+                      "description": "key is the label key that the selector applies to.",
+                      "type": "string",
+                      "x-kubernetes-patch-merge-key": "key",
+                      "x-kubernetes-patch-strategy": "merge"
+                    },
+                    "operator": {
+                      "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.",
+                      "type": "string"
+                    },
+                    "values": {
+                      "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "type": [
+                        "array",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "operator"
+                  ],
+                  "type": "object",
+                  "additionalProperties": false
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              },
+              "matchLabels": {
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                "type": "object"
+              }
+            },
+            "type": "object",
+            "additionalProperties": false
+          },
+          "reinvocationPolicy": {
+            "description": "reinvocationPolicy indicates whether this webhook should be called multiple times as part of a single admission evaluation. Allowed values are \"Never\" and \"IfNeeded\".\n\nNever: the webhook will not be called more than once in a single admission evaluation.\n\nIfNeeded: the webhook will be called at least one additional time as part of the admission evaluation if the object being admitted is modified by other admission plugins after the initial webhook call. Webhooks that specify this option *must* be idempotent, able to process objects they previously admitted. Note: * the number of additional invocations is not guaranteed to be exactly one. * if additional invocations result in further modifications to the object, webhooks are not guaranteed to be invoked again. * webhooks that use this option may be reordered to minimize the number of additional invocations. * to validate an object after all mutations are guaranteed complete, use a validating admission webhook instead.\n\nDefaults to \"Never\".",
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "rules": {
             "description": "Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.",

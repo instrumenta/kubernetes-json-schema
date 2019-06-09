@@ -41,6 +41,10 @@
     "seLinuxOptions": {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.core.v1.SELinuxOptions",
       "description": "The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
+    },
+    "windowsOptions": {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions",
+      "description": "Windows security options."
     }
   },
   "type": "object",

@@ -15,7 +15,7 @@
       ]
     },
     "state": {
-      "description": "State of this Series: Ongoing or Finished",
+      "description": "State of this Series: Ongoing or Finished Deprecated. Planned removal for 1.18",
       "type": [
         "string",
         "null"

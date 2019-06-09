@@ -1,5 +1,67 @@
 {
   "definitions": {
+    "io.k8s.api.admissionregistration.v1beta1.MutatingWebhook": {
+      "description": "MutatingWebhook describes an admission webhook and the resources and operations it applies to.",
+      "properties": {
+        "admissionReviewVersions": {
+          "description": "AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. Default to `['v1beta1']`.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "clientConfig": {
+          "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig",
+          "description": "ClientConfig defines how to communicate with the hook. Required"
+        },
+        "failurePolicy": {
+          "description": "FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed values are Ignore or Fail. Defaults to Ignore.",
+          "type": "string"
+        },
+        "matchPolicy": {
+          "description": "matchPolicy defines how the \"rules\" list is used to match incoming requests. Allowed values are \"Exact\" or \"Equivalent\".\n\n- Exact: match a request only if it exactly matches a specified rule. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but \"rules\" only included `apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]`, a request to apps/v1beta1 or extensions/v1beta1 would not be sent to the webhook.\n\n- Equivalent: match a request if modifies a resource listed in rules, even via another API group or version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, and \"rules\" only included `apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]`, a request to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1 and sent to the webhook.\n\nDefaults to \"Exact\"",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.kubernetes.io, where \"imagepolicy\" is the name of the webhook, and kubernetes.io is the name of the organization. Required.",
+          "type": "string"
+        },
+        "namespaceSelector": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
+          "description": "NamespaceSelector decides whether to run the webhook on an object based on whether the namespace for that object matches the selector. If the object itself is a namespace, the matching is performed on object.metadata.labels. If the object is another cluster scoped resource, it never skips the webhook.\n\nFor example, to run the webhook on any objects whose namespace is not associated with \"runlevel\" of \"0\" or \"1\";  you will set the selector as follows: \"namespaceSelector\": {\n  \"matchExpressions\": [\n    {\n      \"key\": \"runlevel\",\n      \"operator\": \"NotIn\",\n      \"values\": [\n        \"0\",\n        \"1\"\n      ]\n    }\n  ]\n}\n\nIf instead you want to only run the webhook on any objects whose namespace is associated with the \"environment\" of \"prod\" or \"staging\"; you will set the selector as follows: \"namespaceSelector\": {\n  \"matchExpressions\": [\n    {\n      \"key\": \"environment\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"prod\",\n        \"staging\"\n      ]\n    }\n  ]\n}\n\nSee https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ for more examples of label selectors.\n\nDefault to the empty LabelSelector, which matches everything."
+        },
+        "objectSelector": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
+          "description": "ObjectSelector decides whether to run the webhook based on if the object has matching labels. objectSelector is evaluated against both the oldObject and newObject that would be sent to the webhook, and is considered to match if either object matches the selector. A null object (oldObject in the case of create, or newObject in the case of delete) or an object that cannot have labels (like a DeploymentRollback or a PodProxyOptions object) is not considered to match. Use the object selector only if the webhook is opt-in, because end users may skip the admission webhook by setting the labels. Default to the empty LabelSelector, which matches everything."
+        },
+        "reinvocationPolicy": {
+          "description": "reinvocationPolicy indicates whether this webhook should be called multiple times as part of a single admission evaluation. Allowed values are \"Never\" and \"IfNeeded\".\n\nNever: the webhook will not be called more than once in a single admission evaluation.\n\nIfNeeded: the webhook will be called at least one additional time as part of the admission evaluation if the object being admitted is modified by other admission plugins after the initial webhook call. Webhooks that specify this option *must* be idempotent, able to process objects they previously admitted. Note: * the number of additional invocations is not guaranteed to be exactly one. * if additional invocations result in further modifications to the object, webhooks are not guaranteed to be invoked again. * webhooks that use this option may be reordered to minimize the number of additional invocations. * to validate an object after all mutations are guaranteed complete, use a validating admission webhook instead.\n\nDefaults to \"Never\".",
+          "type": "string"
+        },
+        "rules": {
+          "description": "Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.",
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.RuleWithOperations"
+          },
+          "type": "array"
+        },
+        "sideEffects": {
+          "description": "SideEffects states whether this webhookk has side effects. Acceptable values are: Unknown, None, Some, NoneOnDryRun Webhooks with side effects MUST implement a reconciliation system, since a request may be rejected by a future step in the admission change and the side effects therefore need to be undone. Requests with the dryRun attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some. Defaults to Unknown.",
+          "type": "string"
+        },
+        "timeoutSeconds": {
+          "description": "TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 30 seconds.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "clientConfig"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
     "io.k8s.api.admissionregistration.v1beta1.MutatingWebhookConfiguration": {
       "description": "MutatingWebhookConfiguration describes the configuration of and admission webhook that accept or reject and may change the object.",
       "properties": {
@@ -21,7 +83,7 @@
         "webhooks": {
           "description": "Webhooks is a list of webhooks and the affected resources and operations.",
           "items": {
-            "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.Webhook"
+            "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.MutatingWebhook"
           },
           "type": "array",
           "x-kubernetes-patch-merge-key": "name",
@@ -130,11 +192,74 @@
         "path": {
           "description": "`path` is an optional URL path which will be sent in any request to this service.",
           "type": "string"
+        },
+        "port": {
+          "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "required": [
         "namespace",
         "name"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "io.k8s.api.admissionregistration.v1beta1.ValidatingWebhook": {
+      "description": "ValidatingWebhook describes an admission webhook and the resources and operations it applies to.",
+      "properties": {
+        "admissionReviewVersions": {
+          "description": "AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. Default to `['v1beta1']`.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "clientConfig": {
+          "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig",
+          "description": "ClientConfig defines how to communicate with the hook. Required"
+        },
+        "failurePolicy": {
+          "description": "FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed values are Ignore or Fail. Defaults to Ignore.",
+          "type": "string"
+        },
+        "matchPolicy": {
+          "description": "matchPolicy defines how the \"rules\" list is used to match incoming requests. Allowed values are \"Exact\" or \"Equivalent\".\n\n- Exact: match a request only if it exactly matches a specified rule. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, but \"rules\" only included `apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]`, a request to apps/v1beta1 or extensions/v1beta1 would not be sent to the webhook.\n\n- Equivalent: match a request if modifies a resource listed in rules, even via another API group or version. For example, if deployments can be modified via apps/v1, apps/v1beta1, and extensions/v1beta1, and \"rules\" only included `apiGroups:[\"apps\"], apiVersions:[\"v1\"], resources: [\"deployments\"]`, a request to apps/v1beta1 or extensions/v1beta1 would be converted to apps/v1 and sent to the webhook.\n\nDefaults to \"Exact\"",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.kubernetes.io, where \"imagepolicy\" is the name of the webhook, and kubernetes.io is the name of the organization. Required.",
+          "type": "string"
+        },
+        "namespaceSelector": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
+          "description": "NamespaceSelector decides whether to run the webhook on an object based on whether the namespace for that object matches the selector. If the object itself is a namespace, the matching is performed on object.metadata.labels. If the object is another cluster scoped resource, it never skips the webhook.\n\nFor example, to run the webhook on any objects whose namespace is not associated with \"runlevel\" of \"0\" or \"1\";  you will set the selector as follows: \"namespaceSelector\": {\n  \"matchExpressions\": [\n    {\n      \"key\": \"runlevel\",\n      \"operator\": \"NotIn\",\n      \"values\": [\n        \"0\",\n        \"1\"\n      ]\n    }\n  ]\n}\n\nIf instead you want to only run the webhook on any objects whose namespace is associated with the \"environment\" of \"prod\" or \"staging\"; you will set the selector as follows: \"namespaceSelector\": {\n  \"matchExpressions\": [\n    {\n      \"key\": \"environment\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"prod\",\n        \"staging\"\n      ]\n    }\n  ]\n}\n\nSee https://kubernetes.io/docs/concepts/overview/working-with-objects/labels for more examples of label selectors.\n\nDefault to the empty LabelSelector, which matches everything."
+        },
+        "objectSelector": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
+          "description": "ObjectSelector decides whether to run the webhook based on if the object has matching labels. objectSelector is evaluated against both the oldObject and newObject that would be sent to the webhook, and is considered to match if either object matches the selector. A null object (oldObject in the case of create, or newObject in the case of delete) or an object that cannot have labels (like a DeploymentRollback or a PodProxyOptions object) is not considered to match. Use the object selector only if the webhook is opt-in, because end users may skip the admission webhook by setting the labels. Default to the empty LabelSelector, which matches everything."
+        },
+        "rules": {
+          "description": "Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.",
+          "items": {
+            "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.RuleWithOperations"
+          },
+          "type": "array"
+        },
+        "sideEffects": {
+          "description": "SideEffects states whether this webhookk has side effects. Acceptable values are: Unknown, None, Some, NoneOnDryRun Webhooks with side effects MUST implement a reconciliation system, since a request may be rejected by a future step in the admission change and the side effects therefore need to be undone. Requests with the dryRun attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some. Defaults to Unknown.",
+          "type": "string"
+        },
+        "timeoutSeconds": {
+          "description": "TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 30 seconds.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "name",
+        "clientConfig"
       ],
       "type": "object",
       "additionalProperties": false
@@ -160,7 +285,7 @@
         "webhooks": {
           "description": "Webhooks is a list of webhooks and the affected resources and operations.",
           "items": {
-            "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.Webhook"
+            "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhook"
           },
           "type": "array",
           "x-kubernetes-patch-merge-key": "name",
@@ -216,56 +341,6 @@
       ],
       "additionalProperties": false
     },
-    "io.k8s.api.admissionregistration.v1beta1.Webhook": {
-      "description": "Webhook describes an admission webhook and the resources and operations it applies to.",
-      "properties": {
-        "admissionReviewVersions": {
-          "description": "AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy. Default to `['v1beta1']`.",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "clientConfig": {
-          "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig",
-          "description": "ClientConfig defines how to communicate with the hook. Required"
-        },
-        "failurePolicy": {
-          "description": "FailurePolicy defines how unrecognized errors from the admission endpoint are handled - allowed values are Ignore or Fail. Defaults to Ignore.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The name of the admission webhook. Name should be fully qualified, e.g., imagepolicy.kubernetes.io, where \"imagepolicy\" is the name of the webhook, and kubernetes.io is the name of the organization. Required.",
-          "type": "string"
-        },
-        "namespaceSelector": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector",
-          "description": "NamespaceSelector decides whether to run the webhook on an object based on whether the namespace for that object matches the selector. If the object itself is a namespace, the matching is performed on object.metadata.labels. If the object is another cluster scoped resource, it never skips the webhook.\n\nFor example, to run the webhook on any objects whose namespace is not associated with \"runlevel\" of \"0\" or \"1\";  you will set the selector as follows: \"namespaceSelector\": {\n  \"matchExpressions\": [\n    {\n      \"key\": \"runlevel\",\n      \"operator\": \"NotIn\",\n      \"values\": [\n        \"0\",\n        \"1\"\n      ]\n    }\n  ]\n}\n\nIf instead you want to only run the webhook on any objects whose namespace is associated with the \"environment\" of \"prod\" or \"staging\"; you will set the selector as follows: \"namespaceSelector\": {\n  \"matchExpressions\": [\n    {\n      \"key\": \"environment\",\n      \"operator\": \"In\",\n      \"values\": [\n        \"prod\",\n        \"staging\"\n      ]\n    }\n  ]\n}\n\nSee https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ for more examples of label selectors.\n\nDefault to the empty LabelSelector, which matches everything."
-        },
-        "rules": {
-          "description": "Rules describes what operations on what resources/subresources the webhook cares about. The webhook cares about an operation if it matches _any_ Rule. However, in order to prevent ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks from putting the cluster in a state which cannot be recovered from without completely disabling the plugin, ValidatingAdmissionWebhooks and MutatingAdmissionWebhooks are never called on admission requests for ValidatingWebhookConfiguration and MutatingWebhookConfiguration objects.",
-          "items": {
-            "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.RuleWithOperations"
-          },
-          "type": "array"
-        },
-        "sideEffects": {
-          "description": "SideEffects states whether this webhookk has side effects. Acceptable values are: Unknown, None, Some, NoneOnDryRun Webhooks with side effects MUST implement a reconciliation system, since a request may be rejected by a future step in the admission change and the side effects therefore need to be undone. Requests with the dryRun attribute will be auto-rejected if they match a webhook with sideEffects == Unknown or Some. Defaults to Unknown.",
-          "type": "string"
-        },
-        "timeoutSeconds": {
-          "description": "TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 30 seconds.",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "required": [
-        "name",
-        "clientConfig"
-      ],
-      "type": "object",
-      "additionalProperties": false
-    },
     "io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig": {
       "description": "WebhookClientConfig contains the information to make a TLS connection with the webhook",
       "properties": {
@@ -276,7 +351,7 @@
         },
         "service": {
           "$ref": "#/definitions/io.k8s.api.admissionregistration.v1beta1.ServiceReference",
-          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`.\n\nPort 443 will be used if it is open, otherwise it is an error."
+          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`."
         },
         "url": {
           "description": "`url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.\n\nThe `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.\n\nPlease note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.\n\nThe scheme must be \"https\"; the URL must begin with \"https://\".\n\nA path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.\n\nAttempting to use a user or basic auth e.g. \"user:password@\" is not allowed. Fragments (\"#...\") and query parameters (\"?...\") are not allowed, either.",
@@ -3113,6 +3188,11 @@
         "path": {
           "description": "`path` is an optional URL path which will be sent in any request to this service.",
           "type": "string"
+        },
+        "port": {
+          "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "required": [
@@ -3150,7 +3230,7 @@
         },
         "service": {
           "$ref": "#/definitions/io.k8s.api.auditregistration.v1alpha1.ServiceReference",
-          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`.\n\nPort 443 will be used if it is open, otherwise it is an error."
+          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`."
         },
         "url": {
           "description": "`url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.\n\nThe `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.\n\nPlease note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.\n\nThe scheme must be \"https\"; the URL must begin with \"https://\".\n\nA path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.\n\nAttempting to use a user or basic auth e.g. \"user:password@\" is not allowed. Fragments (\"#...\") and query parameters (\"?...\") are not allowed, either.",
@@ -6446,6 +6526,10 @@
     "io.k8s.api.core.v1.CSIPersistentVolumeSource": {
       "description": "Represents storage that is managed by an external CSI volume driver (Beta feature)",
       "properties": {
+        "controllerExpandSecretRef": {
+          "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference",
+          "description": "ControllerExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerExpandVolume call. This is an alpha field and requires enabling ExpandCSIVolumes feature gate. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed."
+        },
         "controllerPublishSecretRef": {
           "$ref": "#/definitions/io.k8s.api.core.v1.SecretReference",
           "description": "ControllerPublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerPublishVolume and ControllerUnpublishVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed."
@@ -6856,7 +6940,7 @@
           "type": "string"
         },
         "optional": {
-          "description": "Specify whether the ConfigMap or it's key must be defined",
+          "description": "Specify whether the ConfigMap or its key must be defined",
           "type": "boolean"
         }
       },
@@ -6952,7 +7036,7 @@
           "type": "string"
         },
         "optional": {
-          "description": "Specify whether the ConfigMap or it's keys must be defined",
+          "description": "Specify whether the ConfigMap or its keys must be defined",
           "type": "boolean"
         }
       },
@@ -6979,7 +7063,7 @@
           "type": "string"
         },
         "optional": {
-          "description": "Specify whether the ConfigMap or it's keys must be defined",
+          "description": "Specify whether the ConfigMap or its keys must be defined",
           "type": "boolean"
         }
       },
@@ -7748,7 +7832,7 @@
           "description": "Time of the last occurrence observed"
         },
         "state": {
-          "description": "State of this Series: Ongoing or Finished",
+          "description": "State of this Series: Ongoing or Finished Deprecated. Planned removal for 1.18",
           "type": "string"
         }
       },
@@ -9782,6 +9866,10 @@
             "$ref": "#/definitions/io.k8s.api.core.v1.Sysctl"
           },
           "type": "array"
+        },
+        "windowsOptions": {
+          "$ref": "#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions",
+          "description": "Windows security options."
         }
       },
       "type": "object",
@@ -9878,6 +9966,10 @@
           "description": "NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/",
           "type": "object"
         },
+        "preemptionPolicy": {
+          "description": "PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is alpha-level and is only honored by servers that enable the NonPreemptingPriority feature.",
+          "type": "string"
+        },
         "priority": {
           "description": "The priority value. Various system components use this field to find the priority of the pod. When Priority Admission Controller is enabled, it prevents users from setting this field. The admission controller populates this field from PriorityClassName. The higher the value, the higher the priority.",
           "format": "int32",
@@ -9899,7 +9991,7 @@
           "type": "string"
         },
         "runtimeClassName": {
-          "description": "RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run. If unset or empty, the \"legacy\" RuntimeClass will be used, which is an implicit class with an empty definition that uses the default runtime handler. More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This is an alpha feature and may change in the future.",
+          "description": "RuntimeClassName refers to a RuntimeClass object in the node.k8s.io group, which should be used to run this pod.  If no RuntimeClass resource matches the named class, the pod will not be run. If unset or empty, the \"legacy\" RuntimeClass will be used, which is an implicit class with an empty definition that uses the default runtime handler. More info: https://git.k8s.io/enhancements/keps/sig-node/runtime-class.md This is a beta feature as of Kubernetes v1.14.",
           "type": "string"
         },
         "schedulerName": {
@@ -10924,7 +11016,7 @@
           "type": "string"
         },
         "optional": {
-          "description": "Specify whether the Secret or it's key must be defined",
+          "description": "Specify whether the Secret or its key must be defined",
           "type": "boolean"
         }
       },
@@ -11026,7 +11118,7 @@
           "type": "array"
         },
         "optional": {
-          "description": "Specify whether the Secret or it's keys must be defined",
+          "description": "Specify whether the Secret or its keys must be defined",
           "type": "boolean"
         },
         "secretName": {
@@ -11077,6 +11169,10 @@
         "seLinuxOptions": {
           "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions",
           "description": "The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence."
+        },
+        "windowsOptions": {
+          "$ref": "#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions",
+          "description": "Windows security options."
         }
       },
       "type": "object",
@@ -11776,7 +11872,7 @@
           "type": "string"
         },
         "subPathExpr": {
-          "description": "Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to \"\" (volume's root). SubPathExpr and SubPath are mutually exclusive. This field is alpha in 1.14.",
+          "description": "Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to \"\" (volume's root). SubPathExpr and SubPath are mutually exclusive. This field is beta in 1.15.",
           "type": "string"
         }
       },
@@ -11864,6 +11960,21 @@
         "weight",
         "podAffinityTerm"
       ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "io.k8s.api.core.v1.WindowsSecurityContextOptions": {
+      "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
+      "properties": {
+        "gmsaCredentialSpec": {
+          "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+          "type": "string"
+        },
+        "gmsaCredentialSpecName": {
+          "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+          "type": "string"
+        }
+      },
       "type": "object",
       "additionalProperties": false
     },
@@ -12007,7 +12118,7 @@
           "description": "Time when last Event from the series was seen before last heartbeat."
         },
         "state": {
-          "description": "Information whether this series is ongoing or finished.",
+          "description": "Information whether this series is ongoing or finished. Deprecated. Planned removal for 1.18",
           "type": "string"
         }
       },
@@ -13101,7 +13212,7 @@
           "type": "boolean"
         },
         "allowedCSIDrivers": {
-          "description": "AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value means no CSI drivers can run inline within a pod spec.",
+          "description": "AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only honored if the API server enables the CSIInlineVolume feature gate.",
           "items": {
             "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.AllowedCSIDriver"
           },
@@ -13205,6 +13316,10 @@
         "runAsUser": {
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions",
           "description": "runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set."
+        },
+        "runtimeClass": {
+          "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.RuntimeClassStrategyOptions",
+          "description": "runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled."
         },
         "seLinux": {
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.SELinuxStrategyOptions",
@@ -13483,6 +13598,27 @@
       },
       "required": [
         "rule"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "io.k8s.api.extensions.v1beta1.RuntimeClassStrategyOptions": {
+      "description": "RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.",
+      "properties": {
+        "allowedRuntimeClassNames": {
+          "description": "allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of \"*\" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "defaultRuntimeClassName": {
+          "description": "defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "allowedRuntimeClassNames"
       ],
       "type": "object",
       "additionalProperties": false
@@ -14517,7 +14653,7 @@
           "type": "boolean"
         },
         "allowedCSIDrivers": {
-          "description": "AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value means no CSI drivers can run inline within a pod spec.",
+          "description": "AllowedCSIDrivers is a whitelist of inline CSI drivers that must be explicitly set to be embedded within a pod spec. An empty value indicates that any CSI driver can be used for inline ephemeral volumes. This is an alpha field, and is only honored if the API server enables the CSIInlineVolume feature gate.",
           "items": {
             "$ref": "#/definitions/io.k8s.api.policy.v1beta1.AllowedCSIDriver"
           },
@@ -14622,6 +14758,10 @@
           "$ref": "#/definitions/io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions",
           "description": "runAsUser is the strategy that will dictate the allowable RunAsUser values that may be set."
         },
+        "runtimeClass": {
+          "$ref": "#/definitions/io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions",
+          "description": "runtimeClass is the strategy that will dictate the allowable RuntimeClasses for a pod. If this field is omitted, the pod's runtimeClassName field is unrestricted. Enforcement of this field depends on the RuntimeClass feature gate being enabled."
+        },
         "seLinux": {
           "$ref": "#/definitions/io.k8s.api.policy.v1beta1.SELinuxStrategyOptions",
           "description": "seLinux is the strategy that will dictate the allowable labels that may be set."
@@ -14685,6 +14825,27 @@
       },
       "required": [
         "rule"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions": {
+      "description": "RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.",
+      "properties": {
+        "allowedRuntimeClassNames": {
+          "description": "allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of \"*\" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "defaultRuntimeClassName": {
+          "description": "defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "allowedRuntimeClassNames"
       ],
       "type": "object",
       "additionalProperties": false
@@ -16035,6 +16196,10 @@
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
           "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata"
         },
+        "preemptionPolicy": {
+          "description": "PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is alpha-level and is only honored by servers that enable the NonPreemptingPriority feature.",
+          "type": "string"
+        },
         "value": {
           "description": "The value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.",
           "format": "int32",
@@ -16119,6 +16284,10 @@
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
           "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata"
         },
+        "preemptionPolicy": {
+          "description": "PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is alpha-level and is only honored by servers that enable the NonPreemptingPriority feature.",
+          "type": "string"
+        },
         "value": {
           "description": "The value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.",
           "format": "int32",
@@ -16202,6 +16371,10 @@
         "metadata": {
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta",
           "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+        },
+        "preemptionPolicy": {
+          "description": "PreemptionPolicy is the Policy for preempting pods with lower priority. One of Never, PreemptLowerPriority. Defaults to PreemptLowerPriority if unset. This field is alpha-level and is only honored by servers that enable the NonPreemptingPriority feature.",
+          "type": "string"
         },
         "value": {
           "description": "The value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec.",
@@ -16560,6 +16733,10 @@
     "io.k8s.api.storage.v1.VolumeAttachmentSource": {
       "description": "VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.",
       "properties": {
+        "inlineVolumeSpec": {
+          "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeSpec",
+          "description": "inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature."
+        },
         "persistentVolumeName": {
           "description": "Name of the persistent volume to attach.",
           "type": "string"
@@ -16718,6 +16895,10 @@
     "io.k8s.api.storage.v1alpha1.VolumeAttachmentSource": {
       "description": "VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.",
       "properties": {
+        "inlineVolumeSpec": {
+          "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeSpec",
+          "description": "inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature."
+        },
         "persistentVolumeName": {
           "description": "Name of the persistent volume to attach.",
           "type": "string"
@@ -17194,6 +17375,10 @@
     "io.k8s.api.storage.v1beta1.VolumeAttachmentSource": {
       "description": "VolumeAttachmentSource represents a volume that should be attached. Right now only PersistenVolumes can be attached via external attacher, in future we may allow also inline volumes in pods. Exactly one member can be set.",
       "properties": {
+        "inlineVolumeSpec": {
+          "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeSpec",
+          "description": "inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature."
+        },
         "persistentVolumeName": {
           "description": "Name of the persistent volume to attach.",
           "type": "string"
@@ -17318,7 +17503,7 @@
           "type": "array"
         },
         "strategy": {
-          "description": "`strategy` specifies the conversion strategy. Allowed values are: - `None`: The converter only change the apiVersion and would not touch any other field in the CR. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional information is needed for this option.",
+          "description": "`strategy` specifies the conversion strategy. Allowed values are: - `None`: The converter only change the apiVersion and would not touch any other field in the CR. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional information\n  is needed for this option. This requires spec.preserveUnknownFields to be false.",
           "type": "string"
         },
         "webhookClientConfig": {
@@ -17503,6 +17688,10 @@
           "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceDefinitionNames",
           "description": "Names are the names used to describe this custom resource"
         },
+        "preserveUnknownFields": {
+          "description": "preserveUnknownFields disables pruning of object fields which are not specified in the OpenAPI schema. apiVersion, kind, metadata and known fields inside metadata are always preserved. Defaults to true in v1beta and will default to false in v1.",
+          "type": "boolean"
+        },
         "scope": {
           "description": "Scope indicates whether this resource is cluster or namespace scoped.  Default is namespaced",
           "type": "string"
@@ -17608,7 +17797,7 @@
       "description": "CustomResourceSubresourceScale defines how to serve the scale subresource for CustomResources.",
       "properties": {
         "labelSelectorPath": {
-          "description": "LabelSelectorPath defines the JSON path inside of a CustomResource that corresponds to Scale.Status.Selector. Only JSON paths without the array notation are allowed. Must be a JSON Path under .status. Must be set to work with HPA. If there is no value under the given path in the CustomResource, the status label selector value in the /scale subresource will default to the empty string.",
+          "description": "LabelSelectorPath defines the JSON path inside of a CustomResource that corresponds to Scale.Status.Selector. Only JSON paths without the array notation are allowed. Must be a JSON Path under .status or .spec. Must be set to work with HPA. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the CustomResource, the status label selector value in the /scale subresource will default to the empty string.",
           "type": "string"
         },
         "specReplicasPath": {
@@ -17701,7 +17890,8 @@
           "type": "array"
         },
         "default": {
-          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON",
+          "description": "default is a default value for undefined object fields. Defaulting is an alpha feature under the CustomResourceDefaulting feature gate. Defaulting requires spec.preserveUnknownFields to be false."
         },
         "definitions": {
           "additionalProperties": {
@@ -17822,6 +18012,18 @@
         },
         "uniqueItems": {
           "type": "boolean"
+        },
+        "x-kubernetes-embedded-resource": {
+          "description": "x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).",
+          "type": "boolean"
+        },
+        "x-kubernetes-int-or-string": {
+          "description": "x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:\n\n1) anyOf:\n   - type: integer\n   - type: string\n2) allOf:\n   - anyOf:\n     - type: integer\n     - type: string\n   - ... zero or more",
+          "type": "boolean"
+        },
+        "x-kubernetes-preserve-unknown-fields": {
+          "description": "x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.",
+          "type": "boolean"
         }
       },
       "type": "object",
@@ -17850,6 +18052,11 @@
         "path": {
           "description": "`path` is an optional URL path which will be sent in any request to this service.",
           "type": "string"
+        },
+        "port": {
+          "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "required": [
@@ -17869,7 +18076,7 @@
         },
         "service": {
           "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ServiceReference",
-          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`.\n\nPort 443 will be used if it is open, otherwise it is an error."
+          "description": "`service` is a reference to the service for this webhook. Either `service` or `url` must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`."
         },
         "url": {
           "description": "`url` gives the location of the webhook, in standard URL form (`scheme://host:port/path`). Exactly one of `url` or `service` must be specified.\n\nThe `host` should not refer to a service running in the cluster; use the `service` field instead. The host might be resolved via external DNS in some apiservers (e.g., `kube-apiserver` cannot resolve in-cluster DNS as that would be a layering violation). `host` may also be an IP address.\n\nPlease note that using `localhost` or `127.0.0.1` as a `host` is risky unless you take great care to run this webhook on all hosts which run an apiserver which might need to make calls to this webhook. Such installs are likely to be non-portable, i.e., not easy to turn up in a new cluster.\n\nThe scheme must be \"https\"; the URL must begin with \"https://\".\n\nA path is optional, and if present may be any string permissible in a URL. You may use the path to pass an arbitrary string to the webhook, for example, a cluster identifier.\n\nAttempting to use a user or basic auth e.g. \"user:password@\" is not allowed. Fragments (\"#...\") and query parameters (\"?...\") are not allowed, either.",
@@ -18485,6 +18692,11 @@
         "continue": {
           "description": "continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
           "type": "string"
+        },
+        "remainingItemCount": {
+          "description": "remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.\n\nThis field is alpha and can be changed or removed without notice.",
+          "format": "int64",
+          "type": "integer"
         },
         "resourceVersion": {
           "description": "String that identifies the server's internal version of this object that can be used by clients to determine when objects have changed. Value must be treated as opaque by clients and passed unmodified back to the server. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
@@ -19277,6 +19489,11 @@
         "namespace": {
           "description": "Namespace is the namespace of the service",
           "type": "string"
+        },
+        "port": {
+          "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object",
@@ -19455,6 +19672,11 @@
         "namespace": {
           "description": "Namespace is the namespace of the service",
           "type": "string"
+        },
+        "port": {
+          "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object",

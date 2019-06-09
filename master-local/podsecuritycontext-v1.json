@@ -44,6 +44,10 @@
         "array",
         "null"
       ]
+    },
+    "windowsOptions": {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions",
+      "description": "Windows security options."
     }
   },
   "type": "object",

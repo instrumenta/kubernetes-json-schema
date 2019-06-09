@@ -28,7 +28,7 @@
     "webhooks": {
       "description": "Webhooks is a list of webhooks and the affected resources and operations.",
       "items": {
-        "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.Webhook"
+        "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhook"
       },
       "type": [
         "array",

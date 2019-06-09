@@ -10,6 +10,15 @@
 
 declare -a arr=(
     master
+    v1.14.3
+    v1.14.2
+    v1.14.1
+    v1.13.7
+    v1.13.6
+)
+
+declare -a arr2=(
+    master
     v1.14.0
     v1.13.5
     v1.13.4

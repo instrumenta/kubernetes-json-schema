@@ -1,0 +1,15 @@
+{
+  "description": "ContainerStateRunning is a running state of a container.",
+  "properties": {
+    "startedAt": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

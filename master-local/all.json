@@ -1,6 +1,9 @@
 {
   "oneOf": [
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.MutatingWebhook"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.MutatingWebhookConfiguration"
     },
     {
@@ -13,13 +16,13 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ServiceReference"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhook"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfiguration"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfigurationList"
-    },
-    {
-      "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.Webhook"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig"
@@ -1135,6 +1138,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WeightedPodAffinityTerm"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1beta1.Event"
     },
     {
@@ -1291,6 +1297,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RuntimeClassStrategyOptions"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.SELinuxStrategyOptions"
     },
     {
@@ -1418,6 +1427,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.policy.v1beta1.SELinuxStrategyOptions"

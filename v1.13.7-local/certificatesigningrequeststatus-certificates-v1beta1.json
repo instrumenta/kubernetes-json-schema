@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "certificate": {
+      "description": "If request was approved, the controller will place the issued certificate here.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
+    "conditions": {
+      "description": "Conditions applied to the request, such as approval or denial.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.certificates.v1beta1.CertificateSigningRequestCondition"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

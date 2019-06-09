@@ -1,6 +1,9 @@
 {
   "oneOf": [
     {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.MutatingWebhook"
+    },
+    {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.MutatingWebhookConfiguration"
     },
     {
@@ -13,13 +16,13 @@
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ServiceReference"
     },
     {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhook"
+    },
+    {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfiguration"
     },
     {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.ValidatingWebhookConfigurationList"
-    },
-    {
-      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.Webhook"
     },
     {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.admissionregistration.v1beta1.WebhookClientConfig"
@@ -1135,6 +1138,9 @@
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.core.v1.WeightedPodAffinityTerm"
     },
     {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions"
+    },
+    {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.events.v1beta1.Event"
     },
     {
@@ -1291,6 +1297,9 @@
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RunAsUserStrategyOptions"
     },
     {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RuntimeClassStrategyOptions"
+    },
+    {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.SELinuxStrategyOptions"
     },
     {
@@ -1418,6 +1427,9 @@
     },
     {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.policy.v1beta1.RunAsUserStrategyOptions"
+    },
+    {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.policy.v1beta1.RuntimeClassStrategyOptions"
     },
     {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.policy.v1beta1.SELinuxStrategyOptions"

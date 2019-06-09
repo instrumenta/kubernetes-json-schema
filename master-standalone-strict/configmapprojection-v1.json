@@ -40,7 +40,7 @@
       ]
     },
     "optional": {
-      "description": "Specify whether the ConfigMap or it's keys must be defined",
+      "description": "Specify whether the ConfigMap or its keys must be defined",
       "type": "boolean"
     }
   },

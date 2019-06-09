@@ -35,7 +35,7 @@
                     ]
                   },
                   "optional": {
-                    "description": "Specify whether the ConfigMap or it's key must be defined",
+                    "description": "Specify whether the ConfigMap or its key must be defined",
                     "type": "boolean"
                   }
                 },
@@ -115,7 +115,7 @@
                     ]
                   },
                   "optional": {
-                    "description": "Specify whether the Secret or it's key must be defined",
+                    "description": "Specify whether the Secret or its key must be defined",
                     "type": "boolean"
                   }
                 },
@@ -288,7 +288,7 @@
             ]
           },
           "subPathExpr": {
-            "description": "Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to \"\" (volume's root). SubPathExpr and SubPath are mutually exclusive. This field is alpha in 1.14.",
+            "description": "Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to \"\" (volume's root). SubPathExpr and SubPath are mutually exclusive. This field is beta in 1.15.",
             "type": [
               "string",
               "null"
@@ -554,7 +554,7 @@
                 ]
               },
               "optional": {
-                "description": "Specify whether the ConfigMap or it's keys must be defined",
+                "description": "Specify whether the ConfigMap or its keys must be defined",
                 "type": "boolean"
               }
             },
@@ -1182,7 +1182,7 @@
                           ]
                         },
                         "optional": {
-                          "description": "Specify whether the ConfigMap or it's keys must be defined",
+                          "description": "Specify whether the ConfigMap or its keys must be defined",
                           "type": "boolean"
                         }
                       },
@@ -1597,7 +1597,7 @@
                 ]
               },
               "optional": {
-                "description": "Specify whether the Secret or it's keys must be defined",
+                "description": "Specify whether the Secret or its keys must be defined",
                 "type": "boolean"
               },
               "secretName": {
