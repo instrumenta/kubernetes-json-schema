@@ -1,0 +1,54 @@
+{
+  "properties": {
+    "certificate": {
+      "description": "If request was approved, the controller will place the issued certificate here.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
+    "conditions": {
+      "description": "Conditions applied to the request, such as approval or denial.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "required": [
+          "type"
+        ],
+        "properties": {
+          "lastUpdateTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "description": "human readable message with details about the request state",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "brief reason for the request state",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "description": "request approval state, currently Approved or Denied.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}
