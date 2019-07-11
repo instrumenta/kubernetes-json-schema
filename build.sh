@@ -9,17 +9,22 @@
 #   X.Y.Z-local - relative references, useful to avoid the network dependency
 
 declare -a arr=(
+    # Add here the version you want to re-generate
     master
-    v1.12.7
-    v1.12.8
     )
 
+# This list is used only list of already genrated schema definition
+# (or when we need to rebuild all definitions)
 declare -a arr2=(
     master
+    # v1.15.x
+    v1.15.0
+    # v1.14.x
     v1.14.3
     v1.14.2
     v1.14.1
     v1.14.0
+    # v1.13.x
     v1.13.7
     v1.13.6
     v1.13.5
@@ -28,6 +33,7 @@ declare -a arr2=(
     v1.13.2
     v1.13.1
     v1.13.0
+    # v1.12.x
     v1.12.6
     v1.12.5
     v1.12.4
@@ -35,6 +41,7 @@ declare -a arr2=(
     v1.12.2
     v1.12.1
     v1.12.0
+    # v1.11.x
     v1.11.9
     v1.11.8
     v1.11.7
@@ -45,6 +52,7 @@ declare -a arr2=(
     v1.11.2
     v1.11.1
     v1.11.0
+    # v1.10.x
     v1.10.9
     v1.10.8
     v1.10.7
@@ -55,6 +63,7 @@ declare -a arr2=(
     v1.10.2
     v1.10.1
     v1.10.0
+    # v1.9.x
     v1.9.8
     v1.9.7
     v1.9.6
@@ -64,6 +73,7 @@ declare -a arr2=(
     v1.9.2
     v1.9.1
     v1.9.0
+    # v1.8.x
     v1.8.13
     v1.8.12
     v1.8.11
@@ -78,6 +88,7 @@ declare -a arr2=(
     v1.8.2
     v1.8.1
     v1.8.0
+    # v1.7.x
     v1.7.16
     v1.7.15
     v1.7.14
@@ -95,7 +106,7 @@ declare -a arr2=(
     v1.7.2
     v1.7.1
     v1.7.0
-
+    # v1.6.x
     v1.6.13
     v1.6.12
     v1.6.11
@@ -110,6 +121,7 @@ declare -a arr2=(
     v1.6.2
     v1.6.1
     v1.6.0
+    # v1.5.x
     v1.5.8
     v1.5.7
     v1.5.6
