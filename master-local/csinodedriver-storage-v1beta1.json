@@ -1,6 +1,10 @@
 {
   "description": "CSINodeDriver holds information about the specification of one CSI driver installed on a node",
   "properties": {
+    "allocatable": {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1beta1.VolumeNodeResources",
+      "description": "allocatable represents the volume resources of a node that are available for scheduling."
+    },
     "name": {
       "description": "This is the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.",
       "type": [

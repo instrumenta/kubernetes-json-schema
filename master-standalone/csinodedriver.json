@@ -1,6 +1,17 @@
 {
   "description": "CSINodeDriver holds information about the specification of one CSI driver installed on a node",
   "properties": {
+    "allocatable": {
+      "description": "VolumeNodeResources is a set of resource limits for scheduling of volumes.",
+      "properties": {
+        "count": {
+          "description": "Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is nil, then the supported number of volumes on this node is unbounded.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
     "name": {
       "description": "This is the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.",
       "type": [

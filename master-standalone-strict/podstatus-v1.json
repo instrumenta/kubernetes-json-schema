@@ -592,6 +592,29 @@
         "null"
       ]
     },
+    "podIPs": {
+      "description": "podIPs holds the IP addresses allocated to the pod. If this field is specified, the 0th entry must match the podIP field. Pods may be allocated at most 1 value for each of IPv4 and IPv6. This list is empty if no IPs have been allocated yet.",
+      "items": {
+        "description": "IP address information for entries in the (plural) PodIPs field. Each entry includes:\n   IP: An IP address allocated to the pod. Routable at least within the cluster.",
+        "properties": {
+          "ip": {
+            "description": "ip is an IP address (IPv4 or IPv6) assigned to the pod",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "type": "object",
+        "additionalProperties": false
+      },
+      "type": [
+        "array",
+        "null"
+      ],
+      "x-kubernetes-patch-merge-key": "ip",
+      "x-kubernetes-patch-strategy": "merge"
+    },
     "qosClass": {
       "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md",
       "type": [
