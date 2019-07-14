@@ -1,0 +1,18 @@
+{
+  "description": "WebhookThrottleConfig holds the configuration for throttling events",
+  "properties": {
+    "burst": {
+      "description": "ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS",
+      "type": "integer",
+      "format": "int64"
+    },
+    "qps": {
+      "description": "ThrottleQPS maximum number of batches per second default 10 QPS",
+      "type": "integer",
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}
