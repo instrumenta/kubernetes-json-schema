@@ -1,0 +1,44 @@
+{
+  "description": "VolumeMount describes a mounting of a Volume within a container.", 
+  "required": [
+    "name", 
+    "mountPath"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "readOnly": {
+      "type": "boolean", 
+      "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
+    }, 
+    "mountPropagation": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationNone is used. This field is beta in 1.10."
+    }, 
+    "subPath": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
+    }, 
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "This must match the Name of a Volume."
+    }, 
+    "mountPath": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Path within the container at which the volume should be mounted.  Must not contain ':'."
+    }
+  }
+}

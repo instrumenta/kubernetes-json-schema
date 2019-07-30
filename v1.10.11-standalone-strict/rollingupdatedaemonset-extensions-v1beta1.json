@@ -1,0 +1,16 @@
+{
+  "additionalProperties": false, 
+  "description": "Spec to control the desired behavior of daemon set rolling update.", 
+  "properties": {
+    "maxUnavailable": {
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "required": [
+    "rule"
+  ], 
+  "type": "object", 
+  "description": "Run A sUser Strategy Options defines the strategy type and any options used to create the strategy.", 
+  "properties": {
+    "ranges": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.IDRange"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "Ranges are the allowed ranges of uids that may be used."
+    }, 
+    "rule": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+    }
+  }
+}
