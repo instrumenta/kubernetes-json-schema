@@ -1,0 +1,206 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).", 
+  "properties": {
+    "minProperties": {
+      "type": "integer", 
+      "format": "int64"
+    }, 
+    "x-kubernetes-preserve-unknown-fields": {
+      "type": "boolean", 
+      "description": "x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden."
+    }, 
+    "uniqueItems": {
+      "type": "boolean"
+    }, 
+    "minimum": {
+      "type": "number", 
+      "format": "double"
+    }, 
+    "maxItems": {
+      "type": "integer", 
+      "format": "int64"
+    }, 
+    "$schema": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "anyOf": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ]
+    }, 
+    "id": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "$ref": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "exclusiveMaximum": {
+      "type": "boolean"
+    }, 
+    "title": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "exclusiveMinimum": {
+      "type": "boolean"
+    }, 
+    "allOf": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ]
+    }, 
+    "patternProperties": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      }, 
+      "type": "object"
+    }, 
+    "multipleOf": {
+      "type": "number", 
+      "format": "double"
+    }, 
+    "maxProperties": {
+      "type": "integer", 
+      "format": "int64"
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "description": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "format": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "minLength": {
+      "type": "integer", 
+      "format": "int64"
+    }, 
+    "enum": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ]
+    }, 
+    "oneOf": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ]
+    }, 
+    "x-kubernetes-int-or-string": {
+      "type": "boolean", 
+      "description": "x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:\n\n1) anyOf:\n   - type: integer\n   - type: string\n2) allOf:\n   - anyOf:\n     - type: integer\n     - type: string\n   - ... zero or more"
+    }, 
+    "dependencies": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray"
+      }, 
+      "type": "object"
+    }, 
+    "maxLength": {
+      "type": "integer", 
+      "format": "int64"
+    }, 
+    "not": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+    }, 
+    "externalDocs": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
+    }, 
+    "properties": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      }, 
+      "type": "object"
+    }, 
+    "additionalItems": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+    }, 
+    "nullable": {
+      "type": "boolean"
+    }, 
+    "default": {
+      "description": "default is a default value for undefined object fields. Defaulting is an alpha feature under the CustomResourceDefaulting feature gate. Defaulting requires spec.preserveUnknownFields to be false.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+    }, 
+    "items": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray"
+    }, 
+    "required": {
+      "items": {
+        "type": "string"
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ]
+    }, 
+    "maximum": {
+      "type": "number", 
+      "format": "double"
+    }, 
+    "minItems": {
+      "type": "integer", 
+      "format": "int64"
+    }, 
+    "pattern": {
+      "type": [
+        "string", 
+        "null"
+      ]
+    }, 
+    "additionalProperties": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+    }, 
+    "definitions": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      }, 
+      "type": "object"
+    }, 
+    "example": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+    }, 
+    "x-kubernetes-embedded-resource": {
+      "type": "boolean", 
+      "description": "x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata)."
+    }
+  }
+}

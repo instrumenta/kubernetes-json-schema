@@ -1,0 +1,50 @@
+{
+  "description": "Represents a source location of a volume to mount, managed by an external CSI driver", 
+  "required": [
+    "driver"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "nodePublishSecretRef": {
+      "additionalProperties": false, 
+      "type": "object", 
+      "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.", 
+      "properties": {
+        "name": {
+          "type": "string", 
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names"
+        }
+      }
+    }, 
+    "readOnly": {
+      "type": "boolean", 
+      "description": "Specifies a read-only configuration for the volume. Defaults to false (read/write)."
+    }, 
+    "driver": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster."
+    }, 
+    "volumeAttributes": {
+      "additionalProperties": {
+        "type": [
+          "string", 
+          "null"
+        ]
+      }, 
+      "type": "object", 
+      "description": "VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values."
+    }, 
+    "fsType": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Filesystem type to mount. Ex. \"ext4\", \"xfs\", \"ntfs\". If not provided, the empty value is passed to the associated CSI driver which will determine the default filesystem to apply."
+    }
+  }
+}

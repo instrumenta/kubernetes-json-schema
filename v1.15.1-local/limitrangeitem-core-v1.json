@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "LimitRangeItem defines a min/max usage limit for any resource that matches on kind.", 
+  "properties": {
+    "min": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "Min usage constraints on this kind by resource name."
+    }, 
+    "default": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "Default resource requirement limit value by resource name if resource limit is omitted."
+    }, 
+    "max": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "Max usage constraints on this kind by resource name."
+    }, 
+    "defaultRequest": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "DefaultRequest is the default resource requirement request value by resource name if resource request is omitted."
+    }, 
+    "maxLimitRequestRatio": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }, 
+      "type": "object", 
+      "description": "MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource."
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Type of resource that this limit applies to."
+    }
+  }
+}

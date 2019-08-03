@@ -1,0 +1,46 @@
+{
+  "description": "RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsUserStrategyOptions from policy API Group instead.", 
+  "required": [
+    "rule"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "ranges": {
+      "items": {
+        "additionalProperties": false, 
+        "required": [
+          "min", 
+          "max"
+        ], 
+        "type": "object", 
+        "description": "IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.", 
+        "properties": {
+          "max": {
+            "type": "integer", 
+            "description": "max is the end of the range, inclusive.", 
+            "format": "int64"
+          }, 
+          "min": {
+            "type": "integer", 
+            "description": "min is the start of the range, inclusive.", 
+            "format": "int64"
+          }
+        }
+      }, 
+      "type": [
+        "array", 
+        "null"
+      ], 
+      "description": "ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs."
+    }, 
+    "rule": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "rule is the strategy that will dictate the allowable RunAsUser values that may be set."
+    }
+  }
+}

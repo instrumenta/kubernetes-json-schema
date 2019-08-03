@@ -18,6 +18,7 @@ declare -a arr=(
 declare -a arr2=(
     master
     # v1.15.x
+    v1.15.1
     v1.15.0
     # v1.14.x
     v1.14.4
