@@ -11,12 +11,24 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       },
       "description": "PodFixed represents the fixed resource overhead associated with running a pod.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object",

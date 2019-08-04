@@ -19,7 +19,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "controllerPublishSecretRef": {
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -39,7 +42,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "driver": {
       "description": "Driver is the name of the driver to use for this volume. Required.",
@@ -73,7 +79,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "nodeStageSecretRef": {
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -93,11 +102,17 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "readOnly": {
       "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "volumeAttributes": {
       "additionalProperties": {
@@ -107,7 +122,10 @@
         ]
       },
       "description": "Attributes of the volume to publish.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "volumeHandle": {
       "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required.",

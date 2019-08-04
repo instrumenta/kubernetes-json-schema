@@ -778,6 +778,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVarSource"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Event"
     },
     {
@@ -1154,6 +1157,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySelectorTerm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference"

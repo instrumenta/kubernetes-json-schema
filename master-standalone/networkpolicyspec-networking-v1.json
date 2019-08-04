@@ -20,7 +20,10 @@
                       ]
                     },
                     {
-                      "type": "integer"
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
                     }
                   ]
                 },
@@ -32,7 +35,10 @@
                   ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "type": [
               "array",
@@ -68,7 +74,10 @@
                   "required": [
                     "cidr"
                   ],
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "namespaceSelector": {
                   "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
@@ -106,7 +115,10 @@
                           "key",
                           "operator"
                         ],
-                        "type": "object"
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       },
                       "type": [
                         "array",
@@ -121,10 +133,16 @@
                         ]
                       },
                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "podSelector": {
                   "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
@@ -162,7 +180,10 @@
                           "key",
                           "operator"
                         ],
-                        "type": "object"
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       },
                       "type": [
                         "array",
@@ -177,13 +198,22 @@
                         ]
                       },
                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "type": [
               "array",
@@ -191,7 +221,10 @@
             ]
           }
         },
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -204,7 +237,7 @@
         "description": "NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from.",
         "properties": {
           "from": {
-            "description": "List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least on item, this rule allows traffic only if the traffic matches at least one item in the from list.",
+            "description": "List of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list.",
             "items": {
               "description": "NetworkPolicyPeer describes a peer to allow traffic from. Only certain combinations of fields are allowed",
               "properties": {
@@ -232,7 +265,10 @@
                   "required": [
                     "cidr"
                   ],
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "namespaceSelector": {
                   "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
@@ -270,7 +306,10 @@
                           "key",
                           "operator"
                         ],
-                        "type": "object"
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       },
                       "type": [
                         "array",
@@ -285,10 +324,16 @@
                         ]
                       },
                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "podSelector": {
                   "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
@@ -326,7 +371,10 @@
                           "key",
                           "operator"
                         ],
-                        "type": "object"
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       },
                       "type": [
                         "array",
@@ -341,13 +389,22 @@
                         ]
                       },
                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     }
                   },
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "type": [
               "array",
@@ -368,7 +425,10 @@
                       ]
                     },
                     {
-                      "type": "integer"
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
                     }
                   ]
                 },
@@ -380,7 +440,10 @@
                   ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             },
             "type": [
               "array",
@@ -388,7 +451,10 @@
             ]
           }
         },
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -431,7 +497,10 @@
               "key",
               "operator"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": [
             "array",
@@ -446,10 +515,16 @@
             ]
           },
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "policyTypes": {
       "description": "List of rule types that the NetworkPolicy relates to. Valid options are \"Ingress\", \"Egress\", or \"Ingress,Egress\". If this field is not specified, it will default based on the existence of Ingress or Egress rules; policies that contain an Egress section are assumed to affect Egress, and all policies (whether or not they contain an Ingress section) are assumed to affect Ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ \"Egress\" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include \"Egress\" (since such a policy would not include an Egress section and would otherwise default to just [ \"Ingress\" ]). This field is beta-level in 1.8",

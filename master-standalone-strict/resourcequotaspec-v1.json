@@ -11,12 +11,24 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       },
       "description": "hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "scopeSelector": {
       "description": "A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.",
@@ -52,7 +64,10 @@
               "scopeName",
               "operator"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "type": [
@@ -61,7 +76,10 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "scopes": {

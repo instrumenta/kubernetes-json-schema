@@ -4,7 +4,10 @@
     "partition": {
       "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "type": "object",

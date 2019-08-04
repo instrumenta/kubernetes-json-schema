@@ -17,7 +17,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           ]
         }
@@ -26,7 +29,10 @@
         "serviceName",
         "servicePort"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "rules": {
       "description": "A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.",
@@ -64,7 +70,10 @@
                               ]
                             },
                             {
-                              "type": "integer"
+                              "type": [
+                                "integer",
+                                "null"
+                              ]
                             }
                           ]
                         }
@@ -86,7 +95,10 @@
                   "required": [
                     "backend"
                   ],
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "type": "array"
               }
@@ -94,10 +106,16 @@
             "required": [
               "paths"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           }
         },
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -130,7 +148,10 @@
             ]
           }
         },
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

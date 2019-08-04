@@ -19,7 +19,7 @@
     },
     "cinder": {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CinderVolumeSource",
-      "description": "Cinder represents a cinder volume attached and mounted on kubelets host machine More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+      "description": "Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
     },
     "configMap": {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapVolumeSource",

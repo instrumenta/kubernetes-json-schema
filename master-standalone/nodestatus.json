@@ -19,7 +19,10 @@
           "type",
           "address"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -38,12 +41,24 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       },
       "description": "Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "capacity": {
       "additionalProperties": {
@@ -55,12 +70,24 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          {
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       },
       "description": "Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "conditions": {
       "description": "Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition",
@@ -110,7 +137,10 @@
           "type",
           "status"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -160,10 +190,16 @@
                 "name",
                 "kubeletConfigKey"
               ],
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "assigned": {
           "description": "NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.",
@@ -203,10 +239,16 @@
                 "name",
                 "kubeletConfigKey"
               ],
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "error": {
           "description": "Error describes any problems reconciling the Spec.ConfigSource to the Active config. Errors may occur, for example, attempting to checkpoint Spec.ConfigSource to the local Assigned record, attempting to checkpoint the payload associated with Spec.ConfigSource, attempting to load or validate the Assigned config, etc. Errors may occur at different points while syncing config. Earlier errors (e.g. download or checkpointing errors) will not result in a rollback to LastKnownGood, and may resolve across Kubelet retries. Later errors (e.g. loading or validating a checkpointed config) will result in a rollback to LastKnownGood. In the latter case, it is usually possible to resolve the error by fixing the config assigned in Spec.ConfigSource. You can find additional information for debugging by searching the error message in the Kubelet log. Error is a human-readable description of the error state; machines can check whether or not Error is empty, but should not rely on the stability of the Error text across Kubelet versions.",
@@ -253,13 +295,22 @@
                 "name",
                 "kubeletConfigKey"
               ],
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "daemonEndpoints": {
       "description": "NodeDaemonEndpoints lists ports opened by daemons running on the Node.",
@@ -276,10 +327,16 @@
           "required": [
             "Port"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "images": {
       "description": "List of container images on this node",
@@ -299,13 +356,19 @@
           "sizeBytes": {
             "description": "The size of the image in bytes.",
             "format": "int64",
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
           }
         },
         "required": [
           "names"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -368,7 +431,10 @@
         "operatingSystem",
         "architecture"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "phase": {
       "description": "NodePhase is the recently observed lifecycle phase of the node. More info: https://kubernetes.io/docs/concepts/nodes/node/#phase The field is never populated, and now is deprecated.",
@@ -395,7 +461,10 @@
           "name",
           "devicePath"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

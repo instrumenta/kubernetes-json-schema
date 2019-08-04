@@ -11,7 +11,10 @@
     "failedJobsHistoryLimit": {
       "description": "The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "jobTemplate": {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.batch.v1beta1.JobTemplateSpec",
@@ -27,16 +30,25 @@
     "startingDeadlineSeconds": {
       "description": "Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.",
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "successfulJobsHistoryLimit": {
       "description": "The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 3.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "suspend": {
       "description": "This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     }
   },
   "required": [

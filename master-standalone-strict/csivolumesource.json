@@ -26,12 +26,18 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "readOnly": {
       "description": "Specifies a read-only configuration for the volume. Defaults to false (read/write).",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "volumeAttributes": {
       "additionalProperties": {
@@ -41,7 +47,10 @@
         ]
       },
       "description": "VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "required": [

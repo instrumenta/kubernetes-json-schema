@@ -31,7 +31,10 @@
         "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       },
       "description": "A description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "cephfs": {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CephFSPersistentVolumeSource",
@@ -39,7 +42,7 @@
     },
     "cinder": {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CinderPersistentVolumeSource",
-      "description": "Cinder represents a cinder volume attached and mounted on kubelets host machine More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
+      "description": "Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md"
     },
     "claimRef": {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference",

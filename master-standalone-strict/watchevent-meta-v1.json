@@ -13,7 +13,10 @@
       "required": [
         "Raw"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "type": {
@@ -31,6 +34,11 @@
   "x-kubernetes-group-version-kind": [
     {
       "group": "",
+      "kind": "WatchEvent",
+      "version": "v1"
+    },
+    {
+      "group": "admission.k8s.io",
       "kind": "WatchEvent",
       "version": "v1"
     },

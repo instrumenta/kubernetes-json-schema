@@ -41,7 +41,10 @@
           "type",
           "status"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -66,7 +69,16 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -79,7 +91,16 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -123,7 +144,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "additionalProperties": false
                     },
                     "type": [
@@ -139,10 +163,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               }
             },
@@ -150,7 +180,10 @@
               "metricName",
               "currentValue"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "object": {
@@ -165,7 +198,16 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -178,7 +220,16 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -222,7 +273,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "additionalProperties": false
                     },
                     "type": [
@@ -238,10 +292,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "target": {
@@ -276,7 +336,10 @@
               "metricName",
               "currentValue"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "pods": {
@@ -291,7 +354,16 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -335,7 +407,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "additionalProperties": false
                     },
                     "type": [
@@ -351,10 +426,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               }
             },
@@ -362,7 +443,10 @@
               "metricName",
               "currentAverageValue"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "resource": {
@@ -371,7 +455,10 @@
               "currentAverageUtilization": {
                 "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.",
                 "format": "int32",
-                "type": "integer"
+                "type": [
+                  "integer",
+                  "null"
+                ]
               },
               "currentAverageValue": {
                 "oneOf": [
@@ -382,7 +469,16 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -395,7 +491,10 @@
               "name",
               "currentAverageValue"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "type": {
@@ -406,7 +505,10 @@
         "required": [
           "type"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -417,12 +519,18 @@
     "currentReplicas": {
       "description": "currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "desiredReplicas": {
       "description": "desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "lastScaleTime": {
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -435,7 +543,10 @@
     "observedGeneration": {
       "description": "observedGeneration is the most recent generation observed by this autoscaler.",
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "required": [

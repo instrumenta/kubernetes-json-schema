@@ -10,7 +10,10 @@
     },
     "readOnly": {
       "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
@@ -65,7 +68,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "volumeName": {
       "description": "VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.",

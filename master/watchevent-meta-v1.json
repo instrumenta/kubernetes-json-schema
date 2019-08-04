@@ -26,6 +26,11 @@
     {
       "group": "admission.k8s.io",
       "kind": "WatchEvent",
+      "version": "v1"
+    },
+    {
+      "group": "admission.k8s.io",
+      "kind": "WatchEvent",
       "version": "v1beta1"
     },
     {

@@ -10,7 +10,16 @@
           ]
         },
         {
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "type": [
+            "number",
+            "null"
+          ]
         }
       ]
     },
@@ -57,7 +66,10 @@
               "key",
               "operator"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": [
             "array",
@@ -72,10 +84,16 @@
             ]
           },
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "target": {
       "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
@@ -100,7 +118,10 @@
         "kind",
         "name"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "targetValue": {
       "oneOf": [
@@ -111,7 +132,16 @@
           ]
         },
         {
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        {
+          "type": [
+            "number",
+            "null"
+          ]
         }
       ]
     }

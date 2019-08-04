@@ -49,7 +49,10 @@
           "type",
           "status"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -93,7 +96,10 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -135,7 +141,10 @@
                   "signal": {
                     "description": "Signal from the last termination of the container",
                     "format": "int32",
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "startedAt": {
                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -149,7 +158,10 @@
                 "required": [
                   "exitCode"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -169,10 +181,16 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "name": {
             "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.",
@@ -202,7 +220,10 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -244,7 +265,10 @@
                   "signal": {
                     "description": "Signal from the last termination of the container",
                     "format": "int32",
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "startedAt": {
                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -258,7 +282,10 @@
                 "required": [
                   "exitCode"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -278,10 +305,16 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           }
         },
         "required": [
@@ -291,7 +324,283 @@
           "image",
           "imageID"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "ephemeralContainerStatuses": {
+      "description": "Status for any ephemeral containers that running in this pod. This field is alpha-level and is only honored by servers that enable the EphemeralContainers feature.",
+      "items": {
+        "description": "ContainerStatus contains details for the current status of this container.",
+        "properties": {
+          "containerID": {
+            "description": "Container's ID in the format 'docker://<container_id>'.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "image": {
+            "description": "The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images",
+            "type": "string"
+          },
+          "imageID": {
+            "description": "ImageID of the container's image.",
+            "type": "string"
+          },
+          "lastState": {
+            "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.",
+            "properties": {
+              "running": {
+                "description": "ContainerStateRunning is a running state of a container.",
+                "properties": {
+                  "startedAt": {
+                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "terminated": {
+                "description": "ContainerStateTerminated is a terminated state of a container.",
+                "properties": {
+                  "containerID": {
+                    "description": "Container's ID in the format 'docker://<container_id>'",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "exitCode": {
+                    "description": "Exit status from the last termination of the container",
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "finishedAt": {
+                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "message": {
+                    "description": "Message regarding the last termination of the container",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "description": "(brief) reason from the last termination of the container",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "signal": {
+                    "description": "Signal from the last termination of the container",
+                    "format": "int32",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "startedAt": {
+                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "exitCode"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "waiting": {
+                "description": "ContainerStateWaiting is a waiting state of a container.",
+                "properties": {
+                  "message": {
+                    "description": "Message regarding why the container is not yet running.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "description": "(brief) reason the container is not yet running.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "name": {
+            "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.",
+            "type": "string"
+          },
+          "ready": {
+            "description": "Specifies whether the container has passed its readiness probe.",
+            "type": "boolean"
+          },
+          "restartCount": {
+            "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "state": {
+            "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.",
+            "properties": {
+              "running": {
+                "description": "ContainerStateRunning is a running state of a container.",
+                "properties": {
+                  "startedAt": {
+                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "terminated": {
+                "description": "ContainerStateTerminated is a terminated state of a container.",
+                "properties": {
+                  "containerID": {
+                    "description": "Container's ID in the format 'docker://<container_id>'",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "exitCode": {
+                    "description": "Exit status from the last termination of the container",
+                    "format": "int32",
+                    "type": "integer"
+                  },
+                  "finishedAt": {
+                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "message": {
+                    "description": "Message regarding the last termination of the container",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "description": "(brief) reason from the last termination of the container",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "signal": {
+                    "description": "Signal from the last termination of the container",
+                    "format": "int32",
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
+                  },
+                  "startedAt": {
+                    "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                    "format": "date-time",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "exitCode"
+                ],
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "waiting": {
+                "description": "ContainerStateWaiting is a waiting state of a container.",
+                "properties": {
+                  "message": {
+                    "description": "Message regarding why the container is not yet running.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "reason": {
+                    "description": "(brief) reason the container is not yet running.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "type": [
+                  "object",
+                  "null"
+                ]
+              }
+            },
+            "type": [
+              "object",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "ready",
+          "restartCount",
+          "image",
+          "imageID"
+        ],
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -340,7 +649,10 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -382,7 +694,10 @@
                   "signal": {
                     "description": "Signal from the last termination of the container",
                     "format": "int32",
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "startedAt": {
                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -396,7 +711,10 @@
                 "required": [
                   "exitCode"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -416,10 +734,16 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "name": {
             "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.",
@@ -449,7 +773,10 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "terminated": {
                 "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -491,7 +818,10 @@
                   "signal": {
                     "description": "Signal from the last termination of the container",
                     "format": "int32",
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   },
                   "startedAt": {
                     "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -505,7 +835,10 @@
                 "required": [
                   "exitCode"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "waiting": {
                 "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -525,10 +858,16 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           }
         },
         "required": [
@@ -538,7 +877,10 @@
           "image",
           "imageID"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -586,7 +928,10 @@
             ]
           }
         },
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

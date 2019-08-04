@@ -10,14 +10,17 @@
     },
     "readOnly": {
       "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference",
       "description": "Optional: points to a secret object containing parameters used to connect to OpenStack."
     },
     "volumeID": {
-      "description": "volume id used to identify the volume in cinder More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
+      "description": "volume id used to identify the volume in cinder. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
       "type": [
         "string",
         "null"
