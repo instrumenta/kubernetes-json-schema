@@ -4,9 +4,6 @@
       "type": "string"
     },
     {
-      "type": "integer"
-    },
-    {
       "type": "number"
     }
   ],

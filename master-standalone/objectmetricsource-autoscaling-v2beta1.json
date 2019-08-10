@@ -11,12 +11,6 @@
         },
         {
           "type": [
-            "integer",
-            "null"
-          ]
-        },
-        {
-          "type": [
             "number",
             "null"
           ]
@@ -128,12 +122,6 @@
         {
           "type": [
             "string",
-            "null"
-          ]
-        },
-        {
-          "type": [
-            "integer",
             "null"
           ]
         },

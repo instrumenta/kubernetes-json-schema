@@ -83,12 +83,6 @@
         },
         {
           "type": [
-            "integer",
-            "null"
-          ]
-        },
-        {
-          "type": [
             "number",
             "null"
           ]

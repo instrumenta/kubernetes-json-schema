@@ -829,12 +829,6 @@
                             },
                             {
                               "type": [
-                                "integer",
-                                "null"
-                              ]
-                            },
-                            {
-                              "type": [
                                 "number",
                                 "null"
                               ]
@@ -1728,12 +1722,6 @@
                     },
                     {
                       "type": [
-                        "integer",
-                        "null"
-                      ]
-                    },
-                    {
-                      "type": [
                         "number",
                         "null"
                       ]
@@ -1752,12 +1740,6 @@
                     {
                       "type": [
                         "string",
-                        "null"
-                      ]
-                    },
-                    {
-                      "type": [
-                        "integer",
                         "null"
                       ]
                     },
@@ -2285,12 +2267,6 @@
                             {
                               "type": [
                                 "string",
-                                "null"
-                              ]
-                            },
-                            {
-                              "type": [
-                                "integer",
                                 "null"
                               ]
                             },
@@ -3182,12 +3158,6 @@
                     },
                     {
                       "type": [
-                        "integer",
-                        "null"
-                      ]
-                    },
-                    {
-                      "type": [
                         "number",
                         "null"
                       ]
@@ -3206,12 +3176,6 @@
                     {
                       "type": [
                         "string",
-                        "null"
-                      ]
-                    },
-                    {
-                      "type": [
-                        "integer",
                         "null"
                       ]
                     },
@@ -3759,12 +3723,6 @@
                             {
                               "type": [
                                 "string",
-                                "null"
-                              ]
-                            },
-                            {
-                              "type": [
-                                "integer",
                                 "null"
                               ]
                             },
@@ -4663,12 +4621,6 @@
                     },
                     {
                       "type": [
-                        "integer",
-                        "null"
-                      ]
-                    },
-                    {
-                      "type": [
                         "number",
                         "null"
                       ]
@@ -4687,12 +4639,6 @@
                     {
                       "type": [
                         "string",
-                        "null"
-                      ]
-                    },
-                    {
-                      "type": [
-                        "integer",
                         "null"
                       ]
                     },
@@ -5050,12 +4996,6 @@
           {
             "type": [
               "string",
-              "null"
-            ]
-          },
-          {
-            "type": [
-              "integer",
               "null"
             ]
           },
@@ -5606,7 +5546,7 @@
             "description": "Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.",
             "properties": {
               "monitors": {
-                "description": "Required: Monitors is a collection of Ceph monitors More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
+                "description": "Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
                 "items": {
                   "type": [
                     "string",
@@ -5623,14 +5563,14 @@
                 ]
               },
               "readOnly": {
-                "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
+                "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
                 "type": [
                   "boolean",
                   "null"
                 ]
               },
               "secretFile": {
-                "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
+                "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
                 "type": [
                   "string",
                   "null"
@@ -5653,7 +5593,7 @@
                 ]
               },
               "user": {
-                "description": "Optional: User is the rados user name, default is admin More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
+                "description": "Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
                 "type": [
                   "string",
                   "null"
@@ -5672,14 +5612,14 @@
             "description": "Represents a cinder volume resource in Openstack. A Cinder volume must exist before mounting to a container. The volume must also be in the same region as the kubelet. Cinder volumes support ownership management and SELinux relabeling.",
             "properties": {
               "fsType": {
-                "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
+                "description": "Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "readOnly": {
-                "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
+                "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md",
                 "type": [
                   "boolean",
                   "null"
@@ -5702,7 +5642,7 @@
                 ]
               },
               "volumeID": {
-                "description": "volume id used to identify the volume in cinder. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
+                "description": "volume id used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md",
                 "type": "string"
               }
             },
@@ -5911,12 +5851,6 @@
                             },
                             {
                               "type": [
-                                "integer",
-                                "null"
-                              ]
-                            },
-                            {
-                              "type": [
                                 "number",
                                 "null"
                               ]
@@ -5971,12 +5905,6 @@
                   {
                     "type": [
                       "string",
-                      "null"
-                    ]
-                  },
-                  {
-                    "type": [
-                      "integer",
                       "null"
                     ]
                   },
@@ -6205,15 +6133,15 @@
             "description": "Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.",
             "properties": {
               "endpoints": {
-                "description": "EndpointsName is the endpoint name that details Glusterfs topology. More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod",
+                "description": "EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
                 "type": "string"
               },
               "path": {
-                "description": "Path is the Glusterfs volume path. More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod",
+                "description": "Path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
                 "type": "string"
               },
               "readOnly": {
-                "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod",
+                "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
                 "type": [
                   "boolean",
                   "null"
@@ -6596,12 +6524,6 @@
                                       },
                                       {
                                         "type": [
-                                          "integer",
-                                          "null"
-                                        ]
-                                      },
-                                      {
-                                        "type": [
                                           "number",
                                           "null"
                                         ]
@@ -6808,18 +6730,18 @@
                 ]
               },
               "image": {
-                "description": "The rados image name. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+                "description": "The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
                 "type": "string"
               },
               "keyring": {
-                "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+                "description": "Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "monitors": {
-                "description": "A collection of Ceph monitors. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+                "description": "A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
                 "items": {
                   "type": [
                     "string",
@@ -6829,14 +6751,14 @@
                 "type": "array"
               },
               "pool": {
-                "description": "The rados pool name. Default is rbd. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+                "description": "The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
                 "type": [
                   "string",
                   "null"
                 ]
               },
               "readOnly": {
-                "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+                "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
                 "type": [
                   "boolean",
                   "null"
@@ -6859,7 +6781,7 @@
                 ]
               },
               "user": {
-                "description": "The rados user name. Default is admin. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
+                "description": "The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it",
                 "type": [
                   "string",
                   "null"

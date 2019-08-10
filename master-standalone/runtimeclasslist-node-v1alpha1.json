@@ -253,7 +253,7 @@
                 ]
               },
               "selfLink": {
-                "description": "SelfLink is a URL representing this object. Populated by the system. Read-only.",
+                "description": "SelfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.",
                 "type": [
                   "string",
                   "null"
@@ -284,12 +284,6 @@
                         {
                           "type": [
                             "string",
-                            "null"
-                          ]
-                        },
-                        {
-                          "type": [
-                            "integer",
                             "null"
                           ]
                         },
@@ -380,7 +374,7 @@
           ]
         },
         "selfLink": {
-          "description": "selfLink is a URL representing this object. Populated by the system. Read-only.",
+          "description": "selfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.",
           "type": [
             "string",
             "null"
