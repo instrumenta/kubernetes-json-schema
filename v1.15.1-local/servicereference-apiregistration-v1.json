@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "description": "ServiceReference holds a reference to Service.legacy.k8s.io", 
+  "properties": {
+    "namespace": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Namespace is the namespace of the service"
+    }, 
+    "name": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Name is the name of the service"
+    }, 
+    "port": {
+      "type": "integer", 
+      "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).", 
+      "format": "int32"
+    }
+  }
+}

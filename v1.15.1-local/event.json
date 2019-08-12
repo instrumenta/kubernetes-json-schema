@@ -1,0 +1,109 @@
+{
+  "description": "Event is a report of an event somewhere in the cluster. It generally denotes some state change in the system.", 
+  "required": [
+    "eventTime"
+  ], 
+  "x-kubernetes-group-version-kind": [
+    {
+      "kind": "Event", 
+      "version": "v1beta1", 
+      "group": "events.k8s.io"
+    }
+  ], 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "deprecatedFirstTimestamp": {
+      "description": "Deprecated field assuring backward compatibility with core.v1 Event type", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "regarding": {
+      "description": "The object this Event is about. In most cases it's an Object reporting controller implements. E.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+    }, 
+    "reportingController": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`."
+    }, 
+    "series": {
+      "description": "Data about the Event series this event represents or nil if it's a singleton Event.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1beta1.EventSeries"
+    }, 
+    "reportingInstance": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "ID of the controller instance, e.g. `kubelet-xyzf`."
+    }, 
+    "deprecatedSource": {
+      "description": "Deprecated field assuring backward compatibility with core.v1 Event type", 
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EventSource"
+    }, 
+    "kind": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds"
+    }, 
+    "related": {
+      "description": "Optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+    }, 
+    "deprecatedCount": {
+      "type": "integer", 
+      "description": "Deprecated field assuring backward compatibility with core.v1 Event type", 
+      "format": "int32"
+    }, 
+    "note": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Optional. A human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB."
+    }, 
+    "reason": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Why the action was taken."
+    }, 
+    "apiVersion": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources"
+    }, 
+    "eventTime": {
+      "description": "Required. Time when this Event was first observed.", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
+    }, 
+    "action": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "What action was taken/failed regarding to the regarding object."
+    }, 
+    "type": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Type of this event (Normal, Warning), new types could be added in the future."
+    }, 
+    "deprecatedLastTimestamp": {
+      "description": "Deprecated field assuring backward compatibility with core.v1 Event type", 
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }, 
+    "metadata": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    }
+  }
+}

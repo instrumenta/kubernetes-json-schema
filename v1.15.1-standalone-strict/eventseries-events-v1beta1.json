@@ -1,0 +1,30 @@
+{
+  "description": "EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.", 
+  "required": [
+    "count", 
+    "lastObservedTime", 
+    "state"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "count": {
+      "type": "integer", 
+      "description": "Number of occurrences in this series up to the last heartbeat time", 
+      "format": "int32"
+    }, 
+    "state": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "Information whether this series is ongoing or finished. Deprecated. Planned removal for 1.18"
+    }, 
+    "lastObservedTime": {
+      "type": "string", 
+      "description": "MicroTime is version of Time with microsecond level precision.", 
+      "format": "date-time"
+    }
+  }
+}

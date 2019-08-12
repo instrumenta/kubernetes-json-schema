@@ -1,0 +1,41 @@
+{
+  "description": "SELinuxStrategyOptions defines the strategy type and any options used to create the strategy.", 
+  "required": [
+    "rule"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "seLinuxOptions": {
+      "additionalProperties": false, 
+      "type": "object", 
+      "description": "SELinuxOptions are the labels to be applied to the container", 
+      "properties": {
+        "role": {
+          "type": "string", 
+          "description": "Role is a SELinux role label that applies to the container."
+        }, 
+        "type": {
+          "type": "string", 
+          "description": "Type is a SELinux type label that applies to the container."
+        }, 
+        "user": {
+          "type": "string", 
+          "description": "User is a SELinux user label that applies to the container."
+        }, 
+        "level": {
+          "type": "string", 
+          "description": "Level is SELinux level label that applies to the container."
+        }
+      }
+    }, 
+    "rule": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "rule is the strategy that will dictate the allowable labels that may be set."
+    }
+  }
+}
