@@ -11,6 +11,10 @@
         "string",
         "null"
       ]
+    },
+    "scheduling": {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.api.node.v1alpha1.Scheduling",
+      "description": "Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes."
     }
   },
   "required": [

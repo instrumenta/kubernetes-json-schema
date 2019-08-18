@@ -46,6 +46,11 @@
     {
       "group": "apiextensions.k8s.io",
       "kind": "WatchEvent",
+      "version": "v1"
+    },
+    {
+      "group": "apiextensions.k8s.io",
+      "kind": "WatchEvent",
       "version": "v1beta1"
     },
     {
