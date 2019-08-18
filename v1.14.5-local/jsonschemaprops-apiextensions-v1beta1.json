@@ -1,0 +1,244 @@
+{
+  "description": "JSONSchemaProps is a JSON-Schema following Specification Draft 4 (http://json-schema.org/).",
+  "properties": {
+    "$ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "$schema": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "additionalItems": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+    },
+    "additionalProperties": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrBool"
+    },
+    "allOf": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "anyOf": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "default": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+    },
+    "definitions": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "dependencies": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray"
+      },
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enum": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "example": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
+    },
+    "exclusiveMaximum": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "exclusiveMinimum": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "externalDocs": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
+    },
+    "format": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "items": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrArray"
+    },
+    "maxItems": {
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "maxLength": {
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "maxProperties": {
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "maximum": {
+      "format": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "minItems": {
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "minLength": {
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "minProperties": {
+      "format": "int64",
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "minimum": {
+      "format": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "multipleOf": {
+      "format": "double",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "not": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+    },
+    "nullable": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "oneOf": {
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "pattern": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "patternProperties": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "properties": {
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
+      },
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "required": {
+      "items": {
+        "type": "string"
+      },
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uniqueItems": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
+}

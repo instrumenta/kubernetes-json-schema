@@ -1,0 +1,77 @@
+{
+  "description": "This information is immutable after the request is created. Only the Request and Usages fields can be set on creation, other fields are derived by Kubernetes and cannot be modified by users.",
+  "required": [
+    "request"
+  ],
+  "properties": {
+    "extra": {
+      "description": "Extra information about the requesting user. See user.Info interface for details.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "groups": {
+      "description": "Group information about the requesting user. See user.Info interface for details.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "request": {
+      "description": "Base64-encoded PKCS#10 CSR data",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
+    "uid": {
+      "description": "UID information about the requesting user. See user.Info interface for details.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "usages": {
+      "description": "allowedUsages specifies a set of usage contexts the key will be valid for. See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3\n     https://tools.ietf.org/html/rfc5280#section-4.2.1.12",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    },
+    "username": {
+      "description": "Information about the requesting user. See user.Info interface for details.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

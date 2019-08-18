@@ -1,0 +1,32 @@
+{
+  "description": "EndpointPort is a tuple that describes a single port.",
+  "required": [
+    "port"
+  ],
+  "properties": {
+    "name": {
+      "description": "The name of this port (corresponds to ServicePort.Name). Must be a DNS_LABEL. Optional only if one port is defined.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "description": "The port number of the endpoint.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "protocol": {
+      "description": "The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

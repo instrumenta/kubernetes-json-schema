@@ -1,0 +1,21 @@
+{
+  "description": "CronJobStatus represents the current state of a cron job.",
+  "properties": {
+    "active": {
+      "description": "A list of pointers to currently running jobs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      }
+    },
+    "lastScheduleTime": {
+      "description": "Information when was the last time the job was successfully scheduled.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

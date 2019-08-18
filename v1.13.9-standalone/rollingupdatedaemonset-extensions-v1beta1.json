@@ -1,0 +1,23 @@
+{
+  "description": "Spec to control the desired behavior of daemon set rolling update.",
+  "properties": {
+    "maxUnavailable": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}
