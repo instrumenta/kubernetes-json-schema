@@ -4,7 +4,7 @@
       "type": "string"
     },
     {
-      "type": "integer"
+      "type": "number"
     }
   ],
   "$schema": "http://json-schema.org/schema#",

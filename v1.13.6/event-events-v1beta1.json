@@ -23,7 +23,10 @@
     },
     "deprecatedCount": {
       "description": "Deprecated field assuring backward compatibility with core.v1 Event type",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "deprecatedFirstTimestamp": {

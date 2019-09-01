@@ -31,7 +31,10 @@
     },
     "revision": {
       "description": "Revision indicates the revision of the state represented by Data.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int64"
     }
   },
