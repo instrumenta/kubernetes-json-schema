@@ -37,7 +37,10 @@
     },
     "healthCheckNodePort": {
       "description": "healthCheckNodePort specifies the healthcheck nodePort for the service. If not specified, HealthCheckNodePort is created by the service api backend with the allocated nodePort. Will use user-specified nodePort value if specified by the client. Only effects when Type is set to LoadBalancer and ExternalTrafficPolicy is set to Local.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "loadBalancerIP": {
@@ -81,7 +84,10 @@
           },
           "nodePort": {
             "description": "The port on each node on which this service is exposed when type=NodePort or LoadBalancer. Usually assigned by the system. If specified, it will be allocated to the service if unused or else creation of the service will fail. Default is to auto-allocate a port if the ServiceType of this Service requires one. More info: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport",
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "format": "int32"
           },
           "port": {
@@ -105,7 +111,10 @@
                 ]
               },
               {
-                "type": "integer"
+                "type": [
+                  "integer",
+                  "null"
+                ]
               }
             ]
           }
@@ -116,11 +125,17 @@
     },
     "publishNotReadyAddresses": {
       "description": "publishNotReadyAddresses, when set to true, indicates that DNS implementations must publish the notReadyAddresses of subsets for the Endpoints associated with the Service. The default value is false. The primary use case for setting this field is to use a StatefulSet's Headless Service to propagate SRV records for its Pods without respect to their readiness for purpose of peer discovery.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "selector": {
       "description": "Route service traffic to pods with label keys and values matching this selector. If empty or not present, the service is assumed to have an external process managing its endpoints, which Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "string",
@@ -143,7 +158,10 @@
           "properties": {
             "timeoutSeconds": {
               "description": "timeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be >0 && <=86400(for 1 day) if ServiceAffinity == \"ClientIP\". Default value is 10800(for 3 hours).",
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32"
             }
           }

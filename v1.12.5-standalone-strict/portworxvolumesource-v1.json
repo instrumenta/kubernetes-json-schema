@@ -13,7 +13,10 @@
     },
     "readOnly": {
       "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "volumeID": {
       "description": "VolumeID uniquely identifies a Portworx volume",

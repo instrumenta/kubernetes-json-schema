@@ -28,7 +28,10 @@
     },
     "capacity": {
       "description": "A description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.12.5/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       }

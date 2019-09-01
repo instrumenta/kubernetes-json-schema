@@ -13,7 +13,10 @@
     },
     "port": {
       "description": "The port number of the endpoint.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "protocol": {

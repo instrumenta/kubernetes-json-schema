@@ -13,7 +13,10 @@
     },
     "readOnly": {
       "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "description": "Optional: points to a secret object containing parameters used to connect to OpenStack.",

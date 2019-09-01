@@ -10,7 +10,10 @@
     },
     "code": {
       "description": "Suggested HTTP return code for this status, 0 if not set.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "details": {
@@ -73,7 +76,10 @@
         },
         "retryAfterSeconds": {
           "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "format": "int32"
         },
         "uid": {

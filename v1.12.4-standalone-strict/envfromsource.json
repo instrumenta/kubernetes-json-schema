@@ -13,7 +13,10 @@
         },
         "optional": {
           "description": "Specify whether the ConfigMap must be defined",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       },
       "additionalProperties": false
@@ -37,7 +40,10 @@
         },
         "optional": {
           "description": "Specify whether the Secret must be defined",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       },
       "additionalProperties": false
