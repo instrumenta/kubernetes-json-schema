@@ -7,7 +7,10 @@
   "properties": {
     "maxReplicas": {
       "description": "maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "metrics": {
@@ -22,7 +25,10 @@
     },
     "minReplicas": {
       "description": "minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It defaults to 1 pod.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "scaleTargetRef": {

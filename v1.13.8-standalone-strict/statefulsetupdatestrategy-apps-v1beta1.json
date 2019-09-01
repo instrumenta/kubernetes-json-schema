@@ -6,7 +6,10 @@
       "properties": {
         "partition": {
           "description": "Partition indicates the ordinal at which the StatefulSet should be partitioned.",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "format": "int32"
         }
       },

@@ -13,7 +13,10 @@
     },
     "readOnly": {
       "description": "Will force the ReadOnly setting in VolumeMounts. Default false.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     }
   },
   "$schema": "http://json-schema.org/schema#",

@@ -7,7 +7,10 @@
   "properties": {
     "readOnly": {
       "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretName": {
       "description": "the name of secret that contains Azure Storage Account Name and Key",

@@ -48,7 +48,10 @@
             "properties": {
               "annotations": {
                 "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -73,7 +76,10 @@
               },
               "deletionGracePeriodSeconds": {
                 "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "deletionTimestamp": {
@@ -107,7 +113,10 @@
               },
               "generation": {
                 "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "initializers": {
@@ -150,7 +159,10 @@
                       },
                       "code": {
                         "description": "Suggested HTTP return code for this status, 0 if not set.",
-                        "type": "integer",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
                         "format": "int32"
                       },
                       "details": {
@@ -213,7 +225,10 @@
                           },
                           "retryAfterSeconds": {
                             "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.",
-                            "type": "integer",
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
                             "format": "int32"
                           },
                           "uid": {
@@ -299,7 +314,10 @@
               },
               "labels": {
                 "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -342,11 +360,17 @@
                     },
                     "blockOwnerDeletion": {
                       "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "controller": {
                       "description": "If true, this reference points to the managing controller.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "kind": {
                       "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
@@ -398,7 +422,10 @@
             "properties": {
               "activeDeadlineSeconds": {
                 "description": "Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "affinity": {
@@ -676,7 +703,10 @@
                                     },
                                     "matchLabels": {
                                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                      "type": "object",
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
                                       "additionalProperties": {
                                         "type": [
                                           "string",
@@ -773,7 +803,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -875,7 +908,10 @@
                                     },
                                     "matchLabels": {
                                       "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                      "type": "object",
+                                      "type": [
+                                        "object",
+                                        "null"
+                                      ],
                                       "additionalProperties": {
                                         "type": [
                                           "string",
@@ -972,7 +1008,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -1012,7 +1051,10 @@
               },
               "automountServiceAccountToken": {
                 "description": "AutomountServiceAccountToken indicates whether a service account token should be automatically mounted.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "containers": {
                 "description": "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.",
@@ -1094,7 +1136,10 @@
                                   },
                                   "optional": {
                                     "description": "Specify whether the ConfigMap or it's key must be defined",
-                                    "type": "boolean"
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -1141,7 +1186,10 @@
                                         ]
                                       },
                                       {
-                                        "type": "integer"
+                                        "type": [
+                                          "number",
+                                          "null"
+                                        ]
                                       }
                                     ]
                                   },
@@ -1171,7 +1219,10 @@
                                   },
                                   "optional": {
                                     "description": "Specify whether the Secret or it's key must be defined",
-                                    "type": "boolean"
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -1206,7 +1257,10 @@
                               },
                               "optional": {
                                 "description": "Specify whether the ConfigMap must be defined",
-                                "type": "boolean"
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
                               }
                             },
                             "additionalProperties": false
@@ -1230,7 +1284,10 @@
                               },
                               "optional": {
                                 "description": "Specify whether the Secret must be defined",
-                                "type": "boolean"
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
                               }
                             },
                             "additionalProperties": false
@@ -1332,7 +1389,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 },
@@ -1368,7 +1428,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 }
@@ -1454,7 +1517,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 },
@@ -1490,7 +1556,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 }
@@ -1527,7 +1596,10 @@
                         },
                         "failureThreshold": {
                           "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "httpGet": {
@@ -1584,7 +1656,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -1600,17 +1675,26 @@
                         },
                         "initialDelaySeconds": {
                           "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "periodSeconds": {
                           "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "successThreshold": {
                           "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "tcpSocket": {
@@ -1635,7 +1719,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -1644,7 +1731,10 @@
                         },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         }
                       },
@@ -1680,7 +1770,10 @@
                           },
                           "hostPort": {
                             "description": "Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.",
-                            "type": "integer",
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
                             "format": "int32"
                           },
                           "name": {
@@ -1732,7 +1825,10 @@
                         },
                         "failureThreshold": {
                           "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "httpGet": {
@@ -1789,7 +1885,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -1805,17 +1904,26 @@
                         },
                         "initialDelaySeconds": {
                           "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "periodSeconds": {
                           "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "successThreshold": {
                           "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "tcpSocket": {
@@ -1840,7 +1948,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -1849,7 +1960,10 @@
                         },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         }
                       },
@@ -1860,7 +1974,10 @@
                       "properties": {
                         "limits": {
                           "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-                          "type": "object",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
                           "additionalProperties": {
                             "oneOf": [
                               {
@@ -1870,14 +1987,20 @@
                                 ]
                               },
                               {
-                                "type": "integer"
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
                               }
                             ]
                           }
                         },
                         "requests": {
                           "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-                          "type": "object",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
                           "additionalProperties": {
                             "oneOf": [
                               {
@@ -1887,7 +2010,10 @@
                                 ]
                               },
                               {
-                                "type": "integer"
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
                               }
                             ]
                           }
@@ -1900,7 +2026,10 @@
                       "properties": {
                         "allowPrivilegeEscalation": {
                           "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "capabilities": {
                           "description": "Adds and removes POSIX capabilities from running containers.",
@@ -1936,7 +2065,10 @@
                         },
                         "privileged": {
                           "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "procMount": {
                           "description": "procMount denotes the type of proc mount to use for the containers. The default is DefaultProcMount which uses the container runtime defaults for readonly paths and masked paths. This requires the ProcMountType feature flag to be enabled.",
@@ -1947,20 +2079,32 @@
                         },
                         "readOnlyRootFilesystem": {
                           "description": "Whether this container has a read-only root filesystem. Default is false.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "runAsGroup": {
                           "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int64"
                         },
                         "runAsNonRoot": {
                           "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "runAsUser": {
                           "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int64"
                         },
                         "seLinuxOptions": {
@@ -2002,11 +2146,17 @@
                     },
                     "stdin": {
                       "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "stdinOnce": {
                       "description": "Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "terminationMessagePath": {
                       "description": "Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated.",
@@ -2024,7 +2174,10 @@
                     },
                     "tty": {
                       "description": "Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "volumeDevices": {
                       "description": "volumeDevices is the list of block devices to be used by the container. This is a beta feature.",
@@ -2083,7 +2236,10 @@
                           },
                           "readOnly": {
                             "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.",
-                            "type": "boolean"
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
                           },
                           "subPath": {
                             "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root).",
@@ -2178,7 +2334,10 @@
               },
               "enableServiceLinks": {
                 "description": "EnableServiceLinks indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Optional: Defaults to true.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "hostAliases": {
                 "description": "HostAliases is an optional list of hosts and IPs that will be injected into the pod's hosts file if specified. This is only valid for non-hostNetwork pods.",
@@ -2217,15 +2376,24 @@
               },
               "hostIPC": {
                 "description": "Use the host's ipc namespace. Optional: Default to false.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "hostNetwork": {
                 "description": "Host networking requested for this pod. Use the host's network namespace. If this option is set, the ports that will be used must be specified. Default to false.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "hostPID": {
                 "description": "Use the host's pid namespace. Optional: Default to false.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "hostname": {
                 "description": "Specifies the hostname of the Pod If not specified, the pod's hostname will be set to a system-defined value.",
@@ -2339,7 +2507,10 @@
                                   },
                                   "optional": {
                                     "description": "Specify whether the ConfigMap or it's key must be defined",
-                                    "type": "boolean"
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -2386,7 +2557,10 @@
                                         ]
                                       },
                                       {
-                                        "type": "integer"
+                                        "type": [
+                                          "number",
+                                          "null"
+                                        ]
                                       }
                                     ]
                                   },
@@ -2416,7 +2590,10 @@
                                   },
                                   "optional": {
                                     "description": "Specify whether the Secret or it's key must be defined",
-                                    "type": "boolean"
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -2451,7 +2628,10 @@
                               },
                               "optional": {
                                 "description": "Specify whether the ConfigMap must be defined",
-                                "type": "boolean"
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
                               }
                             },
                             "additionalProperties": false
@@ -2475,7 +2655,10 @@
                               },
                               "optional": {
                                 "description": "Specify whether the Secret must be defined",
-                                "type": "boolean"
+                                "type": [
+                                  "boolean",
+                                  "null"
+                                ]
                               }
                             },
                             "additionalProperties": false
@@ -2577,7 +2760,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 },
@@ -2613,7 +2799,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 }
@@ -2699,7 +2888,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 },
@@ -2735,7 +2927,10 @@
                                       ]
                                     },
                                     {
-                                      "type": "integer"
+                                      "type": [
+                                        "integer",
+                                        "null"
+                                      ]
                                     }
                                   ]
                                 }
@@ -2772,7 +2967,10 @@
                         },
                         "failureThreshold": {
                           "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "httpGet": {
@@ -2829,7 +3027,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -2845,17 +3046,26 @@
                         },
                         "initialDelaySeconds": {
                           "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "periodSeconds": {
                           "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "successThreshold": {
                           "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "tcpSocket": {
@@ -2880,7 +3090,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -2889,7 +3102,10 @@
                         },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         }
                       },
@@ -2925,7 +3141,10 @@
                           },
                           "hostPort": {
                             "description": "Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.",
-                            "type": "integer",
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
                             "format": "int32"
                           },
                           "name": {
@@ -2977,7 +3196,10 @@
                         },
                         "failureThreshold": {
                           "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "httpGet": {
@@ -3034,7 +3256,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -3050,17 +3275,26 @@
                         },
                         "initialDelaySeconds": {
                           "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "periodSeconds": {
                           "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "successThreshold": {
                           "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "tcpSocket": {
@@ -3085,7 +3319,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -3094,7 +3331,10 @@
                         },
                         "timeoutSeconds": {
                           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         }
                       },
@@ -3105,7 +3345,10 @@
                       "properties": {
                         "limits": {
                           "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-                          "type": "object",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
                           "additionalProperties": {
                             "oneOf": [
                               {
@@ -3115,14 +3358,20 @@
                                 ]
                               },
                               {
-                                "type": "integer"
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
                               }
                             ]
                           }
                         },
                         "requests": {
                           "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-                          "type": "object",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
                           "additionalProperties": {
                             "oneOf": [
                               {
@@ -3132,7 +3381,10 @@
                                 ]
                               },
                               {
-                                "type": "integer"
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
                               }
                             ]
                           }
@@ -3145,7 +3397,10 @@
                       "properties": {
                         "allowPrivilegeEscalation": {
                           "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "capabilities": {
                           "description": "Adds and removes POSIX capabilities from running containers.",
@@ -3181,7 +3436,10 @@
                         },
                         "privileged": {
                           "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "procMount": {
                           "description": "procMount denotes the type of proc mount to use for the containers. The default is DefaultProcMount which uses the container runtime defaults for readonly paths and masked paths. This requires the ProcMountType feature flag to be enabled.",
@@ -3192,20 +3450,32 @@
                         },
                         "readOnlyRootFilesystem": {
                           "description": "Whether this container has a read-only root filesystem. Default is false.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "runAsGroup": {
                           "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int64"
                         },
                         "runAsNonRoot": {
                           "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "runAsUser": {
                           "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int64"
                         },
                         "seLinuxOptions": {
@@ -3247,11 +3517,17 @@
                     },
                     "stdin": {
                       "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "stdinOnce": {
                       "description": "Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "terminationMessagePath": {
                       "description": "Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated.",
@@ -3269,7 +3545,10 @@
                     },
                     "tty": {
                       "description": "Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "volumeDevices": {
                       "description": "volumeDevices is the list of block devices to be used by the container. This is a beta feature.",
@@ -3328,7 +3607,10 @@
                           },
                           "readOnly": {
                             "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.",
-                            "type": "boolean"
+                            "type": [
+                              "boolean",
+                              "null"
+                            ]
                           },
                           "subPath": {
                             "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root).",
@@ -3365,7 +3647,10 @@
               },
               "nodeSelector": {
                 "description": "NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -3375,7 +3660,10 @@
               },
               "priority": {
                 "description": "The priority value. Various system components use this field to find the priority of the pod. When Priority Admission Controller is enabled, it prevents users from setting this field. The admission controller populates this field from PriorityClassName. The higher the value, the higher the priority.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "priorityClassName": {
@@ -3431,21 +3719,33 @@
                 "properties": {
                   "fsGroup": {
                     "description": "A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:\n\n1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----\n\nIf unset, the Kubelet will not modify the ownership and permissions of any volume.",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int64"
                   },
                   "runAsGroup": {
                     "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int64"
                   },
                   "runAsNonRoot": {
                     "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   },
                   "runAsUser": {
                     "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int64"
                   },
                   "seLinuxOptions": {
@@ -3489,7 +3789,10 @@
                       "null"
                     ],
                     "items": {
-                      "type": "integer",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
                       "format": "int64"
                     }
                   },
@@ -3537,7 +3840,10 @@
               },
               "shareProcessNamespace": {
                 "description": "Share a single process namespace between all of the containers in a pod. When this is set containers will be able to view and signal processes from other containers in the same pod, and the first process in each container will not be assigned PID 1. HostPID and ShareProcessNamespace cannot both be set. Optional: Default to false. This field is beta-level and may be disabled with the PodShareProcessNamespace feature.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "subdomain": {
                 "description": "If specified, the fully qualified Pod hostname will be \"<hostname>.<subdomain>.<pod namespace>.svc.<cluster domain>\". If not specified, the pod will not have a domainname at all.",
@@ -3548,7 +3854,10 @@
               },
               "terminationGracePeriodSeconds": {
                 "description": "Optional duration in seconds the pod needs to terminate gracefully. May be decreased in delete request. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period will be used instead. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "tolerations": {
@@ -3583,7 +3892,10 @@
                     },
                     "tolerationSeconds": {
                       "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
-                      "type": "integer",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
                       "format": "int64"
                     },
                     "value": {
@@ -3624,12 +3936,18 @@
                         },
                         "partition": {
                           "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "readOnly": {
                           "description": "Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\". If omitted, the default is \"false\". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "volumeID": {
                           "description": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
@@ -3676,7 +3994,10 @@
                         },
                         "readOnly": {
                           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -3690,7 +4011,10 @@
                       "properties": {
                         "readOnly": {
                           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretName": {
                           "description": "the name of secret that contains Azure Storage Account Name and Key",
@@ -3728,7 +4052,10 @@
                         },
                         "readOnly": {
                           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretFile": {
                           "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
@@ -3775,7 +4102,10 @@
                         },
                         "readOnly": {
                           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretRef": {
                           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -3802,7 +4132,10 @@
                       "properties": {
                         "defaultMode": {
                           "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "items": {
@@ -3824,7 +4157,10 @@
                               },
                               "mode": {
                                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                "type": "integer",
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
                                 "format": "int32"
                               },
                               "path": {
@@ -3844,7 +4180,10 @@
                         },
                         "optional": {
                           "description": "Specify whether the ConfigMap or it's keys must be defined",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -3854,7 +4193,10 @@
                       "properties": {
                         "defaultMode": {
                           "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "items": {
@@ -3891,7 +4233,10 @@
                               },
                               "mode": {
                                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                "type": "integer",
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
                                 "format": "int32"
                               },
                               "path": {
@@ -3920,7 +4265,10 @@
                                         ]
                                       },
                                       {
-                                        "type": "integer"
+                                        "type": [
+                                          "number",
+                                          "null"
+                                        ]
                                       }
                                     ]
                                   },
@@ -3957,7 +4305,10 @@
                               ]
                             },
                             {
-                              "type": "integer"
+                              "type": [
+                                "number",
+                                "null"
+                              ]
                             }
                           ]
                         }
@@ -3976,12 +4327,18 @@
                         },
                         "lun": {
                           "description": "Optional: FC target lun number",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "readOnly": {
                           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "targetWWNs": {
                           "description": "Optional: FC target worldwide names (WWNs)",
@@ -4031,7 +4388,10 @@
                         },
                         "options": {
                           "description": "Optional: Extra command options if any.",
-                          "type": "object",
+                          "type": [
+                            "object",
+                            "null"
+                          ],
                           "additionalProperties": {
                             "type": [
                               "string",
@@ -4041,7 +4401,10 @@
                         },
                         "readOnly": {
                           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretRef": {
                           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -4094,7 +4457,10 @@
                         },
                         "partition": {
                           "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "pdName": {
@@ -4103,7 +4469,10 @@
                         },
                         "readOnly": {
                           "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -4152,7 +4521,10 @@
                         },
                         "readOnly": {
                           "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -4187,11 +4559,17 @@
                       "properties": {
                         "chapAuthDiscovery": {
                           "description": "whether support iSCSI Discovery CHAP authentication",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "chapAuthSession": {
                           "description": "whether support iSCSI Session CHAP authentication",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "fsType": {
                           "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi",
@@ -4238,7 +4616,10 @@
                         },
                         "readOnly": {
                           "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretRef": {
                           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -4277,7 +4658,10 @@
                         },
                         "readOnly": {
                           "description": "ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "server": {
                           "description": "Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
@@ -4298,7 +4682,10 @@
                         },
                         "readOnly": {
                           "description": "Will force the ReadOnly setting in VolumeMounts. Default false.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -4338,7 +4725,10 @@
                         },
                         "readOnly": {
                           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "volumeID": {
                           "description": "VolumeID uniquely identifies a Portworx volume",
@@ -4355,7 +4745,10 @@
                       "properties": {
                         "defaultMode": {
                           "description": "Mode bits to use on created files by default. Must be a value between 0 and 0777. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "sources": {
@@ -4386,7 +4779,10 @@
                                         },
                                         "mode": {
                                           "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                          "type": "integer",
+                                          "type": [
+                                            "integer",
+                                            "null"
+                                          ],
                                           "format": "int32"
                                         },
                                         "path": {
@@ -4406,7 +4802,10 @@
                                   },
                                   "optional": {
                                     "description": "Specify whether the ConfigMap or it's keys must be defined",
-                                    "type": "boolean"
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -4448,7 +4847,10 @@
                                         },
                                         "mode": {
                                           "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                          "type": "integer",
+                                          "type": [
+                                            "integer",
+                                            "null"
+                                          ],
                                           "format": "int32"
                                         },
                                         "path": {
@@ -4477,7 +4879,10 @@
                                                   ]
                                                 },
                                                 {
-                                                  "type": "integer"
+                                                  "type": [
+                                                    "number",
+                                                    "null"
+                                                  ]
                                                 }
                                               ]
                                             },
@@ -4517,7 +4922,10 @@
                                         },
                                         "mode": {
                                           "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                          "type": "integer",
+                                          "type": [
+                                            "integer",
+                                            "null"
+                                          ],
                                           "format": "int32"
                                         },
                                         "path": {
@@ -4537,7 +4945,10 @@
                                   },
                                   "optional": {
                                     "description": "Specify whether the Secret or its key must be defined",
-                                    "type": "boolean"
+                                    "type": [
+                                      "boolean",
+                                      "null"
+                                    ]
                                   }
                                 },
                                 "additionalProperties": false
@@ -4557,7 +4968,10 @@
                                   },
                                   "expirationSeconds": {
                                     "description": "ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.",
-                                    "type": "integer",
+                                    "type": [
+                                      "integer",
+                                      "null"
+                                    ],
                                     "format": "int64"
                                   },
                                   "path": {
@@ -4590,7 +5004,10 @@
                         },
                         "readOnly": {
                           "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "registry": {
                           "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes",
@@ -4654,7 +5071,10 @@
                         },
                         "readOnly": {
                           "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretRef": {
                           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -4707,7 +5127,10 @@
                         },
                         "readOnly": {
                           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretRef": {
                           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -4724,7 +5147,10 @@
                         },
                         "sslEnabled": {
                           "description": "Flag to enable/disable SSL communication with Gateway, default false",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "storageMode": {
                           "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.",
@@ -4759,7 +5185,10 @@
                       "properties": {
                         "defaultMode": {
                           "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int32"
                         },
                         "items": {
@@ -4781,7 +5210,10 @@
                               },
                               "mode": {
                                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                "type": "integer",
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
                                 "format": "int32"
                               },
                               "path": {
@@ -4794,7 +5226,10 @@
                         },
                         "optional": {
                           "description": "Specify whether the Secret or it's keys must be defined",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretName": {
                           "description": "Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret",
@@ -4818,7 +5253,10 @@
                         },
                         "readOnly": {
                           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         },
                         "secretRef": {
                           "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -5043,7 +5481,10 @@
                             },
                             "signal": {
                               "description": "Signal from the last termination of the container",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "startedAt": {
@@ -5152,7 +5593,10 @@
                             },
                             "signal": {
                               "description": "Signal from the last termination of the container",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "startedAt": {
@@ -5290,7 +5734,10 @@
                             },
                             "signal": {
                               "description": "Signal from the last termination of the container",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "startedAt": {
@@ -5399,7 +5846,10 @@
                             },
                             "signal": {
                               "description": "Signal from the last termination of the container",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "startedAt": {

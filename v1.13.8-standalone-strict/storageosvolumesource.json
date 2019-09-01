@@ -10,7 +10,10 @@
     },
     "readOnly": {
       "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",

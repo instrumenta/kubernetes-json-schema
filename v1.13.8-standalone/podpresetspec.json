@@ -46,7 +46,10 @@
                   },
                   "optional": {
                     "description": "Specify whether the ConfigMap or it's key must be defined",
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   }
                 }
               },
@@ -91,7 +94,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   },
@@ -120,7 +126,10 @@
                   },
                   "optional": {
                     "description": "Specify whether the Secret or it's key must be defined",
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   }
                 }
               }
@@ -150,7 +159,10 @@
               },
               "optional": {
                 "description": "Specify whether the ConfigMap must be defined",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             }
           },
@@ -173,7 +185,10 @@
               },
               "optional": {
                 "description": "Specify whether the Secret must be defined",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             }
           }
@@ -224,7 +239,10 @@
         },
         "matchLabels": {
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
             "type": [
               "string",
@@ -264,7 +282,10 @@
           },
           "readOnly": {
             "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.",
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "subPath": {
             "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root).",
@@ -303,12 +324,18 @@
               },
               "partition": {
                 "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "readOnly": {
                 "description": "Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\". If omitted, the default is \"false\". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "volumeID": {
                 "description": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
@@ -354,7 +381,10 @@
               },
               "readOnly": {
                 "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             }
           },
@@ -367,7 +397,10 @@
             "properties": {
               "readOnly": {
                 "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretName": {
                 "description": "the name of secret that contains Azure Storage Account Name and Key",
@@ -404,7 +437,10 @@
               },
               "readOnly": {
                 "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretFile": {
                 "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
@@ -449,7 +485,10 @@
               },
               "readOnly": {
                 "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretRef": {
                 "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -474,7 +513,10 @@
             "properties": {
               "defaultMode": {
                 "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "items": {
@@ -496,7 +538,10 @@
                     },
                     "mode": {
                       "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                      "type": "integer",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
                       "format": "int32"
                     },
                     "path": {
@@ -515,7 +560,10 @@
               },
               "optional": {
                 "description": "Specify whether the ConfigMap or it's keys must be defined",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             }
           },
@@ -524,7 +572,10 @@
             "properties": {
               "defaultMode": {
                 "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "items": {
@@ -560,7 +611,10 @@
                     },
                     "mode": {
                       "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                      "type": "integer",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
                       "format": "int32"
                     },
                     "path": {
@@ -589,7 +643,10 @@
                               ]
                             },
                             {
-                              "type": "integer"
+                              "type": [
+                                "number",
+                                "null"
+                              ]
                             }
                           ]
                         },
@@ -623,7 +680,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -641,12 +701,18 @@
               },
               "lun": {
                 "description": "Optional: FC target lun number",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "readOnly": {
                 "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "targetWWNs": {
                 "description": "Optional: FC target worldwide names (WWNs)",
@@ -695,7 +761,10 @@
               },
               "options": {
                 "description": "Optional: Extra command options if any.",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -705,7 +774,10 @@
               },
               "readOnly": {
                 "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretRef": {
                 "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -755,7 +827,10 @@
               },
               "partition": {
                 "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "pdName": {
@@ -764,7 +839,10 @@
               },
               "readOnly": {
                 "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             }
           },
@@ -811,7 +889,10 @@
               },
               "readOnly": {
                 "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             }
           },
@@ -844,11 +925,17 @@
             "properties": {
               "chapAuthDiscovery": {
                 "description": "whether support iSCSI Discovery CHAP authentication",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "chapAuthSession": {
                 "description": "whether support iSCSI Session CHAP authentication",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "fsType": {
                 "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi",
@@ -895,7 +982,10 @@
               },
               "readOnly": {
                 "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretRef": {
                 "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -932,7 +1022,10 @@
               },
               "readOnly": {
                 "description": "ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "server": {
                 "description": "Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
@@ -952,7 +1045,10 @@
               },
               "readOnly": {
                 "description": "Will force the ReadOnly setting in VolumeMounts. Default false.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             }
           },
@@ -990,7 +1086,10 @@
               },
               "readOnly": {
                 "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "volumeID": {
                 "description": "VolumeID uniquely identifies a Portworx volume",
@@ -1006,7 +1105,10 @@
             "properties": {
               "defaultMode": {
                 "description": "Mode bits to use on created files by default. Must be a value between 0 and 0777. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "sources": {
@@ -1037,7 +1139,10 @@
                               },
                               "mode": {
                                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                "type": "integer",
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
                                 "format": "int32"
                               },
                               "path": {
@@ -1056,7 +1161,10 @@
                         },
                         "optional": {
                           "description": "Specify whether the ConfigMap or it's keys must be defined",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         }
                       }
                     },
@@ -1096,7 +1204,10 @@
                               },
                               "mode": {
                                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                "type": "integer",
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
                                 "format": "int32"
                               },
                               "path": {
@@ -1125,7 +1236,10 @@
                                         ]
                                       },
                                       {
-                                        "type": "integer"
+                                        "type": [
+                                          "number",
+                                          "null"
+                                        ]
                                       }
                                     ]
                                   },
@@ -1162,7 +1276,10 @@
                               },
                               "mode": {
                                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                                "type": "integer",
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ],
                                 "format": "int32"
                               },
                               "path": {
@@ -1181,7 +1298,10 @@
                         },
                         "optional": {
                           "description": "Specify whether the Secret or its key must be defined",
-                          "type": "boolean"
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
                         }
                       }
                     },
@@ -1200,7 +1320,10 @@
                         },
                         "expirationSeconds": {
                           "description": "ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.",
-                          "type": "integer",
+                          "type": [
+                            "integer",
+                            "null"
+                          ],
                           "format": "int64"
                         },
                         "path": {
@@ -1230,7 +1353,10 @@
               },
               "readOnly": {
                 "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "registry": {
                 "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes",
@@ -1293,7 +1419,10 @@
               },
               "readOnly": {
                 "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretRef": {
                 "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -1344,7 +1473,10 @@
               },
               "readOnly": {
                 "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretRef": {
                 "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
@@ -1360,7 +1492,10 @@
               },
               "sslEnabled": {
                 "description": "Flag to enable/disable SSL communication with Gateway, default false",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "storageMode": {
                 "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.",
@@ -1394,7 +1529,10 @@
             "properties": {
               "defaultMode": {
                 "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "items": {
@@ -1416,7 +1554,10 @@
                     },
                     "mode": {
                       "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                      "type": "integer",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
                       "format": "int32"
                     },
                     "path": {
@@ -1428,7 +1569,10 @@
               },
               "optional": {
                 "description": "Specify whether the Secret or it's keys must be defined",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretName": {
                 "description": "Name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret",
@@ -1451,7 +1595,10 @@
               },
               "readOnly": {
                 "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               },
               "secretRef": {
                 "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",

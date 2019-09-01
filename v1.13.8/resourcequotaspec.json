@@ -3,7 +3,10 @@
   "properties": {
     "hard": {
       "description": "hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.13.8/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       }

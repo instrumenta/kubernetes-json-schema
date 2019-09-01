@@ -36,7 +36,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "integer",
+                      "null"
+                    ]
                   }
                 ]
               }
