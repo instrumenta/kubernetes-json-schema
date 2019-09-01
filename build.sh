@@ -11,12 +11,14 @@
 declare -a arr=(
     # Add here the version you want to re-generate
     master
+    v1.15.3
+    v1.14.6
     )
 
 # This list is used only list of already genrated schema definition
 # (or when we need to rebuild all definitions)
 declare -a arr2=(
-    master
+    # master
     # v1.15.x
     v1.15.2
     v1.15.1
