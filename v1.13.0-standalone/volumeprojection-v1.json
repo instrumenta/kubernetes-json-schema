@@ -23,7 +23,10 @@
               },
               "mode": {
                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "path": {
@@ -42,7 +45,10 @@
         },
         "optional": {
           "description": "Specify whether the ConfigMap or it's keys must be defined",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       }
     },
@@ -82,7 +88,10 @@
               },
               "mode": {
                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "path": {
@@ -111,7 +120,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   },
@@ -148,7 +160,10 @@
               },
               "mode": {
                 "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "path": {
@@ -167,7 +182,10 @@
         },
         "optional": {
           "description": "Specify whether the Secret or its key must be defined",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       }
     },
@@ -186,7 +204,10 @@
         },
         "expirationSeconds": {
           "description": "ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "format": "int64"
         },
         "path": {

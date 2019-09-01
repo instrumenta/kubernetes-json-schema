@@ -24,7 +24,10 @@
     },
     "count": {
       "description": "The number of times this event has occurred.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "eventTime": {

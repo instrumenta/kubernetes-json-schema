@@ -6,7 +6,10 @@
   "properties": {
     "Port": {
       "description": "Port number of the given endpoint.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     }
   },

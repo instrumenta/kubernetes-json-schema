@@ -28,7 +28,10 @@
         "properties": {
           "allowVolumeExpansion": {
             "description": "AllowVolumeExpansion shows whether the storage class allow volume expand",
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "allowedTopologies": {
             "description": "Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
@@ -97,7 +100,10 @@
             "properties": {
               "annotations": {
                 "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -122,7 +128,10 @@
               },
               "deletionGracePeriodSeconds": {
                 "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "deletionTimestamp": {
@@ -156,7 +165,10 @@
               },
               "generation": {
                 "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "initializers": {
@@ -198,7 +210,10 @@
                       },
                       "code": {
                         "description": "Suggested HTTP return code for this status, 0 if not set.",
-                        "type": "integer",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
                         "format": "int32"
                       },
                       "details": {
@@ -260,7 +275,10 @@
                           },
                           "retryAfterSeconds": {
                             "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.",
-                            "type": "integer",
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
                             "format": "int32"
                           },
                           "uid": {
@@ -342,7 +360,10 @@
               },
               "labels": {
                 "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -385,11 +406,17 @@
                     },
                     "blockOwnerDeletion": {
                       "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "controller": {
                       "description": "If true, this reference points to the managing controller.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "kind": {
                       "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
@@ -446,7 +473,10 @@
           },
           "parameters": {
             "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class.",
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": {
               "type": [
                 "string",

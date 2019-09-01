@@ -88,7 +88,10 @@
             },
             "signal": {
               "description": "Signal from the last termination of the container",
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32"
             },
             "startedAt": {
@@ -134,11 +137,17 @@
     },
     "ready": {
       "description": "Specifies whether the container has passed its readiness probe.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "restartCount": {
       "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "state": {
@@ -200,7 +209,10 @@
             },
             "signal": {
               "description": "Signal from the last termination of the container",
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32"
             },
             "startedAt": {

@@ -6,7 +6,10 @@
   "properties": {
     "replicas": {
       "description": "actual number of observed instances of the scaled object.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "selector": {
