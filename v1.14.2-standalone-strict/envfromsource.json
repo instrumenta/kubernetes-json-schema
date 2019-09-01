@@ -13,10 +13,16 @@
         },
         "optional": {
           "description": "Specify whether the ConfigMap must be defined",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "prefix": {
@@ -38,10 +44,16 @@
         },
         "optional": {
           "description": "Specify whether the Secret must be defined",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

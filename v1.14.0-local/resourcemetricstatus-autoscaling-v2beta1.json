@@ -4,7 +4,10 @@
     "currentAverageUtilization": {
       "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "currentAverageValue": {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity",

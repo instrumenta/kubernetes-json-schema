@@ -34,13 +34,19 @@
             },
             "optional": {
               "description": "Specify whether the ConfigMap or it's key must be defined",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           "required": [
             "key"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "fieldRef": {
@@ -61,7 +67,10 @@
           "required": [
             "fieldPath"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "resourceFieldRef": {
@@ -83,7 +92,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -95,7 +107,10 @@
           "required": [
             "resource"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "secretKeyRef": {
@@ -114,17 +129,26 @@
             },
             "optional": {
               "description": "Specify whether the Secret or it's key must be defined",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           "required": [
             "key"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

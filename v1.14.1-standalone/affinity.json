@@ -43,7 +43,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -81,7 +84,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -101,7 +107,10 @@
               "weight",
               "preference"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": [
             "array",
@@ -147,7 +156,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -185,7 +197,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -193,7 +208,10 @@
                     ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "type": "array"
             }
@@ -201,10 +219,16 @@
           "required": [
             "nodeSelectorTerms"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "podAffinity": {
       "description": "Pod affinity is a group of inter pod affinity scheduling rules.",
@@ -253,7 +277,10 @@
                             "key",
                             "operator"
                           ],
-                          "type": "object"
+                          "type": [
+                            "object",
+                            "null"
+                          ]
                         },
                         "type": [
                           "array",
@@ -268,10 +295,16 @@
                           ]
                         },
                         "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                        "type": "object"
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       }
                     },
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   },
                   "namespaces": {
                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -306,7 +339,10 @@
               "weight",
               "podAffinityTerm"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": [
             "array",
@@ -354,7 +390,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -369,10 +408,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "namespaces": {
                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -395,7 +440,10 @@
             "required": [
               "topologyKey"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": [
             "array",
@@ -403,7 +451,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "podAntiAffinity": {
       "description": "Pod anti affinity is a group of inter pod anti affinity scheduling rules.",
@@ -452,7 +503,10 @@
                             "key",
                             "operator"
                           ],
-                          "type": "object"
+                          "type": [
+                            "object",
+                            "null"
+                          ]
                         },
                         "type": [
                           "array",
@@ -467,10 +521,16 @@
                           ]
                         },
                         "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                        "type": "object"
+                        "type": [
+                          "object",
+                          "null"
+                        ]
                       }
                     },
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   },
                   "namespaces": {
                     "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -505,7 +565,10 @@
               "weight",
               "podAffinityTerm"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": [
             "array",
@@ -553,7 +616,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -568,10 +634,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "namespaces": {
                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -594,7 +666,10 @@
             "required": [
               "topologyKey"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": [
             "array",
@@ -602,7 +677,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object",

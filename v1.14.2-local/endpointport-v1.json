@@ -11,7 +11,10 @@
     "port": {
       "description": "The port number of the endpoint.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "protocol": {
       "description": "The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.",

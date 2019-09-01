@@ -9,7 +9,10 @@
         ]
       },
       "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "clusterName": {
       "description": "The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.",
@@ -25,7 +28,10 @@
     "deletionGracePeriodSeconds": {
       "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "deletionTimestamp": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -55,7 +61,10 @@
     "generation": {
       "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "initializers": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Initializers",
@@ -69,7 +78,10 @@
         ]
       },
       "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "managedFields": {
       "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.\n\nThis field is alpha and can be changed or removed without notice.",

@@ -77,13 +77,19 @@
                 ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           }
         },
         "required": [
           "ip"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -166,13 +172,19 @@
                 ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           }
         },
         "required": [
           "ip"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -207,7 +219,10 @@
         "required": [
           "port"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

@@ -44,7 +44,10 @@
     },
     "readOnly": {
       "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.2/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference",

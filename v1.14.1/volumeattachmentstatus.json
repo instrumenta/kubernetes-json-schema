@@ -7,7 +7,10 @@
     },
     "attached": {
       "description": "Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "attachmentMetadata": {
       "additionalProperties": {
@@ -17,7 +20,10 @@
         ]
       },
       "description": "Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "detachError": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.api.storage.v1beta1.VolumeError",

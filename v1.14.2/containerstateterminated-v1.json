@@ -11,7 +11,10 @@
     "exitCode": {
       "description": "Exit status from the last termination of the container",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "finishedAt": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -34,7 +37,10 @@
     "signal": {
       "description": "Signal from the last termination of the container",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "startedAt": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",

@@ -56,7 +56,10 @@
               "groupVersion",
               "version"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "serverAddressByClientCIDRs": {
@@ -77,7 +80,10 @@
                 "clientCIDR",
                 "serverAddress"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             },
             "type": [
@@ -103,7 +109,10 @@
                 "groupVersion",
                 "version"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             },
             "type": "array"
@@ -113,7 +122,10 @@
           "name",
           "versions"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "x-kubernetes-group-version-kind": [
           {
             "group": "",

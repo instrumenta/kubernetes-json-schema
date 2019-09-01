@@ -40,7 +40,10 @@
                     "key",
                     "operator"
                   ],
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "type": [
                   "array",
@@ -78,7 +81,10 @@
                     "key",
                     "operator"
                   ],
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "type": [
                   "array",
@@ -86,7 +92,10 @@
                 ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": "array"
         }
@@ -94,7 +103,10 @@
       "required": [
         "nodeSelectorTerms"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object",

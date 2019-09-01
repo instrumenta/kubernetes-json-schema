@@ -12,12 +12,18 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "type": {
       "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is OnDelete.",

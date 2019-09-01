@@ -6,7 +6,10 @@
         "$ref": "https://kubernetesjsonschema.dev/v1.14.2/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       },
       "description": "hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "scopeSelector": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.2/_definitions.json#/definitions/io.k8s.api.core.v1.ScopeSelector",

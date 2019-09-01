@@ -32,7 +32,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
                       }
                     ]
                   }
@@ -54,7 +57,10 @@
             "required": [
               "backend"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": "array"
         }
@@ -62,7 +68,10 @@
       "required": [
         "paths"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object",

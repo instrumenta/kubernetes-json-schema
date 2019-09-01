@@ -10,7 +10,10 @@
     },
     "fields": {
       "description": "Fields stores a set of fields in a data structure like a Trie. To understand how this is used, see: https://github.com/kubernetes-sigs/structured-merge-diff",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "manager": {
       "description": "Manager is an identifier of the workflow managing these fields.",

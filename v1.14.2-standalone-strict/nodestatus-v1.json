@@ -19,7 +19,10 @@
           "type",
           "address"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -39,12 +42,18 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       },
       "description": "Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "capacity": {
       "additionalProperties": {
@@ -56,12 +65,18 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       },
       "description": "Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "conditions": {
       "description": "Conditions is an array of current observed node conditions. More info: https://kubernetes.io/docs/concepts/nodes/node/#condition",
@@ -111,7 +126,10 @@
           "type",
           "status"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -162,11 +180,17 @@
                 "name",
                 "kubeletConfigKey"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "assigned": {
@@ -207,11 +231,17 @@
                 "name",
                 "kubeletConfigKey"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "error": {
@@ -259,15 +289,24 @@
                 "name",
                 "kubeletConfigKey"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "daemonEndpoints": {
@@ -285,11 +324,17 @@
           "required": [
             "Port"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "images": {
@@ -310,13 +355,19 @@
           "sizeBytes": {
             "description": "The size of the image in bytes.",
             "format": "int64",
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
           }
         },
         "required": [
           "names"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -380,7 +431,10 @@
         "operatingSystem",
         "architecture"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "phase": {
@@ -408,7 +462,10 @@
           "name",
           "devicePath"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [

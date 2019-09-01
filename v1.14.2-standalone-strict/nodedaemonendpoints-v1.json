@@ -13,7 +13,10 @@
       "required": [
         "Port"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

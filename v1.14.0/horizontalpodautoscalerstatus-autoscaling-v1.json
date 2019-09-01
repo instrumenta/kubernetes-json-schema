@@ -4,17 +4,26 @@
     "currentCPUUtilizationPercentage": {
       "description": "current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "currentReplicas": {
       "description": "current number of replicas of pods managed by this autoscaler.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "desiredReplicas": {
       "description": "desired number of replicas of pods managed by this autoscaler.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "lastScaleTime": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -23,7 +32,10 @@
     "observedGeneration": {
       "description": "most recent generation observed by this autoscaler.",
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "required": [

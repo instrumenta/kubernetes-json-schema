@@ -18,7 +18,10 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "httpGet": {
@@ -49,7 +52,10 @@
               "name",
               "value"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "type": [
@@ -73,7 +79,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           ]
         },
@@ -88,7 +97,10 @@
       "required": [
         "port"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "tcpSocket": {
@@ -110,7 +122,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           ]
         }
@@ -118,7 +133,10 @@
       "required": [
         "port"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

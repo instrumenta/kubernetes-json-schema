@@ -40,7 +40,10 @@
                     "key",
                     "operator"
                   ],
-                  "type": "object",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
                   "additionalProperties": false
                 },
                 "type": [
@@ -79,7 +82,10 @@
                     "key",
                     "operator"
                   ],
-                  "type": "object",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
                   "additionalProperties": false
                 },
                 "type": [
@@ -101,7 +107,10 @@
           "weight",
           "preference"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -148,7 +157,10 @@
                     "key",
                     "operator"
                   ],
-                  "type": "object",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
                   "additionalProperties": false
                 },
                 "type": [
@@ -187,7 +199,10 @@
                     "key",
                     "operator"
                   ],
-                  "type": "object",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
                   "additionalProperties": false
                 },
                 "type": [
@@ -196,7 +211,10 @@
                 ]
               }
             },
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "type": "array"
@@ -205,7 +223,10 @@
       "required": [
         "nodeSelectorTerms"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

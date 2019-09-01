@@ -10,7 +10,10 @@
     },
     "readOnly": {
       "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference",

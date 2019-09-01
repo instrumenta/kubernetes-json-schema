@@ -45,7 +45,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -60,10 +63,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "namespaces": {
                 "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -98,7 +107,10 @@
           "weight",
           "podAffinityTerm"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -146,7 +158,10 @@
                     "key",
                     "operator"
                   ],
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 },
                 "type": [
                   "array",
@@ -161,10 +176,16 @@
                   ]
                 },
                 "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               }
             },
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "namespaces": {
             "description": "namespaces specifies which namespaces the labelSelector applies to (matches against); null or empty list means \"this pod's namespace\"",
@@ -187,7 +208,10 @@
         "required": [
           "topologyKey"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

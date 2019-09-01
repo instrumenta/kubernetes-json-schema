@@ -4,7 +4,10 @@
     "maxReplicas": {
       "description": "maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "metrics": {
       "description": "metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond.",
@@ -54,7 +57,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "additionalProperties": false
                     },
                     "type": [
@@ -70,10 +76,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "targetAverageValue": {
@@ -85,7 +97,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -98,7 +113,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -106,7 +124,10 @@
             "required": [
               "metricName"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "object": {
@@ -121,7 +142,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -165,7 +189,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "additionalProperties": false
                     },
                     "type": [
@@ -181,10 +208,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "target": {
@@ -222,7 +255,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -232,7 +268,10 @@
               "metricName",
               "targetValue"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "pods": {
@@ -278,7 +317,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "additionalProperties": false
                     },
                     "type": [
@@ -294,10 +336,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "targetAverageValue": {
@@ -309,7 +357,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -318,7 +369,10 @@
               "metricName",
               "targetAverageValue"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "resource": {
@@ -331,7 +385,10 @@
               "targetAverageUtilization": {
                 "description": "targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
                 "format": "int32",
-                "type": "integer"
+                "type": [
+                  "integer",
+                  "null"
+                ]
               },
               "targetAverageValue": {
                 "oneOf": [
@@ -342,7 +399,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -350,7 +410,10 @@
             "required": [
               "name"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "type": {
@@ -361,7 +424,10 @@
         "required": [
           "type"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -372,7 +438,10 @@
     "minReplicas": {
       "description": "minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It defaults to 1 pod.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "scaleTargetRef": {
       "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
@@ -397,7 +466,10 @@
         "kind",
         "name"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

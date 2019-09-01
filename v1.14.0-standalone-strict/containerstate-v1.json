@@ -13,7 +13,10 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "terminated": {
@@ -56,7 +59,10 @@
         "signal": {
           "description": "Signal from the last termination of the container",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "startedAt": {
           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -70,7 +76,10 @@
       "required": [
         "exitCode"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "waiting": {
@@ -91,7 +100,10 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

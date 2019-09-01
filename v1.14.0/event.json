@@ -18,7 +18,10 @@
     "deprecatedCount": {
       "description": "Deprecated field assuring backward compatibility with core.v1 Event type",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "deprecatedFirstTimestamp": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.0/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",

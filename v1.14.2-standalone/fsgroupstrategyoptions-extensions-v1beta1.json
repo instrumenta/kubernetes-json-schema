@@ -21,7 +21,10 @@
           "min",
           "max"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

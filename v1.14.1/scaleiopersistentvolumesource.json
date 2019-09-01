@@ -24,7 +24,10 @@
     },
     "readOnly": {
       "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference",
@@ -32,7 +35,10 @@
     },
     "sslEnabled": {
       "description": "Flag to enable/disable SSL communication with Gateway, default false",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "storageMode": {
       "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.",

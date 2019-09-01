@@ -34,13 +34,19 @@
             },
             "optional": {
               "description": "Specify whether the ConfigMap or it's key must be defined",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           "required": [
             "key"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "fieldRef": {
           "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
@@ -60,7 +66,10 @@
           "required": [
             "fieldPath"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "resourceFieldRef": {
           "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
@@ -81,7 +90,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -93,7 +105,10 @@
           "required": [
             "resource"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "secretKeyRef": {
           "description": "SecretKeySelector selects a key of a Secret.",
@@ -111,16 +126,25 @@
             },
             "optional": {
               "description": "Specify whether the Secret or it's key must be defined",
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           "required": [
             "key"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "required": [

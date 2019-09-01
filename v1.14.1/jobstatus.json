@@ -4,7 +4,10 @@
     "active": {
       "description": "The number of actively running pods.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "completionTime": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -25,7 +28,10 @@
     "failed": {
       "description": "The number of pods which reached phase Failed.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "startTime": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time",
@@ -34,7 +40,10 @@
     "succeeded": {
       "description": "The number of pods which reached phase Succeeded.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "type": "object",

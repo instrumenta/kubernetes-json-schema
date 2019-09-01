@@ -37,7 +37,10 @@
               ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "terminated": {
           "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -79,7 +82,10 @@
             "signal": {
               "description": "Signal from the last termination of the container",
               "format": "int32",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "startedAt": {
               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -93,7 +99,10 @@
           "required": [
             "exitCode"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "waiting": {
           "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -113,10 +122,16 @@
               ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "name": {
       "description": "This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.",
@@ -127,12 +142,18 @@
     },
     "ready": {
       "description": "Specifies whether the container has passed its readiness probe.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "restartCount": {
       "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "state": {
       "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.",
@@ -149,7 +170,10 @@
               ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "terminated": {
           "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -191,7 +215,10 @@
             "signal": {
               "description": "Signal from the last termination of the container",
               "format": "int32",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "startedAt": {
               "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -205,7 +232,10 @@
           "required": [
             "exitCode"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "waiting": {
           "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -225,10 +255,16 @@
               ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "required": [

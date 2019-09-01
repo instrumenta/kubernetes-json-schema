@@ -39,11 +39,17 @@
             "name",
             "kubeletConfigKey"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "assigned": {
@@ -84,11 +90,17 @@
             "name",
             "kubeletConfigKey"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "error": {
@@ -136,11 +148,17 @@
             "name",
             "kubeletConfigKey"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

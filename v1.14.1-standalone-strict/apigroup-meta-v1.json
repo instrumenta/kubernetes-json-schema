@@ -44,7 +44,10 @@
         "groupVersion",
         "version"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "serverAddressByClientCIDRs": {
@@ -65,7 +68,10 @@
           "clientCIDR",
           "serverAddress"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -91,7 +97,10 @@
           "groupVersion",
           "version"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [

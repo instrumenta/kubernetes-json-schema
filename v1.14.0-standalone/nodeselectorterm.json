@@ -32,7 +32,10 @@
           "key",
           "operator"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -70,7 +73,10 @@
           "key",
           "operator"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

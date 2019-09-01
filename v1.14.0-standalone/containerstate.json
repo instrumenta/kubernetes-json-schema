@@ -13,7 +13,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "terminated": {
       "description": "ContainerStateTerminated is a terminated state of a container.",
@@ -55,7 +58,10 @@
         "signal": {
           "description": "Signal from the last termination of the container",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "startedAt": {
           "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
@@ -69,7 +75,10 @@
       "required": [
         "exitCode"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "waiting": {
       "description": "ContainerStateWaiting is a waiting state of a container.",
@@ -89,7 +98,10 @@
           ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object",

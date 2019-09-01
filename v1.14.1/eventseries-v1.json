@@ -4,7 +4,10 @@
     "count": {
       "description": "Number of occurrences in this series up to the last heartbeat time",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "lastObservedTime": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime",

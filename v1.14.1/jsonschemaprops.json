@@ -44,13 +44,19 @@
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "dependencies": {
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "description": {
       "type": [
@@ -71,10 +77,16 @@
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
     },
     "exclusiveMaximum": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "exclusiveMinimum": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "externalDocs": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
@@ -96,45 +108,75 @@
     },
     "maxItems": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "maxLength": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "maxProperties": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "maximum": {
       "format": "double",
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "minItems": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "minLength": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "minProperties": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "minimum": {
       "format": "double",
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "multipleOf": {
       "format": "double",
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "not": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
     },
     "nullable": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "oneOf": {
       "items": {
@@ -155,13 +197,19 @@
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "properties": {
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.14.1/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "required": {
       "items": {
@@ -185,7 +233,10 @@
       ]
     },
     "uniqueItems": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     }
   },
   "type": "object",
