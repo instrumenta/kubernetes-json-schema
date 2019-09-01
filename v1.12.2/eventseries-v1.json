@@ -3,7 +3,10 @@
   "properties": {
     "count": {
       "description": "Number of occurrences in this series up to the last heartbeat time",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "lastObservedTime": {

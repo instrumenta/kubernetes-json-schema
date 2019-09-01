@@ -6,7 +6,10 @@
   "properties": {
     "averageUtilization": {
       "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "averageValue": {
@@ -18,7 +21,10 @@
           ]
         },
         {
-          "type": "integer"
+          "type": [
+            "number",
+            "null"
+          ]
         }
       ]
     },
@@ -38,7 +44,10 @@
           ]
         },
         {
-          "type": "integer"
+          "type": [
+            "number",
+            "null"
+          ]
         }
       ]
     }

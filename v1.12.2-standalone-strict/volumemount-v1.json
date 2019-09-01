@@ -28,7 +28,10 @@
     },
     "readOnly": {
       "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "subPath": {
       "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root).",

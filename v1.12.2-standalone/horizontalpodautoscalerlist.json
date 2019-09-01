@@ -42,7 +42,10 @@
             "properties": {
               "annotations": {
                 "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -67,7 +70,10 @@
               },
               "deletionGracePeriodSeconds": {
                 "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "deletionTimestamp": {
@@ -101,7 +107,10 @@
               },
               "generation": {
                 "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               },
               "initializers": {
@@ -140,7 +149,10 @@
                       },
                       "code": {
                         "description": "Suggested HTTP return code for this status, 0 if not set.",
-                        "type": "integer",
+                        "type": [
+                          "integer",
+                          "null"
+                        ],
                         "format": "int32"
                       },
                       "details": {
@@ -202,7 +214,10 @@
                           },
                           "retryAfterSeconds": {
                             "description": "If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.",
-                            "type": "integer",
+                            "type": [
+                              "integer",
+                              "null"
+                            ],
                             "format": "int32"
                           },
                           "uid": {
@@ -284,7 +299,10 @@
               },
               "labels": {
                 "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": {
                   "type": [
                     "string",
@@ -327,11 +345,17 @@
                     },
                     "blockOwnerDeletion": {
                       "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "controller": {
                       "description": "If true, this reference points to the managing controller.",
-                      "type": "boolean"
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "kind": {
                       "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
@@ -458,7 +482,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -478,7 +505,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -490,7 +520,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -507,7 +540,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -601,7 +637,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -621,7 +660,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -633,7 +675,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -650,7 +695,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -719,7 +767,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -739,7 +790,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -751,7 +805,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -768,7 +825,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -795,7 +855,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -807,7 +870,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -824,7 +890,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -841,7 +910,10 @@
               },
               "minReplicas": {
                 "description": "minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It defaults to 1 pod.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int32"
               },
               "scaleTargetRef": {
@@ -945,7 +1017,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -957,7 +1032,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -970,7 +1048,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -1030,7 +1111,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -1057,7 +1141,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -1069,7 +1156,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -1082,7 +1172,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -1166,7 +1259,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -1192,7 +1288,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -1204,7 +1303,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -1217,7 +1319,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -1277,7 +1382,10 @@
                                 },
                                 "matchLabels": {
                                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                                  "type": "object",
+                                  "type": [
+                                    "object",
+                                    "null"
+                                  ],
                                   "additionalProperties": {
                                     "type": [
                                       "string",
@@ -1303,7 +1411,10 @@
                           "properties": {
                             "averageUtilization": {
                               "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                              "type": "integer",
+                              "type": [
+                                "integer",
+                                "null"
+                              ],
                               "format": "int32"
                             },
                             "averageValue": {
@@ -1315,7 +1426,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             },
@@ -1328,7 +1442,10 @@
                                   ]
                                 },
                                 {
-                                  "type": "integer"
+                                  "type": [
+                                    "number",
+                                    "null"
+                                  ]
                                 }
                               ]
                             }
@@ -1367,7 +1484,10 @@
               },
               "observedGeneration": {
                 "description": "observedGeneration is the most recent generation observed by this autoscaler.",
-                "type": "integer",
+                "type": [
+                  "integer",
+                  "null"
+                ],
                 "format": "int64"
               }
             }
