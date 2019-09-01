@@ -159,6 +159,13 @@
         "null"
       ]
     },
+    "started": {
+      "description": "Specifies whether the container has passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. Is always true when no startupProbe is defined.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
     "state": {
       "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.",
       "properties": {

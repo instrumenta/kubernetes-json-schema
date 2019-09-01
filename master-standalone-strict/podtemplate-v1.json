@@ -2,7 +2,7 @@
   "description": "PodTemplate describes a template for creating copies of a predefined pod.",
   "properties": {
     "apiVersion": {
-      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
       "type": [
         "string",
         "null"
@@ -12,7 +12,7 @@
       ]
     },
     "kind": {
-      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
       "type": [
         "string",
         "null"
@@ -83,7 +83,7 @@
           "x-kubernetes-patch-strategy": "merge"
         },
         "generateName": {
-          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency",
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
           "type": [
             "string",
             "null"
@@ -122,8 +122,15 @@
                   "null"
                 ]
               },
-              "fields": {
-                "description": "Fields stores a set of fields in a data structure like a Trie.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+              "fieldsType": {
+                "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fieldsV1": {
+                "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
                 "type": [
                   "object",
                   "null"
@@ -201,7 +208,7 @@
                 ]
               },
               "kind": {
-                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
                 "type": "string"
               },
               "name": {
@@ -233,7 +240,7 @@
           "x-kubernetes-patch-strategy": "merge"
         },
         "resourceVersion": {
-          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
           "type": [
             "string",
             "null"
@@ -325,7 +332,7 @@
               "x-kubernetes-patch-strategy": "merge"
             },
             "generateName": {
-              "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency",
+              "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
               "type": [
                 "string",
                 "null"
@@ -364,8 +371,15 @@
                       "null"
                     ]
                   },
-                  "fields": {
-                    "description": "Fields stores a set of fields in a data structure like a Trie.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                  "fieldsType": {
+                    "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "fieldsV1": {
+                    "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
                     "type": [
                       "object",
                       "null"
@@ -443,7 +457,7 @@
                     ]
                   },
                   "kind": {
-                    "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+                    "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
                     "type": "string"
                   },
                   "name": {
@@ -475,7 +489,7 @@
               "x-kubernetes-patch-strategy": "merge"
             },
             "resourceVersion": {
-              "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-control-and-consistency",
+              "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
               "type": [
                 "string",
                 "null"
@@ -1958,7 +1972,7 @@
                         ]
                       },
                       "successThreshold": {
-                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -2211,7 +2225,7 @@
                         ]
                       },
                       "successThreshold": {
-                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -2491,6 +2505,194 @@
                     ],
                     "additionalProperties": false
                   },
+                  "startupProbe": {
+                    "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
+                    "properties": {
+                      "exec": {
+                        "description": "ExecAction describes a \"run in container\" action.",
+                        "properties": {
+                          "command": {
+                            "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "type": [
+                              "array",
+                              "null"
+                            ]
+                          }
+                        },
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "failureThreshold": {
+                        "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "httpGet": {
+                        "description": "HTTPGetAction describes an action based on HTTP Get requests.",
+                        "properties": {
+                          "host": {
+                            "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "httpHeaders": {
+                            "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+                            "items": {
+                              "description": "HTTPHeader describes a custom header to be used in HTTP probes",
+                              "properties": {
+                                "name": {
+                                  "description": "The header field name",
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "description": "The header field value",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ],
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "type": [
+                              "array",
+                              "null"
+                            ]
+                          },
+                          "path": {
+                            "description": "Path to access on the HTTP server.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "port": {
+                            "oneOf": [
+                              {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              }
+                            ]
+                          },
+                          "scheme": {
+                            "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "port"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "initialDelaySeconds": {
+                        "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "periodSeconds": {
+                        "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "successThreshold": {
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "tcpSocket": {
+                        "description": "TCPSocketAction describes an action based on opening a socket",
+                        "properties": {
+                          "host": {
+                            "description": "Optional: Host name to connect to, defaults to the pod IP.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "port": {
+                            "oneOf": [
+                              {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "port"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "timeoutSeconds": {
+                        "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": false
+                  },
                   "stdin": {
                     "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
                     "type": [
@@ -2718,9 +2920,9 @@
               ]
             },
             "ephemeralContainers": {
-              "description": "EphemeralContainers is the list of ephemeral containers that run in this pod. Ephemeral containers are added to an existing pod as a result of a user-initiated action such as troubleshooting. This list is read-only in the pod spec. It may not be specified in a create or modified in an update of a pod or pod template. To add an ephemeral container use the pod's ephemeralcontainers subresource, which allows update using the EphemeralContainers kind. This field is alpha-level and is only honored by servers that enable the EphemeralContainers feature.",
+              "description": "List of ephemeral containers run in this pod. Ephemeral containers may be run in an existing pod to perform user-initiated actions such as debugging. This list cannot be specified when creating a pod, and it cannot be modified by updating the pod spec. In order to add an ephemeral container to an existing pod, use the pod's ephemeralcontainers subresource. This field is alpha-level and is only honored by servers that enable the EphemeralContainers feature.",
               "items": {
-                "description": "An EphemeralContainer is a special type of container which doesn't come with any resource or scheduling guarantees but can be added to a pod that has already been created. They are intended for user-initiated activities such as troubleshooting a running pod. Ephemeral containers will not be restarted when they exit, and they will be killed if the pod is removed or restarted. If an ephemeral container causes a pod to exceed its resource allocation, the pod may be evicted. Ephemeral containers are added via a pod's ephemeralcontainers subresource and will appear in the pod spec once added. No fields in EphemeralContainer may be changed once added. This is an alpha feature enabled by the EphemeralContainers feature flag.",
+                "description": "An EphemeralContainer is a container that may be added temporarily to an existing pod for user-initiated activities such as debugging. Ephemeral containers have no resource or scheduling guarantees, and they will not be restarted when they exit or when a pod is removed or restarted. If an ephemeral container causes a pod to exceed its resource allocation, the pod may be evicted. Ephemeral containers may not be added by directly updating the pod spec. They must be added via the pod's ephemeralcontainers subresource, and they will appear in the pod spec once added. This is an alpha feature enabled by the EphemeralContainers feature flag.",
                 "properties": {
                   "args": {
                     "description": "Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
@@ -3439,7 +3641,7 @@
                         ]
                       },
                       "successThreshold": {
-                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -3685,7 +3887,7 @@
                         ]
                       },
                       "successThreshold": {
-                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -3965,6 +4167,194 @@
                     ],
                     "additionalProperties": false
                   },
+                  "startupProbe": {
+                    "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
+                    "properties": {
+                      "exec": {
+                        "description": "ExecAction describes a \"run in container\" action.",
+                        "properties": {
+                          "command": {
+                            "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "type": [
+                              "array",
+                              "null"
+                            ]
+                          }
+                        },
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "failureThreshold": {
+                        "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "httpGet": {
+                        "description": "HTTPGetAction describes an action based on HTTP Get requests.",
+                        "properties": {
+                          "host": {
+                            "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "httpHeaders": {
+                            "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+                            "items": {
+                              "description": "HTTPHeader describes a custom header to be used in HTTP probes",
+                              "properties": {
+                                "name": {
+                                  "description": "The header field name",
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "description": "The header field value",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ],
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "type": [
+                              "array",
+                              "null"
+                            ]
+                          },
+                          "path": {
+                            "description": "Path to access on the HTTP server.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "port": {
+                            "oneOf": [
+                              {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              }
+                            ]
+                          },
+                          "scheme": {
+                            "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "port"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "initialDelaySeconds": {
+                        "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "periodSeconds": {
+                        "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "successThreshold": {
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "tcpSocket": {
+                        "description": "TCPSocketAction describes an action based on opening a socket",
+                        "properties": {
+                          "host": {
+                            "description": "Optional: Host name to connect to, defaults to the pod IP.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "port": {
+                            "oneOf": [
+                              {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "port"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "timeoutSeconds": {
+                        "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": false
+                  },
                   "stdin": {
                     "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
                     "type": [
@@ -4215,7 +4605,7 @@
               "x-kubernetes-patch-strategy": "merge"
             },
             "initContainers": {
-              "description": "List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, or Liveness probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+              "description": "List of initialization containers belonging to the pod. Init containers are executed in order prior to containers being started. If any init container fails, the pod is considered to have failed and is handled according to its restartPolicy. The name for an init container or normal container must be unique among all containers. Init containers may not have Lifecycle actions, Readiness probes, Liveness probes, or Startup probes. The resourceRequirements of an init container are taken into account during scheduling by finding the highest request/limit for each resource type, and then using the max of of that value or the sum of the normal containers. Limits are applied to init containers in a similar fashion. Init containers cannot currently be added or removed. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
               "items": {
                 "description": "A single application container that you want to run within a pod.",
                 "properties": {
@@ -4936,7 +5326,7 @@
                         ]
                       },
                       "successThreshold": {
-                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -5189,7 +5579,7 @@
                         ]
                       },
                       "successThreshold": {
-                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -5461,6 +5851,194 @@
                           "null"
                         ],
                         "additionalProperties": false
+                      }
+                    },
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "startupProbe": {
+                    "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
+                    "properties": {
+                      "exec": {
+                        "description": "ExecAction describes a \"run in container\" action.",
+                        "properties": {
+                          "command": {
+                            "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                            "items": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "type": [
+                              "array",
+                              "null"
+                            ]
+                          }
+                        },
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "failureThreshold": {
+                        "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "httpGet": {
+                        "description": "HTTPGetAction describes an action based on HTTP Get requests.",
+                        "properties": {
+                          "host": {
+                            "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "httpHeaders": {
+                            "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+                            "items": {
+                              "description": "HTTPHeader describes a custom header to be used in HTTP probes",
+                              "properties": {
+                                "name": {
+                                  "description": "The header field name",
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "description": "The header field value",
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "value"
+                              ],
+                              "type": [
+                                "object",
+                                "null"
+                              ],
+                              "additionalProperties": false
+                            },
+                            "type": [
+                              "array",
+                              "null"
+                            ]
+                          },
+                          "path": {
+                            "description": "Path to access on the HTTP server.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "port": {
+                            "oneOf": [
+                              {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              }
+                            ]
+                          },
+                          "scheme": {
+                            "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "port"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "initialDelaySeconds": {
+                        "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "periodSeconds": {
+                        "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "successThreshold": {
+                        "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "tcpSocket": {
+                        "description": "TCPSocketAction describes an action based on opening a socket",
+                        "properties": {
+                          "host": {
+                            "description": "Optional: Host name to connect to, defaults to the pod IP.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "port": {
+                            "oneOf": [
+                              {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "port"
+                        ],
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "timeoutSeconds": {
+                        "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+                        "format": "int32",
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
                       }
                     },
                     "type": [

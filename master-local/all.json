@@ -877,6 +877,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Namespace"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceList"
     },
     {
@@ -1187,6 +1190,21 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1alpha1.Endpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1alpha1.EndpointConditions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1alpha1.EndpointPort"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1alpha1.EndpointSlice"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.discovery.v1alpha1.EndpointSliceList"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.events.v1beta1.Event"
@@ -1873,7 +1891,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions"
     },
     {
-      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Fields"
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery"

@@ -5,7 +5,7 @@
       "description": "CustomResourceDefinitionNames indicates the names to serve this CustomResourceDefinition",
       "properties": {
         "categories": {
-          "description": "Categories is a list of grouped resources custom resources belong to (e.g. 'all')",
+          "description": "categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like `kubectl get all`.",
           "items": {
             "type": [
               "string",
@@ -18,22 +18,22 @@
           ]
         },
         "kind": {
-          "description": "Kind is the serialized kind of the resource.  It is normally CamelCase and singular.",
+          "description": "kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the `kind` attribute in API calls.",
           "type": "string"
         },
         "listKind": {
-          "description": "ListKind is the serialized kind of the list for this resource.  Defaults to <kind>List.",
+          "description": "listKind is the serialized kind of the list for this resource. Defaults to \"`kind`List\".",
           "type": [
             "string",
             "null"
           ]
         },
         "plural": {
-          "description": "Plural is the plural name of the resource to serve.  It must match the name of the CustomResourceDefinition-registration too: plural.group and it must be all lowercase.",
+          "description": "plural is the plural name of the resource to serve. The custom resources are served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all lowercase.",
           "type": "string"
         },
         "shortNames": {
-          "description": "ShortNames are short names for the resource.  It must be all lowercase.",
+          "description": "shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase.",
           "items": {
             "type": [
               "string",
@@ -46,7 +46,7 @@
           ]
         },
         "singular": {
-          "description": "Singular is the singular name of the resource.  It must be all lowercase  Defaults to lowercased <kind>",
+          "description": "singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased `kind`.",
           "type": [
             "string",
             "null"
@@ -63,7 +63,7 @@
       ]
     },
     "conditions": {
-      "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition",
+      "description": "conditions indicate state for particular aspects of a CustomResourceDefinition",
       "items": {
         "description": "CustomResourceDefinitionCondition contains details for the current condition of this pod.",
         "properties": {
@@ -76,25 +76,25 @@
             ]
           },
           "message": {
-            "description": "Human-readable message indicating details about last transition.",
+            "description": "message is a human-readable message indicating details about last transition.",
             "type": [
               "string",
               "null"
             ]
           },
           "reason": {
-            "description": "Unique, one-word, CamelCase reason for the condition's last transition.",
+            "description": "reason is a unique, one-word, CamelCase reason for the condition's last transition.",
             "type": [
               "string",
               "null"
             ]
           },
           "status": {
-            "description": "Status is the status of the condition. Can be True, False, Unknown.",
+            "description": "status is the status of the condition. Can be True, False, Unknown.",
             "type": "string"
           },
           "type": {
-            "description": "Type is the type of the condition. Types include Established, NamesAccepted and Terminating.",
+            "description": "type is the type of the condition. Types include Established, NamesAccepted and Terminating.",
             "type": "string"
           }
         },
@@ -113,7 +113,7 @@
       ]
     },
     "storedVersions": {
-      "description": "StoredVersions are all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so the migration controller can first finish a migration to another version (i.e. that no old objects are left in the storage), and then remove the rest of the versions from this list. None of the versions in this list can be removed from the spec.Versions field.",
+      "description": "storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.",
       "items": {
         "type": [
           "string",
@@ -127,7 +127,6 @@
     }
   },
   "required": [
-    "conditions",
     "acceptedNames",
     "storedVersions"
   ],

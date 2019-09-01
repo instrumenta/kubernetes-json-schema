@@ -8,9 +8,16 @@
         "null"
       ]
     },
-    "fields": {
-      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Fields",
-      "description": "Fields identifies a set of fields."
+    "fieldsType": {
+      "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fieldsV1": {
+      "$ref": "https://kubernetesjsonschema.dev/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1",
+      "description": "FieldsV1 holds the first JSON version format as described in the \"FieldsV1\" type."
     },
     "manager": {
       "description": "Manager is an identifier of the workflow managing these fields.",

@@ -24,7 +24,7 @@
       ]
     },
     "ephemeralContainerStatuses": {
-      "description": "Status for any ephemeral containers that running in this pod. This field is alpha-level and is only honored by servers that enable the EphemeralContainers feature.",
+      "description": "Status for any ephemeral containers that have run in this pod. This field is alpha-level and is only populated by servers that enable the EphemeralContainers feature.",
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStatus"
       },

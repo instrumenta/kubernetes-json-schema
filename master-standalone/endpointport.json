@@ -1,15 +1,15 @@
 {
-  "description": "EndpointPort is a tuple that describes a single port.",
+  "description": "EndpointPort represents a Port used by an EndpointSlice",
   "properties": {
     "name": {
-      "description": "The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.",
+      "description": "The name of this port. All ports in an EndpointSlice must have a unique name. If the EndpointSlice is dervied from a Kubernetes service, this corresponds to the Service.ports[].name. Name must either be an empty string or pass IANA_SVC_NAME validation: * must be no more than 15 characters long * may contain only [-a-z0-9] * must contain at least one letter [a-z] * it must not start or end with a hyphen, nor contain adjacent hyphens Default is empty string.",
       "type": [
         "string",
         "null"
       ]
     },
     "port": {
-      "description": "The port number of the endpoint.",
+      "description": "The port number of the endpoint. If this is not specified, ports are not restricted and must be interpreted in the context of the specific consumer.",
       "format": "int32",
       "type": [
         "integer",
@@ -24,9 +24,6 @@
       ]
     }
   },
-  "required": [
-    "port"
-  ],
   "type": "object",
   "$schema": "http://json-schema.org/schema#"
 }

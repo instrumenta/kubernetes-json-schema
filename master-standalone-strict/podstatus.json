@@ -210,6 +210,13 @@
             "format": "int32",
             "type": "integer"
           },
+          "started": {
+            "description": "Specifies whether the container has passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. Is always true when no startupProbe is defined.",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
           "state": {
             "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.",
             "properties": {
@@ -345,7 +352,7 @@
       ]
     },
     "ephemeralContainerStatuses": {
-      "description": "Status for any ephemeral containers that running in this pod. This field is alpha-level and is only honored by servers that enable the EphemeralContainers feature.",
+      "description": "Status for any ephemeral containers that have run in this pod. This field is alpha-level and is only populated by servers that enable the EphemeralContainers feature.",
       "items": {
         "description": "ContainerStatus contains details for the current status of this container.",
         "properties": {
@@ -491,6 +498,13 @@
             "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.",
             "format": "int32",
             "type": "integer"
+          },
+          "started": {
+            "description": "Specifies whether the container has passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. Is always true when no startupProbe is defined.",
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "state": {
             "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.",
@@ -780,6 +794,13 @@
             "description": "The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.",
             "format": "int32",
             "type": "integer"
+          },
+          "started": {
+            "description": "Specifies whether the container has passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. Is always true when no startupProbe is defined.",
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "state": {
             "description": "ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.",

@@ -2,7 +2,7 @@
   "description": "CustomResourceDefinitionVersion describes a version for CRD.",
   "properties": {
     "additionalPrinterColumns": {
-      "description": "AdditionalPrinterColumns are additional columns shown e.g. in kubectl next to the name. Defaults to a created-at column.",
+      "description": "additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If no columns are specified, a single column displaying the age of the custom resource is used.",
       "items": {
         "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceColumnDefinition"
       },
@@ -12,7 +12,7 @@
       ]
     },
     "name": {
-      "description": "Name is the version name, e.g. \u201cv1\u201d, \u201cv2beta1\u201d, etc.",
+      "description": "name is the version name, e.g. \u201cv1\u201d, \u201cv2beta1\u201d, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true.",
       "type": [
         "string",
         "null"
@@ -20,17 +20,17 @@
     },
     "schema": {
       "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceValidation",
-      "description": "Schema describes the schema for CustomResource used in validation, pruning, and defaulting."
+      "description": "schema describes the schema used for validation, pruning, and defaulting of this version of the custom resource."
     },
     "served": {
-      "description": "Served is a flag enabling/disabling this version from being served via REST APIs",
+      "description": "served is a flag enabling/disabling this version from being served via REST APIs",
       "type": [
         "boolean",
         "null"
       ]
     },
     "storage": {
-      "description": "Storage flags the version as storage version. There must be exactly one flagged as storage version.",
+      "description": "storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.",
       "type": [
         "boolean",
         "null"
@@ -38,7 +38,7 @@
     },
     "subresources": {
       "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.CustomResourceSubresources",
-      "description": "Subresources describes the subresources for CustomResource"
+      "description": "subresources specify what subresources this version of the defined custom resource have."
     }
   },
   "required": [
