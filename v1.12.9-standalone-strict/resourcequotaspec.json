@@ -3,7 +3,10 @@
   "properties": {
     "hard": {
       "description": "hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "oneOf": [
           {
@@ -13,7 +16,10 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       }

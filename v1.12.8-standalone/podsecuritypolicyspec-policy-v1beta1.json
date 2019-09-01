@@ -9,7 +9,10 @@
   "properties": {
     "allowPrivilegeEscalation": {
       "description": "allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "allowedCapabilities": {
       "description": "allowedCapabilities is a list of capabilities that can be requested to add to the container. Capabilities in this field may be added at the pod author's discretion. You must not list a capability in both allowedCapabilities and requiredDropCapabilities.",
@@ -61,7 +64,10 @@
           },
           "readOnly": {
             "description": "when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.",
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           }
         }
       }
@@ -107,7 +113,10 @@
     },
     "defaultAllowPrivilegeEscalation": {
       "description": "defaultAllowPrivilegeEscalation controls the default setting for whether a process can gain more privileges than its parent process.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "forbiddenSysctls": {
       "description": "forbiddenSysctls is a list of explicitly forbidden sysctls, defaults to none. Each entry is either a plain sysctl name or ends in \"*\" in which case it is considered as a prefix of forbidden sysctls. Single * means all sysctls are forbidden.\n\nExamples: e.g. \"foo/*\" forbids \"foo/bar\", \"foo/baz\", etc. e.g. \"foo.*\" forbids \"foo.bar\", \"foo.baz\", etc.",
@@ -162,15 +171,24 @@
     },
     "hostIPC": {
       "description": "hostIPC determines if the policy allows the use of HostIPC in the pod spec.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "hostNetwork": {
       "description": "hostNetwork determines if the policy allows the use of HostNetwork in the pod spec.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "hostPID": {
       "description": "hostPID determines if the policy allows the use of HostPID in the pod spec.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "hostPorts": {
       "description": "hostPorts determines which host port ranges are allowed to be exposed.",
@@ -200,11 +218,17 @@
     },
     "privileged": {
       "description": "privileged determines if a pod can request to be run as privileged.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "readOnlyRootFilesystem": {
       "description": "readOnlyRootFilesystem when set to true will force containers to run with a read only root file system.  If the container specifically requests to run with a non-read only root file system the PSP should deny the pod. If set to false the container may run with a read only root file system if it wishes but it will not be forced to.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "requiredDropCapabilities": {
       "description": "requiredDropCapabilities are the capabilities that will be dropped from the container.  These are required to be dropped and cannot be added.",

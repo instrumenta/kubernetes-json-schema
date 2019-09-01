@@ -7,12 +7,18 @@
   "properties": {
     "max": {
       "description": "max is the end of the range, inclusive.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "min": {
       "description": "min is the start of the range, inclusive.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     }
   },

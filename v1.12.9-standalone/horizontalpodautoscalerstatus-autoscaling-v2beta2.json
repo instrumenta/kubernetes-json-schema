@@ -76,7 +76,10 @@
                 "properties": {
                   "averageUtilization": {
                     "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "averageValue": {
@@ -88,7 +91,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   },
@@ -101,7 +107,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   }
@@ -161,7 +170,10 @@
                       },
                       "matchLabels": {
                         "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                        "type": "object",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
                         "additionalProperties": {
                           "type": [
                             "string",
@@ -188,7 +200,10 @@
                 "properties": {
                   "averageUtilization": {
                     "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "averageValue": {
@@ -200,7 +215,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   },
@@ -213,7 +231,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   }
@@ -297,7 +318,10 @@
                       },
                       "matchLabels": {
                         "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                        "type": "object",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
                         "additionalProperties": {
                           "type": [
                             "string",
@@ -323,7 +347,10 @@
                 "properties": {
                   "averageUtilization": {
                     "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "averageValue": {
@@ -335,7 +362,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   },
@@ -348,7 +378,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   }
@@ -408,7 +441,10 @@
                       },
                       "matchLabels": {
                         "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                        "type": "object",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
                         "additionalProperties": {
                           "type": [
                             "string",
@@ -434,7 +470,10 @@
                 "properties": {
                   "averageUtilization": {
                     "description": "currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "averageValue": {
@@ -446,7 +485,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   },
@@ -459,7 +501,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   }
@@ -480,12 +525,18 @@
     },
     "currentReplicas": {
       "description": "currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "desiredReplicas": {
       "description": "desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "lastScaleTime": {
@@ -498,7 +549,10 @@
     },
     "observedGeneration": {
       "description": "observedGeneration is the most recent generation observed by this autoscaler.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int64"
     }
   },

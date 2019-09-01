@@ -44,7 +44,10 @@
     },
     "namespaced": {
       "description": "namespaced indicates if a resource is namespaced or not.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "shortNames": {
       "description": "shortNames is a list of suggested short names of the resource.",

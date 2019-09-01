@@ -29,7 +29,10 @@
     },
     "readOnly": {
       "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -53,7 +56,10 @@
     },
     "sslEnabled": {
       "description": "Flag to enable/disable SSL communication with Gateway, default false",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "storageMode": {
       "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.",

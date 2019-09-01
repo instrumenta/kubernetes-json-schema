@@ -35,7 +35,10 @@
     },
     "updatedAnnotations": {
       "description": "The annotations to be updated to a deployment",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "string",

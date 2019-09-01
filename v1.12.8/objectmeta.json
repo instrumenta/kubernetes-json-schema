@@ -3,7 +3,10 @@
   "properties": {
     "annotations": {
       "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "string",
@@ -24,7 +27,10 @@
     },
     "deletionGracePeriodSeconds": {
       "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int64"
     },
     "deletionTimestamp": {
@@ -54,7 +60,10 @@
     },
     "generation": {
       "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int64"
     },
     "initializers": {
@@ -63,7 +72,10 @@
     },
     "labels": {
       "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "string",

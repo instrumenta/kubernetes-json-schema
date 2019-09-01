@@ -16,7 +16,10 @@
     },
     "capacity": {
       "description": "Represents the actual resources of the underlying volume.",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "oneOf": [
           {
@@ -26,7 +29,10 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       }

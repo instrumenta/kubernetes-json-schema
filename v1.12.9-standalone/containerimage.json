@@ -19,7 +19,10 @@
     },
     "sizeBytes": {
       "description": "The size of the image in bytes.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int64"
     }
   },
