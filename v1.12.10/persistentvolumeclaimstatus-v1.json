@@ -16,7 +16,10 @@
     },
     "capacity": {
       "description": "Represents the actual resources of the underlying volume.",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.12.10/_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       }

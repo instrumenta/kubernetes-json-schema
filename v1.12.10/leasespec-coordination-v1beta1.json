@@ -14,12 +14,18 @@
     },
     "leaseDurationSeconds": {
       "description": "leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "leaseTransitions": {
       "description": "leaseTransitions is the number of transitions of a lease between holders.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "renewTime": {

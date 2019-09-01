@@ -7,12 +7,18 @@
   "properties": {
     "maxReplicas": {
       "description": "upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "minReplicas": {
       "description": "lower limit for the number of pods that can be set by the autoscaler, default 1.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "scaleTargetRef": {
@@ -21,7 +27,10 @@
     },
     "targetCPUUtilizationPercentage": {
       "description": "target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     }
   },

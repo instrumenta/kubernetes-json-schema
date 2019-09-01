@@ -20,7 +20,10 @@
     },
     "options": {
       "description": "Optional: Extra command options if any.",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "string",
@@ -30,7 +33,10 @@
     },
     "readOnly": {
       "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",

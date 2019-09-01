@@ -3,7 +3,10 @@
   "properties": {
     "active": {
       "description": "The number of actively running pods.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "completionTime": {
@@ -72,7 +75,10 @@
     },
     "failed": {
       "description": "The number of pods which reached phase Failed.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "startTime": {
@@ -85,7 +91,10 @@
     },
     "succeeded": {
       "description": "The number of pods which reached phase Succeeded.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     }
   },

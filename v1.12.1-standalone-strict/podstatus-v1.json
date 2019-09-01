@@ -148,7 +148,10 @@
                   },
                   "signal": {
                     "description": "Signal from the last termination of the container",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "startedAt": {
@@ -257,7 +260,10 @@
                   },
                   "signal": {
                     "description": "Signal from the last termination of the container",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "startedAt": {
@@ -395,7 +401,10 @@
                   },
                   "signal": {
                     "description": "Signal from the last termination of the container",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "startedAt": {
@@ -504,7 +513,10 @@
                   },
                   "signal": {
                     "description": "Signal from the last termination of the container",
-                    "type": "integer",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
                     "format": "int32"
                   },
                   "startedAt": {

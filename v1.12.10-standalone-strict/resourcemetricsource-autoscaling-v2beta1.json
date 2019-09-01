@@ -13,7 +13,10 @@
     },
     "targetAverageUtilization": {
       "description": "targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "targetAverageValue": {
@@ -25,7 +28,10 @@
           ]
         },
         {
-          "type": "integer"
+          "type": [
+            "number",
+            "null"
+          ]
         }
       ]
     }
