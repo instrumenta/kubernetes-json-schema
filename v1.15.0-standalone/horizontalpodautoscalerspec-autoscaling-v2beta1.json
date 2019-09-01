@@ -4,7 +4,10 @@
     "maxReplicas": {
       "description": "maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "metrics": {
       "description": "metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond.",
@@ -54,7 +57,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -69,10 +75,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "targetAverageValue": {
                 "oneOf": [
@@ -83,7 +95,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -96,7 +111,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -104,7 +122,10 @@
             "required": [
               "metricName"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "object": {
             "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
@@ -118,7 +139,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               },
@@ -162,7 +186,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -177,10 +204,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "target": {
                 "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
@@ -216,7 +249,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -226,7 +262,10 @@
               "metricName",
               "targetValue"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "pods": {
             "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
@@ -271,7 +310,10 @@
                         "key",
                         "operator"
                       ],
-                      "type": "object"
+                      "type": [
+                        "object",
+                        "null"
+                      ]
                     },
                     "type": [
                       "array",
@@ -286,10 +328,16 @@
                       ]
                     },
                     "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   }
                 },
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "targetAverageValue": {
                 "oneOf": [
@@ -300,7 +348,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -309,7 +360,10 @@
               "metricName",
               "targetAverageValue"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "resource": {
             "description": "ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.",
@@ -321,7 +375,10 @@
               "targetAverageUtilization": {
                 "description": "targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
                 "format": "int32",
-                "type": "integer"
+                "type": [
+                  "integer",
+                  "null"
+                ]
               },
               "targetAverageValue": {
                 "oneOf": [
@@ -332,7 +389,10 @@
                     ]
                   },
                   {
-                    "type": "integer"
+                    "type": [
+                      "number",
+                      "null"
+                    ]
                   }
                 ]
               }
@@ -340,7 +400,10 @@
             "required": [
               "name"
             ],
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
           },
           "type": {
             "description": "type is the type of metric source.  It should be one of \"Object\", \"Pods\" or \"Resource\", each mapping to a matching field in the object.",
@@ -350,7 +413,10 @@
         "required": [
           "type"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -360,7 +426,10 @@
     "minReplicas": {
       "description": "minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down. It defaults to 1 pod.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "scaleTargetRef": {
       "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
@@ -385,7 +454,10 @@
         "kind",
         "name"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "required": [

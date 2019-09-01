@@ -44,7 +44,10 @@
                   "key",
                   "operator"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "type": [
                 "array",
@@ -59,10 +62,16 @@
                 ]
               },
               "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "targetAverageValue": {
           "oneOf": [
@@ -73,7 +82,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "number",
+                "null"
+              ]
             }
           ]
         },
@@ -86,7 +98,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "number",
+                "null"
+              ]
             }
           ]
         }
@@ -94,7 +109,10 @@
       "required": [
         "metricName"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "object": {
       "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
@@ -108,7 +126,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "number",
+                "null"
+              ]
             }
           ]
         },
@@ -152,7 +173,10 @@
                   "key",
                   "operator"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "type": [
                 "array",
@@ -167,10 +191,16 @@
                 ]
               },
               "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "target": {
           "description": "CrossVersionObjectReference contains enough information to let you identify the referred resource.",
@@ -206,7 +236,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "number",
+                "null"
+              ]
             }
           ]
         }
@@ -216,7 +249,10 @@
         "metricName",
         "targetValue"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "pods": {
       "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
@@ -261,7 +297,10 @@
                   "key",
                   "operator"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "type": [
                 "array",
@@ -276,10 +315,16 @@
                 ]
               },
               "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "targetAverageValue": {
           "oneOf": [
@@ -290,7 +335,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "number",
+                "null"
+              ]
             }
           ]
         }
@@ -299,7 +347,10 @@
         "metricName",
         "targetAverageValue"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "resource": {
       "description": "ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.",
@@ -311,7 +362,10 @@
         "targetAverageUtilization": {
           "description": "targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "targetAverageValue": {
           "oneOf": [
@@ -322,7 +376,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "number",
+                "null"
+              ]
             }
           ]
         }
@@ -330,7 +387,10 @@
       "required": [
         "name"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "type": {
       "description": "type is the type of metric source.  It should be one of \"Object\", \"Pods\" or \"Resource\", each mapping to a matching field in the object.",

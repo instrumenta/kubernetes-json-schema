@@ -42,7 +42,10 @@
         "required": [
           "type"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

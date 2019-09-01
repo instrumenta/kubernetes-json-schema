@@ -4,7 +4,10 @@
     "replicas": {
       "description": "desired number of instances for the scaled object.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "type": "object",

@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "apps/v1beta2"
       ]
     },
     "data": {
@@ -17,6 +20,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ControllerRevision"
       ]
     },
     "metadata": {
@@ -26,7 +32,10 @@
     "revision": {
       "description": "Revision indicates the revision of the state represented by Data.",
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "required": [

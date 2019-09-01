@@ -25,6 +25,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "ComponentStatus"
       ]
     },
     "metadata": {

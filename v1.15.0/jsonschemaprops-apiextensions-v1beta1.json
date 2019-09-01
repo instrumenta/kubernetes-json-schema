@@ -45,13 +45,19 @@
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "dependencies": {
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaPropsOrStringArray"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "description": {
       "type": [
@@ -72,10 +78,16 @@
       "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSON"
     },
     "exclusiveMaximum": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "exclusiveMinimum": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "externalDocs": {
       "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.ExternalDocumentation"
@@ -97,45 +109,75 @@
     },
     "maxItems": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "maxLength": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "maxProperties": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "maximum": {
       "format": "double",
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "minItems": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "minLength": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "minProperties": {
       "format": "int64",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "minimum": {
       "format": "double",
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "multipleOf": {
       "format": "double",
-      "type": "number"
+      "type": [
+        "number",
+        "null"
+      ]
     },
     "not": {
       "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
     },
     "nullable": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "oneOf": {
       "items": {
@@ -156,13 +198,19 @@
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "properties": {
       "additionalProperties": {
         "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps"
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "required": {
       "items": {
@@ -186,19 +234,31 @@
       ]
     },
     "uniqueItems": {
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "x-kubernetes-embedded-resource": {
       "description": "x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "x-kubernetes-int-or-string": {
       "description": "x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:\n\n1) anyOf:\n   - type: integer\n   - type: string\n2) allOf:\n   - anyOf:\n     - type: integer\n     - type: string\n   - ... zero or more",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "x-kubernetes-preserve-unknown-fields": {
       "description": "x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     }
   },
   "type": "object",

@@ -24,11 +24,17 @@
     },
     "served": {
       "description": "Served is a flag enabling/disabling this version from being served via REST APIs",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "storage": {
       "description": "Storage flags the version as storage version. There must be exactly one flagged as storage version.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "subresources": {
       "$ref": "https://kubernetesjsonschema.dev/v1.15.0/_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1beta1.CustomResourceSubresources",

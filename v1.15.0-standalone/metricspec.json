@@ -47,7 +47,10 @@
                       "key",
                       "operator"
                     ],
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   },
                   "type": [
                     "array",
@@ -62,10 +65,16 @@
                     ]
                   },
                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
           "required": [
@@ -79,7 +88,10 @@
             "averageUtilization": {
               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
               "format": "int32",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "averageValue": {
               "oneOf": [
@@ -90,7 +102,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -107,7 +122,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -122,7 +140,10 @@
         "metric",
         "target"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "object": {
       "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
@@ -195,7 +216,10 @@
                       "key",
                       "operator"
                     ],
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   },
                   "type": [
                     "array",
@@ -210,10 +234,16 @@
                     ]
                   },
                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
           "required": [
@@ -227,7 +257,10 @@
             "averageUtilization": {
               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
               "format": "int32",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "averageValue": {
               "oneOf": [
@@ -238,7 +271,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -255,7 +291,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -271,7 +310,10 @@
         "target",
         "metric"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "pods": {
       "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
@@ -319,7 +361,10 @@
                       "key",
                       "operator"
                     ],
-                    "type": "object"
+                    "type": [
+                      "object",
+                      "null"
+                    ]
                   },
                   "type": [
                     "array",
@@ -334,10 +379,16 @@
                     ]
                   },
                   "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-                  "type": "object"
+                  "type": [
+                    "object",
+                    "null"
+                  ]
                 }
               },
-              "type": "object"
+              "type": [
+                "object",
+                "null"
+              ]
             }
           },
           "required": [
@@ -351,7 +402,10 @@
             "averageUtilization": {
               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
               "format": "int32",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "averageValue": {
               "oneOf": [
@@ -362,7 +416,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -379,7 +436,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -394,7 +454,10 @@
         "metric",
         "target"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "resource": {
       "description": "ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.  Only one \"target\" type should be set.",
@@ -409,7 +472,10 @@
             "averageUtilization": {
               "description": "averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
               "format": "int32",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "averageValue": {
               "oneOf": [
@@ -420,7 +486,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -437,7 +506,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -452,7 +524,10 @@
         "name",
         "target"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "type": {
       "description": "type is the type of metric source.  It should be one of \"Object\", \"Pods\" or \"Resource\", each mapping to a matching field in the object.",

@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "apps/v1beta2"
       ]
     },
     "kind": {
@@ -13,6 +16,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "DaemonSet"
       ]
     },
     "metadata": {

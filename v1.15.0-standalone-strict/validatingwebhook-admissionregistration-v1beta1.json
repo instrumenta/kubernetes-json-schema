@@ -46,14 +46,20 @@
             "port": {
               "description": "If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
               "format": "int32",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           },
           "required": [
             "namespace",
             "name"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "url": {
@@ -64,7 +70,10 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "failurePolicy": {
@@ -124,7 +133,10 @@
               "key",
               "operator"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "type": [
@@ -140,10 +152,16 @@
             ]
           },
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "objectSelector": {
@@ -182,7 +200,10 @@
               "key",
               "operator"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "type": [
@@ -198,10 +219,16 @@
             ]
           },
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "rules": {
@@ -269,7 +296,10 @@
             ]
           }
         },
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -287,7 +317,10 @@
     "timeoutSeconds": {
       "description": "TimeoutSeconds specifies the timeout for this webhook. After the timeout passes, the webhook call will be ignored or the API call will fail based on the failure policy. The timeout value must be between 1 and 30 seconds. Default to 30 seconds.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "required": [

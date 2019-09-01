@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "batch/v1beta1"
       ]
     },
     "items": {
@@ -23,6 +26,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "CronJobList"
       ]
     },
     "metadata": {

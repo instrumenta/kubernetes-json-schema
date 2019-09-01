@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "apps/v1beta1"
       ]
     },
     "kind": {
@@ -13,6 +16,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Deployment"
       ]
     },
     "metadata": {

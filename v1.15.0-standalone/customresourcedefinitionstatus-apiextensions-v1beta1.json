@@ -57,7 +57,10 @@
         "plural",
         "kind"
       ],
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "conditions": {
       "description": "Conditions indicate state for particular aspects of a CustomResourceDefinition",
@@ -99,7 +102,10 @@
           "type",
           "status"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

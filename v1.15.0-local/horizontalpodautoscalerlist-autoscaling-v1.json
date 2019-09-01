@@ -6,6 +6,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "autoscaling/v1"
       ]
     },
     "items": {
@@ -23,6 +26,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "HorizontalPodAutoscalerList"
       ]
     },
     "metadata": {
