@@ -44,7 +44,10 @@
       "properties": {
         "limits": {
           "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
             "oneOf": [
               {
@@ -54,14 +57,20 @@
                 ]
               },
               {
-                "type": "integer"
+                "type": [
+                  "number",
+                  "null"
+                ]
               }
             ]
           }
         },
         "requests": {
           "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
             "oneOf": [
               {
@@ -71,7 +80,10 @@
                 ]
               },
               {
-                "type": "integer"
+                "type": [
+                  "number",
+                  "null"
+                ]
               }
             ]
           }
@@ -124,7 +136,10 @@
         },
         "matchLabels": {
           "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \"key\", the operator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
             "type": [
               "string",

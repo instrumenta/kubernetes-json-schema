@@ -33,11 +33,17 @@
     },
     "readOnly": {
       "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "volumeAttributes": {
       "description": "Attributes of the volume to publish.",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "string",

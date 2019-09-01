@@ -13,7 +13,10 @@
     },
     "exitCode": {
       "description": "Exit status from the last termination of the container",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "finishedAt": {
@@ -40,7 +43,10 @@
     },
     "signal": {
       "description": "Signal from the last termination of the container",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "startedAt": {

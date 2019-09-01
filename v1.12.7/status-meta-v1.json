@@ -13,7 +13,10 @@
     },
     "code": {
       "description": "Suggested HTTP return code for this status, 0 if not set.",
-      "type": "integer",
+      "type": [
+        "integer",
+        "null"
+      ],
       "format": "int32"
     },
     "details": {

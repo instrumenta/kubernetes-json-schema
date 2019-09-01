@@ -3,7 +3,10 @@
   "properties": {
     "authenticated": {
       "description": "Authenticated indicates that the token was associated with a known user.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "error": {
       "description": "Error indicates that the token couldn't be checked",

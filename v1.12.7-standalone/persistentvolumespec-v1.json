@@ -29,12 +29,18 @@
         },
         "partition": {
           "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty).",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "format": "int32"
         },
         "readOnly": {
           "description": "Specify \"true\" to force and set the ReadOnly property in VolumeMounts to \"true\". If omitted, the default is \"false\". More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "volumeID": {
           "description": "Unique ID of the persistent disk resource in AWS (Amazon EBS volume). More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
@@ -80,7 +86,10 @@
         },
         "readOnly": {
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       }
     },
@@ -93,7 +102,10 @@
       "properties": {
         "readOnly": {
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretName": {
           "description": "the name of secret that contains Azure Storage Account Name and Key",
@@ -114,7 +126,10 @@
     },
     "capacity": {
       "description": "A description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "oneOf": [
           {
@@ -124,7 +139,10 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       }
@@ -154,7 +172,10 @@
         },
         "readOnly": {
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretFile": {
           "description": "Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://releases.k8s.io/HEAD/examples/volumes/cephfs/README.md#how-to-use-it",
@@ -206,7 +227,10 @@
         },
         "readOnly": {
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://releases.k8s.io/HEAD/examples/mysql-cinder-pd/README.md",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretRef": {
           "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -364,11 +388,17 @@
         },
         "readOnly": {
           "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "volumeAttributes": {
           "description": "Attributes of the volume to publish.",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
             "type": [
               "string",
@@ -394,12 +424,18 @@
         },
         "lun": {
           "description": "Optional: FC target lun number",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "format": "int32"
         },
         "readOnly": {
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "targetWWNs": {
           "description": "Optional: FC target worldwide names (WWNs)",
@@ -448,7 +484,10 @@
         },
         "options": {
           "description": "Optional: Extra command options if any.",
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": {
             "type": [
               "string",
@@ -458,7 +497,10 @@
         },
         "readOnly": {
           "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretRef": {
           "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -515,7 +557,10 @@
         },
         "partition": {
           "description": "The partition in the volume that you want to mount. If omitted, the default is to mount by volume name. Examples: For volume /dev/sda1, you specify the partition as \"1\". Similarly, the volume partition for /dev/sda is \"0\" (or you can leave the property empty). More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
-          "type": "integer",
+          "type": [
+            "integer",
+            "null"
+          ],
           "format": "int32"
         },
         "pdName": {
@@ -524,7 +569,10 @@
         },
         "readOnly": {
           "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       }
     },
@@ -545,7 +593,10 @@
         },
         "readOnly": {
           "description": "ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/glusterfs/README.md#create-a-pod",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         }
       }
     },
@@ -578,11 +629,17 @@
       "properties": {
         "chapAuthDiscovery": {
           "description": "whether support iSCSI Discovery CHAP authentication",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "chapAuthSession": {
           "description": "whether support iSCSI Session CHAP authentication",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "fsType": {
           "description": "Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \"ext4\", \"xfs\", \"ntfs\". Implicitly inferred to be \"ext4\" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#iscsi",
@@ -629,7 +686,10 @@
         },
         "readOnly": {
           "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretRef": {
           "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -701,7 +761,10 @@
         },
         "readOnly": {
           "description": "ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "server": {
           "description": "Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
@@ -846,7 +909,10 @@
         },
         "readOnly": {
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "volumeID": {
           "description": "VolumeID uniquely identifies a Portworx volume",
@@ -870,7 +936,10 @@
         },
         "readOnly": {
           "description": "ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "registry": {
           "description": "Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes",
@@ -933,7 +1002,10 @@
         },
         "readOnly": {
           "description": "ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://releases.k8s.io/HEAD/examples/volumes/rbd/README.md#how-to-use-it",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretRef": {
           "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -991,7 +1063,10 @@
         },
         "readOnly": {
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretRef": {
           "description": "SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace",
@@ -1014,7 +1089,10 @@
         },
         "sslEnabled": {
           "description": "Flag to enable/disable SSL communication with Gateway, default false",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "storageMode": {
           "description": "Indicates whether the storage for a volume should be ThickProvisioned or ThinProvisioned. Default is ThinProvisioned.",
@@ -1062,7 +1140,10 @@
         },
         "readOnly": {
           "description": "Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "secretRef": {
           "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",

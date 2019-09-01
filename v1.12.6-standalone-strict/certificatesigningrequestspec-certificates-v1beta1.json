@@ -6,7 +6,10 @@
   "properties": {
     "extra": {
       "description": "Extra information about the requesting user. See user.Info interface for details.",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "array",

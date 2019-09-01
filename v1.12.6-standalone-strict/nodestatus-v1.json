@@ -30,7 +30,10 @@
     },
     "allocatable": {
       "description": "Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "oneOf": [
           {
@@ -40,14 +43,20 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       }
     },
     "capacity": {
       "description": "Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "oneOf": [
           {
@@ -57,7 +66,10 @@
             ]
           },
           {
-            "type": "integer"
+            "type": [
+              "number",
+              "null"
+            ]
           }
         ]
       }
@@ -305,7 +317,10 @@
           },
           "sizeBytes": {
             "description": "The size of the image in bytes.",
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "format": "int64"
           }
         },
