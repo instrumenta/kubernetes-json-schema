@@ -21,7 +21,10 @@
               ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "httpGet": {
           "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -51,7 +54,10 @@
                   "name",
                   "value"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "type": [
                 "array",
@@ -74,7 +80,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -89,7 +98,10 @@
           "required": [
             "port"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "tcpSocket": {
           "description": "TCPSocketAction describes an action based on opening a socket",
@@ -110,7 +122,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -118,10 +133,16 @@
           "required": [
             "port"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "preStop": {
       "description": "Handler defines a specific action that should be taken",
@@ -143,7 +164,10 @@
               ]
             }
           },
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "httpGet": {
           "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -173,7 +197,10 @@
                   "name",
                   "value"
                 ],
-                "type": "object"
+                "type": [
+                  "object",
+                  "null"
+                ]
               },
               "type": [
                 "array",
@@ -196,7 +223,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -211,7 +241,10 @@
           "required": [
             "port"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "tcpSocket": {
           "description": "TCPSocketAction describes an action based on opening a socket",
@@ -232,7 +265,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -240,10 +276,16 @@
           "required": [
             "port"
           ],
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "type": "object",

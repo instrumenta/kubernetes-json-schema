@@ -17,7 +17,10 @@
               ]
             },
             {
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           ]
         }
@@ -26,7 +29,10 @@
         "serviceName",
         "servicePort"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "rules": {
@@ -65,7 +71,10 @@
                               ]
                             },
                             {
-                              "type": "integer"
+                              "type": [
+                                "integer",
+                                "null"
+                              ]
                             }
                           ]
                         }
@@ -88,7 +97,10 @@
                   "required": [
                     "backend"
                   ],
-                  "type": "object",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
                   "additionalProperties": false
                 },
                 "type": "array"
@@ -97,11 +109,17 @@
             "required": [
               "paths"
             ],
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           }
         },
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -135,7 +153,10 @@
             ]
           }
         },
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [

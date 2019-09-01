@@ -19,7 +19,10 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "driver": {
@@ -54,7 +57,10 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "nodeStageSecretRef": {
@@ -75,12 +81,18 @@
           ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "readOnly": {
       "description": "Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "volumeAttributes": {
       "additionalProperties": {
@@ -90,7 +102,10 @@
         ]
       },
       "description": "Attributes of the volume to publish.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "volumeHandle": {
       "description": "VolumeHandle is the unique volume name returned by the CSI volume plugin\u2019s CreateVolume to refer to the volume on all subsequent calls. Required.",

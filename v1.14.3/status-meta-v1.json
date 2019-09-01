@@ -14,7 +14,10 @@
     "code": {
       "description": "Suggested HTTP return code for this status, 0 if not set.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     },
     "details": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.3/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails",

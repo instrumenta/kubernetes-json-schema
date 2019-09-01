@@ -62,13 +62,19 @@
                   },
                   "optional": {
                     "description": "Specify whether the ConfigMap or it's key must be defined",
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   }
                 },
                 "required": [
                   "key"
                 ],
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "fieldRef": {
@@ -89,7 +95,10 @@
                 "required": [
                   "fieldPath"
                 ],
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "resourceFieldRef": {
@@ -111,7 +120,10 @@
                         ]
                       },
                       {
-                        "type": "integer"
+                        "type": [
+                          "number",
+                          "null"
+                        ]
                       }
                     ]
                   },
@@ -123,7 +135,10 @@
                 "required": [
                   "resource"
                 ],
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "secretKeyRef": {
@@ -142,24 +157,36 @@
                   },
                   "optional": {
                     "description": "Specify whether the Secret or it's key must be defined",
-                    "type": "boolean"
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
                   }
                 },
                 "required": [
                   "key"
                 ],
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               }
             },
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           }
         },
         "required": [
           "name"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -186,10 +213,16 @@
               },
               "optional": {
                 "description": "Specify whether the ConfigMap must be defined",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             },
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           },
           "prefix": {
@@ -211,14 +244,23 @@
               },
               "optional": {
                 "description": "Specify whether the Secret must be defined",
-                "type": "boolean"
+                "type": [
+                  "boolean",
+                  "null"
+                ]
               }
             },
-            "type": "object",
+            "type": [
+              "object",
+              "null"
+            ],
             "additionalProperties": false
           }
         },
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -263,7 +305,10 @@
                   ]
                 }
               },
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             },
             "httpGet": {
@@ -294,7 +339,10 @@
                       "name",
                       "value"
                     ],
-                    "type": "object",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
                     "additionalProperties": false
                   },
                   "type": [
@@ -318,7 +366,10 @@
                       ]
                     },
                     {
-                      "type": "integer"
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
                     }
                   ]
                 },
@@ -333,7 +384,10 @@
               "required": [
                 "port"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             },
             "tcpSocket": {
@@ -355,7 +409,10 @@
                       ]
                     },
                     {
-                      "type": "integer"
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
                     }
                   ]
                 }
@@ -363,11 +420,17 @@
               "required": [
                 "port"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "preStop": {
@@ -390,7 +453,10 @@
                   ]
                 }
               },
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             },
             "httpGet": {
@@ -421,7 +487,10 @@
                       "name",
                       "value"
                     ],
-                    "type": "object",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
                     "additionalProperties": false
                   },
                   "type": [
@@ -445,7 +514,10 @@
                       ]
                     },
                     {
-                      "type": "integer"
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
                     }
                   ]
                 },
@@ -460,7 +532,10 @@
               "required": [
                 "port"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             },
             "tcpSocket": {
@@ -482,7 +557,10 @@
                       ]
                     },
                     {
-                      "type": "integer"
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
                     }
                   ]
                 }
@@ -490,15 +568,24 @@
               "required": [
                 "port"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "livenessProbe": {
@@ -521,13 +608,19 @@
               ]
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "failureThreshold": {
           "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "httpGet": {
           "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -557,7 +650,10 @@
                   "name",
                   "value"
                 ],
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "type": [
@@ -581,7 +677,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -596,23 +695,35 @@
           "required": [
             "port"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "initialDelaySeconds": {
           "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "periodSeconds": {
           "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "successThreshold": {
           "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "tcpSocket": {
           "description": "TCPSocketAction describes an action based on opening a socket",
@@ -633,7 +744,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -641,16 +755,25 @@
           "required": [
             "port"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "timeoutSeconds": {
           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "name": {
@@ -680,7 +803,10 @@
           "hostPort": {
             "description": "Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.",
             "format": "int32",
-            "type": "integer"
+            "type": [
+              "integer",
+              "null"
+            ]
           },
           "name": {
             "description": "If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services.",
@@ -700,7 +826,10 @@
         "required": [
           "containerPort"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -735,13 +864,19 @@
               ]
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "failureThreshold": {
           "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "httpGet": {
           "description": "HTTPGetAction describes an action based on HTTP Get requests.",
@@ -771,7 +906,10 @@
                   "name",
                   "value"
                 ],
-                "type": "object",
+                "type": [
+                  "object",
+                  "null"
+                ],
                 "additionalProperties": false
               },
               "type": [
@@ -795,7 +933,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -810,23 +951,35 @@
           "required": [
             "port"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "initialDelaySeconds": {
           "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "periodSeconds": {
           "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "successThreshold": {
           "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "tcpSocket": {
           "description": "TCPSocketAction describes an action based on opening a socket",
@@ -847,7 +1000,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -855,16 +1011,25 @@
           "required": [
             "port"
           ],
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "timeoutSeconds": {
           "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
           "format": "int32",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "resources": {
@@ -880,12 +1045,18 @@
                 ]
               },
               {
-                "type": "integer"
+                "type": [
+                  "number",
+                  "null"
+                ]
               }
             ]
           },
           "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         },
         "requests": {
           "additionalProperties": {
@@ -897,15 +1068,24 @@
                 ]
               },
               {
-                "type": "integer"
+                "type": [
+                  "number",
+                  "null"
+                ]
               }
             ]
           },
           "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
-          "type": "object"
+          "type": [
+            "object",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "securityContext": {
@@ -913,7 +1093,10 @@
       "properties": {
         "allowPrivilegeEscalation": {
           "description": "AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "capabilities": {
           "description": "Adds and removes POSIX capabilities from running containers.",
@@ -945,12 +1128,18 @@
               ]
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         },
         "privileged": {
           "description": "Run container in privileged mode. Processes in privileged containers are essentially equivalent to root on the host. Defaults to false.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "procMount": {
           "description": "procMount denotes the type of proc mount to use for the containers. The default is DefaultProcMount which uses the container runtime defaults for readonly paths and masked paths. This requires the ProcMountType feature flag to be enabled.",
@@ -961,21 +1150,33 @@
         },
         "readOnlyRootFilesystem": {
           "description": "Whether this container has a read-only root filesystem. Default is false.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "runAsGroup": {
           "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
           "format": "int64",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "runAsNonRoot": {
           "description": "Indicates that the container must run as a non-root user. If true, the Kubelet will validate the image at runtime to ensure that it does not run as UID 0 (root) and fail to start the container if it does. If unset or false, no such validation will be performed. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
-          "type": "boolean"
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "runAsUser": {
           "description": "The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
           "format": "int64",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         },
         "seLinuxOptions": {
           "description": "SELinuxOptions are the labels to be applied to the container",
@@ -1009,20 +1210,32 @@
               ]
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "stdin": {
       "description": "Whether this container should allocate a buffer for stdin in the container runtime. If this is not set, reads from stdin in the container will always result in EOF. Default is false.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "stdinOnce": {
       "description": "Whether the container runtime should close the stdin channel after it has been opened by a single attach. When stdin is true the stdin stream will remain open across multiple attach sessions. If stdinOnce is set to true, stdin is opened on container start, is empty until the first client attaches to stdin, and then remains open and accepts data until the client disconnects, at which time stdin is closed and remains closed until the container is restarted. If this flag is false, a container processes that reads from stdin will never receive an EOF. Default is false",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "terminationMessagePath": {
       "description": "Optional: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log. Cannot be updated.",
@@ -1040,7 +1253,10 @@
     },
     "tty": {
       "description": "Whether this container should allocate a TTY for itself, also requires 'stdin' to be true. Default is false.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "volumeDevices": {
       "description": "volumeDevices is the list of block devices to be used by the container. This is a beta feature.",
@@ -1060,7 +1276,10 @@
           "name",
           "devicePath"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [
@@ -1092,7 +1311,10 @@
           },
           "readOnly": {
             "description": "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false.",
-            "type": "boolean"
+            "type": [
+              "boolean",
+              "null"
+            ]
           },
           "subPath": {
             "description": "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root).",
@@ -1113,7 +1335,10 @@
           "name",
           "mountPath"
         ],
-        "type": "object",
+        "type": [
+          "object",
+          "null"
+        ],
         "additionalProperties": false
       },
       "type": [

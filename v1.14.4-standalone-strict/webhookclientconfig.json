@@ -32,7 +32,10 @@
         "namespace",
         "name"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "url": {

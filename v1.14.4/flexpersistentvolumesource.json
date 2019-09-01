@@ -23,11 +23,17 @@
         ]
       },
       "description": "Optional: Extra command options if any.",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     },
     "readOnly": {
       "description": "Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "secretRef": {
       "$ref": "https://kubernetesjsonschema.dev/v1.14.4/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference",

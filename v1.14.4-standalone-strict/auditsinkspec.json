@@ -25,7 +25,10 @@
       "required": [
         "level"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "webhook": {
@@ -65,7 +68,10 @@
                 "namespace",
                 "name"
               ],
-              "type": "object",
+              "type": [
+                "object",
+                "null"
+              ],
               "additionalProperties": false
             },
             "url": {
@@ -85,22 +91,34 @@
             "burst": {
               "description": "ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS",
               "format": "int64",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             },
             "qps": {
               "description": "ThrottleQPS maximum number of batches per second default 10 QPS",
               "format": "int64",
-              "type": "integer"
+              "type": [
+                "integer",
+                "null"
+              ]
             }
           },
-          "type": "object",
+          "type": [
+            "object",
+            "null"
+          ],
           "additionalProperties": false
         }
       },
       "required": [
         "clientConfig"
       ],
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     }
   },

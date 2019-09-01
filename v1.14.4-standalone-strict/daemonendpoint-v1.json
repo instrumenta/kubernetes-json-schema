@@ -4,7 +4,10 @@
     "Port": {
       "description": "Port number of the given endpoint.",
       "format": "int32",
-      "type": "integer"
+      "type": [
+        "integer",
+        "null"
+      ]
     }
   },
   "required": [

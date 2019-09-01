@@ -41,7 +41,10 @@
           "type",
           "status"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",

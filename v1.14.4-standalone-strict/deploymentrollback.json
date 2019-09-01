@@ -31,10 +31,16 @@
         "revision": {
           "description": "The revision to rollback to. If set to 0, rollback to the last revision.",
           "format": "int64",
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       },
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": false
     },
     "updatedAnnotations": {
@@ -45,7 +51,10 @@
         ]
       },
       "description": "The annotations to be updated to a deployment",
-      "type": "object"
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "required": [

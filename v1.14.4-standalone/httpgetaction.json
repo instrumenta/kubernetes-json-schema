@@ -26,7 +26,10 @@
           "name",
           "value"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
@@ -49,7 +52,10 @@
           ]
         },
         {
-          "type": "integer"
+          "type": [
+            "integer",
+            "null"
+          ]
         }
       ]
     },

@@ -114,7 +114,10 @@
           "kind",
           "verbs"
         ],
-        "type": "object"
+        "type": [
+          "object",
+          "null"
+        ]
       },
       "type": [
         "array",
