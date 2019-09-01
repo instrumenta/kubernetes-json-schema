@@ -6,7 +6,10 @@
   "properties": {
     "allowVolumeExpansion": {
       "description": "AllowVolumeExpansion shows whether the storage class allow volume expand",
-      "type": "boolean"
+      "type": [
+        "boolean",
+        "null"
+      ]
     },
     "allowedTopologies": {
       "description": "Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
@@ -57,7 +60,10 @@
     },
     "parameters": {
       "description": "Parameters holds the parameters for the provisioner that should create volumes of this storage class.",
-      "type": "object",
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "string",

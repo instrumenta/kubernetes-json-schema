@@ -77,7 +77,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -113,7 +116,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             }
@@ -199,7 +205,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             },
@@ -235,7 +244,10 @@
                   ]
                 },
                 {
-                  "type": "integer"
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
                 }
               ]
             }
