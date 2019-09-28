@@ -1,0 +1,22 @@
+{
+  "description": "ServiceReference holds a reference to Service.legacy.k8s.io",
+  "properties": {
+    "name": {
+      "description": "Name is the name of the service",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "Namespace is the namespace of the service",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

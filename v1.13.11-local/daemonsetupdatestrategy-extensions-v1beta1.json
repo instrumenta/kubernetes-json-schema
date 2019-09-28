@@ -1,0 +1,17 @@
+{
+  "properties": {
+    "rollingUpdate": {
+      "description": "Rolling update config params. Present only if type = \"RollingUpdate\".",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.extensions.v1beta1.RollingUpdateDaemonSet"
+    },
+    "type": {
+      "description": "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is OnDelete.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}

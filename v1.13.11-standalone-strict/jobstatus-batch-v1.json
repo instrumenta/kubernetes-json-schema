@@ -1,0 +1,105 @@
+{
+  "description": "JobStatus represents the current state of a Job.",
+  "properties": {
+    "active": {
+      "description": "The number of actively running pods.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "completionTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "conditions": {
+      "description": "The latest available observations of an object's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "JobCondition describes current state of a job.",
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastProbeTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "description": "Human readable message indicating details about last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "(brief) reason for the condition's last transition.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "Status of the condition, one of True, False, Unknown.",
+            "type": "string"
+          },
+          "type": {
+            "description": "Type of job condition, Complete or Failed.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "failed": {
+      "description": "The number of pods which reached phase Failed.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "startTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "succeeded": {
+      "description": "The number of pods which reached phase Succeeded.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object"
+}
