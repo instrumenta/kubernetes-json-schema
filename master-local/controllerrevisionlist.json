@@ -11,7 +11,7 @@
     "items": {
       "description": "Items is the list of ControllerRevisions",
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.ControllerRevision"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.ControllerRevision"
       },
       "type": [
         "array",
@@ -41,7 +41,7 @@
     {
       "group": "apps",
       "kind": "ControllerRevisionList",
-      "version": "v1beta2"
+      "version": "v1"
     }
   ],
   "$schema": "http://json-schema.org/schema#"

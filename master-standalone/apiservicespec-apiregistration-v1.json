@@ -79,7 +79,6 @@
     }
   },
   "required": [
-    "service",
     "groupPriorityMinimum",
     "versionPriority"
   ],

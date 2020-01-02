@@ -10,7 +10,7 @@
     },
     "items": {
       "items": {
-        "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1beta2.StatefulSet"
+        "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSet"
       },
       "type": [
         "array",
@@ -39,7 +39,7 @@
     {
       "group": "apps",
       "kind": "StatefulSetList",
-      "version": "v1beta2"
+      "version": "v1"
     }
   ],
   "$schema": "http://json-schema.org/schema#"
