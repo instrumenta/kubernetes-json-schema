@@ -2288,21 +2288,21 @@
                         "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
                         "properties": {
                           "gmsaCredentialSpec": {
-                            "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                            "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field.",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "gmsaCredentialSpecName": {
-                            "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                            "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use.",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "runAsUserName": {
-                            "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. This field is beta-level and may be disabled with the WindowsRunAsUserName feature flag.",
+                            "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
                             "type": [
                               "string",
                               "null"
@@ -2546,7 +2546,7 @@
                     ]
                   },
                   "volumeDevices": {
-                    "description": "volumeDevices is the list of block devices to be used by the container. This is a beta feature.",
+                    "description": "volumeDevices is the list of block devices to be used by the container.",
                     "items": {
                       "description": "volumeDevice describes a mapping of a raw block device within a container.",
                       "properties": {
@@ -3950,21 +3950,21 @@
                         "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
                         "properties": {
                           "gmsaCredentialSpec": {
-                            "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                            "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field.",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "gmsaCredentialSpecName": {
-                            "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                            "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use.",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "runAsUserName": {
-                            "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. This field is beta-level and may be disabled with the WindowsRunAsUserName feature flag.",
+                            "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
                             "type": [
                               "string",
                               "null"
@@ -4215,7 +4215,7 @@
                     ]
                   },
                   "volumeDevices": {
-                    "description": "volumeDevices is the list of block devices to be used by the container. This is a beta feature.",
+                    "description": "volumeDevices is the list of block devices to be used by the container.",
                     "items": {
                       "description": "volumeDevice describes a mapping of a raw block device within a container.",
                       "properties": {
@@ -5642,21 +5642,21 @@
                         "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
                         "properties": {
                           "gmsaCredentialSpec": {
-                            "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                            "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field.",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "gmsaCredentialSpecName": {
-                            "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                            "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use.",
                             "type": [
                               "string",
                               "null"
                             ]
                           },
                           "runAsUserName": {
-                            "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. This field is beta-level and may be disabled with the WindowsRunAsUserName feature flag.",
+                            "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
                             "type": [
                               "string",
                               "null"
@@ -5900,7 +5900,7 @@
                     ]
                   },
                   "volumeDevices": {
-                    "description": "volumeDevices is the list of block devices to be used by the container. This is a beta feature.",
+                    "description": "volumeDevices is the list of block devices to be used by the container.",
                     "items": {
                       "description": "volumeDevice describes a mapping of a raw block device within a container.",
                       "properties": {
@@ -6134,6 +6134,13 @@
                     "null"
                   ]
                 },
+                "fsGroupChangePolicy": {
+                  "description": "fsGroupChangePolicy defines behavior of changing ownership and permission of the volume before being exposed inside Pod. This field will only apply to volume types which support fsGroup based ownership(and permissions). It will have no effect on ephemeral volume types such as: secret, configmaps and emptydir. Valid values are \"OnRootMismatch\" and \"Always\". If not specified defaults to \"Always\".",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
                 "runAsGroup": {
                   "description": "The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in SecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence for that container.",
                   "format": "int64",
@@ -6242,21 +6249,21 @@
                   "description": "WindowsSecurityContextOptions contain Windows-specific options and credentials.",
                   "properties": {
                     "gmsaCredentialSpec": {
-                      "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                      "description": "GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field.",
                       "type": [
                         "string",
                         "null"
                       ]
                     },
                     "gmsaCredentialSpecName": {
-                      "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
+                      "description": "GMSACredentialSpecName is the name of the GMSA credential spec to use.",
                       "type": [
                         "string",
                         "null"
                       ]
                     },
                     "runAsUserName": {
-                      "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. This field is beta-level and may be disabled with the WindowsRunAsUserName feature flag.",
+                      "description": "The UserName in Windows to run the entrypoint of the container process. Defaults to the user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.",
                       "type": [
                         "string",
                         "null"
@@ -6366,7 +6373,7 @@
               ]
             },
             "topologySpreadConstraints": {
-              "description": "TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. This field is alpha-level and is only honored by clusters that enables the EvenPodsSpread feature. All topologySpreadConstraints are ANDed.",
+              "description": "TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. This field is only honored by clusters that enable the EvenPodsSpread feature. All topologySpreadConstraints are ANDed.",
               "items": {
                 "description": "TopologySpreadConstraint specifies how to spread matching pods among the given topology.",
                 "properties": {
@@ -6717,7 +6724,7 @@
                     "description": "Adapts a ConfigMap into a volume.\n\nThe contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths. ConfigMap volumes support ownership management and SELinux relabeling.",
                     "properties": {
                       "defaultMode": {
-                        "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                        "description": "Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -6734,7 +6741,7 @@
                               "type": "string"
                             },
                             "mode": {
-                              "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                              "description": "Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                               "format": "int32",
                               "type": [
                                 "integer",
@@ -6847,7 +6854,7 @@
                     "description": "DownwardAPIVolumeSource represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.",
                     "properties": {
                       "defaultMode": {
-                        "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                        "description": "Optional: mode bits to use on created files by default. Must be a Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -6884,7 +6891,7 @@
                               "additionalProperties": false
                             },
                             "mode": {
-                              "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                              "description": "Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                               "format": "int32",
                               "type": [
                                 "integer",
@@ -7472,7 +7479,7 @@
                     "description": "Represents a projected volume source",
                     "properties": {
                       "defaultMode": {
-                        "description": "Mode bits to use on created files by default. Must be a value between 0 and 0777. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                        "description": "Mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -7497,7 +7504,7 @@
                                         "type": "string"
                                       },
                                       "mode": {
-                                        "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                                        "description": "Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                                         "format": "int32",
                                         "type": [
                                           "integer",
@@ -7578,7 +7585,7 @@
                                         "additionalProperties": false
                                       },
                                       "mode": {
-                                        "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                                        "description": "Optional: mode bits used to set permissions on this file, must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                                         "format": "int32",
                                         "type": [
                                           "integer",
@@ -7664,7 +7671,7 @@
                                         "type": "string"
                                       },
                                       "mode": {
-                                        "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                                        "description": "Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                                         "format": "int32",
                                         "type": [
                                           "integer",
@@ -7983,7 +7990,7 @@
                     "description": "Adapts a Secret into a volume.\n\nThe contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names. Secret volumes support ownership management and SELinux relabeling.",
                     "properties": {
                       "defaultMode": {
-                        "description": "Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                        "description": "Optional: mode bits used to set permissions on created files by default. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                         "format": "int32",
                         "type": [
                           "integer",
@@ -8000,7 +8007,7 @@
                               "type": "string"
                             },
                             "mode": {
-                              "description": "Optional: mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
+                              "description": "Optional: mode bits used to set permissions on this file. Must be an octal value between 0000 and 0777 or a decimal value between 0 and 511. YAML accepts both octal and decimal values, JSON requires decimal values for mode bits. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
                               "format": "int32",
                               "type": [
                                 "integer",

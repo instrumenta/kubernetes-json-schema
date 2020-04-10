@@ -317,6 +317,13 @@
                 "format": "byte",
                 "type": "string"
               },
+              "signerName": {
+                "description": "Requested signer for the request. It is a qualified name in the form: `scope-hostname.io/name`. If empty, it will be defaulted:\n 1. If it's a kubelet client certificate, it is assigned\n    \"kubernetes.io/kube-apiserver-client-kubelet\".\n 2. If it's a kubelet serving certificate, it is assigned\n    \"kubernetes.io/kubelet-serving\".\n 3. Otherwise, it is assigned \"kubernetes.io/legacy-unknown\".\nDistribution of trust for signers happens out of band. You can select on this field using `spec.signerName`.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
               "uid": {
                 "description": "UID information about the requesting user. See user.Info interface for details.",
                 "type": [

@@ -1198,6 +1198,15 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1beta1.IngressBackend"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1beta1.IngressClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1beta1.IngressClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1beta1.IngressClassSpec"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1beta1.IngressList"
     },
     {
@@ -1430,6 +1439,15 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.settings.v1alpha1.PodPresetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIDriver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIDriverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSIDriverSpec"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.api.storage.v1.CSINode"

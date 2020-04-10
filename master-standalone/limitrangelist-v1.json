@@ -404,12 +404,12 @@
                     },
                     "type": {
                       "description": "Type of resource that this limit applies to.",
-                      "type": [
-                        "string",
-                        "null"
-                      ]
+                      "type": "string"
                     }
                   },
+                  "required": [
+                    "type"
+                  ],
                   "type": [
                     "object",
                     "null"
