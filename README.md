@@ -1,5 +1,7 @@
 # Kubernetes JSON Schemas
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/43819683-5882-4ba3-ba1d-4884fad0033a/deploy-status)](https://app.netlify.com/sites/distracted-benz-b36ced/deploys)
+
 While exploring tooling for Kubernetes I had need for schemas to
 describe the definition files, and went looking for something that
 didn't require either `kubectl` or similar installed or even a working
