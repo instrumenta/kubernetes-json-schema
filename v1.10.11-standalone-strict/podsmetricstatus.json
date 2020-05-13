@@ -1,0 +1,29 @@
+{
+  "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).", 
+  "required": [
+    "metricName", 
+    "currentAverageValue"
+  ], 
+  "additionalProperties": false, 
+  "$schema": "http://json-schema.org/schema#", 
+  "type": "object", 
+  "properties": {
+    "currentAverageValue": {
+      "oneOf": [
+        {
+          "type": "string"
+        }, 
+        {
+          "type": "integer"
+        }
+      ]
+    }, 
+    "metricName": {
+      "type": [
+        "string", 
+        "null"
+      ], 
+      "description": "metricName is the name of the metric in question"
+    }
+  }
+}

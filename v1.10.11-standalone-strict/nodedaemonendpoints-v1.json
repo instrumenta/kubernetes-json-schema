@@ -1,0 +1,20 @@
+{
+  "additionalProperties": false, 
+  "description": "NodeDaemonEndpoints lists ports opened by daemons running on the Node.", 
+  "properties": {
+    "kubeletEndpoint": {
+      "additionalProperties": false, 
+      "required": [
+        "Port"
+      ], 
+      "description": "DaemonEndpoint contains information about a single Daemon endpoint.", 
+      "properties": {
+        "Port": {
+          "type": "integer", 
+          "description": "Port number of the given endpoint.", 
+          "format": "int32"
+        }
+      }
+    }
+  }
+}

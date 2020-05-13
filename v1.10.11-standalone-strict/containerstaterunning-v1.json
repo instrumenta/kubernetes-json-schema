@@ -1,0 +1,10 @@
+{
+  "additionalProperties": false, 
+  "description": "ContainerStateRunning is a running state of a container.", 
+  "properties": {
+    "startedAt": {
+      "type": "string", 
+      "format": "date-time"
+    }
+  }
+}
